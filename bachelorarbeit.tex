@@ -1,0 +1,382 @@
+%%%------------------------------------
+%%%     DIPLOMARBEIT: Hauptdatei
+%%%     
+%%%     Stefan Grünwald (2000 - 2007)
+%%%     Michael Fladischer (2010)
+%%%------------------------------------
+
+\documentclass[%
+    %DIV12,                                 % Satzspiegelparameter 12
+    %BCOR8mm,                               % Bindekorrektur 8mm
+    %headinclude,                           % Berücksichtigung der Kopfzeile
+                                            % bei der Ermittlung des Satzspiegels
+    12pt,                                   % Schriftgrösse 12pt
+    a4paper,                                % DIN A4
+    oneside]                                % einseitig
+    {scrbook}                               % KOMA-Script Klasse 'scrbook' statt 'book'
+
+%%%------------------------------------
+%%%---- PAKETE ------------------------
+%%%------------------------------------
+\usepackage{ngerman}
+\usepackage[utf8]{inputenc}                 % Laden der UTF8-Eingabekodierung
+                                            % ACHTUNG: Dateien müssen UTF8 codiert sein!
+\usepackage[T1]{fontenc}                    % EC codierte Fonts
+\usepackage{ae}                             % PDF encoding Info
+\usepackage{palatino}                       % Brotschrift: Palationo
+\usepackage{helvet}                         % Serifenlose Schrift: Helvetica
+\usepackage[left]{eurosym}                  % EURO links
+\usepackage{paralist}                       % Beeinflussung von Listen
+%\usepackage{schuster}                      % \clubpenalty = 10000
+                                            % \widowpenalty = 10000
+                                            % \displaywidowpenalty = 10000
+\usepackage{tabularx}                       % Austreiben auf eine bestimmte Breite
+\usepackage{longtable}                      % Mehrseitige Tabellen
+\usepackage{ltxtable}                       % 'longtable' und 'tabularx'
+\usepackage{array}                          % Zeilenumbruch in 'p'-Spalten
+\usepackage{booktabs}                       % \toprule, \midrule und \bottomrule
+\usepackage{dcolumn}                        %
+%----------------------
+
+%\show\intextsep
+
+%%%----------------------------------------------------------------------------
+%%% Lädt die passenden Einstellungen
+%%%----------------------------------------------------------------------------
+\input{./misc/settings}
+
+%%%----------------------------------------------------------------------------
+%%% Um das Dokument sowohl für 'latex' als auch für 'pdflatex'
+%%% kompatibel zu machen, wird das Package 'ifpdf' geladen
+\usepackage{ifpdf}
+% für Encapsulated-Postscript und PDFTeX Grafiken
+\ifpdf
+    \usepackage[pdftex]{graphicx}
+    \graphicspath{{abb/png/}}
+    \pdfcompresslevel=9
+\else
+    \usepackage[dvips]{graphicx}
+    \graphicspath{{abb/eps/}}
+\fi
+%%%----------------------------------------------------------------------------
+
+%%%------------------------------------
+%%%---- ZEILENABSTAND -----------------
+%%%------------------------------------
+%\usepackage{setspace}
+%\doublespace                               % doppelzeilig oder
+%\onehalfspacing                            % eineinhalbzeilig
+
+
+\usepackage{layout}
+\usepackage{./addons/chngcntr}              % Zähler beeinflussen
+\counterwithout{footnote}{chapter}          % Fußnoten durchnummerieren
+\usepackage[nooneline,hang]{caption}
+\renewcommand{\captionfont}{\small\itshape}
+
+
+\renewcommand{\floatpagefraction}{.8}       % ,float page`, wenn diese mindestens
+                                            % 80% der Seite einnehmen
+                                            % default: .5
+\renewcommand{\textfraction}{.1}            % neben den Abbildungen, die ,h`ere, ,t`op und
+                                            % ,b`ottom plaziert werden, noch min. 10% Text
+                                            % default: .2
+\renewcommand{\topfraction}{.9}             % max. Anteil der Seite, die f\"{u}r Abbildungen,
+                                            % die ,t`op plaziert werden, verwendet wird
+                                            % default: .7
+\renewcommand{\bottomfraction}{.6}          % max. Anteil der Seite, die f\"{u}r Abbildungen,
+                                            % die ,b`ottom plaziert werden, verwendet wird
+                                            % default: .3
+
+
+%%%------------------------------------
+%%%---- DEFINITION INHALTSUEBERSICHT --
+%%%------------------------------------
+\makeatletter
+\newcommand\shorttoc{\bgroup
+%  \def\l@section##1##2{\relax}
+  \def\l@subsection##1##2{\relax}
+  \def\l@subsubsection##1##2{\relax}
+  \section*{Inhalts\"{u}bersicht}
+  \@input{\jobname.toc}
+\egroup}
+\makeatother
+
+%%%------------------------------------
+%%%---- ZITIERSTIL --------------------
+%%%------------------------------------
+%\usepackage{overcite}                      % Zitierstil: Zitate werden hochgestellt
+%\renewcommand{\citeleft}{}                 % im Text dargestellt
+%\renewcommand{\citeright}{}                %
+%
+%\makeatletter                              % default:
+%\renewcommand{\@cite}[2]{[{#1\if@tempswa , #2\fi}]}     % \renewcommand\@cite[2]{[{\if@tempswa , #2\fi}]}
+%\makeatother
+%
+%\makeatletter                              % plain, ohne Nummern im Verzeichnis
+%\renewcommand\@biblabel[1]{$^{}$}          % default: \renewcommand\@biblabel[1]{$^{#1}$}
+%\makeatother                               %
+%%%---- EO ZITIERSTIL -----------------
+
+%%%------------------------------------
+%%%---- SILBENTRENNUNG ----------------
+%%%------------------------------------
+\input{./misc/hyphenation}
+%%%------------------------------------
+
+
+
+%\renewcommand{\el}[1]{}                     % extra label leeren
+%\usepackage{named}
+%\usepackage{apalike}
+\usepackage{makeidx}
+\makeindex
+
+
+%%%------------------------------------
+%%%---- 'pdf'-ERSTELLUNG --------------
+%%%------------------------------------
+\usepackage[a4paper,                        % DIN A4
+%            dvips,                         % Erzeugung durch dvips: nicht mit 'pdflatex' verwenden
+            plainpages=false,
+            pdfpagelabels,
+            pdftitle={\campusTitle},
+            pdfauthor={\campusAuthor},
+            pdfsubject={\campusType, \campusDate, \campusSubject},
+            pdfkeywords={\campusKeywords},
+            bookmarks=true,                 % Lesezeichen im 'pdf' analog zum Inhaltsverzeichnis,
+                                            % (2x latex)
+            bookmarksopen=true,             % Bookmarks anzeigen...
+            bookmarksnumbered=true,         % ...und nummerieren
+            hyperindex=true                 % Indexeinträge als Hyperlinks
+            colorlinks,                     % Farbige Links
+            linkcolor=black,
+            urlcolor=black,
+            citecolor=black,
+            pdfborder=0
+]{hyperref}
+
+%%%------------------------------------
+%%%---- GLOSSAR -----------------------
+%%%------------------------------------
+\usepackage{gloss}
+\newgloss{default}{.gls}{Glossar}{glsplain}
+%\setglosslabel{#1}
+\renewcommand{\glossheading}[1]{}
+
+
+%%%---- EO USEPACKAGE -----------------
+%%%------------------------------------
+
+\newcommand{\uu}[1]{\underline{#1}}
+%\newcommand{\ii}[1]{\textit{#1}}
+
+%%%------------------------------------
+%%%---- LAYOUT ------------------------
+%%%------------------------------------
+
+% Numerierungstiefe der Kapitel
+\setcounter{secnumdepth}{3}%
+
+% Numerierungstiefe des Inhaltsverzeichnisses
+\setcounter{tocdepth}{3}%
+
+% Abstand vor und nach Gleitobjekten im Text [h]
+%\setlength{\intextsep}{12pt plus 2pt minus 2pt}    % default: {12pt plus 2pt minus 2pt}
+
+% Abstand zwischen Gleitobjekten oben oder unten und Text [tb]
+\setlength{\textfloatsep}{28pt plus 2pt minus 4pt}  % default: {20pt plus 2pt minus 4pt}
+
+%\setlength{\abovecaptionskip}{0pt}
+
+
+
+
+
+%%%---- PARAGRAPH ---------------------
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection {paragraph}{4}{\z@}%
+  {-3.25ex plus-1ex minus-.2ex}{1sp}%
+  {\raggedsection \normalfont \sectfont \nobreak \size@paragraph \nobreak } % was: \reset@font \normalsize\bf
+} \makeatother
+
+%%%---- SUBPARAGRAPH ------------------
+\makeatletter
+\renewcommand{\subparagraph}{%
+  \@startsection {subparagraph}{5}{\parindent}%
+  {3.25ex \@plus 1ex \@minus .2ex}{-1em}%
+  {\raggedsection \normalfont \sectfont \nobreak \normalsize\bf \nobreak } % was: \size@subparagraph
+} \makeatother
+
+
+\clubpenalty = 10000
+\widowpenalty = 10000
+% \displaywidowpenalty = 10000
+
+
+%\hyphenpenalty=9999                     % verhindert häufige Silbentrennung
+%\lefthyphenmin=3                        % bei Silbentrennung bleiben min. 3 Zeichen
+                                         % in der oberen Zeile stehen
+
+%\finalhyphendemerits=5000%
+%\doublehyphendemerits=10000%
+%\sloppy                                 % sollte unbedingt vermieden werden ;-)
+
+%%%------------------------------------
+%%%---- SEITENDEKLARATION -------------
+%%%------------------------------------
+\setlength{\textheight}{660pt}%
+\setlength{\voffset}{40pt}%
+\setlength{\hoffset}{20pt}%
+%\setlength{\footskip}{20pt}%
+
+
+%%%------------------------------------
+%%%---- KOPF-, FUSSZEILE --------------
+%%%------------------------------------
+\usepackage{fancyhdr}                   % Laden des Pakets zum Layout
+\pagestyle{fancy}                       % der Kopf- und Fusszeilen
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\headrulewidth}{0.4pt}    % Linie Kopfzeile
+%\renewcommand{\footrulewidth}{0.4pt}   % Linie Fusszeile
+\lhead{\sffamily\small\leftmark}        % LeftHeader --> Kapitelname
+\chead{}                                % CenteredHeader
+\rhead{\sffamily\small\thepage}         % RightHeader --> Seitennummer
+\lfoot{\sffamily\small}                 % LeftFooter --> Name
+\cfoot{}                                % CenteredFooter
+\rfoot{\sffamily\small}                 % RightFooter --> Titel
+%%%------------------------------------
+
+
+%%%------------------------------------
+%%%---- BEGIN OF DOCUMENT -------------
+%%%------------------------------------
+
+\begin{document}
+
+%%%------------------------------------
+%%%---- VORSPANN ----------------------
+%%%------------------------------------
+\frontmatter                                % Titel, Vorwort, Inhaltsverzeichnis
+
+%%%---- TITELSEITE --------------------
+\begin{titlepage}
+\begin{sf}
+\begin{center}
+\huge \campusType \\
+
+\vspace{2cm}%
+
+\campusTitle \\
+\vspace{3cm}%
+
+\begin{normalsize}
+
+ausgef\"{u}hrt am
+
+\begin{figure} [h!]
+        \centerline{\includegraphics[width=0.3\textwidth]{./images/CAMPUS_02_Farbe}}
+\end{figure}
+
+%\vspace{4.5cm}%
+
+Studiengang\\ 
+Informationstechnologien und IT-Marketing\\
+
+\vspace{3.5cm}%
+
+%\begin{tabularx}{\linewidth}{ll}
+Von: \campusAuthor \\
+Pers. Kennz. \campusPersKnz
+%\end{tabularx}
+
+
+\vspace{3.5cm}%
+\end{normalsize}
+\end{center}
+
+\begin{tabularx}{0.9\linewidth}{Xc}
+\campusCity, am \campusDate & ............................. \\
+         & Unterschrift\\
+\end{tabularx}
+
+\end{sf}
+\end{titlepage}
+\newpage
+%%%---- EO TITELSEITE -----------------
+
+\setlength{\parindent}{0em}
+
+%%%---- EHRENWORT ---------------------
+\include{./misc/Ehrenwort}
+
+%%%---- DANK --------------------------
+\include{./misc/Dank}
+
+%%%---- KURZFASSUNG -------------------
+\include{./misc/Kurzfassung}
+
+%%%---- INHALTSUEBERSICHT -------------
+%\shorttoc
+
+%%%---- INHALTSVERZEICHNIS ------------
+\tableofcontents
+
+%%%------------------------------------
+%%%---- HAUPTTEIL ---------------------
+%%%------------------------------------
+\setlength{\parskip}{3ex plus0.5ex minus0.5ex}
+
+%%%---- SEITENLAYOUT ------------------
+%\newpage \layout
+
+\mainmatter
+
+\input{./misc/toc}
+
+%%%------------------------------------
+%%%---- ANHANG ------------------------
+%%%------------------------------------
+\appendix
+%\include{[kap_aa]_fallstudie}
+%\include{}
+%\include{}
+
+%%%------------------------------------
+%%%---- NACHSPANN ---------------------
+%%%------------------------------------
+\backmatter %%% Bibliographie, Index
+
+%%%------------------------------------
+%%%     ABKUERZUNGSVERZEICHNIS
+\clearpage%
+%\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}%
+\printgloss{glsbase,glossar}%
+%%%------------------------------------
+%%%     ABBILDUNGSVERZEICHNIS
+\clearpage%
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoffigures%
+%%%------------------------------------
+%%%     TABELLENVERZEICHNIS
+\clearpage%
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}%
+\listoftables%
+%%%------------------------------------
+%%%     LITERATURVERZEICHNIS
+\clearpage%
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}%
+\bibliographystyle{plaindin}%
+\bibliography{./bibtex/literatur}%
+%%%------------------------------------
+%%%     INDEX
+\clearpage%
+\addcontentsline{toc}{chapter}{Index}%
+\printindex
+\include{./misc/zitat}%
+
+%%%------------------------------------
+%%%     EO DOCUMENT
+%%%------------------------------------
+\end{document}
