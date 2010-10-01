@@ -52,11 +52,11 @@
 % für Encapsulated-Postscript und PDFTeX Grafiken
 \ifpdf
     \usepackage[pdftex]{graphicx}
-    \graphicspath{{abb/png/}}
+    \graphicspath{{images/pdf/}}
     \pdfcompresslevel=9
 \else
     \usepackage[dvips]{graphicx}
-    \graphicspath{{abb/eps/}}
+    \graphicspath{{images/dvi/}}
 \fi
 %%%----------------------------------------------------------------------------
 
@@ -276,7 +276,7 @@
 ausgef\"{u}hrt am
 
 \begin{figure} [h!]
-        \centerline{\includegraphics[width=0.3\textwidth]{./images/CAMPUS_02_Farbe}}
+        \centerline{\includegraphics[width=0.3\textwidth]{campus02}}
 \end{figure}
 
 %\vspace{4.5cm}%
@@ -374,7 +374,7 @@ Pers. Kennz. \campusPersKnz
 \clearpage%
 \addcontentsline{toc}{chapter}{Index}%
 \printindex
-\include{./misc/zitat}%
+\include{./misc/Zitat}%
 
 %%%------------------------------------
 %%%     EO DOCUMENT
