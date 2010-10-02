@@ -69,8 +69,8 @@
 
 
 \usepackage{layout}
-\usepackage{./addons/chngcntr}              % Zähler beeinflussen
-\counterwithout{footnote}{chapter}          % Fußnoten durchnummerieren
+%\usepackage{./addons/chngcntr}              % Zähler beeinflussen
+%\counterwithout{footnote}{chapter}          % Fußnoten durchnummerieren
 \usepackage[nooneline,hang]{caption}
 \renewcommand{\captionfont}{\small\itshape}
 
@@ -291,6 +291,7 @@ Pers. Kennz. \campusPersKnz
 \end{sf}
 \end{titlepage}
 \newpage
+\pagenumbering{roman}\setcounter{page}{1}
 %%%---- EO TITELSEITE -----------------
 
 \setlength{\parindent}{0em}
@@ -319,6 +320,7 @@ Pers. Kennz. \campusPersKnz
 %\newpage \layout
 
 \mainmatter
+\pagenumbering{arabic}\setcounter{page}{1}
 
 \input{./misc/toc}
 
@@ -326,9 +328,6 @@ Pers. Kennz. \campusPersKnz
 %%%---- ANHANG ------------------------
 %%%------------------------------------
 \appendix
-%\include{[kap_aa]_fallstudie}
-%\include{}
-%\include{}
 
 %%%------------------------------------
 %%%---- NACHSPANN ---------------------
