@@ -122,14 +122,10 @@
 %%%---- SILBENTRENNUNG ----------------
 %%%------------------------------------
 \input{./misc/hyphenation}
-%%%------------------------------------
-
-
 
 %\renewcommand{\el}[1]{}                     % extra label leeren
 \usepackage{makeidx}
 \makeindex
-
 
 %%%------------------------------------
 %%%---- 'pdf'-ERSTELLUNG --------------
@@ -166,7 +162,7 @@
 %%%------------------------------------
 
 \newcommand{\uu}[1]{\underline{#1}}
-%\newcommand{\ii}[1]{\textit{#1}}
+\newcommand{\ii}[1]{\textit{#1}}
 
 %%%------------------------------------
 %%%---- LAYOUT ------------------------
@@ -225,16 +221,17 @@
 %%%---- KOPF-, FUSSZEILE --------------
 %%%------------------------------------
 \usepackage{fancyhdr}                   % Laden des Pakets zum Layout
-\pagestyle{fancy}                       % der Kopf- und Fusszeilen
+%\pagestyle{fancy}                       % der Kopf- und Fusszeilen
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
-\renewcommand{\headrulewidth}{0.4pt}    % Linie Kopfzeile
+%\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+%\renewcommand{\headrulewidth}{0.4pt}    % Linie Kopfzeile
 %\renewcommand{\footrulewidth}{0.4pt}   % Linie Fusszeile
-\lhead{\sffamily\small\leftmark}        % LeftHeader --> Kapitelname
-\chead{}                                % CenteredHeader
-\rhead{\sffamily\small\thepage}         % RightHeader --> Seitennummer
-\lfoot{\sffamily\small}                 % LeftFooter --> Name
-\cfoot{}                                % CenteredFooter
-\rfoot{\sffamily\small}                 % RightFooter --> Titel
+%\lhead{\sffamily\small\leftmark}        % LeftHeader --> Kapitelname
+%\chead{}                                % CenteredHeader
+%\rhead{\sffamily\small\thepage}         % RightHeader --> Seitennummer
+%\lfoot{\sffamily\small}                 % LeftFooter --> Name
+%\cfoot{}                                % CenteredFooter
+%\rfoot{\sffamily\small}                 % RightFooter --> Titel
 %%%------------------------------------
 
 %%%------------------------------------
@@ -290,8 +287,13 @@ Pers. Kennz. \campusPersKnz
 
 \end{sf}
 \end{titlepage}
+
 \newpage
-\pagenumbering{roman}\setcounter{page}{1}
+
+% Seitennummerierung auf Römisch setzen und bei Seite 1 beginnen
+\pagenumbering{roman}
+\setcounter{page}{1}
+
 %%%---- EO TITELSEITE -----------------
 
 \setlength{\parindent}{0em}
@@ -320,8 +322,11 @@ Pers. Kennz. \campusPersKnz
 %\newpage \layout
 
 \mainmatter
-\pagenumbering{arabic}\setcounter{page}{1}
+% Seitennummerierung auf Arabisch setzen und bei Seite 1 beginnen
+\pagenumbering{arabic}
+\setcounter{page}{1}
 
+% Laden des eigentlichen Inhalts
 \input{./misc/toc}
 
 %%%------------------------------------
