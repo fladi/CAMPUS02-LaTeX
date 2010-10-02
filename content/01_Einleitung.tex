@@ -1,8 +1,8 @@
 %!TEX root =  ../diplomarbeit.tex
+% vim: set spell spelllang=de_at,en_us
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%     KAPITEL 1
 %%%     EINLEITUNG
-%%%     2007/10/17
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Einleitung}
 \index{Einleitung}%
@@ -17,9 +17,8 @@
 \index{Ausgangssituation}%
 \label{sec:einl:ausgangssituation}%
 
-
-%In kleinen Softwarebetrieben kommt es immer wieder vor, dass neue Mitarbeiter (auch ohne Berufserfahrung), auf Grund des Ressourcenmangels, kurz nach ihrem Eintritt, eigene Projekte mehr oder minder alleine bearbeiten müssen. Die ersten Projekte können die Mitarbeiter dabei jedoch zermürben da noch keine Einsicht in diese Materie vorhanden ist. Aus diesem Grund sollte in jeder Firma ein einfach anzuwendendes Vorgehen dokumentiert sein, welches angewendet werden kann um größere Schwierigkeiten zu vermeiden. Dies kann jedoch nur funktionieren wenn der Prozess durchgehend dokumentiert ist und dabei unterstützend aus einem Pool von bereits abgeschlossenen und aktiven Projekten Synergien gezogen werden können.  \\
-Das Problem dabei ist, dass dies in kleinen Unternehmen wegen der ?Überschaubarkeit? bei bis zu zwölf Mitarbeitern oft vernachlässigt wird und in großen Unternehmen wegen der zu hohen Komplexität keinen Anklang findet. Zusätzlich kommt der Zeitdruck, welcher schnelle Resultate erzwingt und die Dokumentation oft Außen vorlässt (diese wird dann kaum mehr bzw. nicht mehr in der gewünschten Qualität nachgeholt). Durch schlechte Ziel und Anforderungsformulierungen wird wegen zeitintensiven Fehlentscheidungen dieser Zeitdruck noch verstärkt.
+Vertraulichkeit und IntegritÃ¤t von digitalen Inhalten gewinnt im in einem wachsenden globalen Netzwerk immer stÃ¤rker an Bedeutung. Dies lÃ¤sst sich anhand der Verbreitung von \gls{ssl}-fÃ¤higen Webservern und den darauf eingesetzten Zertifikaten bestimmen. Eine solche Absicherung mit \gls{ssl} dient jedoch nur der Vertraulichkeit und AuthentizitÃ¤t der beiden Peers in einer unidirektionalen Komunikation wie sie bei HTTP zum Einsatz kommt. Aktive (umleiten der Verbindung) und passive Angriffe (Lesen der Ã¼bertragenen Daten) wird dadurch verhindert, eine PrÃ¼fung der IntegritÃ¤t und AuthentizitÃ¤t der Inhalte findet jedoch nicht statt. \\
+In anderen Bereihen der Kommunikation wie Email und \gls{im} gehÃ¶ren Verfahren zum Nachweis der AuthentizitÃ¤t des Absenders und der IntegritÃ¤t der Nachricht bereits zum Leitsungsumfang vieler Anwendungsprogramme. Die Verfahrend welche dabei hauptsÃ¤chlich zum Einsatz kommen sind \gls{pgp} und \gls{smime}. Sie bieten die MÃ¶glichkeit, \gls{ds} auf basis von asymmetrischen VerschlÃ¼sselungsverfahren zu erstellen.
 
 %%%------------------------------------
 %%%---- AUFGABENSTELLUNG --------------
@@ -28,15 +27,16 @@ Das Problem dabei ist, dass dies in kleinen Unternehmen wegen der ?Überschaubark
 \index{Aufgabenstellung}%
 \label{sec:einl:aufgabenstellung}%
 
-Die primäre Aufgabenstellung dieser Arbeit besteht darin zu bestimmen, welche Aufgaben und Informationen Projektportfoliomanagement bearbeitet um einem Unternehmen von Nutzen zu sein bzw. keine unnötigen Verwaltungstätigkeiten zu erzeugen. \\
-Dabei soll vor Allem auf folgende Punkte eingegangen werden:
+Die primÃ¤re Aufgabenstellung dieser Arbeit besteht darin zu bestimmen, welche Anforderungen an eine Integration von digitalen Signaturen in \gls{xhtml}-Dokumente gestellt wird. dies soll aus zweierlei Perspektiven betrachtet werden:
 \begin{itemize}
-  \item Auf welchem Abstraktionslevel wird gearbeitet?
-  \item Welche Informationen werden verarbeitet?
-  \item Welcher Nutzen wird erzielt?
-  \item Ist es für die Aufwandsabschätzungen dienlich?
+    \item Wie kÃ¶nnen \Gls{ds} in \gls{xhtml} integriert werden, ohne dass dieser Standard erweitert oder angepasst werden?
+    \item Welche Informationen Ã¼ber eine oder mehrere \gls{ds} sollen dem Benutzer in seinem Browser dargestellt werden, wenn er eine Webseite mit Signaturen aufruft. Auf welche Art und Weise lÃ¤sst sich diese Information benutzergerecht darstellen?
 \end{itemize}
-Des Weiteren soll die Definition eines Geschäftsprozesses exemplarisch an einer Anforderungsanalyse für ein Projektportfoliomanagementsystem durchgeführt werden.
+Weiters werden die technischen Aspekte der Integration einer SignaturprÃ¼fung in einem Browser erlÃ¤utert:
+\begin{itemize}
+    \item Welche Implementierung eignet sich fÃ¼r die Integration in einen Browser?
+    \item Wie kann die Verteilung der Ã¶ffentlichen SchlÃ¼ssel sowie die Referenzierung auf diese gelÃ¶st werden? Welche der bestehenden Technologien eigent sich dafÃ¼r am besten?
+\end{itemize}
 
 %%%------------------------------------
 %%%---- ZIELSETZUNG -------------------
@@ -44,10 +44,8 @@ Des Weiteren soll die Definition eines Geschäftsprozesses exemplarisch an einer 
 \section{Zielsetzung der Arbeit}
 \index{Ziele}%
 \label{sec:einl:ziele}%
-
-Diese Arbeit wird vor allem die Thematik des Projektportfoliomanagement behandeln sowie dessen Auswirkungen auf das Unternehmen.\\
-Nicht behandelt wird die Erstellung eines neuen Anforderungsanalysemodells, stattdessen wird sich der Prozess an bestehende Systeme anlehnen. \\
-Des Weiteren wird sich diese Arbeit nicht mit der Einführung von Geschäftsprozessdokumentationen beschäftigen sondern nur mit der Definition eines weiteren Prozesses, in diesem Fall der Anforderungsanalyse.
+Diese Arbeit wird die Eignung der vorhandenen Signaturverfahren fÃ¼r \gsl{xml}, MÃ¶glichkeiten zur SchlÃ¼sselverteilung und PrÃ¤sentation der Signaturen im Browser behandeln.
+Nicht behandelt wird die Erstellung eines neuen Signaturverfahrens sowie eines neuen Signaturmodells fÃ¼r \gsl{xml} oder die Erweiterung des bestehenden \gsl{xhtml}-Standards.
 
 %%%------------------------------------
 %%%---- VORGEHEN ----------------------
