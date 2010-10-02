@@ -18,7 +18,7 @@
 \label{sec:einl:ausgangssituation}%
 
 Vertraulichkeit und Integrität von digitalen Inhalten gewinnt im in einem wachsenden globalen Netzwerk immer stärker an Bedeutung. Dies lässt sich anhand der Verbreitung von \gls{ssl}-fähigen Webservern und den darauf eingesetzten Zertifikaten bestimmen. Eine solche Absicherung mit \gls{ssl} dient jedoch nur der Vertraulichkeit und Authentizität der beiden Peers in einer unidirektionalen Komunikation wie sie bei HTTP zum Einsatz kommt. Aktive (umleiten der Verbindung) und passive Angriffe (Lesen der übertragenen Daten) wird dadurch verhindert, eine Prüfung der Integrität und Authentizität der Inhalte findet jedoch nicht statt. \\
-In anderen Bereihen der Kommunikation wie Email und \gls{im} gehören Verfahren zum Nachweis der Authentizität des Absenders und der Integrität der Nachricht bereits zum Leitsungsumfang vieler Anwendungsprogramme. Die Verfahrend welche dabei hauptsächlich zum Einsatz kommen sind \gls{pgp} und \gls{smime}. Sie bieten die Möglichkeit, \gls{ds} auf basis von asymmetrischen Verschlüsselungsverfahren zu erstellen.
+In anderen Bereihen der Kommunikation wie Email und \gls{im} gehören Verfahren zum Nachweis der Authentizität des Absenders und der Integrität der Nachricht bereits zum Leitsungsumfang vieler Anwendungsprogramme. Die Verfahrend welche dabei hauptsächlich zum Einsatz kommen sind \gls{pgp} und \gls{smime}. Sie bieten die Möglichkeit, digitale Signaturen auf Basis von asymmetrischen Verschlüsselungsverfahren zu erstellen.
 
 %%%------------------------------------
 %%%---- AUFGABENSTELLUNG --------------
@@ -29,8 +29,8 @@ In anderen Bereihen der Kommunikation wie Email und \gls{im} gehören Verfahren 
 
 Die primäre Aufgabenstellung dieser Arbeit besteht darin zu bestimmen, welche Anforderungen an eine Integration von digitalen Signaturen in \gls{xhtml}-Dokumente gestellt wird. dies soll aus zweierlei Perspektiven betrachtet werden:
 \begin{itemize}
-    \item Wie können \Gls{ds} in \gls{xhtml} integriert werden, ohne dass dieser Standard erweitert oder angepasst werden?
-    \item Welche Informationen über eine oder mehrere \gls{ds} sollen dem Benutzer in seinem Browser dargestellt werden, wenn er eine Webseite mit Signaturen aufruft. Auf welche Art und Weise lässt sich diese Information benutzergerecht darstellen?
+    \item Wie können digitale Signaturen in \gls{xhtml} integriert werden, ohne dass dieser Standard erweitert oder angepasst werden?
+    \item Welche Informationen über eine oder mehrere digitale Signaturen sollen dem Benutzer in seinem Browser dargestellt werden, wenn er eine Webseite mit signaten Inhalten aufruft. Auf welche Art und Weise lässt sich diese Information benutzergerecht darstellen?
 \end{itemize}
 Weiters werden die technischen Aspekte der Integration einer Signaturprüfung in einem Browser erläutert:
 \begin{itemize}
@@ -44,8 +44,8 @@ Weiters werden die technischen Aspekte der Integration einer Signaturprüfung in
 \section{Zielsetzung der Arbeit}
 \index{Ziele}%
 \label{sec:einl:ziele}%
-Diese Arbeit wird die Eignung der vorhandenen Signaturverfahren für \gsl{xml}, Möglichkeiten zur Schlüsselverteilung und Präsentation der Signaturen im Browser behandeln.
-Nicht behandelt wird die Erstellung eines neuen Signaturverfahrens sowie eines neuen Signaturmodells für \gsl{xml} oder die Erweiterung des bestehenden \gsl{xhtml}-Standards.
+Diese Arbeit wird die Eignung der vorhandenen Signaturverfahren für \gls{xml}, Möglichkeiten zur Schlüsselverteilung und Präsentation der Signaturen im Browser behandeln.
+Nicht behandelt wird die Erstellung eines neuen Signaturverfahrens sowie eines neuen Signaturmodells für \gls{xml} oder die Erweiterung des bestehenden \gls{xhtml}-Standards.
 
 %%%------------------------------------
 %%%---- VORGEHEN ----------------------
