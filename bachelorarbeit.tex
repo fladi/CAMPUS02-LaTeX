@@ -148,22 +148,21 @@
                                             % (2x latex)
             bookmarksopen=true,             % Bookmarks anzeigen...
             bookmarksnumbered=true,         % ...und nummerieren
-            hyperindex=true                 % Indexeinträge als Hyperlinks
+            hyperindex=true,                % Indexeinträge als Hyperlinks
             colorlinks,                     % Farbige Links
             linkcolor=black,
             urlcolor=black,
             citecolor=black,
-            pdfborder=0
+            pdfborder=0,
+            unicode=true
 ]{hyperref}
 
 %%%------------------------------------
 %%%---- GLOSSAR -----------------------
 %%%------------------------------------
-\usepackage{gloss}
-\newgloss{default}{.gls}{Glossar}{glsplain}
-%\setglosslabel{#1}
-\renewcommand{\glossheading}[1]{}
-
+\usepackage[toc,acronym]{glossaries} 
+\loadglsentries{./misc/glossary}
+\makeglossaries
 
 %%%---- EO USEPACKAGE -----------------
 %%%------------------------------------
@@ -273,7 +272,7 @@
 
 \begin{normalsize}
 
-ausgef\"{u}hrt am
+ausgeführt am
 
 \begin{figure} [h!]
         \centerline{\includegraphics[width=0.3\textwidth]{campus02}}
@@ -351,8 +350,7 @@ Pers. Kennz. \campusPersKnz
 %%%------------------------------------
 %%%     ABKUERZUNGSVERZEICHNIS
 \clearpage%
-%\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}%
-\printgloss{glsbase,glossar}%
+\printglossaries
 %%%------------------------------------
 %%%     ABBILDUNGSVERZEICHNIS
 \clearpage%
