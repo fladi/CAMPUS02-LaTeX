@@ -12,7 +12,8 @@
                                             % bei der Ermittlung des Satzspiegels
     12pt,                                   % Schriftgrösse 12pt
     a4paper,                                % DIN A4
-    oneside]                                % einseitig
+    oneside,                                % einseitig
+    bibtotoc]                               % Literaturverzeichniss automatisch im TOC einbinden
     {scrbook}                               % KOMA-Script Klasse 'scrbook' statt 'book'
 
 %%%------------------------------------
@@ -356,7 +357,6 @@ Pers. Kennz. \campusPersKnz
 %%%------------------------------------
 %%%     LITERATURVERZEICHNIS
 \clearpage%
-\addcontentsline{toc}{chapter}{Literaturverzeichnis}%
 \bibliographystyle{plaindin}%
 \bibliography{./bibtex/literatur}%
 %%%------------------------------------
