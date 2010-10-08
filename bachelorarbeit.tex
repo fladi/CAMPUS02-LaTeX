@@ -13,7 +13,9 @@
     12pt,                                   % Schriftgrösse 12pt
     a4paper,                                % DIN A4
     oneside,                                % einseitig
-    bibtotoc]                               % Literaturverzeichniss automatisch im TOC einbinden
+    bibliography=totoc,                     % Literaturverzeichniss automatisch im TOC einbinden
+    listof=totoc,                           % Listen automatisch in TOC einbinden
+    index=totoc]                            % Index automatisch in TOC einbinden
     {scrbook}                               % KOMA-Script Klasse 'scrbook' statt 'book'
 
 %%%------------------------------------
@@ -347,12 +349,10 @@ Pers. Kennz. \campusPersKnz
 %%%------------------------------------
 %%%     ABBILDUNGSVERZEICHNIS
 \clearpage%
-\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \listoffigures%
 %%%------------------------------------
 %%%     TABELLENVERZEICHNIS
 \clearpage%
-\addcontentsline{toc}{chapter}{Tabellenverzeichnis}%
 \listoftables%
 %%%------------------------------------
 %%%     LITERATURVERZEICHNIS
@@ -362,7 +362,6 @@ Pers. Kennz. \campusPersKnz
 %%%------------------------------------
 %%%     INDEX
 \clearpage%
-\addcontentsline{toc}{chapter}{Index}%
 \printindex
 \include{./misc/Zitat}%
 
