@@ -18,9 +18,7 @@
     index=totoc]                            % Index automatisch in TOC einbinden
     {scrbook}                               % KOMA-Script Klasse 'scrbook' statt 'book'
 
-%%%------------------------------------
-%%%---- PAKETE ------------------------
-%%%------------------------------------
+% Packete
 \usepackage{ngerman}
 \usepackage[utf8]{inputenc}                 % Laden der UTF8-Eingabekodierung
                                             % ACHTUNG: Dateien müssen UTF8 codiert sein!
@@ -39,18 +37,13 @@
 \usepackage{array}                          % Zeilenumbruch in 'p'-Spalten
 \usepackage{booktabs}                       % \toprule, \midrule und \bottomrule
 \usepackage{dcolumn}                        %
-%----------------------
+\usepackage{blindtext}                      % Erzeugt Blindtext welcher beim Prüfen des Layouts behilflich sein kann
 
-%\show\intextsep
-
-%%%----------------------------------------------------------------------------
-%%% Lädt die passenden Einstellungen
-%%%----------------------------------------------------------------------------
+% Lädt die lokalen Einstellungen
 \input{./misc/settings}
 
-%%%----------------------------------------------------------------------------
-%%% Um das Dokument sowohl für 'latex' als auch für 'pdflatex'
-%%% kompatibel zu machen, wird das Package 'ifpdf' geladen
+% Um das Dokument sowohl für 'latex' als auch für 'pdflatex'
+% kompatibel zu machen, wird das Package 'ifpdf' geladen
 \usepackage{ifpdf}
 % für Encapsulated-Postscript und PDFTeX Grafiken
 \ifpdf
@@ -61,19 +54,14 @@
     \usepackage[dvips]{graphicx}
     \graphicspath{{images/dvi/}}
 \fi
-%%%----------------------------------------------------------------------------
 
-%%%------------------------------------
-%%%---- ZEILENABSTAND -----------------
-%%%------------------------------------
+% Zeilenabstand
 %\usepackage{setspace}
 %\doublespace                               % doppelzeilig oder
 %\onehalfspacing                            % eineinhalbzeilig
 
 
 \usepackage{layout}
-%\usepackage{./addons/chngcntr}              % Zähler beeinflussen
-%\counterwithout{footnote}{chapter}          % Fußnoten durchnummerieren
 \usepackage[nooneline,hang]{caption}
 \renewcommand{\captionfont}{\small\itshape}
 
