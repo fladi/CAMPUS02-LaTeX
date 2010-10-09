@@ -1,65 +1,56 @@
-%!TEX root =  ../diplomarbeit.tex
-% vim: set spell spelllang=de_at,en_us
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%     KAPITEL 1
-%%%     EINLEITUNG
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% vim: set spell spelllang=de_at,en_us tw=160
+
 \chapter{Einleitung}
 \index{Einleitung}%
-\label{chp:einleitung}%
-
-
-%%%------------------------------------
-%%%---- AUSGANGSSITUATION -------------
-%%%------------------------------------
+\label{chp:Einleitung}
 
 \section{Ausgangssituation}
 \index{Ausgangssituation}%
-\label{sec:einl:ausgangssituation}%
+\label{sec:Einleitung:ausgangssituation}
+Kryptographische Eigenschaften wie Vertraulichkeit, Authentizität und Integrität von digitalen Inhalten gewinnen in einem wachsenden globalen Netzwerk immer
+stärker an Bedeutung. Dies lässt sich anhand der Verbreitung von \gls{ssl}-fähigen Webservern und den darauf eingesetzten Zertifikaten bestimmen. 
+\gls{ssl} dient jedoch nur der Vertraulichkeit sowie der Integrität aller übertragenen Daten und der Authentizität zwischen den Peers einer unidirektionalen
+Komunikation, wie sie z.B. bei HTTP zum Einsatz kommt. Aktive (umleiten der Verbindung) und passive Angriffe (Lesen der übertragenen Daten) wierden dadurch
+verhindert, eine Prüfung der Integrität und Authentizität einzelner, festlegbarer Bereiche des Inhalts ist damit jedoch nicht möglich. \\
 
-Vertraulichkeit und Integrität von digitalen Inhalten gewinnt im in einem wachsenden globalen Netzwerk immer stärker an Bedeutung. Dies lässt sich anhand der Verbreitung von \gls{ssl}-fähigen Webservern und den darauf eingesetzten Zertifikaten bestimmen. \gls{ssl} dient jedoch nur der Vertraulichkeit Integrität der gesamten Daten und Authentizität der beiden Peers einer unidirektionalen Komunikation, wie sie z.B. bei HTTP zum Einsatz kommt. Aktive (umleiten der Verbindung) und passive Angriffe (Lesen der übertragenen Daten) wierden dadurch verhindert, eine Prüfung der Integrität und Authentizität einzelner, festlegbarer Bereiche des Inhalts ist damit jedoch nicht möglich. \\
-In anderen Bereihen der Kommunikation wie Email und \gls{im} gehören Verfahren zum Nachweis der Authentizität des Absenders und der Integrität der Nachricht bereits zum Leitsungsumfang vieler Anwendungsprogramme. Die Verfahren welche dabei meist zum Einsatz kommen sind \gls{pgp} und \gls{smime}. Sie bieten die Möglichkeit, digitale Signaturen auf Basis von asymmetrischen Verschlüsselungsverfahren zu erstellen. Dabei wird von Verfasser der Nachricht diese mit seiner digitalen Signatur versehen. Der Empfänger ist nun in der Lage, die in der Nachricht signierten Teile zu überprüfen. \\
-Mit dem Aufkommen des sog. Web 2.0 entstand auf vielen Webseiten für die Besucher die Möglichkeit, eigene Inhalte einzubinden oder bestehende Inhalte weiter zu verwenden. Der Betreiber einer Seite wurde dadurch vom alleinigen Bereitsteller zu einem Verwalter von Informationen. In Bezug auf Authentifität, Integrität und Verbindlichkeit des Inhalts waren Besucher somit meist auf optische Merkmale zu Separation von redaktionellem und Benutzer-generiertem Inhalt. \\
-Digitale Signaturen könnten genau jenes Bedürfnis nach kryptografisch sicherer Trennung von Inhalten in einem \gls{xhtml}-Dokument erfüllen.
+In anderen Bereihen der Kommunikation wie Email und \gls{im} gehören Verfahren zum Nachweis der Authentizität des Absenders und der Integrität der Nachricht
+bereits zum Leitsungsumfang vieler Anwendungsprogramme. Die Verfahren welche dabei meist zum Einsatz kommen sind \gls{pgp} und \gls{smime}. Sie bieten die
+Möglichkeit, digitale Signaturen auf Basis von asymmetrischen Verschlüsselungsverfahren zu erstellen. Dabei wird von Verfasser der Nachricht diese mit seiner
+digitalen Signatur versehen. Der Empfänger ist nun in der Lage, die in der Nachricht signierten Teile zu überprüfen. \\
 
-%%%------------------------------------
-%%%---- AUFGABENSTELLUNG --------------
-%%%------------------------------------
+Mit dem Aufkommen des sog. Web 2.0 entstand auf vielen Webseiten für die Besucher die Möglichkeit, eigene Inhalte einzubinden oder bestehende Inhalte weiter zu
+verwenden. Der Betreiber einer Seite wurde dadurch vom alleinigen Bereitsteller zu einem Verwalter von Informationen. In Bezug auf Authentizität, Integrität und
+Verbindlichkeit des Inhalts waren Besucher somit meist auf optische Merkmale zu Separation von redaktionellem und Benutzer-generiertem Inhalt. \\
+
+Digitale Signaturen könnten genau dieses Bedürfnis nach kryptografisch sicherer Auszeichnung von Inhalten in einem \gls{xhtml}-Dokument erfüllen.
+
 \section{Aufgabenstellung}
 \index{Aufgabenstellung}%
-\label{sec:einl:aufgabenstellung}%
-
-Die primäre Aufgabenstellung dieser Arbeit besteht darin, zu bestimmen, welche Anforderungen an eine Integration von digitalen Signaturen in \gls{xhtml}-Dokumente gestellt wird. Dies soll aus zweierlei Perspektiven betrachtet werden:
+\label{sec:Einleitung:aufgabenstellung}
+Die primäre Aufgabenstellung dieser Arbeit besteht darin, zu bestimmen, welche Anforderungen an eine Integration von digitalen Signaturen in
+\gls{xhtml}-Dokumente gestellt wird. Folgende Aspekte sollen deshalb in dieser Arbeit erläutert werden:
 \begin{itemize}
-    \item Wie können digitale Signaturen in \gls{xhtml} integriert werden, ohne dass der entsprechende W3C-Standard\cite{xhtml:w3c} erweitert oder angepasst werden?
-    \item Welche Informationen über eine oder mehrere digitale Signaturen sollen dem Benutzer in seinem Browser dargestellt werden, wenn er eine Webseite mit signierten Inhalten aufruft. Auf welche Art und Weise lässt sich diese Information benutzergerecht darstellen?
-\end{itemize}
-Weiters werden die technischen Aspekte der Integration einer Signaturprüfung in einem Browser erläutert:
-\begin{itemize}
+    \item Wie können digitale Signaturen in \gls{xhtml} integriert werden, ohne dass der entsprechende W3C-Standard\cite{xhtml:w3c} erweitert oder angepasst
+    werden?
+    \item Welche Möglichkeiten von XML eignen sich zur wahlfreien Selektion von Inhalten innerhalb eines \gls{xhtml}-Dokuments?
     \item Welche Implementierung eignet sich für die Integration in einen Browser?
-    \item Wie kann die Verteilung der öffentlichen Schlüssel sowie die Referenzierung auf diese gelöst werden? Welche der bestehenden Technologien eigent sich dafür am besten?
+    \item Wie kann die Verteilung der öffentlichen Schlüssel sowie die Referenzierung auf diese gelöst werden? Welche der bestehenden Technologien eigent sich
+    dafür am besten?
 \end{itemize}
 
-%%%------------------------------------
-%%%---- ZIELSETZUNG -------------------
-%%%------------------------------------
 \section{Zielsetzung der Arbeit}
-\index{Ziele}%
-\label{sec:einl:ziele}%
+\index{Ziele}
+\label{sec:Einleitung:ziele}
 Diese Arbeit wird die Eignung der vorhandenen Signaturverfahren für \gls{xml}, Möglichkeiten zur Schlüsselverteilung und Präsentation der Signaturen im Browser behandeln.
 Nicht behandelt wird die Erstellung eines neuen Signaturverfahrens sowie eines neuen Signaturmodells für \gls{xml} oder die Erweiterung des bestehenden \gls{xhtml}-Standards. Auch ist eine Implementierung eines Browser-Plugins nicht im Rahmen dieser Arbeit vorgesehen.
 
-%%%------------------------------------
-%%%---- VORGEHEN ----------------------
-%%%------------------------------------
 \section{Vorgehen und Methodik}
-\index{Methodik}%
-\label{sec:einl:methodik}%
+\index{Methodik}
+\label{sec:Einleitung:methodik}
+\Blindtext
 
-
-%%%------------------------------------
-%%%---- AUFBAU  -----------------------
-%%%------------------------------------
 \section{Aufbau der Arbeit}
-\index{Aufbau der Arbeit}%
-\label{sec:einl:aufbau}%
+\index{Aufbau der Arbeit}
+\label{sec:Einleitung:aufbau}
+\Blindtext
+
