@@ -16,7 +16,7 @@ verhindern, eine Prüfung der Integrität und Authentizität einzelner, festlegb
 
 In anderen Bereichen der Kommunikation wie Email und \gls{im} gehören Verfahren zum Nachweis der Authentizität des Absenders und der Integrität der Nachricht
 bereits zum Leistungsumfang vieler Anwendungsprogramme\cite{}. Die Verfahren, welche dabei meist zum Einsatz kommen, sind \gls{pgp} und \gls{smime}. Sie bieten die
-Möglichkeit, digitale Signaturen auf Basis von asymmetrischen Verschlüsselungsverfahren zu erstellen. Dabei wird von Verfasser der Nachricht diese mit seiner
+Möglichkeit, digitale Signaturen auf Basis von asymmetrischen Verschlüsselungsverfahren zu erstellen\cite{kits}. Dabei wird von Verfasser der Nachricht diese mit seiner
 digitalen Signatur versehen. Der Empfänger ist nun in der Lage, die in der Nachricht signierten Teile zu überprüfen.\\
 
 Mit dem Aufkommen des sog. Web 2.0 entstand auf vielen Webseiten für die Besucher die Möglichkeit, eigene Inhalte einzubinden oder bestehende Inhalte weiter zu
@@ -33,18 +33,17 @@ Die primäre Aufgabenstellung dieser Arbeit besteht darin, zu bestimmen, welche 
 \begin{itemize}
     \item Wie können digitale Signaturen in \gls{xhtml} integriert werden, ohne dass der entsprechende W3C-Standard\cite{xhtml:w3c} erweitert oder angepasst
     werden?
-    \item Welche Möglichkeiten von XML eignen sich zur wahlfreien Selektion von Inhalten innerhalb eines \gls{xhtml}-Dokuments?
-    \item Welche Implementierung eignet sich für die Integration in einen Browser?
-    \item Wie kann die Verteilung der öffentlichen Schlüssel sowie die Referenzierung auf diese gelöst werden? Welche der bestehenden Technologien eigent sich
+    \item Welche Erweiterungen von \gls{xml} eignen sich zur wahlfreien Selektion von Inhalten innerhalb eines \gls{xhtml}-Dokuments?
+    \item Wie kann die Verteilung der öffentlichen Schlüssel sowie die Referenzierung auf diese gelöst werden? Welche der bestehenden Technologien eignen sich
     dafür am besten?
 \end{itemize}
 
 \section{Zielsetzung der Arbeit}
 \index{Ziele}
 \label{sec:Einleitung:ziele}
-Diese Arbeit wird die Eignung der vorhandenen Signaturverfahren für die \gls{xml} sowie  die damti einhergehenden Möglichkeiten zur Schlüsselverteilung
+Diese Arbeit wird die Eignung der vorhandenen Signaturverfahren für die \gls{xml}, sowie die damit einhergehenden Möglichkeiten zur Schlüsselverteilung
 behandeln. Um den praktischen Nutzen eines solchen Verfahrens zu demonstrieren sollen auch aufgezeigt werden, welche Arten von Angriffen auf Inhalte durch
-digitale Signaturen in XHTML verhindert werden können.\\
+digitale Signaturen in \gls{xhtml} verhindert werden können.\\
 
 Nicht behandelt wird die Erstellung eines neuen Signaturverfahrens sowie eines neuen Signaturmodells für \gls{xml} oder die Erweiterung des bestehenden
 \gls{xhtml}-Standards. Auch ist eine Implementierung eines Browser-Plugins nicht im Rahmen dieser Arbeit vorgesehen.
@@ -58,7 +57,7 @@ Nicht behandelt wird die Erstellung eines neuen Signaturverfahrens sowie eines n
 \index{Aufbau der Arbeit}
 \label{sec:Einleitung:aufbau}
 Eine kurze Einführung in \gls{xml-dsig} und verwandte Verfahren zur Signierung von Inhalten, danach Überleitung zur konkreten Arbeitsweise von \gls{xml-dsig}.
-Vorstellung der Möglichkeiten zur Verbindung zwischen \gls{xml-dsig} und \gls{xhtml}. Evaluierung und Auswahl des am besten geeigneten Mechanismus bewertet an
+Vorstellung der Möglichkeiten zur Verbindung zwischen \gls{xml-dsig} und \gls{xhtml}. Evaluierung und Auswahl des am besten geeigneten Mechanismus, bewertet an
 Praktikabilität und Sicherheit. Überblick über die von \gls{xml-dsig} unterstützten Signaturverfahren. Evaluierung der Verfahren und Auswahl eines Verfahrens
 anhand der Eignung für den Einsatz in einem \gls{webbrowser}.
 

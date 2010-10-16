@@ -1,29 +1,35 @@
 % vim: set tw=160:
 
-\chapter{Theoretische Grundlagen}
-\index{Theoretische Grundlagen}
-\label{chp:TheoretischeGrundlagen}
+\chapter{Grundlagen und Definitionen}
+\index{Grundlagen und Definitionen}
+\label{chp:GrundlagenDefinitionen}
 
-\section{Definitionen}
-\index{Definitionen}
-\label{sec:TheoretischeGrundlagen:Definitionen}
+Um bei einer Arbeit, die sich mit mehreren Bereichen der Informatik beschäftigt, klare Aussagen treffen zu können, ist es unerlässlich, Kernbegriffe klar zu
+definieren und sie somit von möglichen interdisziplinären Missverständnissen zu befreien.
 
-\subsection{Bereiche in XHTML-Dokumenten}
+\section{Webseiten}
+\index{Webseiten}
+\label{sec:GrundlagenDefinitionen:Webseiten}
+Eine Webseite representiert eine Menge von Dateien, die unter dem gemeinsamen Namensraum einer Domain abrufbar sind. Zu diesen Dateien gehören \gls{html}- und
+\gls{xhtml}-Dokumente, sowie auch Bild-, Ton-, und Videodateien.
+
+\section{Bereiche in XHTML-Dokumenten}
 \index{Bereiche in XHTML-Dokumenten}
-\label{sec:TheoretischeGrundlagen:Definitionen:BereicheXHTML}
-Der Dokumenttyp \gls{xhtml} is ein Subset von \gls{xml}\cite{xhtml:w3c}\cite{xhtml:oreilly} und kann als solches in Form eines \gls{dom}-Baumes
-betrachtet werden. Ein Bereich innerhalb eines solchen Dokuments kann also sowohl aus einer hierachisch gegliederten Menge der Elemente eines der Zweige dieses
-Baums verstanden werden. Als weitere Definition bietet sich eine nicht der ursprünglichen Hierarchie folgende Menge an Elementen aus dem Baum an. Hierbei werden
-einzelne Elemente anhand definierter Filterkriterien in einer ungeordneten Menge abgelegt.
+\label{sec:GrundlagenDefinitionen:BereicheXHTML}
+Der Dokumenttyp \gls{xhtml} is eine Anwendungsform von \gls{xml}\cite{xhtml:w3c} und kann als solcher in Form eines \gls{dom}-Baumes
+betrachtet werden\cite{xhtml:oreilly}. Da moderne \Gls{webbrowser} unterschiedliche Technlogien wie \gls{css} und \gls{javascript} zur ergänzenden Darstellung von
+\gls{xhtml} nutzen, ist nicht sichergestellt, dass ein Zweig in einem \gls{xhtml}-Dokument einen geschlossenen Bereich in der grafischen Darstellung des
+Dokumentes einnimmt. Umgekehrt können unterschiedliche Zweige aus dem \gls{dom}-Baum bei der Darstellung zu einem geschlossenen Bereich zusammengeführt werden.\\
+Als ein Bereich wird im Rahmen dieser Arbeit die Positionierung eines oder mehrerer Elemente innerhalb eines \gls{dom}-Baumes definiert, nicht die grafische
+Darstellung in einem \gls{webbrowser}.
 
-\subsection{Digitale Signaturen}
+\section{Digitale Signaturen}
 \index{Digitale Signaturen}
-\label{sec:TheoretischeGrundlagen:Definitionen:DigitaleSignaturen}
+\label{sec:GrundlagenDefinitionen:DigitaleSignaturen}
 Unter dem kryptographischen Sammelbegriff der digitalen Signatur versteht man eine zuverlässige und nicht fälschbare Kontrollinformation die über den Urheber
 und mögliche Modifikationen des Inhalts der zu schützenden Daten Auskunft gibt\cite{kits}. Dabei kann eine digitale Signatur analog zu der Unterschrift
-einer Person betrachtet werden\cite{esig:bsi}, jedoch mit erweiterten Eigenschaften.
-
-\subsection{Kryptographische Sicherheitsdienste}
+einer Person betrachtet werden\cite{esig:bsi}, jedoch mit erweiterten Eigenschaften.\\
+Der Begriff der digitalen Signatur wird als .... definiert welche die folgenden drei kryptografischen Sicherheitsdienste erfüllen kann.
 
 \subsection{Authentizität}
 
@@ -33,24 +39,16 @@ einer Person betrachtet werden\cite{esig:bsi}, jedoch mit erweiterten Eigenschaf
 
 \section{Digitale Signaturverfahren}
 \index{Digitale Signaturverfahren}
-\label{sec:thg:dsv}
+\label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren}
 
-
-\subsection{PGP}
+\subsubsection{PGP}
 \index{\gls{pgp}}
-\label{sec:thg:dsv:pgp}
+\label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:pgp}
 
-\subsection{S/MIME}
+\subsubsection{S/MIME}
 \index{\gls{smime}}
-\label{sec:thg:dsv:smime}
+\label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:smime}
 
-%%%------------------------------------
-
-\section{Signaturen in XML}
-\index{Signaturen in XML}
-\label{sec:thg:xml}
-
-
-\subsection{XML-DSig}
-\index{Signaturen in XML!\gls{xml-dsig}}
-\label{sec:thg:xml:dsig}
+\section{Signaturen mit XML-DSig}
+\index{Signaturen mit \gls{xml-dsig}}
+\label{sec:GrundlagenDefinitionen:xml-dsig}
