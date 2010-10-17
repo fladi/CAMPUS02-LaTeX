@@ -1,17 +1,17 @@
 % vim: set tw=160:
 
-\chapter{Signaturbindung mit XML-DSig}
-\index{Signaturbindung mit XML-DSig}%
-\label{chp:Signaturbindung}
+\chapter{Signaturen mit XML-DSig}
+\index{Signaturen mit XML-DSig}
+\label{chp:SignaturenXMLDSig}
 
 \section{Struktur einer Signatur}
 
 \section{Referenzen}
-\index{Referenzen}%
+\index{Referenzen}
 \label{sec:Signaturbindung:Referenzen}
 
 \section{Transformationen}
-\index{Transformationen}%
+\index{Transformationen}
 \label{sec:Signaturbindung:Transformationen}
 
 \subsection{XPath}
@@ -25,13 +25,23 @@
 \section{Schlüsselinformation}
 
 \section{Bindung an ein XHTML-Dokument}
+Eine Signatur mit \gls{xml-dsig} hält ihre Verweise zu den signierten Inhalten über die Reference-Elemente. Im Fall der Verwendung innerhalb eines
+\gls{webbrowser} muss das aufgerufene \gls{xhtml}-Dokument einen Verweis auf die Signatur beinhalten. Dies ist notwendig, da die Information über die Bereiche,
+welche signiert wurden, nur in der Signatur selbst festgehalten werden. Ruft ein \gls{webbrowser} ein \gls{xhtml}-Dokument ab, so muss ihm bekannt gemacht
+werden, dass für dieses Dokument Signaturinformationen vorhanden sind. Sind diese Infiormationen verfügbar gemacht worden, kann der \gls{webbrowser} daraus die
+signierten Bereiche ermitteln.\\
 
-\subsection{Anforderungen}
+Um solche Verweise auf Signaturen an die \gls{xhtml} binden zu können, bieten sich mehrere Verfahren an.
 
 \subsection{HTTP-Header}
+Eigener X-HTTP-Header wird vom Webserver ausgeliefert, worin über URLs auf Signatur-Datein verwiesen wird. Keine Auswirkung auf XHTML, praktische Beschränkung
+auf Anzahl der URLs?
 
 \subsection{<link>-Element}
+XHTML sieht <link> genau für diesen Anwendungzweck vor.
 
 \subsection{XML-Namespaces}
+Direktes Einbetten der Signatur in das Dokument selbst.
 
 \subsection{XInclude}
+Verweis direkt aus XML heraus. Fragwürdige Unterstützung bei Browsern?
