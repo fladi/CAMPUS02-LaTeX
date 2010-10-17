@@ -10,16 +10,18 @@ definieren und sie somit von möglichen interdisziplinären Missverständnissen 
 \section{Webseiten}
 \index{Webseiten}
 \label{sec:GrundlagenDefinitionen:Webseiten}
-Eine Webseite representiert eine Menge von Dateien, die unter dem gemeinsamen Namensraum einer Domain abrufbar sind. Zu diesen Dateien gehören \gls{html}- und
-\gls{xhtml}-Dokumente, sowie auch Bild-, Ton-, und Videodateien.
+Eine Webseite repräsentiert eine Menge von Dateien, die unter dem gemeinsamen Namensraum einer Domain abrufbar sind. Zu diesen Dateien können \gls{html}- und
+\gls{xhtml}-Dokumente gehören, sowie auch Bild-, Ton-, und Videodateien.
 
 \section{Bereiche in XHTML-Dokumenten}
 \index{Bereiche in XHTML-Dokumenten}
 \label{sec:GrundlagenDefinitionen:BereicheXHTML}
-Der Dokumenttyp \gls{xhtml} is eine Anwendungsform von \gls{xml}\cite{xhtml:w3c} und kann als solcher in Form eines \gls{dom}-Baumes
-betrachtet werden\cite{xhtml:oreilly}. Da moderne \Gls{webbrowser} unterschiedliche Technlogien wie \gls{css} und \gls{javascript} zur ergänzenden Darstellung von
+Der Dokumenttyp \gls{xhtml} is eine Anwendungsform von \gls{xml}\cite{xhtml:w3c} und kann dadurch in ihrer Form als \gls{dom}-Baum betrachtet
+werden\cite{xhtml:oreilly}. Da moderne \Gls{webbrowser} unterschiedliche Technlogien wie \gls{css} und \gls{javascript} zur ergänzenden Darstellung von
 \gls{xhtml} nutzen, ist nicht sichergestellt, dass ein Zweig in einem \gls{xhtml}-Dokument einen geschlossenen Bereich in der grafischen Darstellung des
-Dokumentes einnimmt. Umgekehrt können unterschiedliche Zweige aus dem \gls{dom}-Baum bei der Darstellung zu einem geschlossenen Bereich zusammengeführt werden.\\
+selben Dokumentes einnimmt. Umgekehrt können unterschiedliche Zweige aus dem \gls{dom}-Baum bei der Darstellung zu einem geschlossenen Bereich zusammengeführt
+werden.\\
+
 Als ein Bereich wird im Rahmen dieser Arbeit die Positionierung eines oder mehrerer Elemente innerhalb eines \gls{dom}-Baumes definiert, nicht die grafische
 Darstellung in einem \gls{webbrowser}.
 
@@ -29,25 +31,37 @@ Darstellung in einem \gls{webbrowser}.
 Unter dem kryptographischen Sammelbegriff der digitalen Signatur versteht man eine zuverlässige und nicht fälschbare Kontrollinformation die über den Urheber
 und mögliche Modifikationen des Inhalts der zu schützenden Daten Auskunft gibt\cite{kits}. Dabei kann eine digitale Signatur analog zu der Unterschrift
 einer Person betrachtet werden\cite{esig:bsi}, jedoch mit erweiterten Eigenschaften.\\
-Der Begriff der digitalen Signatur wird als .... definiert welche die folgenden drei kryptografischen Sicherheitsdienste erfüllen kann.
-
-\subsection{Authentizität}
+Der Begriff der digitalen Signatur wird als .... definiert, welche die folgenden drei kryptografischen Sicherheitsdienste erfüllen kann.
 
 \subsection{Integrität}
+\index{Digitale Signaturen!Integrität}
+\label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Integrität}
+Durch Integrität wird garantiert, dass eine Nachricht nicht verändert wurde\cite{niag}.
+
+\subsection{Authentizität}
+\index{Digitale Signaturen!Authentizität}
+\label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Authentizität}
+Der Empfänger einer Nachricht kann durch die Authentizität deren Urheber feststellen. Der Urheber der Nachricht weisst dabei seine Identität seinem
+Partner gegenüber durch ein Geheimnis oder eine Fertigkeit aus, die ihn für den Empfänger eindeutig kennzeichnet. Die Authentizität einer Nachricht setzt ihre
+Integrität voraus, denn eine veränderte Nachricht ist auch nicht mehr authentisch\cite{kits}.
 
 \subsection{Verbindlichkeit}
+\index{Digitale Signaturen!Verbindlichkeit}
+\label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verbindlichkeit}
+Verbindlichkeit einer Nachricht bedeuted, dass auch gegenüber Dritten eindeutig nachgewiesen werden kann, wer der Autor einer Nachricht war. Die Eigenschaft der
+Verbindlichkeit schließt die Eigenschaften der Authentizität und der Integrität mit ein\cite{kits}.
 
 \section{Digitale Signaturverfahren}
 \index{Digitale Signaturverfahren}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren}
 
-\subsubsection{PGP}
+\subsection{PGP}
 \index{\gls{pgp}}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:pgp}
 
-\subsubsection{S/MIME}
-\index{\gls{smime}}
-\label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:smime}
+\subsection{X.509}
+\index{\gls{x509}}
+\label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:x509}
 
 \section{Signaturen mit XML-DSig}
 \index{Signaturen mit \gls{xml-dsig}}

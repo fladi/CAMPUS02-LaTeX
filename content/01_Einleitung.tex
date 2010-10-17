@@ -11,19 +11,21 @@ Kryptographische Eigenschaften wie Vertraulichkeit, Authentizität und Integrit�
 stärker an Bedeutung. Dies lässt sich anhand der Verbreitung von \gls{ssl}-fähigen Webservern und den darauf eingesetzten Zertifikaten bestimmen\cite{ssliverse:eff}.\\
 
 \gls{ssl} dient jedoch nur der Vertraulichkeit sowie der Integrität aller übertragenen Daten und der Authentizität zwischen den Peers einer unidirektionalen
-Komunikation, wie sie z.B. beim \gls{http} zum Einsatz kommt\cite{}. Aktive (umleiten der Verbindung) und passive Angriffe (Lesen der übertragenen Daten) lassen sich dadurch
-verhindern, eine Prüfung der Integrität und Authentizität einzelner, festlegbarer Bereiche des Inhalts ist damit jedoch nicht möglich.\\
+Komunikation, wie sie z.B. beim \gls{https} zum Einsatz kommt\cite{kits}. Aktive (umleiten der Verbindung) und passive Angriffe (Lesen der übertragenen Daten)
+lassen sich dadurch verhindern, eine Prüfung der Integrität und Authentizität einzelner, festlegbarer Bereiche des Inhalts ist damit jedoch nicht möglich.\\
 
 In anderen Bereichen der Kommunikation wie Email und \gls{im} gehören Verfahren zum Nachweis der Authentizität des Absenders und der Integrität der Nachricht
-bereits zum Leistungsumfang vieler Anwendungsprogramme\cite{}. Die Verfahren, welche dabei meist zum Einsatz kommen, sind \gls{pgp} und \gls{smime}. Sie bieten die
-Möglichkeit, digitale Signaturen auf Basis von asymmetrischen Verschlüsselungsverfahren zu erstellen\cite{kits}. Dabei wird von Verfasser der Nachricht diese mit seiner
-digitalen Signatur versehen. Der Empfänger ist nun in der Lage, die in der Nachricht signierten Teile zu überprüfen.\\
+bereits zum Leistungsumfang vieler Anwendungsprogramme\cite{2719799020071101}. Die Verfahren, welche dabei meist zum Einsatz kommen, sind \gls{pgp} und
+\gls{smime}. Sie bieten die Möglichkeit, digitale Signaturen auf Basis von asymmetrischen Verschlüsselungsverfahren zu erstellen\cite{kits}. Dabei wird von
+Verfasser der Nachricht diese mit seiner digitalen Signatur versehen. Der Empfänger ist nun in der Lage, die in der Nachricht signierten Teile zu überprüfen.\\
 
 Mit dem Aufkommen des sog. Web 2.0 entstand auf vielen Webseiten für die Besucher die Möglichkeit, eigene Inhalte einzubinden oder bestehende Inhalte weiter zu
-verwenden. Der Betreiber einer Seite wurde dadurch vom alleinigen Bereitsteller zu einem Verwalter von Informationen. In Bezug auf Authentizität, Integrität und
-Verbindlichkeit des Inhalts waren Besucher somit meist auf optische Merkmale zu Separation von redaktionellem und Benutzer-generiertem Inhalt. \\
+verwenden. Der Betreiber einer \gls{website} wurde dadurch vom alleinigen Bereitsteller zu einem Verwalter von Informationen. In Bezug auf Authentizität,
+Integrität und Verbindlichkeit des Inhalts waren Besucher somit meist auf optische Merkmale zu Separation von redaktionellem und Benutzer-generiertem Inhalt
+angewiesen.\\
 
-Digitale Signaturen könnten genau dieses Bedürfnis nach kryptografisch sicherer Auszeichnung von Inhalten in einem \gls{xhtml}-Dokument erfüllen.
+Digitale Signaturen könnten genau dieses Bedürfnis nach kryptografisch sicherer Auszeichnung von Inhalten in den \gls{xhtml}-Dokumenten einer \gls{website}
+erfüllen.
 
 \section{Aufgabenstellung}
 \index{Aufgabenstellung}%
@@ -33,9 +35,9 @@ Die primäre Aufgabenstellung dieser Arbeit besteht darin, zu bestimmen, welche 
 \begin{itemize}
     \item Wie können digitale Signaturen in \gls{xhtml} integriert werden, ohne dass der entsprechende W3C-Standard\cite{xhtml:w3c} erweitert oder angepasst
     werden?
-    \item Welche Erweiterungen von \gls{xml} eignen sich zur wahlfreien Selektion von Inhalten innerhalb eines \gls{xhtml}-Dokuments?
-    \item Wie kann die Verteilung der öffentlichen Schlüssel sowie die Referenzierung auf diese gelöst werden? Welche der bestehenden Technologien eignen sich
-    dafür am besten?
+    \item Welche Erweiterungen von \gls{xml} eignen sich zur wahlfreien Selektion von Bereichen innerhalb eines \gls{xhtml}-Dokuments?
+    \item Wie kann die Verteilung der öffentlichen Schlüssel sowie die Referenzierung aus der \gls{xhtml} auf diese gelöst werden? Welche der bestehenden
+    Technologien eignen sich dafür am besten?
 \end{itemize}
 
 \section{Zielsetzung der Arbeit}
