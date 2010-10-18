@@ -38,7 +38,12 @@ Eigener X-HTTP-Header wird vom Webserver ausgeliefert, worin über URLs auf Sign
 auf Anzahl der URLs?
 
 \subsection{<link>-Element}
-XHTML sieht <link> genau für diesen Anwendungzweck vor.
+Der \gls{xhtml}-Standard definiert das <link>-Element, um Relationen zu anderen Dokumenten zu definieren. Es ist Teil des <head>-Bereichs und kann dort mehrfach
+eingesetzt werden. Ein einzelnes <link>-Element definiert genau eine Relation. Bezüglich des Verhaltens der \gls{webbrowser} beim Verarbeiten eines
+<link>-Elements macht der \gls{xhtml}-Standard keine verbindlichen Aussagen. Es wird aber darauf hingewiesen, dass dieses Element speziell für zukünfigte, noch
+nicht definierte Verhaltensmuster bei \Gls{webbrowser} vorgesehen ist.\\
+Es wäre damit möglich, über das href-Attribut des <link>-Elements den Verweis auf die URL einer Signaturinformation zu realisieren. Da das Element auch mehrfach
+verwendet werden kann, könnten damit auch mehrere unterschiedliche Signaturinformationen eingebunden werden.
 
 \subsection{XML-Namespaces}
 Direktes Einbetten der Signatur in das Dokument selbst.
