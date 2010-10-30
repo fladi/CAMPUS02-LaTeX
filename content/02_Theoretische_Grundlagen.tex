@@ -31,12 +31,14 @@ Darstellung in einem \gls{webbrowser}.
 Unter dem kryptographischen Sammelbegriff der digitalen Signatur versteht man eine zuverlässige und nicht fälschbare Kontrollinformation die über den Urheber
 und mögliche Modifikationen des zu schützenden Inhalts Auskunft gibt\cite{kits}. Dabei kann eine digitale Signatur analog zu der Unterschrift einer Person
 betrachtet werden\cite{esig:bsi}, jedoch mit erweiterten Eigenschaften.\\
-Der Begriff der digitalen Signatur wird als .... definiert, welche die folgenden drei kryptografischen Sicherheitsdienste erfüllen kann.
+Der Begriff der digitalen Signatur wird als eine Information definiert, welche dieIdentität einer Urheber-Entität mit einer digitalen Information (Nachricht)
+assoziiert und die drei kryptografischen Sicherheitsdienste Integrität, Authentizität und Verbindlichkeit erfüllt\cite{hac}.
 
 \subsection{Integrität}
 \index{Digitale Signaturen!Integrität}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Integrität}
-Durch Integrität wird garantiert, dass eine Nachricht nicht verändert wurde\cite{niag}.
+Durch Integrität wird garantiert, dass eine Nachricht nicht verändert wurde\cite{niag}. Der Empfänger der Nachricht ist damit in der Lage eine Aussage über
+mögliche Änderungnen am Inhalt zu treffen.
 
 \subsection{Authentizität}
 \index{Digitale Signaturen!Authentizität}
@@ -48,12 +50,14 @@ Integrität voraus, denn eine veränderte Nachricht ist auch nicht mehr authenti
 \subsection{Verbindlichkeit}
 \index{Digitale Signaturen!Verbindlichkeit}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verbindlichkeit}
-Verbindlichkeit einer Nachricht bedeuted, dass auch gegenüber Dritten eindeutig nachgewiesen werden kann, wer der Autor einer Nachricht war. Die Eigenschaft der
-Verbindlichkeit schließt die Eigenschaften der Authentizität und der Integrität mit ein\cite{kits}.
+Als Verbindlichkeit einer Nachricht wird die Nachweisbarkeit des Urhebers einer Nachricht gegenüber Dritten definiert. Dieser Sicherheitsdienst schließt die
+Eigenschaften der Authentizität und der Integrität mit ein\cite{kits}.
 
 \section{Digitale Signaturverfahren}
 \index{Digitale Signaturverfahren}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren}
+Ein digitales Signaturverfahren stellt ein Verfahren dar, mit welchem eine Entität ihre Identität an eine Information binden kann. Der Vorgang des Signierens
+wird durch das Transformieren der Information und eines Geheimnisses, das nur dem Urheber gekannt ist, in eine Signatur definiert\cite{hac}.
 
 \subsection{PGP}
 \index{\gls{pgp}}
