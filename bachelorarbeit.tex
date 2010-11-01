@@ -13,7 +13,7 @@
     12pt,                                   % Schriftgrösse 12pt
     a4paper,                                % DIN A4
     oneside,                                % einseitig
-    draft=true,                             % Muss entfernt werden, bevor Arbeit abgegeben wird!
+    draft=false,                            % Muss entfernt werden, bevor Arbeit abgegeben wird!
     bibliography=totoc,                     % Literaturverzeichniss automatisch im TOC einbinden
     listof=totoc,                           % Listen automatisch in TOC einbinden
     index=totoc]                            % Index automatisch in TOC einbinden
@@ -40,6 +40,7 @@
 \usepackage{dcolumn}                        %
 \usepackage{blindtext}                      % Erzeugt Blindtext welcher beim Prüfen des Layouts behilflich sein kann
 
+
 % Lädt die lokalen Einstellungen
 \input{./misc/settings}
 
@@ -61,6 +62,8 @@
 %\doublespace                               % doppelzeilig oder
 %\onehalfspacing                            % eineinhalbzeilig
 
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees}
 
 \usepackage{layout}
 \usepackage[nooneline,hang]{caption}
