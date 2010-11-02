@@ -8,4 +8,5 @@ sub makeacn2acr {
 }
 $cleanup_includes_generated = 1;
 $clean_ext = "acn acr alg bbl glg glo gls ist";
+$pdf_mode = 2;
 
