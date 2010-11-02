@@ -20,7 +20,8 @@
     {scrbook}                               % KOMA-Script Klasse 'scrbook' statt 'book'
 
 % Packete
-\usepackage{ngerman}
+\usepackage[ngerman]{babel}
+\usepackage[ngerman]{translator}
 \usepackage[utf8]{inputenc}                 % Laden der UTF8-Eingabekodierung
                                             % ACHTUNG: Dateien müssen UTF8 codiert sein!
 \usepackage[T1]{fontenc}                    % EC codierte Fonts
@@ -39,7 +40,17 @@
 \usepackage{booktabs}                       % \toprule, \midrule und \bottomrule
 \usepackage{dcolumn}                        %
 \usepackage{blindtext}                      % Erzeugt Blindtext welcher beim Prüfen des Layouts behilflich sein kann
+\usepackage{color}
+\usepackage{xcolor}
+
+% Pretty-print listings inside document
 \usepackage{listings}
+\lstset{numbers=none, 
+        keywordstyle=\bfseries\emph, 
+        identifierstyle=\ttfamily, 
+        columns=fixed,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        basicstyle=\ttfamily}
 
 % Lädt die lokalen Einstellungen
 \input{./misc/settings}
@@ -66,8 +77,13 @@
 \usetikzlibrary{mindmap,trees}
 
 \usepackage{layout}
+
+% Generate fancy captions
 \usepackage[nooneline,hang]{caption}
-\renewcommand{\captionfont}{\small\itshape}
+%\renewcommand{\captionfont}{\small\itshape}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
 
 
 \renewcommand{\floatpagefraction}{.8}       % ,float page`, wenn diese mindestens
