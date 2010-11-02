@@ -19,7 +19,7 @@
     index=totoc]                            % Index automatisch in TOC einbinden
     {scrbook}                               % KOMA-Script Klasse 'scrbook' statt 'book'
 
-% Packete
+% Packages
 \usepackage[ngerman]{babel}
 \usepackage[ngerman]{translator}
 \usepackage[utf8]{inputenc}                 % Laden der UTF8-Eingabekodierung
@@ -43,7 +43,7 @@
 \usepackage{color}
 \usepackage{xcolor}
 
-% Pretty-print listings inside document
+% Formatierung für Listings
 \usepackage{listings}
 \lstset{numbers=none, 
         keywordstyle=\bfseries\emph, 
@@ -73,12 +73,13 @@
 %\doublespace                               % doppelzeilig oder
 %\onehalfspacing                            % eineinhalbzeilig
 
+% TIKZ - Coole Grafiken direkt in TeX zeichnen :-)
 \usepackage{tikz}
 \usetikzlibrary{mindmap,trees}
 
 \usepackage{layout}
 
-% Generate fancy captions
+% Überschriftenleiste für Listings
 \usepackage[nooneline,hang]{caption}
 %\renewcommand{\captionfont}{\small\itshape}
 \DeclareCaptionFont{white}{\color{white}}
@@ -98,20 +99,6 @@
 \renewcommand{\bottomfraction}{.6}          % max. Anteil der Seite, die f\"{u}r Abbildungen,
                                             % die ,b`ottom plaziert werden, verwendet wird
                                             % default: .3
-
-
-%%%------------------------------------
-%%%---- DEFINITION INHALTSUEBERSICHT --
-%%%------------------------------------
-\makeatletter
-\newcommand\shorttoc{\bgroup
-%  \def\l@section##1##2{\relax}
-  \def\l@subsection##1##2{\relax}
-  \def\l@subsubsection##1##2{\relax}
-  \section*{Inhalts\"{u}bersicht}
-  \@input{\jobname.toc}
-\egroup}
-\makeatother
 
 %%%------------------------------------
 %%%---- SILBENTRENNUNG ----------------
