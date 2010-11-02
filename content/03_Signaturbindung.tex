@@ -38,20 +38,23 @@ Eigener X-HTTP-Header wird vom Webserver ausgeliefert, worin über URLs auf Sign
 auf Anzahl der URLs?
 
 \subsection{<link>-Element}
-Der \gls{xhtml}-Standard definiert das <link>-Element, um Relationen zu anderen Dokumenten zu definieren\cite{xhtml:oreilly}. Es ist Teil des <head>-Bereichs und kann dort mehrfach
-eingesetzt werden. Ein einzelnes <link>-Element definiert genau eine Relation. Bezüglich des Verhaltens der \gls{webbrowser} beim Verarbeiten eines
-<link>-Elements macht der \gls{xhtml}-Standard keine verbindlichen Aussagen. Es wird aber darauf hingewiesen, dass dieses Element speziell für zukünfigte, noch
-nicht definierte Verhaltensmuster bei \Gls{webbrowser} vorgesehen ist.\\
+Der \gls{xhtml}-Standard definiert das <link>-Element, um Relationen zu anderen Dokumenten zu definieren\cite{xhtml:oreilly}. Es ist Teil des <head>-Bereichs
+und kann dort mehrfach eingesetzt werden. Ein einzelnes <link>-Element definiert genau eine Relation. Bezüglich des Verhaltens der \gls{webbrowser} beim
+Verarbeiten eines <link>-Elements macht der \gls{xhtml}-Standard keine verbindlichen Aussagen. Es wird aber darauf hingewiesen, dass dieses Element speziell für
+zukünfigte, noch nicht definierte Verhaltensmuster bei \Gls{webbrowser} vorgesehen ist.\\
 Es ist damit möglich, über das \textit{href}-Attribut des \textit{<link>}-Elements den Verweis auf die URL einer Signaturinformation zu realisieren. Da das
 Element auch mehrfach in einem \gls{xhtml}-Dokument verwendet werden kann, lassen sich damit auch mehrere unterschiedliche Signaturinformationen einbinden.
 
-\lstinputlisting[language=HTML]{source/link.html}
-
+\lstinputlisting[language=HTML,caption={Verwendung von <link>},label=lst:link,emph={link,href},emphstyle=\color{red}\bfseries\emph]{source/link.html}
 
 \subsection{XML-Namespaces}
 Direktes Einbetten der Signatur in das Dokument selbst.
+
+\lstinputlisting[language=HTML,caption={Verwendung von XML-Namespaces},label=lst:xmlns,emph={Signature},emphstyle=\color{red}\bfseries\emph]{source/xmlns.html}
 
 \subsection{XInclude}
 XInclude ist eine neue Technologie, die vom W3C entwickelt wurde, um mehrere \gls{xml}-Dokumente in ein gemeinsames Dokument zusammenzuführen\cite{xml:oreilly}.
 Dabei wird das <include>-Element aus dem reservieren XML-Namespace für \gls{xinclude} benutzt um über \gls{uri} externe \gls{xml}-Dokumente während der
 Auswertung des Dokuments einzubinden.
+
+\lstinputlisting[language=HTML,caption={Verwendung von XInclude},label=lst:xinclude,emph={include,xi},emphstyle=\color{red}\bfseries\emph]{source/xinclude.html}
