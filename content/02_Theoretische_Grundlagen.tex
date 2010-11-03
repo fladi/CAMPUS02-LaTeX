@@ -63,16 +63,31 @@ wird durch das Transformieren der Information und eines Geheimnisses, das nur de
 \index{OpenPGP}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:openpgp}
 \gls{openpgp} wurde im Jahr 1991 von Philip Zimmermann\cite{zimmermann:pgp} entwickelt, mit dem Ziel die digitale Kommunikation vor dem Zugriff durch Dritte zu
-schützen. Eine der Motivationen während der entwicklung waren die wiederholten Abhöraktionen der Bürgerrechtsbewegungen in den Vereinigten Staaten von Amerika
+schützen. Eine der Motivationen während der Entwicklung waren die wiederholten Abhöraktionen der Bürgerrechtsbewegungen in den Vereinigten Staaten von Amerika
 durch die dortigen Geheimdienste\cite{singh:messages}.
 
-Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und ist im RFC4880 festgelegt. Dabei werden zwei Betreibsarten festgelegt:
+Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und ist im RFC4880\cite{openpgp:ietf} festgelegt. Dabei werden zwei Betreibsarten festgelegt:
 \begin{itemize}
     \item Signieren
     \item Verschlüsseln
 \end{itemize}
 
-Im Rahmen dieser Arbeit wird nur auf den Signatur-Betreib eingegangen.
+\subsubsection{Signaturen}
+Im Rahmen dieser Arbeit wird nur auf den Signatur-Betreib eingegangen. \gls{openpgp} bildet dabei für eine zu signierende Nachricht den passenden Hashwert und
+verschlüsselt diesen mit dem privaten Schlüssel. Diese verschlüsselte Information stellt nun die Signatur zur Nachricht dar und wird dieser beigefügt.
+Der Empfänger entschlüsselt die Signaturinformation, bildet den Hashwert über die signierte Nachricht und vergleicht diesen mit dem entschlüsselten Hashwert.
+Sind beide miteinander ident, ist die Signatur gültig und die Integrität der Nachricht gewährleistet.
+\cite{hac}\cite{singh:messages}
+
+\subsubsection{Web Of Trust}
+Um die Ermittlung der Authentizität einer Signatur zu erleichtern stellt \gls{openpgp} eine Funktionalität zur Beglaubigung von Schlüsseln zur Verfügung. Dabei
+werden die Schlüssel von anderen \gls{openpgp}-Benutzern signiert. Das ermöglicht es, Rückschlüsse auf die Vertrauenswürdigkeit von Schlüsseln zu ziehen, ohne
+von einer hierachischen Struktur abhängig zu sein.\\
+
+Wenn Alice den Schlüssel von Bob signiert, dann ermöglicht dies einer Person, die bereits dem Schlüssel von Alice vertraut, auch dem Schlüssel von Bob zu
+vertrauen. Durch diese Delegation von Vertrauen bildet sich eine flache, vernetzte Struktur die unter dem Namen \gls{wot} bekannt ist. Jeder Benutzer von
+\gls{openpgp} ist somit in der Lage, sein Vertrauen in Schlüssel sehr granular und spezifisch zu vergeben.
+
 \subsection{X.509}
 \index{\gls{x509}}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:x509}
