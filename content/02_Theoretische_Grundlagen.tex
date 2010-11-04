@@ -17,7 +17,7 @@ Zu diesen Dateien können \gls{html}- und \gls{xhtml}-Dokumente gehören, sowie 
 \index{Bereiche in XHTML-Dokumenten}
 \label{sec:GrundlagenDefinitionen:BereicheXHTML}
 Der Dokumententyp \gls{xhtml} ist eine Anwendungsform von \gls{xml}\cite{xhtml:w3c} und kann dadurch in ihrer Form als \gls{dom}-Baum betrachtet
-werden\cite{xhtml:oreilly}. Da moderne \Gls{webbrowser} unterschiedliche Technlogien wie \gls{css} und \gls{javascript} zur ergänzenden Darstellung von
+werden\cite{xhtml:oreilly}. Da moderne \Gls{webbrowser} unterschiedliche Technologien wie \gls{css} und \gls{javascript} zur ergänzenden Darstellung von
 \gls{xhtml} nutzen, ist nicht sichergestellt, dass ein Zweig in einem \gls{xhtml}-Dokument einen geschlossenen Bereich in der grafischen Darstellung des
 selben Dokumentes einnimmt. Umgekehrt können unterschiedliche Zweige aus dem \gls{dom}-Baum bei der Darstellung zu einem geschlossenen Bereich zusammengeführt
 werden.\\
@@ -31,19 +31,19 @@ Darstellung in einem \gls{webbrowser}.
 Unter dem kryptographischen Sammelbegriff der digitalen Signatur versteht man eine zuverlässige und nicht fälschbare Kontrollinformation die über den Urheber
 und mögliche Modifikationen des zu schützenden Inhalts Auskunft gibt\cite{kits}. Dabei kann eine digitale Signatur analog zu der Unterschrift einer Person
 betrachtet werden\cite{esig:bsi}, jedoch mit erweiterten Eigenschaften.\\
-Der Begriff der digitalen Signatur wird als eine Information definiert, welche dieIdentität einer Urheber-Entität mit einer digitalen Information (Nachricht)
+Der Begriff der digitalen Signatur wird als eine Information definiert, welche die Identität einer Urheber-Entität mit einer digitalen Information (Nachricht)
 assoziiert und die drei kryptografischen Sicherheitsdienste Integrität, Authentizität und Verbindlichkeit erfüllt\cite{hac}.
 
 \subsection{Integrität}
 \index{Digitale Signaturen!Integrität}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Integrität}
 Durch Integrität wird garantiert, dass eine Nachricht nicht verändert wurde\cite{niag}. Der Empfänger der Nachricht ist damit in der Lage eine Aussage über
-mögliche Änderungnen am Inhalt zu treffen.
+mögliche Änderungen am Inhalt zu treffen.
 
 \subsection{Authentizität}
 \index{Digitale Signaturen!Authentizität}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Authentizität}
-Der Empfänger einer Nachricht kann durch die Authentizität deren Urheber feststellen. Der Urheber der Nachricht weisst dabei seine Identität seinem
+Der Empfänger einer Nachricht kann durch die Authentizität deren Urheber feststellen. Der Urheber der Nachricht weist dabei seine Identität seinem
 Partner gegenüber durch ein Geheimnis oder eine Fertigkeit aus, die ihn für den Empfänger eindeutig kennzeichnet. Die Authentizität einer Nachricht setzt ihre
 Integrität voraus, denn eine veränderte Nachricht ist auch nicht mehr authentisch\cite{kits}.
 
@@ -66,27 +66,27 @@ wird durch das Transformieren der Information und eines Geheimnisses, das nur de
 schützen. Eine der Motivationen während der Entwicklung waren die wiederholten Abhöraktionen der Bürgerrechtsbewegungen in den Vereinigten Staaten von Amerika
 durch die dortigen Geheimdienste\cite{singh:messages}.
 
-Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und ist im RFC4880\cite{openpgp:ietf} festgelegt. Dabei werden zwei Betreibsarten festgelegt:
+Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und ist im RFC4880\cite{openpgp:ietf} festgelegt. Dabei werden zwei Betriebsarten festgelegt:
 \begin{itemize}
     \item Signieren
     \item Verschlüsseln
 \end{itemize}
 
 \subsubsection{Signaturen}
-Im Rahmen dieser Arbeit wird nur auf den Signatur-Betreib eingegangen. \gls{openpgp} bildet dabei für eine zu signierende Nachricht den passenden Hashwert und
+Im Rahmen dieser Arbeit wird nur auf den Signatur-Betrieb eingegangen. \gls{openpgp} bildet dabei für eine zu signierende Nachricht den passenden Hash-Wert und
 verschlüsselt diesen mit dem privaten Schlüssel. Diese verschlüsselte Information stellt nun die Signatur zur Nachricht dar und wird dieser beigefügt.
-Der Empfänger entschlüsselt die Signaturinformation, bildet den Hashwert über die signierte Nachricht und vergleicht diesen mit dem entschlüsselten Hashwert.
-Sind beide miteinander ident, ist die Signatur gültig und die Integrität der Nachricht gewährleistet.
+Der Empfänger entschlüsselt die Signaturinformation, bildet den Hash-Wert über die signierte Nachricht und vergleicht diesen mit dem entschlüsselten Hash-Wert.
+Sind beide miteinander identisch, ist die Signatur gültig und die Integrität der Nachricht gewährleistet.
 \cite{hac}\cite{singh:messages}
 
 \subsubsection{Web Of Trust}
 Um die Ermittlung der Authentizität einer Signatur zu erleichtern stellt \gls{openpgp} eine Funktionalität zur Beglaubigung von Schlüsseln zur Verfügung. Dabei
 werden die Schlüssel von anderen \gls{openpgp}-Benutzern signiert. Das ermöglicht es, Rückschlüsse auf die Vertrauenswürdigkeit von Schlüsseln zu ziehen, ohne
-von einer hierachischen Struktur abhängig zu sein.\\
+von einer hierarchischen Struktur abhängig zu sein.\\
 
 Wenn Alice den Schlüssel von Bob signiert, dann ermöglicht dies einer Person, die bereits dem Schlüssel von Alice vertraut, auch dem Schlüssel von Bob zu
 vertrauen. Durch diese Delegation von Vertrauen bildet sich eine flache, vernetzte Struktur wie in \autoref{fig:wot} dargestellt, die unter dem Namen \gls{wot}
-bekannt ist. Jeder Benutzer von \gls{openpgp} ist somit in der Lage, sein Vertrauen in Schlüssel sehr granular und spezifisch zu vergeben.
+bekannt ist. Jeder Benutzer von \gls{openpgp} ist somit in der Lage, sein Vertrauen in Schlüssel nach seinem eigenen Ermessen zu vergeben.
 
 \begin{figure}
 \centering

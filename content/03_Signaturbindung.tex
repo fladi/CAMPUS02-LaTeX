@@ -28,20 +28,20 @@
 Eine Signatur mit \gls{xml-dsig} hält ihre Verweise zu den signierten Inhalten über die Reference-Elemente. Im Fall der Verwendung innerhalb eines
 \gls{webbrowser} muss das aufgerufene \gls{xhtml}-Dokument einen Verweis auf die Signatur beinhalten. Dies ist notwendig, da die Information über die Bereiche,
 welche signiert wurden, nur in der Signatur selbst festgehalten werden. Ruft ein \gls{webbrowser} ein \gls{xhtml}-Dokument ab, so muss ihm bekannt gemacht
-werden, dass für dieses Dokument Signaturinformationen vorhanden sind. Sind diese Infiormationen verfügbar gemacht worden, kann der \gls{webbrowser} daraus die
+werden, dass für dieses Dokument Signaturinformationen vorhanden sind. Sind diese Informationen verfügbar gemacht worden, kann der \gls{webbrowser} daraus die
 signierten Bereiche ermitteln.\\
 
 Um solche Verweise auf Signaturen an die \gls{xhtml} binden zu können, bieten sich mehrere Verfahren an.
 
 \subsection{HTTP-Header}
-Eigener X-HTTP-Header wird vom Webserver ausgeliefert, worin über URLs auf Signatur-Datein verwiesen wird. Keine Auswirkung auf XHTML, jedoch praktische Beschränkung
+Eigener X-HTTP-Header wird vom Webserver ausgeliefert, worin über URLs auf Signatur-Dateien verwiesen wird. Keine Auswirkung auf XHTML, jedoch praktische Beschränkung
 auf Anzahl der URLs?
 
 \subsection{<link>-Element}
 Der \gls{xhtml}-Standard definiert das <link>-Element, um Relationen zu anderen Dokumenten zu definieren\cite{xhtml:oreilly}. Es ist Teil des <head>-Bereichs
 und kann dort mehrfach eingesetzt werden. Ein einzelnes <link>-Element definiert genau eine Relation. Bezüglich des Verhaltens der \gls{webbrowser} beim
 Verarbeiten eines <link>-Elements macht der \gls{xhtml}-Standard keine verbindlichen Aussagen. Es wird aber darauf hingewiesen, dass dieses Element speziell für
-zukünfigte, noch nicht definierte Verhaltensmuster bei \Gls{webbrowser} vorgesehen ist.\\
+zukünftige, noch nicht definierte Verhaltensmuster bei \Gls{webbrowser} vorgesehen ist.\\
 Es ist damit möglich, über das \textit{href}-Attribut des \textit{<link>}-Elements den Verweis auf die URL einer Signaturinformation zu realisieren. Da das
 Element auch mehrfach in einem \gls{xhtml}-Dokument verwendet werden kann, lassen sich damit auch mehrere unterschiedliche Signaturinformationen einbinden.
 
