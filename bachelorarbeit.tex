@@ -77,7 +77,7 @@
 
 % TIKZ - Coole Grafiken direkt in TeX zeichnen :-)
 \usepackage{tikz}
-\usetikzlibrary{mindmap,trees,arrows,shapes,positioning}
+\usetikzlibrary{mindmap,trees,arrows,shapes,positioning,shadows}
 
 \usepackage{layout}
 
@@ -114,7 +114,6 @@
 %%%---- 'pdf'-ERSTELLUNG --------------
 %%%------------------------------------
 \usepackage[a4paper,                        % DIN A4
-%            dvips,                         % Erzeugung durch dvips: nicht mit 'pdflatex' verwenden
             plainpages=false,
             pdfpagelabels,
             pdftitle={\campusTitle},
@@ -131,8 +130,12 @@
             urlcolor=black,
             citecolor=black,
             pdfborder=0,
-            unicode=true
+            unicode=true,
+            breaklinks
 ]{hyperref}
+
+% Allow links to have line-breaks even when processed by dvips/ps2pdf.
+\usepackage{breakurl}
 
 %%%------------------------------------
 %%%---- GLOSSAR -----------------------
