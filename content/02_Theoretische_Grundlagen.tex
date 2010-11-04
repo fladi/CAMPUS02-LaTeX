@@ -84,16 +84,16 @@ Um die Ermittlung der Authentizität einer Signatur zu erleichtern stellt \gls{o
 werden die Schlüssel von anderen \gls{openpgp}-Benutzern signiert. Das ermöglicht es, Rückschlüsse auf die Vertrauenswürdigkeit von Schlüsseln zu ziehen, ohne
 von einer hierachischen Struktur abhängig zu sein.\\
 
+Wenn Alice den Schlüssel von Bob signiert, dann ermöglicht dies einer Person, die bereits dem Schlüssel von Alice vertraut, auch dem Schlüssel von Bob zu
+vertrauen. Durch diese Delegation von Vertrauen bildet sich eine flache, vernetzte Struktur wie in \autoref{fig:wot} dargestellt, die unter dem Namen \gls{wot}
+bekannt ist. Jeder Benutzer von \gls{openpgp} ist somit in der Lage, sein Vertrauen in Schlüssel sehr granular und spezifisch zu vergeben.
+
 \begin{figure}
 \centering
 \input{./figures/web-of-trust}
-\caption{Schematische Darstellung des Web-Of-Trust}
+\caption{Schematische Darstellung des Web Of Trust}
 \label{fig:wot}
 \end{figure}
-
-Wenn Alice den Schlüssel von Bob signiert, dann ermöglicht dies einer Person, die bereits dem Schlüssel von Alice vertraut, auch dem Schlüssel von Bob zu
-vertrauen. Durch diese Delegation von Vertrauen bildet sich eine flache, vernetzte Struktur die unter dem Namen \gls{wot} bekannt ist. Jeder Benutzer von
-\gls{openpgp} ist somit in der Lage, sein Vertrauen in Schlüssel sehr granular und spezifisch zu vergeben.
 
 \subsection{X.509}
 \index{\gls{x509}}
