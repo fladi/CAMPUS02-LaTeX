@@ -13,6 +13,7 @@
     12pt,                                   % Schriftgrösse 12pt
     a4paper,                                % DIN A4
     oneside,                                % einseitig
+    captions=oneline,                       % 
     draft=false,                            % Muss entfernt werden, bevor Arbeit abgegeben wird!
     bibliography=totoc,                     % Literaturverzeichniss automatisch im TOC einbinden
     listof=totoc,                           % Listen automatisch in TOC einbinden
@@ -75,13 +76,12 @@
 
 % TIKZ - Coole Grafiken direkt in TeX zeichnen :-)
 \usepackage{tikz}
-\usetikzlibrary{mindmap,trees}
+\usetikzlibrary{mindmap,trees,arrows,shapes,positioning}
 
 \usepackage{layout}
 
 % Überschriftenleiste für Listings
-\usepackage[nooneline,hang]{caption}
-%\renewcommand{\captionfont}{\small\itshape}
+\usepackage[font=small,format=hang]{caption}
 \DeclareCaptionFont{white}{\color{white}}
 \DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
