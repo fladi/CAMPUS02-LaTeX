@@ -1,0 +1,29 @@
+\begin{tikzpicture}[node distance   = 2 cm]
+    \tikzset{Key/.style = {shape          = rectangle,
+                           rounded corners,
+                           drop shadow,
+                           fill           = orange,
+                           draw           = black,
+                           thick,
+                           text           = black,
+                           text centered,
+                           inner sep      = 3pt,
+                           outer sep      = 0pt,
+                           minimum size   = 24 pt}}
+    \tikzset{DirectTrust/.style   = {thick,
+                                     double          = green,
+                                     double distance = 1pt}}
+    \tikzset{IndirectTrust/.style   = {thin,
+                                       double          = blue,
+                                       double distance = 1pt}}
+    \tikzset{Label/.style =   {draw,
+                               fill           = yellow,
+                               text           = red}}
+    \node[Key](CA1){CA1};
+    \node[below=of CA1](AUX1){};
+    \node[Key,left=of AUX1](CA1-1){CA1.1};
+    \node[Key,right=of AUX1](CA1-2){CA1.2};
+    \draw[DirectTrust,bend left](CA1-1) to node[Label]{vertraut} (CA1) ;
+    \draw[DirectTrust,bend right](CA1-2) to node[Label]{vertraut} (CA1) ;
+
+\end{tikzpicture}
