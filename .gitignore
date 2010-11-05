@@ -25,4 +25,6 @@
 *.out
 *.pdf
 *.toc
+*.dvi
+*.ps
 
