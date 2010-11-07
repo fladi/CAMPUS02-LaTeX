@@ -2,27 +2,29 @@
 
 \chapter{Einleitung}
 \index{Einleitung}%
-\label{chp:Einleitung}
+\label{chap:Einleitung}
 
 \section{Ausgangssituation}
 \index{Ausgangssituation}%
 \label{sec:Einleitung:ausgangssituation}
 Kryptographische Merkmale wie Vertraulichkeit, Authentizität und Integrität von digitalen Inhalten gewinnen in einem wachsenden globalen Netzwerk immer
-stärker an Bedeutung. Dies lässt sich anhand der Verbreitung von \gls{ssl}-fähigen Webservern und den darauf eingesetzten Zertifikaten bestimmen\cite{ssliverse:eff}.\\
+stärker an Bedeutung. So lag die Anzahl von \gls{ssl}-fähigen Webservern bei 10.800.000 und den darauf eingesetzten gültigen Zertifikaten im Juli 2010 bei
+4.300.000 \cite{ssliverse:eff}.\\
 
-\gls{ssl} dient jedoch nur der Vertraulichkeit sowie der Integrität der Gesamtheit aller übertragenen Daten und der Authentizität zwischen den Peers einer unidirektionalen
-Kommunikation, wie sie z.B. beim \gls{https} zur Anwendung kommt\cite{kits}. Aktive (umleiten der Verbindung) und passive Angriffe (Lesen der übertragenen Daten)
-lassen sich dadurch verhindern, eine Prüfung der Integrität und Authentizität einzelner, festlegbarer Bereiche des übertragenen Inhalts ist damit jedoch nicht möglich.\\
+\gls{ssl}/\gls{tls} dient jedoch nur der Vertraulichkeit sowie der Integrität der Gesamtheit aller übertragenen Daten und der Authentizität zwischen den Peers einer unidirektionalen
+Kommunikation, wie sie zum Beispiel beim \gls{https} zur Anwendung kommt \cite{kits}. Aktive (umleiten der Verbindung) und passive Angriffe (Lesen der übertragenen Daten)
+lassen sich dadurch verhindern. Eine Prüfung, ob die der gesamte übertragen Inhalt, oder Teile dessen, authentischen Ursprungs sind, ist damit jedoch nicht
+möglich.\\
 
-In anderen Bereichen der Kommunikation wie Email und \gls{im} gehören Verfahren zum Nachweis der Identität des Absenders und der Integrität der Nachricht
-bereits zum Leistungsumfang vieler Anwendungsprogramme\cite{2719799020071101}.\\
-Die Verfahren, welche dabei die größte Verbreitung finden, sind \gls{pgp} und \gls{x509}. Sie bieten die Möglichkeit, digitale Signaturen auf Basis von asymmetrischen
-Verschlüsselungsverfahren zu erstellen\cite{kits}. Dabei wird vom Verfasser der Nachricht diese mit seiner digitalen Signatur versehen. Der Empfänger ist damit
+In anderen Bereichen der Kommunikation wie E-Mail und \gls{im} gehören Verfahren zum Nachweis der Identität des Absenders und der Integrität der Nachricht
+bereits zum Leistungsumfang vieler Anwendungsprogramme \cite{2719799020071101}.\\
+Die Verfahren, welche dabei die größte Verbreitung finden, sind \gls{pgp} und \gls{smime}. Sie bieten die Möglichkeit, digitale Signaturen auf Basis von asymmetrischen
+Verschlüsselungsverfahren zu erstellen \cite{kits}. Dabei wird vom Verfasser der Nachricht diese mit seiner digitalen Signatur versehen. Der Empfänger ist damit
 in der Lage, die in der Nachricht signierten Teile zu verifizieren.\\
 
-Mit dem Aufkommen des sog. Web 2.0 entstand auf vielen Webseiten für die Besucher die Möglichkeit, eigene Inhalte einzubinden oder bestehende Inhalte weiter zu
+Mit dem Aufkommen des Web 2.0 entstand auf vielen \glspl{website} für die Besucher die Möglichkeit, eigene Inhalte einzubinden oder bestehende Inhalte weiter zu
 verwenden. Der Betreiber einer \gls{website} wurde dadurch vom alleinigen Bereitsteller zu einem Verwalter von Informationen. Für Besucher solcher Seiten mit
-gemischten redaktionellen und Benutzer-generierten Inhalten existiert noch keine Möglichkeit, diese Trennung auch kryptografisch sicher nachvollziehen zu können.
+gemischten redaktionellen und benutzergenerierten Inhalten existiert noch keine Möglichkeit, diese Trennung auch kryptografisch sicher nachvollziehen zu können.
 Das Vertrauen eines Besuchers in die Identität des Urhebers und die Integrität der Inhalte kann deshalb nur über die optische Darstellung gebildet werden. Eine
 optische Trennung von Inhalten bietet jedoch noch keine gesicherte Information über Authentizität und Integrität. Hier bieten sich digitale Signaturen  an, um
 genau dieses Bedürfnis nach kryptografisch sicherer Auszeichnung von Inhalten einer \gls{website} erfüllen.
@@ -33,22 +35,22 @@ genau dieses Bedürfnis nach kryptografisch sicherer Auszeichnung von Inhalten e
 Die primäre Aufgabenstellung dieser Arbeit besteht darin, zu bestimmen, welche Anforderungen an eine Integration von digitalen Signaturen in die
 \gls{xhtml}-Dokumente einer \gls{website} gestellt werden. Folgende Aspekte sollen deshalb in dieser Arbeit erläutert werden:
 \begin{itemize}
-    \item Wie können digitale Signaturen in \gls{xhtml} integriert werden, ohne dass der entsprechende W3C-Standard\cite{xhtml:w3c} erweitert oder angepasst
-    werden?
-    \item Welche Erweiterungen von \gls{xml} eignen sich zur wahlfreien Selektion von Bereichen innerhalb eines \gls{xhtml}-Dokuments?
+    \item Wie können digitale Signaturen in \gls{xhtml} integriert werden, ohne dass der entsprechende W3C-Standard \cite{xhtml:w3c} erweitert oder angepasst
+    werden muss?
+    \item Welche Transformationen von \gls{xml-dsig} eignen sich zur wahlfreien Selektion von Bereichen innerhalb eines \gls{xhtml}-Dokuments?
     \item Wie können die öffentlichen Schlüssel zu den Signaturen verteilt werden? Welche der bestehenden Technologien eignen sich dafür am besten?
 \end{itemize}
 
 \section{Zielsetzung der Arbeit}
 \index{Ziele}
 \label{sec:Einleitung:ziele}
-Diese Arbeit wird die Eignung der vorhandenen Signaturverfahren für die \gls{xml}, sowie die damit einhergehenden Möglichkeiten zur Schlüsselverteilung
+Diese Arbeit wird die Eignung der vorhandenen Signaturverfahren für \gls{xml}, sowie die damit einhergehenden Möglichkeiten zur Schlüsselverteilung
 behandeln. Um den praktischen Nutzen eines solchen Verfahrens zu demonstrieren soll auch aufgezeigt werden, welche Arten von Angriffen auf Inhalte durch
 digitale Signaturen in \gls{xhtml} verhindert werden können.\\
 
 Nicht behandelt wird die Erstellung eines neuen Signaturverfahrens, eines neuen Signaturmodells für \gls{xml} oder die Erweiterung des bestehenden
-\gls{xhtml}-Standards. Auch ist eine Implementierung eines Browser-Plugins nicht im Rahmen dieser Arbeit vorgesehen.\\
-Die \gls{html} wird nicht behandelt, da es sich dabei nicht um ein mit \gls{xml} kompatibles Format handelt.
+\gls{xhtml}-Standards. Auch ist eine Implementierung eines Browser-Plugins nicht im Rahmen dieser Arbeit vorgesehen. Die \gls{html} wird nicht behandelt, da es
+sich dabei nicht um ein mit \gls{xml} kompatibles Format handelt.\\
 
 \section{Vorgehen und Methodik}
 \index{Methodik}
