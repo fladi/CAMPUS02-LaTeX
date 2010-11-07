@@ -8,19 +8,19 @@
 \index{Ausgangssituation}%
 \label{sec:Einleitung:ausgangssituation}
 Kryptographische Merkmale wie Vertraulichkeit, Authentizität und Integrität von digitalen Inhalten gewinnen in einem wachsenden globalen Netzwerk immer
-stärker an Bedeutung. So lag die Anzahl von \gls{ssl}-fähigen Webservern bei 10.800.000 und den darauf eingesetzten gültigen Zertifikaten im Juli 2010 bei
-4.300.000 \cite{ssliverse:eff}.\\
+stärker an Bedeutung. So lag die Anzahl von \gls{ssl}-fähigen Webservern bei \num{10.8e6} und den darauf eingesetzten gültigen Zertifikaten im Juli 2010 bei
+\num{4.3e6} \cite{ssliverse:eff}.
 
 \gls{ssl}/\gls{tls} dient jedoch nur der Vertraulichkeit sowie der Integrität der Gesamtheit aller übertragenen Daten und der Authentizität zwischen den Peers einer unidirektionalen
 Kommunikation, wie sie zum Beispiel beim \gls{https} zur Anwendung kommt \cite{kits}. Aktive (umleiten der Verbindung) und passive Angriffe (Lesen der übertragenen Daten)
 lassen sich dadurch verhindern. Eine Prüfung, ob die der gesamte übertragen Inhalt, oder Teile dessen, authentischen Ursprungs sind, ist damit jedoch nicht
-möglich.\\
+möglich.
 
 In anderen Bereichen der Kommunikation wie E-Mail und \gls{im} gehören Verfahren zum Nachweis der Identität des Absenders und der Integrität der Nachricht
 bereits zum Leistungsumfang vieler Anwendungsprogramme \cite{2719799020071101}.\\
 Die Verfahren, welche dabei die größte Verbreitung finden, sind \gls{pgp} und \gls{smime}. Sie bieten die Möglichkeit, digitale Signaturen auf Basis von asymmetrischen
 Verschlüsselungsverfahren zu erstellen \cite{kits}. Dabei wird vom Verfasser der Nachricht diese mit seiner digitalen Signatur versehen. Der Empfänger ist damit
-in der Lage, die in der Nachricht signierten Teile zu verifizieren.\\
+in der Lage, die in der Nachricht signierten Teile zu verifizieren.
 
 Mit dem Aufkommen des Web 2.0 entstand auf vielen \glspl{website} für die Besucher die Möglichkeit, eigene Inhalte einzubinden oder bestehende Inhalte weiter zu
 verwenden. Der Betreiber einer \gls{website} wurde dadurch vom alleinigen Bereitsteller zu einem Verwalter von Informationen. Für Besucher solcher Seiten mit
@@ -46,11 +46,11 @@ Die primäre Aufgabenstellung dieser Arbeit besteht darin, zu bestimmen, welche 
 \label{sec:Einleitung:ziele}
 Diese Arbeit wird die Eignung der vorhandenen Signaturverfahren für \gls{xml}, sowie die damit einhergehenden Möglichkeiten zur Schlüsselverteilung
 behandeln. Um den praktischen Nutzen eines solchen Verfahrens zu demonstrieren soll auch aufgezeigt werden, welche Arten von Angriffen auf Inhalte durch
-digitale Signaturen in \gls{xhtml} verhindert werden können.\\
+digitale Signaturen in \gls{xhtml} verhindert werden können.
 
 Nicht behandelt wird die Erstellung eines neuen Signaturverfahrens, eines neuen Signaturmodells für \gls{xml} oder die Erweiterung des bestehenden
 \gls{xhtml}-Standards. Auch ist eine Implementierung eines Browser-Plugins nicht im Rahmen dieser Arbeit vorgesehen. Die \gls{html} wird nicht behandelt, da es
-sich dabei nicht um ein mit \gls{xml} kompatibles Format handelt.\\
+sich dabei nicht um ein mit \gls{xml} kompatibles Format handelt.
 
 \section{Vorgehen und Methodik}
 \index{Methodik}

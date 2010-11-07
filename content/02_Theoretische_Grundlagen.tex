@@ -10,8 +10,8 @@ definieren und sie somit von möglichen interdisziplinären Missverständnissen 
 \section{Webseiten}
 \index{Webseiten}
 \label{sec:GrundlagenDefinitionen:Webseiten}
-Eine Webseite repräsentiert eine Menge von Dateien, die unter dem gemeinsamen Namensraum einer Domain abrufbar sind.\\
-Zu diesen Dateien können \gls{html}- und \gls{xhtml}-Dokumente gehören, sowie auch Bild-, Ton-, und Videodateien.
+Eine Webseite repräsentiert eine Menge von Dateien, die unter dem gemeinsamen Namensraum einer Domain abrufbar sind. Zu diesen Dateien können \gls{html}- und
+\gls{xhtml}-Dokumente gehören, sowie auch Bild-, Ton-, und Videodateien.
 
 \section{Bereiche in XHTML-Dokumenten}
 \index{Bereiche in XHTML-Dokumenten}
@@ -20,7 +20,7 @@ Der Dokumententyp \gls{xhtml} ist eine Anwendungsform von \gls{xml} \cite{xhtml:
 werden \cite{xhtml:oreilly}. Da moderne \Gls{webbrowser} unterschiedliche Technologien wie \gls{css} und \gls{javascript} zur ergänzenden Darstellung von
 \gls{xhtml} nutzen, ist nicht sichergestellt, dass ein Zweig in einem \gls{xhtml}-Dokument einen geschlossenen Bereich in der grafischen Darstellung des
 selben Dokumentes einnimmt. Umgekehrt können unterschiedliche Zweige aus dem \gls{dom}-Baum bei der Darstellung zu einem geschlossenen Bereich zusammengeführt
-werden.\\
+werden.
 
 Als ein Bereich wird im Rahmen dieser Arbeit die Positionierung eines oder mehrerer Elemente innerhalb eines \gls{dom}-Baumes definiert, nicht die grafische
 Darstellung in einem \gls{webbrowser}.
@@ -30,15 +30,15 @@ Darstellung in einem \gls{webbrowser}.
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen}
 Unter dem kryptographischen Sammelbegriff der digitalen Signatur versteht man eine zuverlässige und nicht fälschbare Kontrollinformation die über den Urheber
 und mögliche Modifikationen des zu schützenden Inhalts Auskunft gibt \cite{kits}. Dabei kann eine digitale Signatur analog zu der Unterschrift einer Person
-betrachtet werden \cite{esig:bsi}, jedoch mit erweiterten Eigenschaften.\\
+betrachtet werden \cite{esig:bsi}, jedoch mit erweiterten Eigenschaften.
 
 Der Begriff der digitalen Signatur wird als eine Information definiert, welche die Identität einer Urheber-Entität mit einer digitalen Information (Nachricht)
-assoziiert und die drei kryptografischen Sicherheitsdienste Integrität, Authentizität und Verbindlichkeit erfüllt \cite{hac}.\\
+assoziiert und die drei kryptografischen Sicherheitsdienste Integrität, Authentizität und Verbindlichkeit erfüllt \cite{hac}.
 
 \index{Digitale Signaturen!Integrität}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Integrität}
 Durch \textbf{Integrität} wird garantiert, dass eine Nachricht nicht verändert wurde \cite{niag}. Der Empfänger der Nachricht ist damit in der Lage eine Aussage über
-mögliche Änderungen am Inhalt zu treffen.\\
+mögliche Änderungen am Inhalt zu treffen.
 
 \index{Digitale Signaturen!Authentizität}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Authentizität}
@@ -70,7 +70,7 @@ schützen. Eine der Motivationen während der Entwicklung waren die wiederholten
 durch die dortigen Geheimdienste \cite{singh:messages}.
 
 Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und ist im RFC4880 \cite{openpgp:ietf} festgelegt. Dabei werden zwei Betriebsarten,
-Signieren und Verschlüsseln festgelegt.\\
+Signieren und Verschlüsseln festgelegt.
 
 Im Rahmen dieser Arbeit wird nur auf den Signatur-Betrieb eingegangen.
 
@@ -83,7 +83,7 @@ Im Rahmen dieser Arbeit wird nur auf den Signatur-Betrieb eingegangen.
 \subsection{Web Of Trust}
 Um die Ermittlung der Authentizität einer Signatur zu erleichtern stellt \gls{openpgp} eine Funktionalität zur Beglaubigung von Schlüsseln zur Verfügung. Dabei
 werden die Schlüssel von anderen \gls{openpgp}-Benutzern signiert. Das ermöglicht es, Rückschlüsse auf die Vertrauenswürdigkeit von Schlüsseln zu ziehen, ohne
-von einer hierarchischen Struktur abhängig zu sein.\\
+von einer hierarchischen Struktur abhängig zu sein.
 
 Wenn Alice den Schlüssel von Bob signiert, dann ermöglicht dies einer Person, die bereits dem Schlüssel von Alice vertraut, auch dem Schlüssel von Bob zu
 vertrauen. Durch diese Delegation von Vertrauen bildet sich eine flache, vernetzte Struktur wie in \fref{fig:wot} dargestellt, die unter dem Namen \gls{wot}
