@@ -22,8 +22,8 @@
     {scrbook}                               % KOMA-Script Klasse 'scrbook' statt 'book'
 
 % Packages
-\usepackage{babel}
-\usepackage{translator}
+\usepackage[ngerman]{babel}
+\usepackage[ngerman]{translator}
 \usepackage[utf8]{inputenc}                 % Laden der UTF8-Eingabekodierung
                                             % ACHTUNG: Dateien müssen UTF8 codiert sein!
 \usepackage[T1]{fontenc}                    % EC codierte Fonts
@@ -81,8 +81,10 @@
 
 \usepackage{layout}
 
-% Überschriftenleiste für Listings
+% Überschriften formatieren
 \usepackage[font=small,format=hang]{caption}
+
+% Überschriftenformat für Listings
 \DeclareCaptionFont{white}{\color{white}}
 \DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
@@ -137,18 +139,17 @@
 % Allow links to have line-breaks even when processed by dvips/ps2pdf.
 \usepackage{breakurl}
 
-%%%------------------------------------
-%%%---- GLOSSAR -----------------------
-%%%------------------------------------
+% Allow smart usage of references
+\usepackage[german]{fancyref}
+\renewcommand{\fancyrefdefaultformat}{main}
+
+% Glossaries
 \usepackage[toc,acronym,style=long]{glossaries} 
 \loadglsentries{./misc/glossary}
 \makeglossaries
 
-%%%---- EO USEPACKAGE -----------------
-%%%------------------------------------
-
-\newcommand{\uu}[1]{\underline{#1}}
-\newcommand{\ii}[1]{\textit{#1}}
+% Load user-defined commands
+\input{./misc/commands}
 
 %%%------------------------------------
 %%%---- LAYOUT ------------------------
