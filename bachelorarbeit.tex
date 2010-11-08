@@ -55,7 +55,7 @@
         basicstyle=\ttfamily}
 
 % Lädt die lokalen Einstellungen
-\input{./misc/settings}
+\input{misc/settings}
 
 % Um das Dokument sowohl für 'latex' als auch für 'pdflatex'
 % kompatibel zu machen, wird das Package 'ifpdf' geladen
@@ -107,7 +107,7 @@
 %%%------------------------------------
 %%%---- SILBENTRENNUNG ----------------
 %%%------------------------------------
-\input{./misc/hyphenation}
+\input{misc/hyphenation}
 
 %\renewcommand{\el}[1]{}                     % extra label leeren
 \usepackage{makeidx}
@@ -146,11 +146,11 @@
 
 % Glossaries
 \usepackage[toc,acronym,style=long]{glossaries} 
-\loadglsentries{./misc/glossary}
+\loadglsentries{misc/glossary}
 \makeglossaries
 
 % Load user-defined commands
-\input{./misc/commands}
+\input{misc/commands}
 
 %%%------------------------------------
 %%%---- LAYOUT ------------------------
@@ -287,16 +287,16 @@ Pers. Kennz. \campusPersKnz
 \setlength{\parindent}{0em}
 
 %%%---- EHRENWORT ---------------------
-\include{./misc/Ehrenwort}
+\include{misc/Ehrenwort}
 
 %%%---- DANK --------------------------
-\include{./misc/Dank}
+\include{misc/Dank}
 
 %%%---- KURZFASSUNG -------------------
-\include{./misc/Kurzfassung}
+\include{misc/Kurzfassung}
 
 % Gleichheitsgrundsatz
-\include{./misc/Gleichheitsgrundsatz}
+\include{misc/Gleichheitsgrundsatz}
 
 %%%---- INHALTSVERZEICHNIS ------------
 \tableofcontents
@@ -315,7 +315,7 @@ Pers. Kennz. \campusPersKnz
 \setcounter{page}{1}
 
 % Laden des eigentlichen Inhalts
-\input{./misc/toc}
+\input{misc/toc}
 
 %%%------------------------------------
 %%%---- ANHANG ------------------------
@@ -343,12 +343,12 @@ Pers. Kennz. \campusPersKnz
 %%%     LITERATURVERZEICHNIS
 \clearpage%
 \bibliographystyle{alphadin}%
-\bibliography{./misc/literatur}%
+\bibliography{misc/literatur}%
 %%%------------------------------------
 %%%     INDEX
 \clearpage%
 \printindex
-\include{./misc/Zitat}%
+\include{misc/Zitat}%
 
 %%%------------------------------------
 %%%     EO DOCUMENT
