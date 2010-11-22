@@ -7,7 +7,8 @@
 %%%     Das Dokument lässt sich am besten mit "latexmk" bauen.
 %%%------------------------------------
 
-\documentclass[%
+% Dokumentenklasse%{{{
+\documentclass[
     %DIV12,                                 % Satzspiegelparameter 12
     %BCOR8mm,                               % Bindekorrektur 8mm
     %headinclude,                           % Berücksichtigung der Kopfzeile
@@ -22,8 +23,9 @@
     listof=totoc,                           % Listen automatisch in TOC einbinden
     index=totoc]                            % Index automatisch in TOC einbinden
     {scrbook}                               % KOMA-Script Klasse 'scrbook' statt 'book'
+%}}}
 
-% Packages
+% Generische Packages%{{{
 \usepackage[ngerman]{babel}
 \usepackage[ngerman]{translator}
 \usepackage[utf8]{inputenc}                 % Laden der UTF8-Eingabekodierung
@@ -34,9 +36,6 @@
 \usepackage{helvet}                         % Serifenlose Schrift: Helvetica
 \usepackage[left]{eurosym}                  % EURO links
 \usepackage{paralist}                       % Beeinflussung von Listen
-%\usepackage{schuster}                      % \clubpenalty = 10000
-                                            % \widowpenalty = 10000
-                                            % \displaywidowpenalty = 10000
 \usepackage{tabularx}                       % Austreiben auf eine bestimmte Breite
 \usepackage{longtable}                      % Mehrseitige Tabellen
 \usepackage{ltxtable}                       % 'longtable' und 'tabularx'
@@ -44,23 +43,24 @@
 \usepackage{booktabs}                       % \toprule, \midrule und \bottomrule
 \usepackage{dcolumn}                        %
 \usepackage{blindtext}                      % Erzeugt Blindtext welcher beim Prüfen des Layouts behilflich sein kann
+\usepackage{siunitx}
 \usepackage{color}
-\usepackage{xcolor}
+\usepackage{xcolor}%}}}
 
-% Formatierung für Listings
+% Formatierung für Listings%{{{
 \usepackage{listings}
 \lstset{numbers=none, 
         keywordstyle=\bfseries\emph, 
         identifierstyle=\ttfamily, 
         columns=fixed,
         prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
-        basicstyle=\ttfamily}
+        basicstyle=\ttfamily}%}}}
 
-% Lädt die lokalen Einstellungen
+% Lokale Einstellungen%{{{
 \input{misc/settings}
+%}}}
 
-% Um das Dokument sowohl für 'latex' als auch für 'pdflatex'
-% kompatibel zu machen, wird das Package 'ifpdf' geladen
+% Weiche für PDF/DVI%{{{
 \usepackage{ifpdf}
 % für Encapsulated-Postscript und PDFTeX Grafiken
 \ifpdf
@@ -70,17 +70,17 @@
 \else
     \usepackage[dvips]{graphicx}
     \graphicspath{{images/dvi/}}
-\fi
+\fi%}}}
 
-% Zeilenabstand
+% TIKZ - Coole Grafiken direkt in TeX zeichnen :-)%{{{
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees,arrows,shapes,positioning,shadows}
+%}}}
+
+% Überschriften und Zeilenabstand%{{{
 %\usepackage{setspace}
 %\doublespace                               % doppelzeilig oder
 %\onehalfspacing                            % eineinhalbzeilig
-
-% TIKZ - Coole Grafiken direkt in TeX zeichnen :-)
-\usepackage{tikz}
-\usetikzlibrary{mindmap,trees,arrows,shapes,positioning,shadows}
-
 \usepackage{layout}
 
 % Überschriften formatieren
@@ -88,10 +88,9 @@
 
 % Überschriftenformat für Listings
 \DeclareCaptionFont{white}{\color{white}}
-\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}} }
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
 
-\usepackage{siunitx}
 
 \renewcommand{\floatpagefraction}{.8}       % ,float page`, wenn diese mindestens
                                             % 80% der Seite einnehmen
@@ -105,26 +104,29 @@
 \renewcommand{\bottomfraction}{.6}          % max. Anteil der Seite, die f\"{u}r Abbildungen,
                                             % die ,b`ottom plaziert werden, verwendet wird
                                             % default: .3
+%}}}
 
-%%%------------------------------------
-%%%---- SILBENTRENNUNG ----------------
-%%%------------------------------------
+% Silbentrennung%{{{
 \input{misc/hyphenation}
+%}}}
 
-%\renewcommand{\el}[1]{}                     % extra label leeren
+% Index-Erstellung%{{{
 \usepackage{makeidx}
 \makeindex
+%}}}
 
-% Allow smart usage of references
+% Smarte Referenzen%{{{
 \usepackage[german]{fancyref}
 \renewcommand{\fancyrefdefaultformat}{main}
+%}}}
 
-% Glossaries
+% Glossaries%{{{
 \usepackage[toc,acronym,style=long]{glossaries} 
 \loadglsentries{misc/glossary}
 \makeglossaries
+%}}}
 
-% PDF-Einstellungen
+% PDF-Einstellungen%{{{
 \usepackage[a4paper,                        % DIN A4
             plainpages=false,
             pdfpagelabels,
@@ -146,14 +148,13 @@
 ]{hyperref}
 
 % Allow links to have line-breaks even when processed by dvips/ps2pdf.
-\usepackage{breakurl}
+\usepackage{breakurl}%}}}
 
-% Load user-defined commands
+% Benutzerdefinierte Befehle%{{{
 \input{misc/commands}
+%}}}
 
-%%%------------------------------------
-%%%---- LAYOUT ------------------------
-%%%------------------------------------
+% Layout-Einstellungen%{{{
 
 % Numerierungstiefe der Kapitel
 \setcounter{secnumdepth}{3}%
@@ -220,10 +221,9 @@
 %\cfoot{}                                % CenteredFooter
 %\rfoot{\sffamily\small}                 % RightFooter --> Titel
 %%%------------------------------------
+%}}}
 
-%%%------------------------------------
-%%%---- BEGIN OF DOCUMENT -------------
-%%%------------------------------------
+% Haupt-Dokument%{{{
 
 \begin{document}
 
@@ -352,4 +352,9 @@ Pers. Kennz. \campusPersKnz
 %%%------------------------------------
 %%%     EO DOCUMENT
 %%%------------------------------------
-\end{document}
+\end{document}%}}}
+
+# vim:filetype=tex foldmethod=marker autoindent expandtab shiftwidth=4
+# Local variables:
+# mode: latex
+# End:              
