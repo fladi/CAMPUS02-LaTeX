@@ -3,6 +3,8 @@
 %%%     
 %%%     Stefan Grünwald (2000 - 2007)
 %%%     Michael Fladischer (2010)
+%%%
+%%%     Das Dokument lässt sich am besten mit "latexmk" bauen.
 %%%------------------------------------
 
 \documentclass[%
@@ -113,9 +115,16 @@
 \usepackage{makeidx}
 \makeindex
 
-%%%------------------------------------
-%%%---- 'pdf'-ERSTELLUNG --------------
-%%%------------------------------------
+% Allow smart usage of references
+\usepackage[german]{fancyref}
+\renewcommand{\fancyrefdefaultformat}{main}
+
+% Glossaries
+\usepackage[toc,acronym,style=long]{glossaries} 
+\loadglsentries{misc/glossary}
+\makeglossaries
+
+% PDF-Einstellungen
 \usepackage[a4paper,                        % DIN A4
             plainpages=false,
             pdfpagelabels,
@@ -124,7 +133,6 @@
             pdfsubject={\campusType, \campusDate, \campusSubject},
             pdfkeywords={\campusKeywords},
             bookmarks=true,                 % Lesezeichen im 'pdf' analog zum Inhaltsverzeichnis,
-                                            % (2x latex)
             bookmarksopen=true,             % Bookmarks anzeigen...
             bookmarksnumbered=true,         % ...und nummerieren
             hyperindex=true,                % Indexeinträge als Hyperlinks
@@ -139,15 +147,6 @@
 
 % Allow links to have line-breaks even when processed by dvips/ps2pdf.
 \usepackage{breakurl}
-
-% Allow smart usage of references
-\usepackage[german]{fancyref}
-\renewcommand{\fancyrefdefaultformat}{main}
-
-% Glossaries
-\usepackage[toc,acronym,style=long]{glossaries} 
-\loadglsentries{misc/glossary}
-\makeglossaries
 
 % Load user-defined commands
 \input{misc/commands}
