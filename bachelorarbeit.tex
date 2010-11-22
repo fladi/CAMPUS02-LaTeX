@@ -120,12 +120,6 @@
 \renewcommand{\fancyrefdefaultformat}{main}
 %}}}
 
-% Glossaries%{{{
-\usepackage[toc,acronym,style=long]{glossaries} 
-\loadglsentries{misc/glossary}
-\makeglossaries
-%}}}
-
 % PDF-Einstellungen%{{{
 \usepackage[a4paper,                        % DIN A4
             plainpages=false,
@@ -149,6 +143,12 @@
 
 % Allow links to have line-breaks even when processed by dvips/ps2pdf.
 \usepackage{breakurl}%}}}
+
+% Glossaries%{{{
+\usepackage[toc,acronym,style=long]{glossaries} 
+\loadglsentries{misc/glossary}
+\makeglossaries
+%}}}
 
 % Benutzerdefinierte Befehle%{{{
 \input{misc/commands}
@@ -354,7 +354,7 @@ Pers. Kennz. \campusPersKnz
 %%%------------------------------------
 \end{document}%}}}
 
-# vim:filetype=tex foldmethod=marker autoindent expandtab shiftwidth=4
-# Local variables:
-# mode: latex
-# End:              
+% vim:filetype=tex foldmethod=marker autoindent expandtab shiftwidth=4
+% Local variables:
+% mode: latex
+% End:              
