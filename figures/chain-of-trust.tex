@@ -23,7 +23,16 @@
     \node[below=of CA1](AUX1){};
     \node[Key,left=of AUX1](CA1-1){CA1.1};
     \node[Key,right=of AUX1](CA1-2){CA1.2};
+    \node[below=of CA1-1](AUX1-1){};
+    \node[Key,left=of AUX1-1](Alice){Alice};
+    \node[Key,right=of AUX1-1](Bob){Bob};
+    \node[Key,below=of CA1-1](Carmen){Carmen};
+    \node[Key,below=of CA1-2](Dorian){Dorian};
     \draw[DirectTrust,bend left](CA1-1) to node[Label]{vertraut} (CA1) ;
     \draw[DirectTrust,bend right](CA1-2) to node[Label]{vertraut} (CA1) ;
+    \draw[DirectTrust,bend left](Alice) to node[Label]{vertraut} (CA1-1) ;
+    \draw[DirectTrust,bend right](Bob) to node[Label]{vertraut} (CA1-1) ;
+    \draw[DirectTrust](Carmen) to node[Label]{vertraut} (CA1-1) ;
+    \draw[DirectTrust](Dorian) to node[Label]{vertraut} (CA1-2) ;
 
 \end{tikzpicture}
