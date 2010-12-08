@@ -88,9 +88,6 @@
 %}}}
 
 % Überschriften und Zeilenabstand%{{{
-%\usepackage{setspace}
-%\doublespace                               % doppelzeilig oder
-%\onehalfspacing                            % eineinhalbzeilig
 \usepackage{layout}
 
 % Überschriften formatieren
@@ -100,7 +97,6 @@
 \DeclareCaptionFont{white}{\color{white}}
 \DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}} }
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
-
 
 \renewcommand{\floatpagefraction}{.8}       % ,float page`, wenn diese mindestens
                                             % 80% der Seite einnehmen
@@ -127,13 +123,15 @@
 
 % Smarte Referenzen%{{{
 \usepackage[german]{fancyref}
+% Listings (lst:my-unigue-label)
 \newcommand*{\fancyreflstlabelprefix}{lst}
+% Zeilen in Listings (lin:my-unique-label)
 \newcommand*{\fancyreflinlabelprefix}{lin}
 \fancyrefaddcaptions{german}{
-\newcommand*{\Freflstname}{\lstlistingname}
-\newcommand*{\freflstname}{\lstlistingname}
-\newcommand*{\Freflinname}{Zeile}
-\newcommand*{\freflinname}{Zeile}
+    \newcommand*{\Freflstname}{\lstlistingname}
+    \newcommand*{\freflstname}{\lstlistingname}
+    \newcommand*{\Freflinname}{Zeile}
+    \newcommand*{\freflinname}{Zeile}
 }
 \frefformat{vario}{\fancyreflstlabelprefix}{\Freflstname\fancyrefdefaultspacing#1#3}
 \frefformat{vario}{\fancyreflinlabelprefix}{\Freflinname\fancyrefdefaultspacing#1#3}
