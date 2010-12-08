@@ -14,7 +14,7 @@ die grundlegende Struktur einer Signatur mit \gls{xml-dsig}.
 
 \lstinputlisting[language=XML,caption={Struktur von \texorpdfstring{\protect\Glsentryname{xml-dsig}}{XML-DSig}},label=lst:xml-dsig-structure,emph={Signature}]{source/xml-dsig-structure.xml}
 
-Im folgenden werden die einzelenen Elemente dieser Struktur in ihrer Funktion näher beschrieben. 
+Im folgenden werden die einzelnen Elemente dieser Struktur in ihrer Funktion näher beschrieben. 
 
 \section{Schlüsselinformation}
 Das optionale Element \xmlelem{KeyInfo} enthält Informationen zur Schlüssel, der bei der Erstellung der Signatur verwendet wurde. Diese Informationen sollen es
@@ -58,9 +58,9 @@ selbe Zertifikat referenzieren. In \fref{lst:xml-dsig-keyinfo-x509} sind drei Ze
         \hline
         \xmlelem{X509IssuerSerial} & Name und Seriennummer des Zertifikats \\
         \hline
-        \xmlelem{X509SKI} & Der base64 kodierte Inhalt der "`SubjectKeyIdentifier"' Erweiterung des Zertifikats \\
+        \xmlelem{X509SKI} & Mit \gls{base64} kodierter Inhalt der "`SubjectKeyIdentifier"' Erweiterung des Zertifikats \\
         \hline
-        \xmlelem{X509Certificate} & Der base64 kodierte Inhalt des gesamten Zertifikats \\
+        \xmlelem{X509Certificate} & Mit \gls{base64} kodierter Inhalt des gesamten Zertifikats \\
         \hline
         \xmlelem{X509SubjectName} & \gls{dn} des Subject-Felds des Zertifikats \\
         \hline

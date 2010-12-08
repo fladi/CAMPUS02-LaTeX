@@ -88,7 +88,7 @@ der Vertrauensbeziehungen von Vorteil ist. \cite{kits}
 \subsection{Web Of Trust}
 Um die Ermittlung der Authentizität einer Signatur zu erleichtern stellt \gls{openpgp} eine Funktionalität zur Beglaubigung von Schlüsseln zur Verfügung. Dabei
 werden die Schlüssel von anderen \gls{openpgp}-Benutzern signiert. Das ermöglicht es, Rückschlüsse auf die Vertrauenswürdigkeit von Schlüsseln zu ziehen, ohne
-von einer zentralen hierarchischen Struktur abhängig zu sein. Die Signatur auf einen schlüssel wird üblicherweise nur nach der Überprüfung der identität des
+von einer zentralen hierarchischen Struktur abhängig zu sein. Die Signatur auf einen Schlüssel wird üblicherweise nur nach der Überprüfung der Identität des
 Schlüsselinhabers gewährt. Dies kann zum Beispiel durch ein Telefonat oder ein persönliches Treffen erfolgen, bei dem die Prüfsumme des Schlüssels verglichen
 wird.  
 Wenn Alice den Schlüssel von Bob signiert, dann ermöglicht dies einer Person, die bereits dem Schlüssel von Alice vertraut, auch dem Schlüssel von Bob zu
@@ -109,8 +109,8 @@ nicht sicher"' bis zu "`Ich vertraue absolut"'.
 \subsection{Public Key Infrastruktur}
 \gls{x509} bildet die Grundlage für ein hierarchisches System aus Zertifikaten, auch \gls{pki} genannt. Im Gegensatz zum \gls{wot}, welches einen Graphen der
 beteiligten Schlüssel bildet, bestehen bei einer \gls{pki} eine oder mehrere baumartige Vertrauensstrukturen.
-An der Spitze eines solchen Baumes steht eine Root-\gls{ca}, welche die Zertifikate der nächsten, im Baum tiefergelegen Ebene signiert. Jeder Pfad, der von der
-Wurzel, der Root-\gls{ca} des Baumesi, zu einem der Zertifikate an einem Ast führt wird als \gls{cot} bezeichnet. \fref{fig:cot} stellt einen solchen Baum mit
+An der Spitze eines solchen Baumes steht eine Root-\gls{ca}, welche die Zertifikate der nächsten, im Baum tiefer gelegen Ebene signiert. Jeder Pfad, der von der
+Wurzel, der Root-\gls{ca} des Baumes, zu einem der Zertifikate an einem Ast führt wird als \gls{cot} bezeichnet. \fref{fig:cot} stellt einen solchen Baum mit
 mehreren \glspl{cot} dar.
 
 Die Anzahl der Ebenen in einem \gls{pki}-Baum unterliegt keiner Beschränkung, jedoch muss einem Zertifikat explizit das Recht eingeräumt werden, andere
