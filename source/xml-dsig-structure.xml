@@ -1,0 +1,15 @@
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+  <SignedInfo>
+    <SignatureMethod />
+    <CanonicalizationMethod />
+    <Reference>
+       <Transforms>
+       <DigestMethod>
+       <DigestValue>
+    </Reference>
+    <Reference />
+  </SignedInfo>
+  <SignatureValue />
+  <KeyInfo />
+  <Object />
+</Signature>

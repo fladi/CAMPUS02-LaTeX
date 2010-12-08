@@ -3,8 +3,58 @@
 \chapter{Signaturen mit XML-DSig}
 \index{Signaturen mit XML-DSig}
 \label{chap:SignaturenXMLDSig}
+\gls{xml-dsig} definiert ein \gls{xml}-Format das Informationen über die zu signierenden Inhalte, die Signaturen selbst und die zur Prüfung der Signaturen
+notwendigen Schlüsselinformationen aufnimmt. Um \gls{xml-dsig} von anderen \gls{xml}-Formaten abzugrenzen wurde ihm der \gls{xml}-Namensraum
+\url{http://www.w3.org/2000/09/xmldsig#} zugewiesen. 
+
 
 \section{Struktur einer Signatur}
+Eine Signatur mit \gls{xml-dsig} besteht aus mehreren Elementen die sich alle innerhalb von \xmlelem{Signature} befinden. \fref{lst:xml-dsig-structure} zeigt
+die grundlegende Struktur einer Signatur mit \gls{xml-dsig}.
+
+\lstinputlisting[language=XML,caption={Struktur von \texorpdfstring{\protect\Glsentryname{xml-dsig}}{XML-DSig}},label=lst:xml-dsig-structure,emph={Signature},emphstyle=\color{red}\bfseries\emph]{source/xml-dsig-structure.xml}
+
+Im folgenden werden die einzelenen Elemente dieser Struktur in ihrer Funktion näher beschrieben. 
+
+\section{Schlüsselinformation}
+Das optionale Element \xmlelem{KeyInfo} enthält Informationen zur Schlüssel, der bei der Erstellung der Signatur verwendet wurde. Diese Informationen sollen es
+ermöglichen, dass der Empfänger die notwendigen Informationen zur Prüfung der Signatur beziehen kann. \gls{xml-dsig} definiert eine Menge von Schlüsseltypen die jedoch
+abhängig von der Anwendung mit Hilfe neuer \gls{xml}-Namespaces erweitert werden kann.
+
+Ist \xmlelem{KeyInfo} nicht Bestandteil der Signatur, dann wird davon ausgegangen, dass der Empfänger über dem Kontext der Nachricht und Signatur in der Lage ist, die nötigen
+Schlüsselinformationen zu beziehen.
+
+\lstinputlisting[language=XML,caption={Schema von \protect\xmlelem{KeyInfo}},label=lst:xml-dsig-KeyInfo,emph={keyinfo},emphstyle=\color{red}\bfseries\emph]{source/xml-dsig-keyinfo.xml}
+
+Über \xmlelem{KeyName} ist es dem Ersteller der Signatur möglich, den Schlüssel zu benennen, der für die Signatur benutzt wurde. Für \gls{x509} kann dies ein
+\gls{dn} sein, für \gls{openpgp} eine Email-Adresse.
+
+Informationen über ein für die Signatur verwendetes \gls{x509}-Zertifikat können unterhalb des Elements \xmlelem{X509Data} im \gls{xml-ns}
+\url{http://www.w3.org/2000/09/xmldsig#X509Data} abgelegt werden. Dafür muss mindestens eines der Elemente aus \fref{tab:x509data-elements} vorhanden sein. Wenn
+zwei oder mehrere dieser Elemente sich innerhalb eines \xmlelem{X509Data} befinden, so müssen sie alle das selbe Zertifikat referenzieren.
+
+\begin{table}
+    \centering
+    \begin{tabularx}{\textwidth}{ l X }
+        Element  & Inhalt \\
+        \hline
+        \hline
+        \xmlelem{X509IssuerSerial} & Ein Tupel aus Name und Seriennummer des Zertifikats \\
+        \hline
+        \xmlelem{X509SKI} & Der base64 kodierte Inhalt der "`SubjectKeyIdentifier"' Erweiterung des Zertifikats \\
+        \hline
+        \xmlelem{X509Certificate} & Der base64 kodierte Inhalt des gesamten Zertifikats \\
+        \hline
+        \xmlelem{X509SubjectName} & Der \gls{dn} des Subject-Felds des Zertifikats \\
+        \hline
+    \end{tabularx}
+    \caption{Elemente in \xmlelem{X509Data} und ihr Inhalt}
+    \label{tab:x509data-elements}
+\end{table}
+
+Für Schlüssel nach \gls{openpgp} wird das Element \xmlelem{PGPData} im \gls{xml-ns} \url{http://www.w3.org/2000/09/xmldsig#PGPData} definiert. 
+
+\section{Signatureinformation}
 
 \section{Referenzen}
 \index{Referenzen}
@@ -22,7 +72,6 @@
 \index{XSLT}
 \label{sec:Signaturbindung:Transformationen:XSLT}
 
-\section{Schlüsselinformation}
 
 \section{Bindung an ein XHTML-Dokument}
 Eine Signatur mit \gls{xml-dsig} hält ihre Verweise zu den signierten Inhalten über die Reference-Elemente. Im Fall der Verwendung innerhalb eines
