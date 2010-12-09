@@ -1,0 +1,16 @@
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+        @\label{lin:xml-dsig-signedinfo-reference-http}@<Reference URI="http://example.org/signature.xml">
+            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+            <DigestValue>...</DigestValue>
+        </Reference>
+        @\label{lin:xml-dsig-signedinfo-reference-xpointer}@<Reference URI="#example">
+            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+            <DigestValue>...</DigestValue>
+        </Reference>
+    </SignedInfo>
+    <KeyInfo/>
+    <Object Id="example">
+        Ein wenig Text ...
+    </Object>
+</Signature>
