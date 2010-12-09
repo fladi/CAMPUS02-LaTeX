@@ -1,12 +1,10 @@
 % vim: set tw=160:
 
 \chapter{Signaturen mit XML-DSig}
-\index{Signaturen mit XML-DSig}
 \label{chap:SignaturenXMLDSig}
 \gls{xml-dsig} definiert ein \gls{xml}-Format das Informationen über die zu signierenden Inhalte, die Signaturen selbst und die zur Prüfung der Signaturen
 notwendigen Schlüsselinformationen aufnimmt. Um \gls{xml-dsig} von anderen \gls{xml}-Formaten abzugrenzen wurde ihm der \gls{xml}-Namensraum
 \url{http://www.w3.org/2000/09/xmldsig#} zugewiesen. 
-
 
 \section{Struktur einer Signatur}
 Eine Signatur mit \gls{xml-dsig} besteht aus mehreren Elementen die sich alle innerhalb von \xmlelem{Signature} befinden. \fref{lst:xml-dsig-structure} zeigt
@@ -32,16 +30,24 @@ Lage ist, die nötigen Schlüsselinformationen zu beziehen.
 \gls{dn} sein, für \gls{openpgp} eine Email-Adresse. Über \xmlelem{KeyValue} ist es auch möglich, die für den \gls{dsa} oder das \gls{rsa} Verfahren
 benötigten, Schlüsselinformationen direkt in der Signatur einzubetten.
 
+Alternativ können über das Element \xmlelem{RetrievalMethod} Schlüsselinformationen über \glspl{uri} referenziert werden. Dies können zum Beispiel
+\gls{x509}-Zertifikate sein, die bereits in der zu signierenden \gls{xml}-Datei enthalten sind. Das Verhalten von \xmlelem{RetrievalMethod} entspricht bis auf
+das Fehlen der Elemente \xmlelem{DigestMethod} und \xmlelem{DigestValue} dem des Elements \xmlelem{Reference} welches in \fref{sec:Signaturbindung:Referenzen}
+näher beschrieben wird.
+
 \subsection{OpenPGP}
 Für Schlüssel nach \gls{openpgp} wird das Element \xmlelem{PGPData} im \gls{xml-ns} \url{http://www.w3.org/2000/09/xmldsig#PGPData} definiert. Es ist in der
-Lage, zwei weitere Elemente aufzunehmen: \xmlelem{PGPKeyID} nimmt die Schlüssel-ID eines \gls{openpgp}-Schlüsselpaares auf, welche aus 8 Okteten besteht und die
-niedrigsten 64 Bit aus der \gls{sha1} Prüfsumme des Schlüssels darstellt \cite{rfc2440:ietf}. Über die \xmlelem{PGPKeyID} ist der passende Schlüssel bereits eindeutig
+Lage, zwei weitere Elemente aufzunehmen: \xmlelem{PGPKeyID} nimmt die Schlüssel-ID eines \gls{openpgp}-Schlüsselpaares auf, welche aus 8 \glspl{oktett} besteht und die
+niedrigsten 64 Bit aus der \gls{sha1} Prüfsumme des Schlüssels darstellen \cite{openpgp:ietf}. Über die \xmlelem{PGPKeyID} ist der passende Schlüssel bereits eindeutig
 identifiziert, es besteht mit dem Element \xmlelem{PGKeyPacket} jedoch auch die Variante, den vollständigen öffentlichen Teil des Schlüsselpaares in der
-Signatur einzubetten. Dafür wird das Schlüsselmaterial mit \gls{base64} kodiert und als Inhalt in das Element geschrieben \cite{xml-dsig:w3c}.
-\fref{lst:xml-dsig-keyinfo-openpgp} zeigt ein Beispiel für eine Struktur mit den zuvor genannten Unterelementen, welche auf den \gls{openpgp}-Schlüssel des Autors
-referenzieren.
+Signatur einzubetten. Dafür wird das Schlüsselmaterial mit \gls{base64} kodiert und als Inhalt in das Element geschrieben \cite{xml-dsig:w3c}. Mindestens eines
+der beiden Elemente muss innerhalb von \xmlelem{PGPData} vorhanden sein. Wenn beide angeführt sind, müssen sie den selben Schlüssel referenzieren.
 
-\lstinputlisting[language=XML,caption={Beispiel einer Struktur für \protect\xmlelem{PGPData}},label=lst:xml-dsig-keyinfo-openpgp,emph={element}]{source/xml-dsig-keyinfo-openpgp.xml}
+\fref{lst:xml-dsig-keyinfo-openpgp} zeigt ein Beispiel für eine Struktur mit den zuvor genannten Unterelementen, welche auf den \gls{openpgp}-Schlüssel des Autors
+referenzieren. In \fref{lin:xml-dsig-keyinfo-openpgp-keyid} wird der Schlüssel über seine ID verankert und ab \fref{lin:xml-dsig-keyinfo-openpgp-keypacket} als
+vollständige Kopie in der Signatur eingebettet.
+
+\lstinputlisting[language=XML,caption={Beispiel einer Struktur für \protect\xmlelem{PGPData}},label=lst:xml-dsig-keyinfo-openpgp,emph={PGPData,PGPKeyID,PGPKeyPacket}]{source/xml-dsig-keyinfo-openpgp.xml}
 
 \subsection{X.509}
 Informationen über ein für die Signatur verwendetes \gls{x509}-Zertifikat können unterhalb des Elements \xmlelem{X509Data} im \gls{xml-ns}
@@ -69,16 +75,18 @@ selbe Zertifikat referenzieren. In \fref{lst:xml-dsig-keyinfo-x509} sind drei Ze
     \label{tab:x509data-elements}
 \end{table}
 
-\lstinputlisting[float=bt,language=XML,caption={Beispiel einer Struktur für \protect\xmlelem{X509Data}},label=lst:xml-dsig-keyinfo-x509,emph={X509Data}]{source/xml-dsig-keyinfo-x509.xml}
+\lstinputlisting[float=bt,language=XML,caption={Beispiel einer Struktur für
+\protect\xmlelem{X509Data}},label=lst:xml-dsig-keyinfo-x509,emph={X509Data,X509IssuerSerial,X509SKI,X509Certificate,X509SubjectName}]{source/xml-dsig-keyinfo-x509.xml}
 
-\section{Signatureinformation}
+\section{Signaturinformation}
+Analog zu \xmlelem{KeyInfo} wird das Element \xmlelem{SignedInfo} verwendet um Informationen über die Signatur selbst zu speichern. Dazu gehören die benutzte
+Signaturmethode, die Art der Normalisierung der Daten vor der Signierung sowie die Referenzen auf die signierten Daten selbst.
+
 
 \section{Referenzen}
-\index{Referenzen}
 \label{sec:Signaturbindung:Referenzen}
 
 \section{Transformationen}
-\index{Transformationen}
 \label{sec:Signaturbindung:Transformationen}
 
 \subsection{XPath}
@@ -91,17 +99,19 @@ selbe Zertifikat referenzieren. In \fref{lst:xml-dsig-keyinfo-x509} sind drei Ze
 
 
 \section{Bindung an ein XHTML-Dokument}
-Eine Signatur mit \gls{xml-dsig} hält ihre Verweise zu den signierten Inhalten über die Reference-Elemente. Im Fall der Verwendung innerhalb eines
-\gls{webbrowser} muss das aufgerufene \gls{xhtml}-Dokument einen Verweis auf die Signatur beinhalten. Dies ist notwendig, da die Information über die Bereiche,
-welche signiert wurden, nur in der Signatur selbst festgehalten werden. Ruft ein \gls{webbrowser} ein \gls{xhtml}-Dokument ab, so muss ihm bekannt gemacht
-werden, dass für dieses Dokument Signaturinformationen vorhanden sind. Sind diese Informationen verfügbar gemacht worden, kann der \gls{webbrowser} daraus die
-signierten Bereiche ermitteln.
+Eine Signatur mit \gls{xml-dsig} hält ihre Verweise zu den signierten Inhalten über die \xmlelem{Reference}-Elemente aus \fref{sec:Signaturbindung:Referenzen}.
+Im Fall der Verwendung innerhalb eines \gls{webbrowser} muss das aufgerufene \gls{xhtml}-Dokument einen Verweis auf die Signatur beinhalten. Dies ist notwendig,
+da die Information über die Bereiche, welche signiert wurden, nur in der Signatur selbst festgehalten werden. Ruft ein \gls{webbrowser} ein \gls{xhtml}-Dokument
+ab, so muss ihm bekannt gemacht werden, dass für dieses Dokument Signaturinformationen vorhanden sind. Sind diese Informationen verfügbar gemacht worden, kann
+der \gls{webbrowser} daraus die signierten Bereiche ermitteln.
 
 Um solche Verweise auf Signaturen an die \gls{xhtml} binden zu können, bieten sich mehrere Verfahren an.
 
 \subsection{HTTP-Header}
-Eigener X-HTTP-Header wird vom Webserver ausgeliefert, worin über \glspl{url} auf Signatur-Dateien verwiesen wird. Keine Auswirkung auf XHTML, jedoch praktische Beschränkung
-auf Anzahl der \glspl{url}?
+Als Antwort auf die anfrage eines \gls{webbrowser} wird vom Webserver ein eigner \gls{http}-Header ausgeliefert, welcher eine Liste von \glspl{url} enthält, die auf
+Signatur-Dateien verweisen. Dadurch wäre eine klare Trennung der Signaturen vom \gls{xhtml}-Inhalt gewährleistet.
+Jedoch ist noch unklar ob eine praktische Beschränkung auf die Größe eines HTTP-Headers besteht.\todo
+
 
 \subsection{\xmlelem{link}-Element}
 Der \gls{xhtml}-Standard definiert das \xmlelem{link}-Element, um Relationen zu anderen Dokumenten zu definieren \cite{xhtml:oreilly}. Es ist Teil des
@@ -109,7 +119,7 @@ Der \gls{xhtml}-Standard definiert das \xmlelem{link}-Element, um Relationen zu 
 der \gls{webbrowser} beim Verarbeiten eines \xmlelem{link}-Elements macht der \gls{xhtml}-Standard keine verbindlichen Aussagen. Es wird aber darauf
 hingewiesen, dass dieses Element speziell für zukünftige, noch nicht definierte Verhaltensmuster bei \gls{webbrowser} vorgesehen ist.
 
-Es ist damit möglich, über das \xmlattr{href}-Attribut des \xmlelem{link}-Elements den Verweis auf die \gls{url} einer Signaturinformation zu realisieren. In
+Es ist damit möglich, über das \xmlattr{link}{href}-Attribut des \xmlelem{link}-Elements den Verweis auf die \gls{url} einer Signaturinformation zu realisieren. In
 \fref{lst:link} ist dies auf \fref{lin:link-href} zu sehen. Da das
 Element auch mehrfach in einem \gls{xhtml}-Dokument verwendet werden kann, lassen sich damit auch mehrere unterschiedliche Signaturinformationen einbinden.
 
@@ -122,7 +132,7 @@ Direktes Einbetten der Signatur in das Dokument selbst.
 
 \subsection{XInclude}
 XInclude ist eine neue Technologie, die vom W3C entwickelt wurde, um mehrere \gls{xml}-Dokumente in ein gemeinsames Dokument zusammenzuführen \cite{xml:oreilly}.
-Dabei wird das \xmlelem{include}-Element aus dem reservieren XML-Namespace für \gls{xinclude} benutzt um über \gls{uri} externe \gls{xml}-Dokumente während der
-Auswertung des Dokuments einzubinden.
+Dabei wird das \xmlelem{include}-Element aus dem reservieren \gls{xml-ns} für \gls{xinclude} benutzt um über das \xmlattr{xinclude}{href}-Attribut den \gls{uri}
+eines externen \gls{xml}-Dokuments während der Auswertung des Haupt-Dokuments einzubinden.
 
 \lstinputlisting[language=HTML,caption={Verwendung von XInclude},label=lst:xinclude,emph={include,xi}]{source/xinclude.html}
