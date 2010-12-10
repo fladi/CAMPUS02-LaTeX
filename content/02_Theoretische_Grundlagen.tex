@@ -3,23 +3,33 @@
 \chapter{Grundlagen und Definitionen}
 \label{chap:GrundlagenDefinitionen}
 
-Um bei einer Arbeit, die sich mit mehreren Bereichen der Informatik beschäftigt, klare Aussagen treffen zu können, ist es unerlässlich, Kernbegriffe klar zu
-definieren und sie somit von möglichen interdisziplinären Missverständnissen zu befreien.
+Zum Verständnis der folgenden Kapitel wird ein grundlegendes Verständnis von \gls{xml}, \gls{xhtml} und asymmetrischer Kryptographie vorausgesetzt.
+Themenbereiche wie digitale Signaturen und für diese Arbeit relevanten Techniken die vor allem in Verbindung mit \glspl{website} vorkommen werden hier kurz
+dargestellt. Dazu gehören vor allem \gls{openpgp}, \gls{x509} und \gls{xml-dsig}.
 
-\section{Webseiten}
-\index{Webseiten}
+\section{Website}
+\index{Website}
+\label{sec:GrundlagenDefinitionen:Website}
+Eine Webseite repräsentiert eine Menge von Dateien, die unter dem gemeinsamen Namensraum einer, oder auch mehrerer Domains mit dem selben Bezug, abrufbar sind.
+Zu diesen Dateien gehören vorrangig \gls{html}- und \gls{xhtml}-Dokumente, \gls{css}-Vorlagen und \gls{javascript}-Skripte, sowie auch komplementäre Bild-, Ton- und
+Videodateien.
+
+\section{Webseite}
+\index{Webseite}
 \label{sec:GrundlagenDefinitionen:Webseiten}
-Eine Webseite repräsentiert eine Menge von Dateien, die unter dem gemeinsamen Namensraum einer Domain abrufbar sind. Zu diesen Dateien können \gls{html}- und
-\gls{xhtml}-Dokumente gehören, sowie auch Bild-, Ton-, und Videodateien.
+Der Begriff einer \gls{webseite} bezeichnet ein einzelnes \gls{html}- oder \gls{xhtml}-Dokument inklusive aller von ihm zur Darstellung referenzierten
+Inhalte wie \gls{css}-Vorlagen und \gls{javascript}-Skripte, sowie auch komplementäre Bild-, Ton- und Videodateien. Inhalte auf die mittels \gls{html}-Links, wie sie
+von \xmlelem{a}-Elementen erzeugt werden, verwiesen wird, gehören nicht zum Umfang einer Webseite, da sie nicht direkt in die Darstellung in einem
+\gls{webbrowser} einfließen.
 
 \section{Bereiche in XHTML-Dokumenten}
 \index{Bereiche in XHTML-Dokumenten}
 \label{sec:GrundlagenDefinitionen:BereicheXHTML}
-Der Dokumententyp \gls{xhtml} ist eine Anwendungsform von \gls{xml} \cite{xhtml:w3c} und kann dadurch in ihrer Form als \gls{dom}-Baum betrachtet
-werden \cite{xhtml:oreilly}. Da moderne \Gls{webbrowser} unterschiedliche Technologien wie \gls{css} und \gls{javascript} zur ergänzenden Darstellung von
-\gls{xhtml} nutzen, ist nicht sichergestellt, dass ein Zweig in einem \gls{xhtml}-Dokument einen geschlossenen Bereich in der grafischen Darstellung des
-selben Dokumentes einnimmt. Umgekehrt können unterschiedliche Zweige aus dem \gls{dom}-Baum bei der Darstellung zu einem geschlossenen Bereich zusammengeführt
-werden.
+Der Dokumententyp \gls{xhtml} ist eine Anwendungsform von \gls{xml} auf das \gls{sgml}-Format \gls{html}\cite{xhtml:w3c} und kann dadurch in seiner Form als
+\gls{dom}-Baum betrachtet werden \cite{xhtml:oreilly}. Da moderne \Gls{webbrowser} unterschiedliche Technologien wie \gls{css} und \gls{javascript} zur
+ergänzenden Darstellung von \gls{xhtml} nutzen, ist nicht sichergestellt, dass ein Zweig in einem \gls{xhtml}-Dokument einen geschlossenen Bereich in der
+grafischen Darstellung des selben Dokumentes einnimmt. Umgekehrt können unterschiedliche Zweige aus dem \gls{dom}-Baum bei der Darstellung zu einem
+geschlossenen Bereich zusammengeführt werden.
 
 Als ein Bereich wird im Rahmen dieser Arbeit die Positionierung eines oder mehrerer Elemente innerhalb eines \gls{dom}-Baumes definiert, nicht die grafische
 Darstellung in einem \gls{webbrowser}.
@@ -61,6 +71,9 @@ Diese Information wird nun in das, dem Verfahren entsprechende, Format transform
 Der Empfänger extrahiert die Signaturinformation aus der empfangenen Nachricht, bildet den Hash-Wert über die signierte Nachricht und vergleicht diesen mit dem
 Hash-Wert aus der Signatur. Sind beide miteinander identisch, ist die Signatur gültig und die Integrität der Nachricht gewährleistet \cite{hac,singh:messages}.
 
+Asymmetrische kryptographische Verfahren lassen sich zum Verschlüsseln wie auch zum Signieren von Informationen verwenden. Im Rahmen dieser Arbeit wird nur auf
+den Signatur-Betrieb eingegangen.
+
 \subsection{OpenPGP}
 \index{OpenPGP}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:openpgp}
@@ -71,7 +84,6 @@ durch die dortigen Geheimdienste \cite{singh:messages}.
 Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und ist im RFC4880 \cite{openpgp:ietf} festgelegt. Dabei werden zwei Betriebsarten,
 Signieren und Verschlüsseln festgelegt.
 
-Im Rahmen dieser Arbeit wird nur auf den Signatur-Betrieb eingegangen.
 
 \subsection{X.509}
 \index{\gls{x509}}
@@ -81,10 +93,14 @@ Jedes \gls{x509}-Zertifikat beinhaltet Informationen über den Inhaber, dessen R
 sind von dem übergeordneten Zertifikat, auch \gls{ca} genannt, digital signiert.
 
 \gls{x509} kommt zum Beispiel in Protokollen wie \gls{ssl}/\gls{tls}, \gls{ipsec} oder \gls{eap} zum Einsatz, da bei diesen eine streng hierarchische Struktur
-der Vertrauensbeziehungen von Vorteil ist. \cite{kits} 
+der Vertrauensbeziehungen von Vorteil ist \cite{kits}.
 
 \section{Vertrauensbeziehungen}
-\todo
+Der Nutzen von digitalen Signaturen kommt erst zum Tragen, wenn auch sichergestellt wird, dass es eine Möglichkeit gibt, festzustellen, mit welcher Sicherheit
+ein Schlüssel einer bestimmten Entität zugeordnet werden kann. Ist diese Sicherheit nicht gegeben, können keine Aussagen zur Authentizität einer Signatur
+getätigt werden. Es müssen also Methoden existieren, um das eigene Vertrauen in einen Schlüssel auszudrücken.
+
+\gls{openpgp} und \gls{x509} verfolgen hierbei jeweils unterschiedliche Ansätze um Vertrauensbeziehungen zu Schlüsseln zu regeln.
 
 \subsection{Web Of Trust}
 Um die Ermittlung der Authentizität einer Signatur zu erleichtern, stellt \gls{openpgp} eine Funktionalität zur Beglaubigung von Schlüsseln zur Verfügung. Dabei
@@ -92,6 +108,7 @@ werden die Schlüssel von anderen \gls{openpgp}-Benutzern signiert. Das ermögli
 von einer zentralen hierarchischen Struktur abhängig zu sein. Die Signatur auf einen Schlüssel wird üblicherweise nur nach der Überprüfung der Identität des
 Schlüsselinhabers gewährt. Dies kann zum Beispiel durch ein Telefonat oder ein persönliches Treffen erfolgen, bei dem die Prüfsumme des Schlüssels verglichen
 wird.  
+
 Wenn Alice den Schlüssel von Bob signiert, dann ermöglicht dies einer Person, die bereits dem Schlüssel von Alice vertraut, auch dem Schlüssel von Bob zu
 vertrauen. Durch diese Delegation von Vertrauen bildet sich eine flache, vernetzte Struktur wie in \fref{fig:wot} dargestellt, die unter dem Namen \gls{wot}
 bekannt ist. 
@@ -131,5 +148,5 @@ einer \gls{pki} jeder Teilnehmer einer von ihm (oder seinem Softwaredistributor)
 \label{sec:GrundlagenDefinitionen:xml-dsig}
 Von der \gls{ietf} und dem \gls{w3c} entwickelt, hat die \gls{xml-dsig} Spezifikation zum Ziel, die kryptografischen Sicherheitsfunktionen Integrität,
 Authentizität und Verbindlichkeit für beliebige Daten, die entweder direkt im \gls{xml}-Format vorliegen oder über \glspl{uri} ansprechbar sind, anwendbar zu
-machen \cite{xml-dsig:w3c}.
+machen \cite{xml-dsig:w3c}. In \fref{chap:XML-DSig} wird näher auf die Arbeitsweise von \gls{xml-dsig} eingegangen.
 
