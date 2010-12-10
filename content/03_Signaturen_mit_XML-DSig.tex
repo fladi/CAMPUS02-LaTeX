@@ -3,8 +3,8 @@
 \chapter{Signaturen mit XML-DSig}
 \label{chap:XML-DSig}
 \gls{xml-dsig} definiert ein \gls{xml}-Format das Informationen über die zu signierenden Inhalte, die Signaturen selbst und die zur Prüfung der Signaturen
-notwendigen Schlüsselinformationen aufnimmt. Um \gls{xml-dsig} von anderen \gls{xml}-Formaten abzugrenzen wurde ihm der \gls{xml}-Namensraum
-\url{http://www.w3.org/2000/09/xmldsig#} zugewiesen. 
+notwendigen Schlüsselinformationen aufnimmt. Um \gls{xml-dsig} von anderen \gls{xml}-Formaten abzugrenzen wurde ihm der \gls{xml-ns}
+\url{http://www.w3.org/2000/09/xmldsig#} zugewiesen.
 
 \section{Struktur einer Signatur}
 Eine Signatur mit \gls{xml-dsig} besteht aus mehreren Elementen die sich alle innerhalb von \xmlelem{Signature} befinden. \fref{lst:xml-dsig-structure} zeigt
@@ -30,7 +30,7 @@ Lage ist, die nötigen Schlüsselinformationen zu beziehen.
 \gls{dn} sein, für \gls{openpgp} eine E-Mail-Adresse. Über \xmlelem{KeyValue} ist es auch möglich, die für den \gls{dsa} oder das \gls{rsa} Verfahren
 benötigten, Schlüsselinformationen direkt in der Signatur einzubetten.  
 
-Alternativ können über das Element \xmlelem{RetrievalMethod} Schlüsselinformationen über \glspl{uri} referenziert werden. Dies können zum Beispiel
+Alternativ können mit dem Element \xmlelem{RetrievalMethod} die Schlüsselinformationen über \glspl{uri} referenziert werden. Dies können zum Beispiel
 \gls{x509}-Zertifikate sein, die bereits in dem zu signierenden \gls{xml}-Dokument enthalten sind. \xmlelem{RetrievalMethod} entspricht bis auf
 das Fehlen der Elemente \xmlelem{DigestMethod} und \xmlelem{DigestValue}i in seinem Verhalten dem Element \xmlelem{Reference} welches in 
 \fref{sec:Signaturbindung:Referenzen} näher beschrieben wird.
@@ -148,7 +148,7 @@ Dereferenzierung des \gls{uri} des übergeordneten \xmlelem{Reference}-Elements.
 Reihe übergeben. Die Ausgabe der letzten Transformation wird dann zur Berechnung einer Hash-Prüfsumme benutzt.
 
 Als Transformationen stehen \gls{c14n}, \gls{base64}, \gls{xpath} und \gls{xslt} zur Verfügung. \gls{xpath} und \gls{xslt} sind geeignet, bestimmte Bereiche aus
-einem referenzierten \gls{xml}-Dokument zu extrahieren und somit den Bereich der Signatur exakt zu begrenzen. \gls{c14n} bietet sich als eine der letzten
+einem \gls{xml}-Dokument zu extrahieren und somit den Bereich der Signatur exakt zu begrenzen. \gls{c14n} bietet sich als eine der letzten
 Transformationen in der Reihe an, da sie die Überführung des Transformationsergebnisses in eine kanonische Form bewerkstelligt und somit wieder Struktur und
 Inhalt von der Formatierung trennt. Eine Transformation mit \gls{base64} ist nur bei Referenzen auf binäre Daten sinnvoll. Da \gls{base64} kein gültiges
 \gls{xml} als Ausgabe der Transformation liefert, sind nachgeschaltete Transformationen mit \gls{xpath} und \gls{xslt} nicht mehr möglich.
