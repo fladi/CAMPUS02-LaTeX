@@ -56,7 +56,7 @@ Informationen über ein für die Signatur verwendetes \gls{x509}-Zertifikat kön
 \fref{tab:x509data-elements} vorhanden sein. Wenn zwei oder mehrere dieser Elemente sich innerhalb eines \xmlelem{X509Data} befinden, so müssen sie alle das
 selbe Zertifikat referenzieren. In \fref{lst:xml-dsig-keyinfo-x509} sind drei Zertifikate über unterschiedliche Methoden referenziert. 
 
-\begin{table}[b]
+\begin{table}
     \centering
     \begin{tabularx}{\textwidth}{ l X }
         Element  & Inhalt \\
@@ -100,11 +100,23 @@ Alle in \gls{xml-dsig} anwendbaren Algorithmen werden über eigene \glspl{uri} r
     \label{tab:xml-dsig-signature-method-uri}
 \end{table}
 
+\lstinputlisting[language=HTML,
+                 caption={Beispiel 1 für eine Formatierung in \protect\gls{xml}},
+                 label={lst:xml-format-example-1},
+                 showspaces=true,
+                 showtabs=true,
+                 tab=\rightarrowfill]{source/xml-format-example-1.xml}
+\lstinputlisting[language=HTML,
+                 caption={Beispiel 2 für eine Formatierung in \protect\gls{xml}},
+                 label={lst:xml-format-example-2},
+                 showspaces=true,
+                 showtabs=true,
+                 tab=\rightarrowfill]{source/xml-format-example-2.xml}
+
 Ein besonderes Problem beim Signieren von Inhalten, die im \gls{xml}-Format vorliegen. entsteht wenn mehrere Implementierungen von
 \gls{xml}-Verarbeitungsprogrammen für Dokument jeweils unterschiedliche Formatierungen benutzen. So könnte ein Programm das \gls{xhtml}-Dokument aus
-\fref{lst:xml-c14n-example-1} einlesen und später mit der in \fref{lst:xml-c14n-example-1} gezeigten Formatierung abspeichern. Beide Formate unterscheiden sich
-in der Groß- und Kleinschreibung der Elementnamen, sowie der Verwendung von Leer- und Anführungszeichen oder Apostrophen. Strukturell und inhaltlich sind sie
-trotzdem ident. \todo
+\fref{lst:xml-format-example-1} einlesen und später mit der in \fref{lst:xml-format-example-2} gezeigten Formatierung abspeichern. Beide Formate unterscheiden sich
+in der Groß- und Kleinschreibung der Elementnamen, sowie der Verwendung von Leerzeichen. Strukturell und inhaltlich sind sie trotzdem identisch.
 
 Eine Signatur sollte deshalb nicht auf die binäre Repräsentation eines Dokumentes angewendet werden, sondern idealerweise auf seine kanonisierte
 Struktur und den Inhalt. Dies geschieht bei \gls{xml-dsig} über den Zwischenschritt der \gls{c14n}, welche Struktur und Inhalt in eine kanonische Form überführt,
