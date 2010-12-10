@@ -26,9 +26,6 @@ Element auch mehrfach in einem \gls{xhtml}-Dokument verwendet werden kann, lasse
 
 \lstinputlisting[language=HTML,caption={Verwendung von \xmlelem{link}},label=lst:link,emph={link,href}]{source/link.html}
 
-\section{Mikroformate}
-\todo
-
 \section{XML-Namespaces}
 Direktes Einbetten der Signatur in das Dokument selbst.\todo
 
@@ -40,3 +37,13 @@ Dabei wird das \xmlelem{include}-Element aus dem reservieren \gls{xml-ns} für \
 eines externen \gls{xml}-Dokuments während der Auswertung des Haupt-Dokuments einzubinden. \todo
 
 \lstinputlisting[language=HTML,caption={Verwendung von XInclude},label=lst:xinclude,emph={include,xi}]{source/xinclude.html}
+
+\section{Mikroformate}
+Jede der zuvor vorgestellten Methoden macht es erforderlich zuerst das gesamte Dokument zu laden, um zu garantieren, dass alle Verweise aus den
+\xmlelem{Reference}-Elementen auflösbar sind. Mit einem Mikroformat, das mit fest vorgegebenen Transformationen arbeitet, könnten die verbleibenden variablen
+Informationen aus der \gls{xml-dsig} Struktur in eigene \gls{html}-Attribute eingebettet werden. Die beiden Werte, die nicht vorgegeben werden können sind
+\xmlelem{KeyInfo} sowie \xmlelem{SignatureValue} selbst. 
+Für \xmlelem{Reference} kann angenommen werden, dass es auf die Informationen innerhalb des \gls{xhtml}-Elements verweist, in dem die Attribute des Mikroformats
+angehängt sind. Eine \xmlelem{Transformation} für \gls{c14n} und \gls{sha1} als \xmlelem{DigestMethod} können ebenfalls vorgegeben werden. 
+
+\lstinputlisting[language=HTML,caption={Verwendung von Mikroformaten},label=lst:mikroformat,emph={signature,key,xml-dsig}]{source/mikroformate.html}
