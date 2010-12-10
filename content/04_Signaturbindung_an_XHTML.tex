@@ -1,3 +1,5 @@
+% vim: set tw=160:
+
 \chapter{Bindung an ein XHTML-Dokument}
 \label{chap:Signaturbindung}
 Eine Signatur mit \gls{xml-dsig} hält ihre Verweise zu den signierten Inhalten über die \xmlelem{Reference}-Elemente aus \fref{sec:Signaturbindung:Referenzen}.
@@ -27,11 +29,13 @@ Element auch mehrfach in einem \gls{xhtml}-Dokument verwendet werden kann, lasse
 \lstinputlisting[language=HTML,caption={Verwendung von \xmlelem{link}},label=lst:link,emph={link,href}]{source/link.html}
 
 \section{XML-Namespaces}
+\label{sec:Signaturbindung:XML-NS}
 Direktes Einbetten der Signatur in das Dokument selbst.\todo
 
 \lstinputlisting[language=HTML,caption={Verwendung von XML-Namespaces},label=lst:xmlns,emph={Signature}]{source/xmlns.html}
 
 \section{XInclude}
+\label{sec:Signaturbindung:XInclude}
 XInclude ist eine neue Technologie, die vom W3C entwickelt wurde, um mehrere \gls{xml}-Dokumente in ein gemeinsames Dokument zusammenzuführen \cite{xml:oreilly}.
 Dabei wird das \xmlelem{include}-Element aus dem reservieren \gls{xml-ns} für \gls{xinclude} benutzt um über das \xmlattr{xinclude}{href}-Attribut den \gls{uri}
 eines externen \gls{xml}-Dokuments während der Auswertung des Haupt-Dokuments einzubinden. \todo
@@ -40,10 +44,23 @@ eines externen \gls{xml}-Dokuments während der Auswertung des Haupt-Dokuments e
 
 \section{Mikroformate}
 Jede der zuvor vorgestellten Methoden macht es erforderlich zuerst das gesamte Dokument zu laden, um zu garantieren, dass alle Verweise aus den
-\xmlelem{Reference}-Elementen auflösbar sind. Mit einem Mikroformat, das mit fest vorgegebenen Transformationen arbeitet, könnten die verbleibenden variablen
-Informationen aus der \gls{xml-dsig} Struktur in eigene \gls{html}-Attribute eingebettet werden. Die beiden Werte, die nicht vorgegeben werden können sind
-\xmlelem{KeyInfo} sowie \xmlelem{SignatureValue} selbst. 
-Für \xmlelem{Reference} kann angenommen werden, dass es auf die Informationen innerhalb des \gls{xhtml}-Elements verweist, in dem die Attribute des Mikroformats
-angehängt sind. Eine \xmlelem{Transformation} für \gls{c14n} und \gls{sha1} als \xmlelem{DigestMethod} können ebenfalls vorgegeben werden. 
+\xmlelem{Reference}-Elementen auflösbar sind. Mit einem Mikroformat, das mit einer fest vorgegebenen \gls{xml-dsig}-Struktur arbeitet, könnten die verbleibenden
+variablen Informationen aus der Struktur in eigene \gls{html}-Attribute eingebettet werden. Diese beiden Informationen, die nicht vorgegeben werden können sind
+\xmlelem{KeyInfo} sowie \xmlelem{SignatureValue}. Um diese Attribute von \gls{xhtml} zu trennen müsste ein eigener \gls{xml-ns} geschaffen werden. \todo
+
+Für den Rest der Informationen aus \gls{xml-dsig} wie \xmlelem{Reference} kann angenommen werden, dass es auf die Informationen innerhalb des
+\gls{xhtml}-Elements verweist, in dem die Attribute des Mikroformats angehängt sind. Eine \xmlelem{Transformation} für \gls{c14n} und \gls{sha1} als
+\xmlelem{DigestMethod} können gleichfalls vorgegeben werden. Dadurch kann, bereits während der \gls{webbrowser} das \gls{xhtml}-Dokument lädt, dynamisch eine
+\gls{xml-dsig}-Struktur gebaut und auch ausgewertet werden. Dies hat den Vorteil, dass die Signaturen für Bereiche einer \gls{webseite} ausgewertet werden
+können, bevor das gesamte \gls{xhtml}-Dokument vom \gls{webbrowser} geladen ist. Auch existiert so automatisch eine Zuordnung im \gls{webbrowser} zwischen
+Signatur und signierten Elementen, ohne erst die \xmlelem{Reference}-Elemente auswerten zu müssen.
+
+Ein Nachteil dieser Methode liegt darin, dass Teile der Flexibilität von \gls{xml-dsig} verloren gehen, da immer von vordefinierten \xmlelem{Reference}- und
+\xmlelem{Transformation}-Elementen ausgegangen wird. Die Selektion von einzelenen Elementen je Signatur ist so nicht mehr möglich.
+
+Eine zweite Variante von Mikroformaten ähnelt der in \fref{sec:Signaturbindung:XML-NS} beschriebenen Methode mit \gls{xml-ns}. Dabei wird ein externes
+\gls{xml-dsig}-Dokument mit einen \gls{url} in einem Attribut aus einem eigenen \gls{xml-ns} referenziert. Dieses \gls{xml-dsig} bietet dann wieder die volle
+Flexibilität, könnte aber so ausgelegt werden, dass nur Informationen selektiert und signiert werden können, die sich wie bei der ersten Variante unterhalb des
+\gls{xhtml}-Elements mit dem entsprechenden Attribut befinden. \todo
 
 \lstinputlisting[language=HTML,caption={Verwendung von Mikroformaten},label=lst:mikroformat,emph={signature,key,xml-dsig}]{source/mikroformate.html}
