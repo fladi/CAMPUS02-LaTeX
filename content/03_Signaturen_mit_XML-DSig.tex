@@ -17,7 +17,7 @@ Im folgenden werden die einzelnen Elemente dieser Struktur in ihrer Funktion nä
 \section{Schlüsselinformation}
 Das optionale Element \xmlelem{KeyInfo} enthält Informationen zur Schlüssel, der bei der Erstellung der Signatur verwendet wurde. Diese Informationen sollen es
 ermöglichen, dass der Empfänger die notwendigen Informationen zur Validierung der Signatur beziehen kann. \gls{xml-dsig} definiert eine Menge von
-Schlüsseltypen, unter anderem für \gls{x509} und \gls{openpgp}, die jedoch auch abhängig von der Anwendung mit Hilfe neuer \gls{xml}-Namespaces erweitert werden
+Schlüsseltypen, unter anderem für \gls{x509} und \gls{openpgp}, die jedoch auch abhängig von der Anwendung mit Hilfe neuer \glspl{xml-ns} erweitert werden
 können. Das in \fref{lst:xml-dsig-keyinfo} dargestellte \gls{xml}-Schema zeigt die bereits definierten Elemente von \gls{xml-dsig} zur Aufnahme von
 Schlüsselinformationen.
 
@@ -28,16 +28,16 @@ Lage ist, die nötigen Schlüsselinformationen zu beziehen.
 
 Über \xmlelem{KeyName} ist es dem Ersteller der Signatur möglich, den Schlüssel zu benennen, der für die Signatur benutzt wurde. Für \gls{x509} kann dies ein
 \gls{dn} sein, für \gls{openpgp} eine E-Mail-Adresse. Über \xmlelem{KeyValue} ist es auch möglich, die für den \gls{dsa} oder das \gls{rsa} Verfahren
-benötigten, Schlüsselinformationen direkt in der Signatur einzubetten.
+benötigten, Schlüsselinformationen direkt in der Signatur einzubetten.  
 
 Alternativ können über das Element \xmlelem{RetrievalMethod} Schlüsselinformationen über \glspl{uri} referenziert werden. Dies können zum Beispiel
-\gls{x509}-Zertifikate sein, die bereits in der zu signierenden \gls{xml}-Datei enthalten sind. Das Verhalten von \xmlelem{RetrievalMethod} entspricht bis auf
-das Fehlen der Elemente \xmlelem{DigestMethod} und \xmlelem{DigestValue} dem des Elements \xmlelem{Reference} welches in \fref{sec:Signaturbindung:Referenzen}
-näher beschrieben wird.
+\gls{x509}-Zertifikate sein, die bereits in dem zu signierenden \gls{xml}-Dokument enthalten sind. \xmlelem{RetrievalMethod} entspricht bis auf
+das Fehlen der Elemente \xmlelem{DigestMethod} und \xmlelem{DigestValue}i in seinem Verhalten dem Element \xmlelem{Reference} welches in 
+\fref{sec:Signaturbindung:Referenzen} näher beschrieben wird.
 
 \subsection{OpenPGP}
 Für Schlüssel nach \gls{openpgp} wird das Element \xmlelem{PGPData} im \gls{xml-ns} \url{http://www.w3.org/2000/09/xmldsig#PGPData} definiert. Es ist in der
-Lage, zwei weitere Elemente aufzunehmen: \xmlelem{PGPKeyID} nimmt die Schlüssel-ID eines \gls{openpgp}-Schlüsselpaares auf, welche aus 8 \glspl{oktett} besteht und die
+Lage, zwei weitere Elemente aufzunehmen: \xmlelem{PGPKeyID} nimmt die ID eines \gls{openpgp}-Schlüsselpaares auf, welche aus 8 \glspl{oktett} besteht und die
 niedrigsten 64 Bit aus der \gls{sha1} Prüfsumme des Schlüssels darstellen \cite{openpgp:ietf}. Über die \xmlelem{PGPKeyID} ist der passende Schlüssel bereits eindeutig
 identifiziert, es besteht mit dem Element \xmlelem{PGPKeyPacket} jedoch auch die Variante, den vollständigen öffentlichen Teil des Schlüsselpaares in der
 Signatur einzubetten. Dafür wird das Schlüsselmaterial mit \gls{base64} kodiert und als Inhalt in das Element geschrieben \cite{xml-dsig:w3c}. Mindestens eines
@@ -50,7 +50,7 @@ vollständige Kopie in der Signatur eingebettet.
 \lstinputlisting[language=XML,caption={Beispiel einer Struktur für \protect\xmlelem{PGPData}},label=lst:xml-dsig-keyinfo-openpgp,emph={PGPData,PGPKeyID,PGPKeyPacket}]{source/xml-dsig-keyinfo-openpgp.xml}
 
 \subsection{X.509}
-Informationen über ein für die Signatur verwendetes \gls{x509}-Zertifikat können unterhalb des Elements \xmlelem{X509Data} im \gls{xml-ns}
+Informationen über ein für die Signatur verwendetes \gls{x509}-Zertifikat können unterhalb des Elements \xmlelem{X509Data} im dafür vorgesehenen \gls{xml-ns}
 \url{http://www.w3.org/2000/09/xmldsig#X509Data} abgelegt werden. 
 Ähnlich wie \xmlelem{PGPData} enthält es Schlüsselinformationen die zur Validierung der Signatur benötigt werden.  Dafür muss mindestens eines der Elemente aus
 \fref{tab:x509data-elements} vorhanden sein. Wenn zwei oder mehrere dieser Elemente sich innerhalb eines \xmlelem{X509Data} befinden, so müssen sie alle das
@@ -104,7 +104,7 @@ Ein besonderes Problem beim Signieren von Inhalten, die im \gls{xml}-Format vorl
 \gls{xml}-Verarbeitungsprogrammen für Dokument jeweils unterschiedliche Formatierungen benutzen. So könnte ein Programm das \gls{xhtml}-Dokument aus
 \fref{lst:xml-c14n-example-1} einlesen und später mit der in \fref{lst:xml-c14n-example-1} gezeigten Formatierung abspeichern. Beide Formate unterscheiden sich
 in der Groß- und Kleinschreibung der Elementnamen, sowie der Verwendung von Leer- und Anführungszeichen oder Apostrophen. Strukturell und inhaltlich sind sie
-trotzdem ident.
+trotzdem ident. \todo
 
 Eine Signatur sollte deshalb nicht auf die binäre Repräsentation eines Dokumentes angewendet werden, sondern idealerweise auf seine kanonisierte
 Struktur und den Inhalt. Dies geschieht bei \gls{xml-dsig} über den Zwischenschritt der \gls{c14n}, welche Struktur und Inhalt in eine kanonische Form überführt,
@@ -114,10 +114,10 @@ kann und nur Änderungen an der Struktur oder dem Inhalt die Gültigkeit der Sig
 Bei \gls{xml-dsig} wird die Signatur nicht direkt über die zu schützenden Informationen gebildet, sondern es werden die gesamten Informationen innerhalb von
 \xmlelem{SignedInfo} signiert. Die Verbindung zwischen den zu schützenden Informationen und der Signatur wird in \fref{sec:XML-DSig:Referenzen} näher erläutert.
 
-Da \xmlelem{SignedInfo} selbst diesen Problemen mit unterschiedlichen Formatierungen unterliegt, wird über das obligatorische Attribut
-\xmlattr{CanonicalizationMethod}{Algorithm} des Elements \xmlelem{CanonicalizationMethod} ein Algorithmus angegeben, der
-die Umwandlung von \xmlelem{SignedInfo} in ein kanonisches Format festlegt. Innerhalb von \xmlelem{SignedInfo} muss das Element \xmlelem{CanonicalizationMethod}
-genau einmal vorhanden sein.
+Da \xmlelem{SignedInfo} selbst dem Problem der unterschiedlichen Formatierungen unterliegt, wird über das Element \xmlelem{CanonicalizationMethod} ein
+Algorithmus angegeben, der die Umwandlung von \xmlelem{SignedInfo} in ein kanonisches Format festlegt. Innerhalb von \xmlelem{SignedInfo} muss das Element
+\xmlelem{CanonicalizationMethod} genau einmal vorhanden sein. Der Algorithmus wird über das obligatorische Attribut \xmlattr{CanonicalizationMethod}{Algorithm}
+bei \xmlelem{CanonicalizationMethod} definiert. Als Wert kommt eine von vier möglichen \glspl{uri} zu Einsatz, welche in \cite{xml-dsig:w3c} spezifiziert sind.
 
 Es gibt jedoch Szenarien, in denen die \gls{c14n} dazu führt, dass die Signatur noch gültig bleibt, auch wenn Teile der signierten Information verändert wurden.
 \todo
