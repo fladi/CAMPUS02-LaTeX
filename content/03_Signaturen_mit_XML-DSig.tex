@@ -113,13 +113,13 @@ Alle in \gls{xml-dsig} anwendbaren Algorithmen werden über eigene \glspl{uri} r
                  showtabs=true,
                  tab=\rightarrowfill]{source/xml-format-example-2.xml}
 
-Ein besonderes Problem beim Signieren von Inhalten, die im \gls{xml}-Format vorliegen. entsteht wenn mehrere Implementierungen von
-\gls{xml}-Verarbeitungsprogrammen für Dokument jeweils unterschiedliche Formatierungen benutzen. So könnte ein Programm das \gls{xhtml}-Dokument aus
+Ein besonderes Problem beim Signieren von Inhalten, die im \gls{xml}-Format vorliegen entsteht, wenn mehrere Implementierungen von
+\gls{xml}-Verarbeitungsprogrammen, jeweils unterschiedliche Formatierungen benutzen. So könnte ein Verarbeitungsprogramm das \gls{xhtml}-Dokument aus
 \fref{lst:xml-format-example-1} einlesen und später mit der in \fref{lst:xml-format-example-2} gezeigten Formatierung abspeichern. Beide Formate unterscheiden sich
 in der Groß- und Kleinschreibung der Elementnamen, sowie der Verwendung von Leerzeichen. Strukturell und inhaltlich sind sie trotzdem identisch.
 
 Eine Signatur sollte deshalb nicht auf die binäre Repräsentation eines Dokumentes angewendet werden, sondern idealerweise auf seine kanonisierte
-Struktur und den Inhalt. Dies geschieht bei \gls{xml-dsig} über den Zwischenschritt der \gls{c14n}, welche Struktur und Inhalt in eine kanonische Form überführt,
+Struktur und den Inhalt. Dies geschieht bei \gls{xml-dsig} über den Zwischenschritt der \gls{c14n}, welche Struktur und Inhalt von \gls{xml} in eine kanonische Form überführt,
 welche dann schließlich die zu signierenden Information bildet. Dadurch wird sichergestellt, dass die Signatur unabhängig von der Formatierung überprüft werden
 kann und nur Änderungen an der Struktur oder dem Inhalt die Gültigkeit der Signatur beeinflussen. 
 
