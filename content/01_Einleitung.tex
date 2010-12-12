@@ -6,12 +6,12 @@
 \section{Ausgangssituation}
 \label{sec:Einleitung:ausgangssituation}
 Kryptographische Merkmale wie Vertraulichkeit, Authentizität und Integrität von digitalen Inhalten gewinnen in einem wachsenden globalen Netzwerk immer
-stärker an Bedeutung. So lag die Anzahl von \gls{ssl}-fähigen Webservern bei \num{10.8e6} und den darauf eingesetzten gültigen Zertifikaten im Juli 2010 bei
+stärker an Bedeutung. So lag die Anzahl von \gls{ssl}-fähigen Webservern im Juli 2010 bei \num{10.8e6} und den darauf eingesetzten gültigen Zertifikaten bei
 \num{4.3e6} \cite{ssliverse:eff}.
 
 \gls{ssl}/\gls{tls} dient jedoch nur der Vertraulichkeit sowie der Integrität der Gesamtheit aller übertragenen Daten und der Authentizität zwischen den Peers
 einer unidirektionalen  Kommunikation, wie sie zum Beispiel beim \gls{https} zur Anwendung kommt \cite{kits}. Aktive (umleiten der Verbindung) und passive
-Angriffe (Lesen der übertragenen Daten) lassen sich dadurch verhindern. Eine Prüfung, ob die der gesamte übertragen Inhalt, oder Teile dessen, authentischen
+Angriffe (Lesen der übertragenen Daten) lassen sich dadurch verhindern. Eine Prüfung, ob der gesamte übertrage Inhalt, oder Teile dessen, authentischen
 Ursprungs sind, ist damit jedoch nicht möglich.
 
 In anderen Bereichen der Kommunikation wie E-Mail und \gls{im} gehören Verfahren zum Nachweis der Identität des Absenders und der Integrität der Nachricht
@@ -21,11 +21,11 @@ Verschlüsselungsverfahren zu erstellen \cite{kits}. Dabei wird vom Verfasser ei
 in der Lage, die in der Nachricht signierten Teile zu verifizieren.
 
 Mit dem Aufkommen des Web 2.0 entstand auf vielen \glspl{website} für die Besucher die Möglichkeit, eigene Inhalte einzubinden oder bestehende Inhalte weiter zu
-verwenden. Der Betreiber einer \gls{website} wurde dadurch vom alleinigen Bereitsteller zu einem Verwalter von Informationen. Für Besucher solcher Seiten mit
-gemischten redaktionellen und benutzergenerierten Inhalten existiert noch keine Möglichkeit, diese Trennung auch kryptografisch sicher nachvollziehen zu können.
-Das Vertrauen eines Besuchers in die Identität des Urhebers und die Integrität der Inhalte kann deshalb nur über die optische Darstellung gebildet werden. Eine
-optische Trennung von Inhalten bietet jedoch noch keine gesicherte Information über Authentizität und Integrität. Hier bieten sich digitale Signaturen  an, um
-genau dieses Bedürfnis nach kryptografisch sicherer Auszeichnung von Inhalten einer \gls{website} erfüllen.
+verwenden. Der Betreiber einer \gls{website} wurde dadurch vom alleinigen Bereitsteller zu einem Verwalter von Informationen. Für Besucher solcher
+\glspl{website} mit gemischten redaktionellen und benutzergenerierten Inhalten existiert noch keine Möglichkeit, diese Trennung auch kryptografisch sicher
+nachvollziehen zu können. Das Vertrauen eines Besuchers in die Identität des Urhebers und die Integrität der Inhalte kann deshalb nur über die optische
+Darstellung gebildet werden. Eine derartige, rudimentäre Trennung von Inhalten bietet jedoch noch keine gesicherte Information über Authentizität und
+Integrität. Hier bieten sich digitale Signaturen an, um genau dieses Bedürfnis nach kryptografisch sicherer Auszeichnung von Inhalten einer \gls{website} erfüllen.
 
 \section{Aufgabenstellung}
 \label{sec:Einleitung:aufgabenstellung}
@@ -33,19 +33,19 @@ Die primäre Aufgabenstellung dieser Arbeit besteht darin, zu bestimmen, welche 
 \gls{xhtml}-Dokumente einer \gls{website} gestellt werden. Folgende Aspekte sollen deshalb in dieser Arbeit erläutert werden:
 \begin{itemize}
     \item Wie können digitale Signaturen in \gls{xhtml} integriert werden, ohne dass der entsprechende W3C-Standard \cite{xhtml:w3c} erweitert werden muss?
-    \item Welche Möglichkeiten bietet \gls{xml-dsig} zur wahlfreien Selektion von Bereichen innerhalb eines \gls{xhtml}-Dokuments?
+    \item Welche Möglichkeiten bietet \gls{xml-dsig} \cite{xml-dsig:w3c} zur wahlfreien Selektion von Bereichen innerhalb eines \gls{xhtml}-Dokuments?
     \item Wie können die öffentlichen Schlüssel zu den Signaturen verteilt werden? Welche der bestehenden Technologien eignen sich dafür am besten?
 \end{itemize}
 
 \section{Zielsetzung der Arbeit}
 \label{sec:Einleitung:ziele}
-Diese Arbeit wird die Eignung der vorhandenen Signaturverfahren für \gls{xml}, sowie die einhergehenden Möglichkeiten zur Schlüsselverteilung
+Diese Arbeit wird die Eignung der vorhandenen Signaturverfahren für die \gls{xml}, sowie die einhergehenden Möglichkeiten zur Schlüsselverteilung
 behandeln. Um den praktischen Nutzen eines solchen Verfahrens zu demonstrieren soll auch aufgezeigt werden, welche Arten von Angriffen auf Inhalte durch
 digitale Signaturen in \gls{xhtml} verhindert werden können.
 
 Nicht behandelt wird die Erstellung eines neuen Signaturverfahrens, eines neuen Signaturmodells für \gls{xml} oder die Erweiterung des bestehenden
 \gls{xhtml}-Standards. Auch ist eine Implementierung eines Browser-Plugins nicht im Rahmen dieser Arbeit vorgesehen. Die \gls{html} wird nicht behandelt, da es
-sich dabei nicht um ein mit \gls{xml} kompatibles Format handelt.
+sich dabei nicht um ein \gls{sgml}-Format handelt, welches nicht mit \gls{xml} kompatibel ist.
 
 %\section{Vorgehen und Methodik}
 %\label{sec:Einleitung:methodik}

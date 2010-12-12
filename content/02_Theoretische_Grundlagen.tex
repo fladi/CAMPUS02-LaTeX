@@ -4,21 +4,21 @@
 \label{chap:GrundlagenDefinitionen}
 
 Zum Verständnis der folgenden Kapitel wird ein grundlegendes Verständnis von \gls{xml}, \gls{xhtml} und asymmetrischer Kryptographie vorausgesetzt.
-Themenbereiche wie digitale Signaturen und für diese Arbeit relevanten Techniken die vor allem in Verbindung mit \glspl{website} vorkommen werden hier kurz
+Themenbereiche wie digitale Signaturen und für diese Arbeit relevanten Techniken, die vor allem in Verbindung mit \glspl{website} vorkommen, werden hier kurz
 dargestellt. Dazu gehören vor allem \gls{openpgp}, \gls{x509} und \gls{xml-dsig}.
 
 \section{Website}
 \index{Website}
 \label{sec:GrundlagenDefinitionen:Website}
 Eine Webseite repräsentiert eine Menge von Dateien, die unter dem gemeinsamen Namensraum einer, oder auch mehrerer Domains mit dem selben Bezug, abrufbar sind.
-Zu diesen Dateien gehören vorrangig \gls{html}- und \gls{xhtml}-Dokumente, \gls{css}-Vorlagen und \gls{javascript}-Skripte, sowie auch komplementäre Bild-, Ton- und
+Zu diesen Dateien gehören vorrangig \gls{html}- und \gls{xhtml}-Dokumente, \gls{css} und \gls{javascript}, sowie auch komplementäre Bild-, Ton- und
 Videodateien.
 
 \section{Webseite}
 \index{Webseite}
 \label{sec:GrundlagenDefinitionen:Webseiten}
 Der Begriff einer \gls{webseite} bezeichnet ein einzelnes \gls{html}- oder \gls{xhtml}-Dokument inklusive aller von ihm zur Darstellung referenzierten
-Inhalte wie \gls{css}-Vorlagen und \gls{javascript}-Skripte, sowie auch komplementäre Bild-, Ton- und Videodateien. Inhalte auf die mittels \gls{html}-Links, wie sie
+Inhalte wie \gls{css}-Dateien und \gls{javascript}, sowie auch komplementäre Bild-, Ton- und Videodateien. Inhalte, auf die mittels \gls{html}-Links, wie sie
 von \xmlelem{a}-Elementen erzeugt werden, verwiesen wird, gehören nicht zum Umfang einer Webseite, da sie nicht direkt in die Darstellung in einem
 \gls{webbrowser} einfließen.
 
@@ -31,7 +31,7 @@ ergänzenden Darstellung von \gls{xhtml} nutzen, ist nicht sichergestellt, dass 
 grafischen Darstellung des selben Dokumentes einnimmt. Umgekehrt können unterschiedliche Zweige aus dem \gls{dom}-Baum bei der Darstellung zu einem
 geschlossenen Bereich zusammengeführt werden.
 
-Als ein Bereich wird im Rahmen dieser Arbeit die Positionierung eines oder mehrerer Elemente innerhalb eines \gls{dom}-Baumes definiert, nicht die grafische
+Als ein Bereich wird, im Rahmen dieser Arbeit, die Positionierung eines oder mehrerer Elemente innerhalb eines \gls{dom}-Baumes definiert, nicht die grafische
 Darstellung in einem \gls{webbrowser}.
 
 \section{Digitale Signaturen}
@@ -64,7 +64,7 @@ Eigenschaften der Authentizität und der Integrität mit ein \cite{kits}.
 \index{Digitale Signaturverfahren}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren}
 Ein digitales Signaturverfahren stellt ein Verfahren dar, mit welchem eine Entität ihre Identität an eine Information binden kann. Der Vorgang des Signierens
-wird durch das Transformieren der Information und eines Geheimnisses, das nur dem Urheber gekannt ist, in eine Signatur definiert \cite{hac}.
+wird durch das Transformieren der Information und eines Geheimnisses, das nur dem Urheber gekannt ist, in eine Signatur, definiert \cite{hac}.
 
 Ein Signaturverfahren bildet dabei für eine, zu signierende Nachricht, den passenden Hash-Wert und erzeugt mit dem privaten Schlüssel die Signaturinformation.
 Diese Information wird nun in das, dem Verfahren entsprechende, Format transformiert und der Nachricht beigefügt.
@@ -81,9 +81,7 @@ den Signatur-Betrieb eingegangen.
 schützen. Eine der Motivationen während der Entwicklung waren die wiederholten Abhöraktionen der Bürgerrechtsbewegungen in den Vereinigten Staaten von Amerika
 durch die dortigen Geheimdienste \cite{singh:messages}.
 
-Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und ist im RFC4880 \cite{openpgp:ietf} festgelegt. Dabei werden zwei Betriebsarten,
-Signieren und Verschlüsseln festgelegt.
-
+Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und seine Eigenschaften sind im RFC4880 \cite{openpgp:ietf} festgelegt.
 
 \subsection{X.509}
 \index{\gls{x509}}
@@ -134,7 +132,7 @@ mehreren \glspl{cot} dar.
 Die Anzahl der Ebenen in einem \gls{pki}-Baum unterliegt keiner Beschränkung, jedoch muss einem Zertifikat explizit das Recht eingeräumt werden, andere
 Zertifikate unter ihr zu signieren \cite{kits}. Im Internet existiert heute eine große Anzahl von \glspl{ca}, welche von Staaten, Unternehmen oder auch
 Non-Profit-Organisationen betrieben werden. Zwischen diesen einzelnen Bäumen besteht keine Verbindung und auch keine Vertrauensbeziehung. Deshalb vertraut bei
-einer \gls{pki} jeder Teilnehmer einer von ihm (oder seinem Softwaredistributor) ausgewählten Menge an \glspl{ca}. \cite{ssliverse:eff}
+einer \gls{pki} jeder Teilnehmer einer von ihm (oder seinem Softwaredistributor) ausgewählten Menge an \glspl{ca} \cite{ssliverse:eff}.
 
 \begin{figure}
 \centering
