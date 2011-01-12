@@ -160,11 +160,32 @@ Als Transformationen stehen \gls{c14n}, \gls{base64}, \gls{xpath} und \gls{xslt}
 einem \gls{xml}-Dokument zu extrahieren und somit den Bereich der Signatur exakt zu begrenzen. \gls{c14n} bietet sich als eine der letzten
 Transformationen in der Reihe an, da sie die Überführung des Transformationsergebnisses in eine kanonische Form bewerkstelligt und somit wieder Struktur und
 Inhalt von der Formatierung trennt. Eine Transformation mit \gls{base64} ist nur bei Referenzen auf binäre Daten sinnvoll. Da \gls{base64} kein gültiges
-\gls{xml} als Ausgabe der Transformation liefert, sind nachgeschaltete Transformationen mit \gls{xpath} und \gls{xslt} nicht mehr möglich.
+\gls{xml} als Ausgabe der Transformation liefert, sind nachgeschaltete Transformationen mit \gls{xpath} und \gls{xslt} nicht mehr möglich \cite{xml-dsig:w3c}.
 
 \subsection{XPath}
 \index{XPath}
 \label{sec:XML-DSig:Transformationen:XPath}
+Um auf bestimmte Bereiche in einem \gls{xml}-Dokument zu zugreifen, eignet sich besonders \gls{xpath}. Es handelt sich dabei um eine Abfragesprache um Teile
+eines \gls{xml}-Dokuments zu addressieren. Sie wurde für die Verwendung in \gls{xslt} und \gls{xpointer} entworfen \cite{xpath:w3c}, findet aber auch direkt in \gls{xml-dsig}
+Verwendung.
+
+Bei einer Transformation mit \gls{xpath} muss die Eingabe aus gültigen \gls{xml}-Knoten bestehen. Diese können entweder direkt aus einem \gls{xml}-Dokument
+stammen oder einer vorhergegangenen \gls{xpath}- oder \gls{xslt}-Transformation. Der in der Transformation anzuwendende \gls{xpath}-Ausdruck wird auf jeden Knoten
+in den Eingabedaten angewendet und das Ergebnis überprüft. Trifft der Ausdruck auf den Knoten zu, wird der Knoten in die Ausgabe der Transformation übernommen,
+anderenfalls wird er nicht weitergegeben.
+
+\lstinputlisting[language=XML,caption={Filtern der eigenen Signatur aus einem Dokument},label={lst:xml-dsig-transformation-xpath},emph={XPath}]{source/xml-dsig-transformation-xpath.xml}
+
+In \fref{lst:xml-dsig-transformation-xpath} wird gezeigt, wie \gls{xpath} dazu benutzt werden kann, die Elemente der eigenen \gls{xml-dsig}-Signatur aus den zu
+signierenden Informationen zu filtern. Dies kann notwendig sein, wenn ein \xmlelem{Reference}-Element der Signatur auf das Dokument verweist, in dem die
+Signatur selbst hinterlegt ist und somit Bestandteil der signierten Informationen wäre. Dies würde dazu führen, dass die Hash-Prüfsummen nicht korrekt wären, da
+sie noch nicht Elemente wie \xmlelem{SignatureValue} berücksichtigen würden, welche erst nach Erstellung der Prüfsummen in die Signatur eingefügt werden können.
+Die dafür benutze Bedingung \texttt{here()} in \fref{lin:xml-dsig-transformation-xpath-here} ist nicht Teil der \gls{xpath}-Spezifikation und ist nur im Kontext
+von \gls{xml-dsig}-Transformationen gültig \cite{xml-dsig:w3c}.
+
+Neben der allgemeinen Spezifikation 1.0 von \gls{xpath} \cite{xpath:w3c} wird auch eine eigene Abwandlung it dem Namen "`XML-Signature XPath Filter 2.0"'
+\cite{xml-dsig-filter:w3c} untersützt, welche mehrere Filter in einer Transformation, sowie Schnittmengenbildung, Subtraktion und Vereinigung zwischen
+Knoten-Mengen erlaubt.
 
 \subsection{XSLT}
 \index{XSLT}

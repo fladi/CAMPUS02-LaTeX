@@ -1,0 +1,24 @@
+<Document>
+...   
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+    ...
+    <Reference URI="">
+        <Transforms>
+            <Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">
+                <XPath xmlns:dsig="&dsig;">
+                count(ancestor-or-self::dsig:Signature |
+                @\label{lin:xml-dsig-transformation-xpath-here}@here()/ancestor::dsig:Signature[1]) >
+                count(ancestor-or-self::dsig:Signature)
+                </XPath>
+            </Transform>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+        <DigestValue></DigestValue>
+    </Reference>
+    </SignedInfo>
+    <SignatureValue></SignatureValue>
+</Signature>
+...
+</Document>
+
