@@ -10,7 +10,10 @@ notwendigen Schlüsselinformationen aufnimmt. Um \gls{xml-dsig} von anderen \gls
 Eine Signatur mit \gls{xml-dsig} besteht aus mehreren Elementen die sich alle innerhalb von \xmlelem{Signature} befinden. \fref{lst:xml-dsig-structure} zeigt
 die grundlegende Struktur einer Signatur mit \gls{xml-dsig}.
 
-\lstinputlisting[language=XML,caption={Struktur von \texorpdfstring{\protect\Glsentryname{xml-dsig}}{XML-DSig}},label=lst:xml-dsig-structure,emph={Signature}]{source/xml-dsig-structure.xml}
+\lstinputlisting[language=XML,
+                 caption={Struktur von \texorpdfstring{\protect\Glsentryname{xml-dsig}}{XML-DSig}},
+                 label=lst:xml-dsig-structure,
+                 emph={Signature}]{source/xml-dsig-structure.xml}
 
 Im folgenden werden die einzelnen Elemente dieser Struktur in ihrer Funktion näher beschrieben. 
 
@@ -21,7 +24,10 @@ Schlüsseltypen, unter anderem für \gls{x509} und \gls{openpgp}, die jedoch auc
 können. Das in \fref{lst:xml-dsig-keyinfo} dargestellte \gls{xml}-Schema zeigt die bereits definierten Elemente von \gls{xml-dsig} zur Aufnahme von
 Schlüsselinformationen.
 
-\lstinputlisting[language=XML,caption={Schema von \protect\xmlelem{KeyInfo}},label=lst:xml-dsig-keyinfo,emph={element}]{source/xml-dsig-keyinfo.xml}
+\lstinputlisting[language=XML,
+                 caption={Schema von \protect\xmlelem{KeyInfo}},
+                 label=lst:xml-dsig-keyinfo,
+                 emph={element}]{source/xml-dsig-keyinfo.xml}
 
 Ist \xmlelem{KeyInfo} nicht Bestandteil der Signatur, dann wird davon ausgegangen, dass der Empfänger über den Kontext der Nachricht und der Signatur in der
 Lage ist, die nötigen Schlüsselinformationen zu beziehen.
@@ -47,7 +53,10 @@ der beiden Elemente muss innerhalb von \xmlelem{PGPData} vorhanden sein. Wenn be
 referenzieren. In \fref{lin:xml-dsig-keyinfo-openpgp-keyid} wird der Schlüssel über seine ID verankert und ab \fref{lin:xml-dsig-keyinfo-openpgp-keypacket} als
 vollständige Kopie in der Signatur eingebettet.
 
-\lstinputlisting[language=XML,caption={Beispiel einer Struktur für \protect\xmlelem{PGPData}},label=lst:xml-dsig-keyinfo-openpgp,emph={PGPData,PGPKeyID,PGPKeyPacket}]{source/xml-dsig-keyinfo-openpgp.xml}
+\lstinputlisting[language=XML,
+                 caption={Beispiel einer Struktur für \protect\xmlelem{PGPData}},
+                 label=lst:xml-dsig-keyinfo-openpgp,
+                 emph={PGPData,PGPKeyID,PGPKeyPacket}]{source/xml-dsig-keyinfo-openpgp.xml}
 
 \subsection{X.509}
 Informationen über ein für die Signatur verwendetes \gls{x509}-Zertifikat können unterhalb des Elements \xmlelem{X509Data} im dafür vorgesehenen \gls{xml-ns}
@@ -75,7 +84,11 @@ selbe Zertifikat referenzieren. In \fref{lst:xml-dsig-keyinfo-x509} sind drei Ze
     \label{tab:x509data-elements}
 \end{table}
 
-\lstinputlisting[float=b,language=XML,caption={Beispiel einer Struktur für \protect\xmlelem{X509Data}},label=lst:xml-dsig-keyinfo-x509,emph={X509Data,X509IssuerSerial,X509SKI,X509Certificate,X509SubjectName}]{source/xml-dsig-keyinfo-x509.xml}
+\lstinputlisting[float=b,
+                 language=XML,
+                 caption={Beispiel einer Struktur für \protect\xmlelem{X509Data}},
+                 label=lst:xml-dsig-keyinfo-x509,
+                 emph={X509Data,X509IssuerSerial,X509SKI,X509Certificate,X509SubjectName}]{source/xml-dsig-keyinfo-x509.xml}
 
 \section{Signaturinformation}
 Analog zu \xmlelem{KeyInfo} wird das Element \xmlelem{SignedInfo} verwendet um Informationen über die Signatur selbst zu speichern. Dazu gehören die benutzte
@@ -106,6 +119,7 @@ Alle in \gls{xml-dsig} anwendbaren Algorithmen werden über eigene \glspl{uri} r
                  showspaces=true,
                  showtabs=true,
                  tab=\rightarrowfill]{source/xml-format-example-1.xml}
+
 \lstinputlisting[language=HTML,
                  caption={Beispiel 2 für eine Formatierung in \protect\gls{xml}},
                  label={lst:xml-format-example-2},
@@ -119,9 +133,9 @@ Ein besonderes Problem beim Signieren von Inhalten, die im \gls{xml}-Format vorl
 in der Groß- und Kleinschreibung der Elementnamen, sowie der Verwendung von Leerzeichen. Strukturell und inhaltlich sind sie trotzdem identisch.
 
 Eine Signatur sollte deshalb nicht auf die binäre Repräsentation eines Dokumentes angewendet werden, sondern idealerweise auf seine kanonisierte
-Struktur und den Inhalt. Dies geschieht bei \gls{xml-dsig} über den Zwischenschritt der \gls{c14n}, welche Struktur und Inhalt von \gls{xml} in eine kanonische Form überführt,
-welche dann schließlich die zu signierenden Information bildet. Dadurch wird sichergestellt, dass die Signatur unabhängig von der Formatierung überprüft werden
-kann und nur Änderungen an der Struktur oder dem Inhalt die Integrität der Signatur beeinflussen. 
+Struktur und den Inhalt. Dies geschieht bei \gls{xml-dsig} über den Zwischenschritt der \gls{c14n}, welche Struktur und Inhalt von \gls{xml} in eine kanonische 
+Form überführt, welche dann schließlich die zu signierenden Information bildet. Dadurch wird sichergestellt, dass die Signatur unabhängig von der Formatierung 
+überprüft werden kann und nur Änderungen an der Struktur oder dem Inhalt die Integrität der Signatur beeinflussen. 
 
 Bei \gls{xml-dsig} wird die Signatur nicht direkt über die zu schützenden Informationen gebildet, sondern es werden die gesamten Informationen innerhalb von
 \xmlelem{SignedInfo} signiert. Die Verbindung zwischen den zu schützenden Informationen und der Signatur wird in \fref{sec:XML-DSig:Referenzen} näher erläutert.
@@ -141,7 +155,10 @@ Entwickler von \gls{xml-dsig} empfehlen, dass zumindest \glspl{uri} aus dem \gls
 Beispiel für Informationen die über \gls{http} referenziert werden ist in \fref{lst:xml-dsig-signedinfo-reference} in der
 \fref{lin:xml-dsig-signedinfo-reference-http} zu sehen.
 
-\lstinputlisting[language=XML,caption={Beispiele für \protect\xmlelem{Reference}},label={lst:xml-dsig-signedinfo-reference},emph={Reference}]{source/xml-dsig-signedinfo-reference.xml}
+\lstinputlisting[language=XML,
+                 caption={Beispiele für \protect\xmlelem{Reference}},
+                 label={lst:xml-dsig-signedinfo-reference},
+                 emph={Reference}]{source/xml-dsig-signedinfo-reference.xml}
 
 Es können jedoch auch Informationen referenziert werden, die sich im selben \gls{xml}-Dokument wie die Signatur befinden. Dafür können im Attribut
 \xmlattr{Reference}{URI} auch \gls{xpointer} benutzt werden. Dabei muss sichergestellt werden, dass der Verweis gültige \gls{xml}-Elemente findet.
@@ -166,15 +183,18 @@ Inhalt von der Formatierung trennt. Eine Transformation mit \gls{base64} ist nur
 \index{XPath}
 \label{sec:XML-DSig:Transformationen:XPath}
 Um auf bestimmte Bereiche in einem \gls{xml}-Dokument zu zugreifen, eignet sich besonders \gls{xpath}. Es handelt sich dabei um eine Abfragesprache um Teile
-eines \gls{xml}-Dokuments zu addressieren. Sie wurde für die Verwendung in \gls{xslt} und \gls{xpointer} entworfen \cite{xpath:w3c}, findet aber auch direkt in \gls{xml-dsig}
-Verwendung.
+eines \gls{xml}-Dokuments zu adressieren. Sie wurde für die Verwendung in \gls{xslt} und \gls{xpointer} entworfen \cite{xpath:w3c}, findet aber auch direkt in 
+\gls{xml-dsig} Verwendung.
 
 Bei einer Transformation mit \gls{xpath} muss die Eingabe aus gültigen \gls{xml}-Knoten bestehen. Diese können entweder direkt aus einem \gls{xml}-Dokument
 stammen oder einer vorhergegangenen \gls{xpath}- oder \gls{xslt}-Transformation. Der in der Transformation anzuwendende \gls{xpath}-Ausdruck wird auf jeden Knoten
 in den Eingabedaten angewendet und das Ergebnis überprüft. Trifft der Ausdruck auf den Knoten zu, wird der Knoten in die Ausgabe der Transformation übernommen,
 anderenfalls wird er nicht weitergegeben.
 
-\lstinputlisting[language=XML,caption={Filtern der eigenen Signatur aus einem Dokument},label={lst:xml-dsig-transformation-xpath},emph={XPath}]{source/xml-dsig-transformation-xpath.xml}
+\lstinputlisting[language=XML,
+                 caption={Filtern der eigenen Signatur aus einem Dokument},
+                 label={lst:xml-dsig-transformation-xpath},
+                 emph={XPath}]{source/xml-dsig-transformation-xpath.xml}
 
 In \fref{lst:xml-dsig-transformation-xpath} wird gezeigt, wie \gls{xpath} dazu benutzt werden kann, die Elemente der eigenen \gls{xml-dsig}-Signatur aus den zu
 signierenden Informationen zu filtern. Dies kann notwendig sein, wenn ein \xmlelem{Reference}-Element der Signatur auf das Dokument verweist, in dem die
@@ -183,11 +203,44 @@ sie noch nicht Elemente wie \xmlelem{SignatureValue} berücksichtigen würden, w
 Die dafür benutze Bedingung \texttt{here()} in \fref{lin:xml-dsig-transformation-xpath-here} ist nicht Teil der \gls{xpath}-Spezifikation und ist nur im Kontext
 von \gls{xml-dsig}-Transformationen gültig \cite{xml-dsig:w3c}.
 
-Neben der allgemeinen Spezifikation 1.0 von \gls{xpath} \cite{xpath:w3c} wird auch eine eigene Abwandlung it dem Namen "`XML-Signature XPath Filter 2.0"'
-\cite{xml-dsig-filter:w3c} untersützt, welche mehrere Filter in einer Transformation, sowie Schnittmengenbildung, Subtraktion und Vereinigung zwischen
+Neben der allgemeinen Spezifikation 1.0 von \gls{xpath} \cite{xpath:w3c} wird auch eine eigene Abwandlung mit dem Namen "`XML-Signature XPath Filter 2.0"'
+\cite{xml-dsig-filter:w3c} unterstützt, welche mehrere Filter in einer Transformation, sowie Schnittmengenbildung, Subtraktion und Vereinigung zwischen
 Knoten-Mengen erlaubt.
 
 \subsection{XSLT}
 \index{XSLT}
 \label{sec:XML-DSig:Transformationen:XSLT}
+Die Programmiersprache \gls{xslt} wird zur Transformation von \gls{xml}-Dokumenten eingesetzt und ist Teil der \gls{xsl}. Die Programme, die die Instruktionen der
+Transformation enthalten, werden Stylesheets genannt und sind selbst \gls{xml}-Dokumente. Ein Interpreter, \gls{xslt}-Prozessor genannt, nimmt ein solches Stylesheet
+als Eingabe und wandelt mit den darin enthaltenen Instruktionen ein oder mehrere \gls{xml}-Dokumente um. Das Format der Ausgabe ist meist wieder \gls{xml}, kann jedoch 
+auch reiner Text oder binäre Daten sein. \fref{fig:xslt-processing} zeigt den schematischen Aufbau einer solchen Transformationskette.
+
+\begin{figure}
+    \centering
+    \input{./figures/xslt-processing}
+    \caption{Diagramm zum Ablauf einer \texorpdfstring{\protect\Glsentryname{xslt}}{XSLT}-Transformation}
+    \label{fig:xslt-processing}
+\end{figure}
+
+Die einzelnen Instruktionschritte innerhalb eines Stylesheets werden auch Templates genannt, welche ein Muster in Form eines \gls{xpath}-Ausdrucks als Attribut besitzen. 
+Trifft dieses Muster auf einen Knoten innerhalb des zu transformierenden \gls{xml}-Dokuments zu, so werden die Transformationen  aus dem Template auf diesen Knoten 
+angewendet \cite{xslt:w3c}.
+
+Für die Verwendung in \gls{xml-dsig} ist vorgesehen, dass das anzuwendende Stylesheet unter dem Element \xmlelem{Transform} in einem eigenen \gls{xml-ns} abgelegt wird.
+Je Transformation darf nur ein Stylesheet definiert werden. Durch die Verwendung von \xmlelem{xsl:include} oder \xmlelem{xsl:import} im Stylesheet ist es möglich 
+entfernte Stylesheets einzubinden, zum Beispiel über \gls{http} oder aus einem lokalen Dateisystem. \gls{xml-dsig} selbst bietet keine Möglichkeiten externen Dokumente 
+direkt anzubinden, wie dies bei \xmlelem{Reference} der Fall ist. 
+
+Die Transformation setzt für die Eingangsdaten, im Gegensatz zu \gls{xpath}, einen Zeichenstrom voraus. Bei einer vorgeschalteten \gls{xpath}-Transformation muss 
+die Ausgabe dieser zuerst wieder von einer Knoten-Menge in einen Zeichenstrom umgewandelt werden. Die Ausgabe der \gls{xslt}-Transformation ist auch ein Zeichenstrom, 
+für den empfohlen wird, ihn mit der Ausgabemethode \texttt{xml} von \gls{xslt} zu erzeugen \cite{xml-dsig:w3c}.
+
+Das \fref{lst:xml-dsig-transformation-xslt} zeigt wie ein Stylesheet direkt in die Transformation einer Signatur eingebaut wird. Dabei wird das 
+\xmlelem{ElementToTransform}, welches sich als Element außerhalb der Signatur befindet, auf \xmlelem{TransformedElement} umgewandelt und erst danach signiert.
+
+\lstinputlisting[float=p,
+                 language=XML,
+                 caption={\texorpdfstring{\protect\Glsentryname{xslt}}{XSLT}-Transformation in einer Signatur},
+                 label={lst:xml-dsig-transformation-xslt},
+                 emph={ElementToTransform,TransformedElement}]{source/xml-dsig-transformation-xslt.xml}
 
