@@ -88,10 +88,10 @@ Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und s
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:x509}
 Der \gls{itu} Standard \gls{x509} wurde 1988 veröffentlicht und beschreibt die Grundlage für Zertifikate und Widerrufslisten in der Syntax von \gls{asn1}.
 Jedes \gls{x509}-Zertifikat beinhaltet Informationen über den Inhaber, dessen Rechte, den öffentlichen Schlüssel und eine Gültigkeitsdauer. Diese Informationen
-sind von dem übergeordneten Zertifikat, auch \gls{ca} genannt, digital signiert.
+sind von dem übergeordneten Zertifikat, auch \gls{ca} genannt, digital signiert \cite{x509:ietf}.
 
 \gls{x509} kommt zum Beispiel in Protokollen wie \gls{ssl}/\gls{tls}, \gls{ipsec} oder \gls{eap} zum Einsatz, da bei diesen eine streng hierarchische Struktur
-der Vertrauensbeziehungen von Vorteil ist \cite{kits}.
+der Vertrauensbeziehungen von Vorteil ist \cite{kits,tls:ietf}.
 
 \section{Vertrauensbeziehungen}
 Der Nutzen von digitalen Signaturen kommt erst zum Tragen, wenn auch sichergestellt wird, dass es eine Möglichkeit gibt, festzustellen, mit welcher Sicherheit
