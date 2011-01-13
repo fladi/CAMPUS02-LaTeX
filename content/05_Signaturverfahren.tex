@@ -5,20 +5,48 @@
 \label{chap:Signaturverfahren}
 
 \section{Überblick}
+Wie in \fref{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren} bereits vorgestellt, bieten sich \gls{openpgp} und \gls{x509} für den Einsatz in
+\gls{xml-dsig} an. Um solche Signaturen in \gls{xhtml} für den Besucher einer \gls{website} nutzbar zu machen müssen die dafür nötigen Komponenten in einem
+\gls{webbrowser} vorhanden sein, oder über eine Erweiterung nachrüstbar sein. Dazu wird der \gls{webbrowser}
+\index{Firefox}Firefox\footnote{\url{http://www.mozilla.com/firefox/}} wegen seiner umfangreichen Möglichkeiten zur Erweiterung mittels sogenannter
+\glspl{firefox-addon} auf die Integration von \gls{openpgp} und \gls{x509} untersucht. Auch die zunehmende Verbreitung von \gls{firefox} im europäischen Raum
+von über $50\%$ \cite{firefox-verbreitung} positioniert diesen \gls{webbrowser} als bevorzugtes Ziel für eine solche Erweiterung.
 
-\section{PGP}
-\index{PGP}%
-\label{sec:Signaturverfahren:PGP}%
+\section{OpenPGP}
+\index{OpenPGP}
+\label{sec:Signaturverfahren:OpenPGP}
+Da \gls{openpgp} seine Verbreitung hauptsächlich im E-Mail-Verkehr und zur kryptografischen Absicherung von Code und Programmen erfährt, existiert in
+\gls{firefox} so wie auch den, mit Stand \today, gängigen \gls{webbrowser}\footnote{\url{http://www.w3schools.com/browsers/browsers_stats.asp}} keine direkte
+Schnittstelle zu einer \gls{openpgp}-Implementierung.
 
 \subsection{Verbreitung}
+\gls{firefox} bietet in seinem Auslieferungszustand keine Unterstützung für \gls{openpgp}. mit Stand \today existieren jedoch zwei \glspl{firefox-addon},
+\index{Firefox!FireGPG}FireGPG\footnote{\url{http://getfiregpg.org/s/home}} und
+\index{Firefox!Monkeysphere}Monkeysphere\footnote{\url{http://web.monkeysphere.info/}}, welche \gls{gpg}, eine \gls{foss}-Implementierung von \gls{openpgp},
+nutzen, um digitale Signaturen in \gls{firefox} zu verwenden.
+
+FireGPG bietet eine einfache Erkennung und Prüfung von \gls{openpgp}-Signaturen die als normaler Text im \gls{ascii} Armor Format \cite{openpgp:ietf} in
+\glspl{webseite} eingebettet sind. Diese Textstellen werden dann in der Darstellung im Browser farblich hervorgehoben und Informationen zur Gültigkeit der
+Signatur werden, beim Überfahren des Textes mit der Maus, angezeigt.
+
+Monkeysphere dehnt, als \gls{firefox-addon}, das in \fref{sec:GrundlagenDefinitionen:Vertrauen:WOT} beschreibene \gls{wot} auf die \gls{pki}-Infrastruktur von
+\gls{https} aus. Dabei bietet es sich als Option zur Validierung der gültigkeit von Schlüsseln an, wenn keine \gls{cot} bis zu einem in \gls{firefox}
+hinterlegten Root-CA-Zertifikat für eine \gls{https}-Verbindung gefunden werden kann. Der Betreiber einer, über \gls{https} erreichbaren \gls{website}, kann
+dafür \ldots \todo
 
 \subsection{Anwendung}
+FireGPG und Monkeysphere benutzen beide eine am System des Benutzers installierte Instanz von \gls{gpg} und rufen das darin enthaltene, ausführbare Programm
+\texttt{gpg} mit verschiedenen Parametern auf. Es wird keine Programm-Bibliothek für \gls{openpgp}-Funktionen direkt in \gls{firefox} geladen. Dies ist dadurch
+begründet, dass das Programm \texttt{gpg} seine Speicherbereiche, die auch sensitive Informationen wie Passwörter und private Schlüssel enthalten, besonders
+gegen externe Zugriffe schützt \cite{pgp}. Alle Informationen, die der Browser für seine \gls{openpgp}-Funktionalität benötigt, laufen somit über Aufrufe von
+\texttt{gpg}.
+
 
 \subsection{Evaluierung}
 
 \section{X.509}
-\index{X.509}%
-\label{sec:Signaturverfahren:x509}%
+\index{X.509}
+\label{sec:Signaturverfahren:x509}
 
 \subsection{Verbreitung}
 
