@@ -94,13 +94,17 @@ sind von dem übergeordneten Zertifikat, auch \gls{ca} genannt, digital signiert
 der Vertrauensbeziehungen von Vorteil ist \cite{kits,tls:ietf}.
 
 \section{Vertrauensbeziehungen}
+\index{Vertrauensbeziehungen}
+\label{sec:GrundlagenDefinitionen:Vertrauen}
 Der Nutzen von digitalen Signaturen kommt erst zum Tragen, wenn auch sichergestellt wird, dass es eine Möglichkeit gibt, festzustellen, mit welcher Sicherheit
 ein Schlüssel einer bestimmten Entität zugeordnet werden kann. Ist diese Sicherheit nicht gegeben, können keine Aussagen zur Authentizität einer Signatur
 getätigt werden. Es müssen also Methoden existieren, um das eigene Vertrauen in einen Schlüssel auszudrücken.
 
-\gls{openpgp} und \gls{x509} verfolgen hierbei jeweils unterschiedliche Ansätze um Vertrauensbeziehungen zu Schlüsseln zu regeln.
+\gls{openpgp} und \gls{x509} verfolgen hierbei jeweils unterschiedliche Ansätze um Vertrauensbeziehungen zwischen Schlüsseln zu regeln.
 
 \subsection{Web Of Trust}
+\index{Web Of Trust}
+\label{sec:GrundlagenDefinitionen:Vertrauen:WOT}
 Um die Ermittlung der Authentizität einer Signatur zu erleichtern, stellt \gls{openpgp} eine Funktionalität zur Beglaubigung von Schlüsseln zur Verfügung. Dabei
 werden die Schlüssel von anderen \gls{openpgp}-Benutzern mit ihrer digitalen Signatur versehen.. Das ermöglicht es, Rückschlüsse auf die Vertrauenswürdigkeit
 von Schlüsseln zu ziehen, ohne von einer zentralen hierarchischen Struktur abhängig zu sein. Die Signatur auf einen Schlüssel wird üblicherweise nur nach der
@@ -123,6 +127,8 @@ nicht sicher"' bis zu "`Ich vertraue absolut"' \cite{pgp}.
 \end{figure}
 
 \subsection{Public Key Infrastruktur}
+\index{Public Key Infrastruktur}
+\label{sec:GrundlagenDefinitionen:Vertrauen:PKI}
 \gls{x509} bildet die Grundlage für ein hierarchisches System aus Zertifikaten, auch \gls{pki} genannt. Im Gegensatz zum \gls{wot}, welches einen Graphen der
 beteiligten Schlüssel bildet, bestehen bei einer \gls{pki} eine oder mehrere baumartige Vertrauensstrukturen.
 An der Spitze eines solchen Baumes steht eine Root-\gls{ca}, welche die Zertifikate der nächsten, im Baum tiefer gelegen Ebene signiert. Jeder Pfad, der von der
