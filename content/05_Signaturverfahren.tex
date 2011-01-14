@@ -16,11 +16,11 @@ von über $50\%$ \cite{firefox-verbreitung} positioniert diesen \gls{webbrowser}
 \index{OpenPGP}
 \label{sec:Signaturverfahren:OpenPGP}
 Da \gls{openpgp} seine Verbreitung hauptsächlich im E-Mail-Verkehr und zur kryptografischen Absicherung von Code und Programmen erfährt, existiert in
-\gls{firefox} so wie auch den, mit Stand \today, gängigen \gls{webbrowser}\footnote{\url{http://www.w3schools.com/browsers/browsers_stats.asp}} keine direkte
+\gls{firefox} so wie auch den, mit Stand Januar 2011, gängigen \gls{webbrowser}\footnote{\url{http://www.w3schools.com/browsers/browsers_stats.asp}} keine direkte
 Schnittstelle zu einer \gls{openpgp}-Implementierung.
 
 \subsection{Verbreitung}
-\gls{firefox} bietet in seinem Auslieferungszustand keine Unterstützung für \gls{openpgp}. mit Stand \today existieren jedoch zwei \glspl{firefox-addon},
+\gls{firefox} bietet in seinem Auslieferungszustand keine Unterstützung für \gls{openpgp}. Mit Stand Januar 2011 existieren jedoch zwei \glspl{firefox-addon},
 \index{Firefox!FireGPG}FireGPG\footnote{\url{http://getfiregpg.org/s/home}} und
 \index{Firefox!Monkeysphere}Monkeysphere\footnote{\url{http://web.monkeysphere.info/}}, welche \gls{gpg}, eine \gls{foss}-Implementierung von \gls{openpgp},
 nutzen, um digitale Signaturen in \gls{firefox} zu verwenden.
@@ -32,7 +32,11 @@ Signatur werden, beim Überfahren des Textes mit der Maus, angezeigt.
 Monkeysphere dehnt, als \gls{firefox-addon}, das in \fref{sec:GrundlagenDefinitionen:Vertrauen:WOT} beschreibene \gls{wot} auf die \gls{pki}-Infrastruktur von
 \gls{https} aus. Dabei bietet es sich als Option zur Validierung der gültigkeit von Schlüsseln an, wenn keine \gls{cot} bis zu einem in \gls{firefox}
 hinterlegten Root-CA-Zertifikat für eine \gls{https}-Verbindung gefunden werden kann. Der Betreiber einer, über \gls{https} erreichbaren \gls{website}, kann
-dafür \ldots \todo
+dafür den \gls{rsa}-Schlüssel seines \gls{x509}-Zertifikats in ein \gls{openpgp}-Zertifikat importieren. Für die ID dieses \gls{openpgp}-Zertifikats wird der
+\gls{uri} des \gls{https}-Webservers verwendet. Das Zertifikat wird wird dann auf einen öffentlichen \gls{openpgp}-Schlüssel-Server geladen und kann dann später
+automatisch vom Monkeysphere-AddOn gefunden werden, wenn keine gültige \gls{cot} von \gls{firefox} gefunden wird. Für das veröffentlichte
+\gls{openpgp}-Zertifikat können die Benutzer dann dem \gls{wot} entsprechend ihr Vertrauen festlegen, welches dann von Monkeysphere auch innerhalb von
+\gls{firefox} angezeigt wird.
 
 \subsection{Anwendung}
 FireGPG und Monkeysphere benutzen beide eine am System des Benutzers installierte Instanz von \gls{gpg} und rufen das darin enthaltene, ausführbare Programm
@@ -41,18 +45,39 @@ begründet, dass das Programm \texttt{gpg} seine Speicherbereiche, die auch sens
 gegen externe Zugriffe schützt \cite{pgp}. Alle Informationen, die der Browser für seine \gls{openpgp}-Funktionalität benötigt, laufen somit über Aufrufe von
 \texttt{gpg}.
 
-
-\subsection{Evaluierung}
+Für ein eigenes \gls{firefox-addon} für \gls{xml-dsig} wäre somit eine Anlehnung an diese Anbindung von \gls{gpg} von Vorteil da sie bereits in zwei Projekten
+erprobt wurde und es auch den Intentionen der \gls{gpg}-Entwicklern entspricht.
 
 \section{X.509}
 \index{X.509}
 \label{sec:Signaturverfahren:x509}
 
 \subsection{Verbreitung}
+Die Unterstützung für die kryptografisch abgesicherte Netzwerkverbindungen mittels \gls{https} ist in jedem \gls{webbrowser} integriert. Dazu gehört auch die
+Unterstützung für das Verarbeiten von \gls{x509}-Zertifikaten. Für \gls{firefox} existiert das AddOn Key Manager Tool das \gls{x509}-Informationen außerhalb des Kontexts
+von \gls{https} verwendet.
 
 \subsection{Anwendung}
+Das \gls{firefox-addon} Key  Manager Tool verwendet die in \gls{firefox} integrierten Programmierschnittstellen für \gls{x509} \cite{key-manager-tool}.
 
-\subsection{Evaluierung}
+\section{Evaluierung}
+Die Verwendung eines \gls{wot} zur Verteilung der Schlüssel-Informationen und der Vertrauensbeziehungen zwischen ihnen hätte gegenüber einer \gls{pki} mit
+\gls{x509} den Vorteil, dass die Erstellung und Veröffentlichung eines \gls{openpgp}-Zertifikats einfach und ohne die Inanspruchnahme einer \gls{ca}
+durchgeführt werden kann. Dies könnte die Akzeptanz in einer heterogenen Benutzergruppe steigern, da bei \gls{x509} in der Regel Gebühren von den \glspl{ca}
+eingehoben werden und auch individuelle Vertrauensstellungen nicht möglich sind.
+
+\begin{table}
+    \centering
+    \begin{tabularx}{\textwidth}{ l X X }
+        Anforderung  & \gls{openpgp} & \gls{x509} \\
+        \hline
+        \hline
+        Bla & \CheckedBox & \Square \\
+        \hline
+    \end{tabularx}
+    \caption{Gegenüberstellung der Signaturverfahren}
+    \label{tab:gegenüberstellung}
+\end{table}
 
 \section{Auswahl eines Verfahrens}
 

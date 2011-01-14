@@ -39,26 +39,27 @@ Darstellung in einem \gls{webbrowser}.
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen}
 Unter dem kryptographischen Sammelbegriff der digitalen Signatur versteht man eine zuverlässige und nicht fälschbare Kontrollinformation die über den Urheber
 und mögliche Modifikationen des zu schützenden Inhalts Auskunft gibt \cite{kits}. Dabei kann eine digitale Signatur analog zu der Unterschrift einer Person
-betrachtet werden \cite{esig:bsi}, jedoch mit erweiterten Eigenschaften.
+betrachtet werden, jedoch mit erweiterten Eigenschaften \cite{esig:bsi,angewandte-kryptographie,krypto-pki-internet}.
 
 Der Begriff der digitalen Signatur wird als eine Information definiert, welche die Identität einer Urheber-Entität mit einer digitalen Information (Nachricht)
-assoziiert und die drei kryptografischen Sicherheitsdienste Integrität, Authentizität und Verbindlichkeit erfüllt \cite{hac}.
+assoziiert und die drei kryptografischen Sicherheitsdienste Integrität, Authentizität und Verbindlichkeit erfüllt
+\cite{hac,angewandte-kryptographie,krypto-pki-internet}.
 
 \index{Digitale Signaturen!Integrität}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Integrität}
 Durch \textbf{Integrität} wird garantiert, dass die Nachricht auf ihrem Weg zum Empfänger nicht verändert wurde \cite{niag}. Der Empfänger der Nachricht ist
-damit in der Lage die Veränderung zu erkennen, kann jedoch nicht feststellen, welche Teile genau verändert wurden.
+damit in der Lage die Veränderung zu erkennen, kann jedoch nicht feststellen, welche Teile genau verändert wurden \cite{angewandte-kryptographie}.
 
 \index{Digitale Signaturen!Authentizität}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Authentizität}
 Der Empfänger einer Nachricht kann durch die \textbf{Authentizität} deren Urheber feststellen. Der Urheber der Nachricht weist dabei seine Identität seinem
 Partner gegenüber durch ein Geheimnis oder eine Fertigkeit aus, die ihn für den Empfänger eindeutig kennzeichnet. Die Authentizität einer Nachricht setzt ihre
-Integrität voraus, denn eine veränderte Nachricht ist auch nicht mehr authentisch \cite{kits}.
+Integrität voraus, denn eine veränderte Nachricht ist auch nicht mehr authentisch \cite{kits,angewandte-kryptographie}.
 
 \index{Digitale Signaturen!Verbindlichkeit}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verbindlichkeit}
 Als \textbf{Verbindlichkeit} einer Nachricht wird die Nachweisbarkeit des Urhebers einer Nachricht gegenüber Dritten definiert. Dieser Sicherheitsdienst schließt die
-Eigenschaften der Authentizität und der Integrität mit ein \cite{kits}.
+Eigenschaften der Authentizität und der Integrität mit ein \cite{kits,angewandte-kryptographie}.
 
 \section{Digitale Signaturverfahren}
 \index{Digitale Signaturverfahren}
@@ -77,11 +78,11 @@ den Signatur-Betrieb eingegangen.
 \subsection{OpenPGP}
 \index{OpenPGP}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:openpgp}
-\gls{openpgp} wurde im Jahr 1991 von Philip Zimmermann \cite{zimmermann:pgp} entwickelt, mit dem Ziel die digitale Kommunikation vor dem Zugriff durch Dritte zu
+\gls{openpgp} wurde im Jahr 1991 von Philip Zimmermann \cite{zimmermann:pgp,pgp} entwickelt, mit dem Ziel die digitale Kommunikation vor dem Zugriff durch Dritte zu
 schützen. Eine der Motivationen während der Entwicklung waren die wiederholten Abhöraktionen der Bürgerrechtsbewegungen in den Vereinigten Staaten von Amerika
 durch die dortigen Geheimdienste \cite{singh:messages}.
 
-Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und seine Eigenschaften sind im RFC4880 \cite{openpgp:ietf} festgelegt.
+Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und seine Eigenschaften sind im RFC4880 festgelegt \cite{openpgp:ietf}.
 
 \subsection{X.509}
 \index{\gls{x509}}
@@ -98,7 +99,8 @@ der Vertrauensbeziehungen von Vorteil ist \cite{kits,tls:ietf}.
 \label{sec:GrundlagenDefinitionen:Vertrauen}
 Der Nutzen von digitalen Signaturen kommt erst zum Tragen, wenn auch sichergestellt wird, dass es eine Möglichkeit gibt, festzustellen, mit welcher Sicherheit
 ein Schlüssel einer bestimmten Entität zugeordnet werden kann. Ist diese Sicherheit nicht gegeben, können keine Aussagen zur Authentizität einer Signatur
-getätigt werden. Es müssen also Methoden existieren, um das eigene Vertrauen in einen Schlüssel auszudrücken.
+getätigt werden. Es müssen also Methoden existieren, um das eigene Vertrauen in einen Schlüssel auszudrücken und auch die Authentizität von Schlüsseln
+zu überprüfen \cite{krypto-pki-internet}.
 
 \gls{openpgp} und \gls{x509} verfolgen hierbei jeweils unterschiedliche Ansätze um Vertrauensbeziehungen zwischen Schlüsseln zu regeln.
 
@@ -106,7 +108,7 @@ getätigt werden. Es müssen also Methoden existieren, um das eigene Vertrauen i
 \index{Web Of Trust}
 \label{sec:GrundlagenDefinitionen:Vertrauen:WOT}
 Um die Ermittlung der Authentizität einer Signatur zu erleichtern, stellt \gls{openpgp} eine Funktionalität zur Beglaubigung von Schlüsseln zur Verfügung. Dabei
-werden die Schlüssel von anderen \gls{openpgp}-Benutzern mit ihrer digitalen Signatur versehen.. Das ermöglicht es, Rückschlüsse auf die Vertrauenswürdigkeit
+werden die Schlüssel von anderen \gls{openpgp}-Benutzern mit ihrer digitalen Signatur versehen. Das ermöglicht es, Rückschlüsse auf die Vertrauenswürdigkeit
 von Schlüsseln zu ziehen, ohne von einer zentralen hierarchischen Struktur abhängig zu sein. Die Signatur auf einen Schlüssel wird üblicherweise nur nach der
 Überprüfung der Identität des Schlüsselinhabers gewährt. Dies kann zum Beispiel durch ein Telefonat oder ein persönliches Treffen erfolgen, bei dem die
 Prüfsumme des Schlüssels verglichen wird.  
@@ -152,5 +154,5 @@ einer \gls{pki} jeder Teilnehmer einer von ihm (oder seinem Softwaredistributor)
 \label{sec:GrundlagenDefinitionen:xml-dsig}
 Von der \gls{ietf} und dem \gls{w3c} entwickelt, hat die \gls{xml-dsig} Spezifikation zum Ziel, die kryptografischen Sicherheitsfunktionen Integrität,
 Authentizität und Verbindlichkeit für beliebige Daten, die entweder direkt im \gls{xml}-Format vorliegen oder über \glspl{uri} ansprechbar sind, anwendbar zu
-machen \cite{xml-dsig:w3c}. In \fref{chap:XML-DSig} wird näher auf die Arbeitsweise von \gls{xml-dsig} eingegangen.
+machen \cite{krypto-pki-internet}. In \fref{chap:XML-DSig} wird näher auf die Arbeitsweise von \gls{xml-dsig} eingegangen.
 
