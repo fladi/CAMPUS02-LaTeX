@@ -39,18 +39,20 @@ automatisch vom Monkeysphere-AddOn gefunden werden, wenn keine gültige \gls{cot
 \gls{firefox} angezeigt wird.
 
 \subsection{Anwendung}
-FireGPG und Monkeysphere benutzen beide eine am System des Benutzers installierte Instanz von \gls{gpg} und rufen das darin enthaltene, ausführbare Programm
-\texttt{gpg} mit verschiedenen Parametern auf. Es wird keine Programm-Bibliothek für \gls{openpgp}-Funktionen direkt in \gls{firefox} geladen. Dies ist dadurch
+FireGPG und Monkeysphere benutzen beide eine, am System des Benutzers installierte, Instanz von \gls{gpg} und rufen das darin enthaltene, ausführbare Programm
+\texttt{gpg} mit Parametern auf. Es wird keine Programm-Bibliothek zur Verarbeitung von \gls{openpgp}-Funktionen direkt in \gls{firefox} geladen. Dies ist dadurch
 begründet, dass das Programm \texttt{gpg} seine Speicherbereiche, die auch sensitive Informationen wie Passwörter und private Schlüssel enthalten, besonders
 gegen externe Zugriffe schützt \cite{pgp}. Alle Informationen, die der Browser für seine \gls{openpgp}-Funktionalität benötigt, laufen somit über Aufrufe von
 \texttt{gpg}.
 
 Für ein eigenes \gls{firefox-addon} für \gls{xml-dsig} wäre somit eine Anlehnung an diese Anbindung von \gls{gpg} von Vorteil da sie bereits in zwei Projekten
 erprobt wurde und es auch den Intentionen der \gls{gpg}-Entwicklern entspricht.
+\todo
 
 \section{X.509}
 \index{X.509}
 \label{sec:Signaturverfahren:x509}
+\todo
 
 \subsection{Verbreitung}
 Die Unterstützung für die kryptografisch abgesicherte Netzwerkverbindungen mittels \gls{https} ist in jedem \gls{webbrowser} integriert. Dazu gehört auch die
