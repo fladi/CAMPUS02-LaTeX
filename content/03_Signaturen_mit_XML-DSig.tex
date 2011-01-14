@@ -183,14 +183,14 @@ Inhalt von der Formatierung trennt. Eine Transformation mit \gls{base64} ist nur
 \subsection{XPath}
 \index{XPath}
 \label{sec:XML-DSig:Transformationen:XPath}
-Um auf bestimmte Bereiche in einem \gls{xml}-Dokument zu zugreifen, eignet sich besonders \gls{xpath}. Es handelt sich dabei um eine Abfragesprache um Teile
-eines \gls{xml}-Dokuments zu adressieren. Sie wurde für die Verwendung in \gls{xslt} und \gls{xpointer} entworfen \cite{xpath:w3c}, findet aber auch direkt in 
-\gls{xml-dsig} Verwendung.
+Um auf bestimmte Bereiche in einem \gls{xml}-Dokument zu zugreifen, eignet sich besonders \gls{xpath} \cite{xml:oreilly}. Es handelt sich dabei um eine
+Abfragesprache um Elemente und Attribute in einem \gls{xml}-Dokument zu adressieren. Sie wurde für die Verwendung in \gls{xslt} und \gls{xpointer} entworfen
+\cite{xpath:w3c}, findet aber auch direkt in \gls{xml-dsig} Verwendung.
 
-Bei einer Transformation mit \gls{xpath} muss die Eingabe aus gültigen \gls{xml}-Knoten bestehen. Diese können entweder direkt aus einem \gls{xml}-Dokument
-stammen oder einer vorhergegangenen \gls{xpath}- oder \gls{xslt}-Transformation. Der in der Transformation anzuwendende \gls{xpath}-Ausdruck wird auf jeden Knoten
-in den Eingabedaten angewendet und das Ergebnis überprüft. Trifft der Ausdruck auf den Knoten zu, wird der Knoten in die Ausgabe der Transformation übernommen,
-anderenfalls wird er nicht weitergegeben.
+Bei einer Transformation mit \gls{xpath} muss die Eingabe aus gültigen \gls{xml}-Knoten bestehen \cite{xml-dsig:w3c}. Diese können entweder direkt aus einem
+\gls{xml}-Dokument stammen oder einer vorhergegangenen \gls{xpath}- oder \gls{xslt}-Transformation. Der in der Transformation anzuwendende \gls{xpath}-Ausdruck
+wird auf jeden Knoten in den Eingabedaten angewendet und das Ergebnis überprüft. Trifft der Ausdruck auf den Knoten zu, wird der Knoten in die Ausgabe der
+Transformation übernommen, anderenfalls wird er nicht weitergegeben.
 
 \lstinputlisting[language=XML,
                  caption={Filtern der eigenen Signatur aus einem Dokument},
@@ -211,10 +211,11 @@ Knoten-Mengen erlaubt.
 \subsection{XSLT}
 \index{XSLT}
 \label{sec:XML-DSig:Transformationen:XSLT}
-Die Programmiersprache \gls{xslt} wird zur Transformation von \gls{xml}-Dokumenten eingesetzt und ist Teil der \gls{xsl}. Die Programme, die die Instruktionen der
-Transformation enthalten, werden Stylesheets genannt und sind selbst \gls{xml}-Dokumente. Ein Interpreter, \gls{xslt}-Prozessor genannt, nimmt ein solches Stylesheet
-als Eingabe und wandelt mit den darin enthaltenen Instruktionen ein oder mehrere \gls{xml}-Dokumente um. Das Format der Ausgabe ist meist wieder \gls{xml}, kann jedoch 
-auch reiner Text oder binäre Daten sein. \fref{fig:xslt-processing} zeigt den schematischen Aufbau einer solchen Transformationskette.
+Die Programmiersprache \gls{xslt} wird zur Transformation von \gls{xml}-Dokumenten eingesetzt und ist Teil der \gls{xsl} \cite{xml:oreilly}. Die Programme, die
+die Instruktionen der Transformation enthalten, werden Stylesheets genannt und sind selbst \gls{xml}-Dokumente. Ein Interpreter, \gls{xslt}-Prozessor genannt,
+nimmt ein solches Stylesheet als Eingabe und wandelt ein oder mehrere \gls{xml}-Dokumente, den \gls{xslt}-Instruktionen entsprechend, um. Das Format der Ausgabe ist
+meist wieder \gls{xml}, kann jedoch auch reiner Text oder binäre Daten sein. \fref{fig:xslt-processing} zeigt den schematischen Aufbau einer solchen
+Transformationskette.
 
 \begin{figure}
     \centering
@@ -225,16 +226,16 @@ auch reiner Text oder binäre Daten sein. \fref{fig:xslt-processing} zeigt den s
 
 Die einzelnen Instruktionschritte innerhalb eines Stylesheets werden auch Templates genannt, welche ein Muster in Form eines \gls{xpath}-Ausdrucks als Attribut besitzen. 
 Trifft dieses Muster auf einen Knoten innerhalb des zu transformierenden \gls{xml}-Dokuments zu, so werden die Transformationen  aus dem Template auf diesen Knoten 
-angewendet \cite{xslt:w3c}.
+angewendet \cite{xslt:w3c,xml:oreilly}.
 
 Für die Verwendung in \gls{xml-dsig} ist vorgesehen, dass das anzuwendende Stylesheet unter dem Element \xmlelem{Transform} in einem eigenen \gls{xml-ns} abgelegt wird.
-Je Transformation darf nur ein Stylesheet definiert werden. Durch die Verwendung von \xmlelem{xsl:include} oder \xmlelem{xsl:import} im Stylesheet ist es möglich 
-entfernte Stylesheets einzubinden, zum Beispiel über \gls{http} oder aus einem lokalen Dateisystem. \gls{xml-dsig} selbst bietet keine Möglichkeiten externen Dokumente 
-direkt anzubinden, wie dies bei \xmlelem{Reference} der Fall ist. 
+Je Transformation darf nur ein Stylesheet definiert werden \cite{xml-dsig:w3c}. Durch die Verwendung von \xmlelem{xsl:include} oder \xmlelem{xsl:import} im
+Stylesheet ist es möglich entfernte Stylesheets einzubinden, zum Beispiel über \gls{http} oder aus einem lokalen Dateisystem. \gls{xml-dsig} selbst bietet keine
+Möglichkeiten externen Dokumente direkt anzubinden, wie dies bei \xmlelem{Reference} der Fall ist. 
 
-Die Transformation setzt für die Eingangsdaten, im Gegensatz zu \gls{xpath}, einen Zeichenstrom voraus. Bei einer vorgeschalteten \gls{xpath}-Transformation muss 
-die Ausgabe dieser zuerst wieder von einer Knoten-Menge in einen Zeichenstrom umgewandelt werden. Die Ausgabe der \gls{xslt}-Transformation ist auch ein Zeichenstrom, 
-für den empfohlen wird, ihn mit der Ausgabemethode \texttt{xml} von \gls{xslt} zu erzeugen \cite{xml-dsig:w3c}.
+Die Transformation setzt für die Eingangsdaten, im Gegensatz zu \gls{xpath}, einen Zeichenstrom voraus \cite{xml-dsig:w3c}. Bei einer vorgeschalteten
+\gls{xpath}-Transformation muss die Ausgabe dieser zuerst wieder von einer Knoten-Menge in einen Zeichenstrom umgewandelt werden. Die Ausgabe der
+\gls{xslt}-Transformation ist auch ein Zeichenstrom, für den empfohlen wird, ihn mit der Ausgabemethode \texttt{xml} von \gls{xslt} zu erzeugen \cite{xml-dsig:w3c}.
 
 Das \fref{lst:xml-dsig-transformation-xslt} zeigt wie ein Stylesheet direkt in die Transformation einer Signatur eingebaut wird. Dabei wird das 
 \xmlelem{ElementToTransform}, welches sich als Element außerhalb der Signatur befindet, auf \xmlelem{TransformedElement} umgewandelt und erst danach signiert.

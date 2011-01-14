@@ -38,17 +38,18 @@ Element auch mehrfach in einem \gls{xhtml}-Dokument verwendet werden kann, lasse
 
 \section{XML-Namespaces}
 \label{sec:Signaturbindung:XML-NS}
-Um mehrere verschiedene \gls{xml}-Dialekte in einem gemeinsamen Dokument zu trennen werden \gls{xml-ns} benutzt \cite{xml-ns:w3c}. Dies lässt sich auf die
-beiden \gls{xml}-Dialekte \gls{xhtml} und \gls{xml-dsig} anwenden, um sie in einem Dokument zu kombinieren. Dazu kann die Signatur an einer beliebigen Stelle
-innerhalb des \gls{xhtml}-Dokuments platziert werden und über \xmlelem{Reference} auf Bereiche des Dokuments verweisen. Zur Identifikation der einzelnen
-Namespaces werden \glspl{uri} wie in \fref{tab:xml-namespaces} benutzt, welche in der Spezifikation der \gls{xml}-Dialekte festgelegt sind. 
+Um mehrere verschiedene \gls{xml}-Dialekte in einem gemeinsamen Dokument zu trennen werden \gls{xml-ns} benutzt \cite{xml-ns:w3c}. Auch das Auffinden von
+Elementen in einem Dokument, die zum selben \gls{xml}-Dialekt gehören, wird mittels \gls{xml-ns} bewerkstelligt \cite{xml:oreilly}. Diese Eigenschaften lässt
+sich auf die beiden \gls{xml}-Dialekte \gls{xhtml} und \gls{xml-dsig} anwenden, um sie in einem Dokument zu kombinieren. Dazu kann die Signatur an einer
+beliebigen Stelle innerhalb des \gls{xhtml}-Dokuments platziert werden und über \xmlelem{Reference} auf Bereiche des Dokuments verweisen. Zur Identifikation der
+einzelnen Namespaces werden \glspl{uri} wie in \fref{tab:xml-namespaces} benutzt, welche in der Spezifikation der \gls{xml}-Dialekte festgelegt sind.
 
 \fref{lst:xmlns} zeigt die Kombination der Namespaces von \gls{xhtml} und \gls{xml-dsig}. Dabei wird für das Wurzel-Element des Dokuments, \xmlelem{html} auf
 \fref{lin:xmlns-html}, der Namespace auf den von \gls{xhtml} gesetzt und somit auf alle darunter gelegenen Elemente vererbt. Erst beim Signatur-Element,
 \xmlelem{Signature} auf \fref{lin:xmlns-signature}, wird der Namespace auf den von \gls{xml-dsig} geändert, wobei nun wiederrum dieser Namespace auf die unter
-der Deklaration gelegenen Elemente vererbt wird. Es ist auch möglich, einen Namespace auf ein Element explizit ohne Vererbung zuzuweisen, da aber der Aufbau
-einer \gls{xml-dsig}-Signatur immer aus mehreren Elementen aus dem selben Namespace besteht, ist dies hier nicht praktikabel und soll nicht näher erläutert
-werden.
+der Deklaration gelegenen Elemente vererbt wird \cite{xml:oreilly}. Es ist auch möglich, einen Namespace auf ein Element explizit ohne Vererbung zuzuweisen, da
+aber der Aufbau einer \gls{xml-dsig}-Signatur immer aus mehreren Elementen aus dem selben Namespace besteht, ist dies hier nicht praktikabel und soll nicht
+näher erläutert werden.
 
 \begin{table}
     \centering
@@ -80,11 +81,11 @@ Transformationen der Signatur müssen sicherstellen, dass die Elemente der Signa
 \section{XInclude}
 \label{sec:Signaturbindung:XInclude}
 \gls{xinclude} ist eine neue Technologie, die vom W3C entwickelt wurde, um mehrere \gls{xml}-Dokumente in ein gemeinsames Dokument zusammenzuführen
-\cite{xml:oreilly}. Dabei wird das \xmlelem{include}-Element aus dem reservieren \gls{xml-ns} für \gls{xinclude} benutzt um über das
-\xmlattr{xinclude}{href}-Attribut den \gls{uri} eines externen \gls{xml}-Dokuments während der Auswertung des Haupt-Dokuments einzubinden. Da das Dokument nach
-dem Verarbeiten der \gls{xinclude}-Anweisungen wieder einen einzelnen \gls{xml}-Baum darstellt, ist es nötig wie in \fref{sec:Signaturbindung:XML-NS} die
-Signatur mit ihrem eigenen \gls{xml-ns} von den \gls{xhtml}-Elementen abzugrenzen. Die Nachteile sind somit auch die selben wie bei der direkten Einbindung der
-Signatur mittels \gls{xml-ns}.
+\cite{xinclude:w3c}. Dabei wird das \xmlelem{include}-Element aus dem reservieren \gls{xml-ns} für \gls{xinclude} benutzt um über das
+\xmlattr{xinclude}{href}-Attribut den \gls{uri} eines externen \gls{xml}-Dokuments während der Auswertung des Haupt-Dokuments einzubinden \cite{xml:oreilly}. Da
+das Dokument nach dem Verarbeiten der \gls{xinclude}-Anweisungen wieder einen einzelnen \gls{xml}-Baum darstellt, ist es nötig wie in
+\fref{sec:Signaturbindung:XML-NS} die Signatur mit ihrem eigenen \gls{xml-ns} von den \gls{xhtml}-Elementen abzugrenzen. Die Nachteile sind somit auch die
+selben wie bei der direkten Einbindung der Signatur mittels \gls{xml-ns}.
 
 \lstinputlisting[language=HTML,caption={Verwendung von XInclude},label=lst:xinclude,emph={include,xi}]{source/xinclude.html}
 
