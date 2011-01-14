@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<HEAD >
-    <TITLE >Example</TITLE >
-</HEAD >
+<?xml encoding="UTF-8" version="1.0"?>
+<head >
+    <link rel="stylesheet" type="text/css" href="mystyle.css" />
+</head >

@@ -92,7 +92,7 @@ selbe Zertifikat referenzieren. In \fref{lst:xml-dsig-keyinfo-x509} sind drei Ze
                  emph={X509Data,X509IssuerSerial,X509SKI,X509Certificate,X509SubjectName}]{source/xml-dsig-keyinfo-x509.xml}
 
 \section{Signaturinformation}
-Analog zu \xmlelem{KeyInfo} wird das Element \xmlelem{SignedInfo} verwendet um Informationen über die Signatur selbst zu speichern. Dazu gehören die benutzte
+Analog zu \xmlelem{KeyInfo} wird das Element \xmlelem{SignedInfo} verwendet, um Informationen über die Signatur selbst zu speichern. Dazu gehören die benutzte
 Signaturmethode, die Art der Transformation der Daten vor der Signierung sowie die Referenzen auf die signierten Daten und ihre Hash-Prüfsummen.
 
 Alle in \gls{xml-dsig} anwendbaren Algorithmen werden über eigene \glspl{uri} referenziert. So kann das Signaturverfahren mit den \glspl{uri} aus
@@ -148,12 +148,12 @@ bei \xmlelem{CanonicalizationMethod} definiert. Als Wert kommt eine von vier mö
 
 \section{Referenzen}
 \label{sec:XML-DSig:Referenzen}
-Um Daten für die \gls{c14n} zu bekommen benötigt \gls{xml-dsig} Referenzen, welche auf die signierten Informationen verweisen. Diese Information wird über das 
+Um Daten für die \gls{c14n} zu bekommen, benötigt \gls{xml-dsig} Referenzen, welche auf die signierten Informationen verweisen. Diese Information wird über das 
 Element \xmlelem{Reference} zur Verfügung gestellt, welches mehrfach in \xmlelem{SignedInfo} enthalten sein kann. Jedes Vorkommen dieses Elements stellt einen
 Verweis auf eine signierte Information dar. Der Verweis ist in Form eines \gls{uri} im optionalen Attribut \xmlattr{Reference}{URI} hinterlegt. Wenn
 \xmlattr{Reference}{URI} nicht definiert ist, wird davon ausgegangen, dass die Applikation den Verweis aus dem Kontext der Signatur beziehen kann. Die
 Entwickler von \gls{xml-dsig} empfehlen, dass zumindest \glspl{uri} aus dem \gls{http}-Schema aufgelöst werden können \cite{xml-dsig:w3c}. Ein entsprechendes
-Beispiel für Informationen die über \gls{http} referenziert werden ist in \fref{lst:xml-dsig-signedinfo-reference} in der
+Beispiel für Informationen die über \gls{http} referenziert werden, ist in \fref{lst:xml-dsig-signedinfo-reference} in der
 \fref{lin:xml-dsig-signedinfo-reference-http} zu sehen.
 
 \lstinputlisting[language=XML,
@@ -163,7 +163,7 @@ Beispiel für Informationen die über \gls{http} referenziert werden ist in \fre
 
 Es können jedoch auch Informationen referenziert werden, die sich im selben \gls{xml}-Dokument wie die Signatur befinden. Dafür können im Attribut
 \xmlattr{Reference}{URI} auch \gls{xpointer} benutzt werden. Dabei muss sichergestellt werden, dass der Verweis gültige \gls{xml}-Elemente findet.
-\fref{lst:xml-dsig-signedinfo-reference} zeigt auf \fref{lin:xml-dsig-signedinfo-reference-xpointer} wie ein solcher Verweis innerhalb des \gls{xml}-Dokuments,
+\fref{lst:xml-dsig-signedinfo-reference} zeigt auf Zeile \ref{lin:xml-dsig-signedinfo-reference-xpointer} wie ein solcher Verweis innerhalb des \gls{xml}-Dokuments,
 das die Signatur enthält, möglich ist.\todo
 
 \section{Transformationen}
@@ -184,7 +184,7 @@ Inhalt von der Formatierung trennt. Eine Transformation mit \gls{base64} ist nur
 \index{XPath}
 \label{sec:XML-DSig:Transformationen:XPath}
 Um auf bestimmte Bereiche in einem \gls{xml}-Dokument zu zugreifen, eignet sich besonders \gls{xpath} \cite{xml:oreilly}. Es handelt sich dabei um eine
-Abfragesprache um Elemente und Attribute in einem \gls{xml}-Dokument zu adressieren. Sie wurde für die Verwendung in \gls{xslt} und \gls{xpointer} entworfen
+Abfragesprache, um Elemente und Attribute in einem \gls{xml}-Dokument zu adressieren. Sie wurde für die Verwendung in \gls{xslt} und \gls{xpointer} entworfen
 \cite{xpath:w3c}, findet aber auch direkt in \gls{xml-dsig} Verwendung.
 
 Bei einer Transformation mit \gls{xpath} muss die Eingabe aus gültigen \gls{xml}-Knoten bestehen \cite{xml-dsig:w3c}. Diese können entweder direkt aus einem
@@ -228,10 +228,10 @@ Die einzelnen Instruktionschritte innerhalb eines Stylesheets werden auch Templa
 Trifft dieses Muster auf einen Knoten innerhalb des zu transformierenden \gls{xml}-Dokuments zu, so werden die Transformationen  aus dem Template auf diesen Knoten 
 angewendet \cite{xslt:w3c,xml:oreilly}.
 
-Für die Verwendung in \gls{xml-dsig} ist vorgesehen, dass das anzuwendende Stylesheet unter dem Element \xmlelem{Transform} in einem eigenen \gls{xml-ns} abgelegt wird.
+Für die Verwendung in \gls{xml-dsig} ist vorgesehen, dass das anzuwendende Stylesheet unter dem Element \xmlelem{Transform} abgelegt wird.
 Je Transformation darf nur ein Stylesheet definiert werden \cite{xml-dsig:w3c}. Durch die Verwendung von \xmlelem{xsl:include} oder \xmlelem{xsl:import} im
 Stylesheet ist es möglich entfernte Stylesheets einzubinden, zum Beispiel über \gls{http} oder aus einem lokalen Dateisystem. \gls{xml-dsig} selbst bietet keine
-Möglichkeiten externen Dokumente direkt anzubinden, wie dies bei \xmlelem{Reference} der Fall ist. 
+Möglichkeiten externe Stylesheets direkt anzubinden, wie dies bei \xmlelem{Reference} der Fall ist. 
 
 Die Transformation setzt für die Eingangsdaten, im Gegensatz zu \gls{xpath}, einen Zeichenstrom voraus \cite{xml-dsig:w3c}. Bei einer vorgeschalteten
 \gls{xpath}-Transformation muss die Ausgabe dieser zuerst wieder von einer Knoten-Menge in einen Zeichenstrom umgewandelt werden. Die Ausgabe der
