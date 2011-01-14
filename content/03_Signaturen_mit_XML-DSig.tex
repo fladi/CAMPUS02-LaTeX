@@ -152,19 +152,26 @@ Um Daten für die \gls{c14n} zu bekommen, benötigt \gls{xml-dsig} Referenzen, w
 Element \xmlelem{Reference} zur Verfügung gestellt, welches mehrfach in \xmlelem{SignedInfo} enthalten sein kann. Jedes Vorkommen dieses Elements stellt einen
 Verweis auf eine signierte Information dar. Der Verweis ist in Form eines \gls{uri} im optionalen Attribut \xmlattr{Reference}{URI} hinterlegt. Wenn
 \xmlattr{Reference}{URI} nicht definiert ist, wird davon ausgegangen, dass die Applikation den Verweis aus dem Kontext der Signatur beziehen kann. Die
-Entwickler von \gls{xml-dsig} empfehlen, dass zumindest \glspl{uri} aus dem \gls{http}-Schema aufgelöst werden können \cite{xml-dsig:w3c}. Ein entsprechendes
+Autoren von \gls{xml-dsig} empfehlen, dass zumindest \glspl{uri} aus dem \gls{http}-Schema aufgelöst werden können \cite{xml-dsig:w3c}. Ein entsprechendes
 Beispiel für Informationen die über \gls{http} referenziert werden, ist in \fref{lst:xml-dsig-signedinfo-reference} in der
 \fref{lin:xml-dsig-signedinfo-reference-http} zu sehen.
 
 \lstinputlisting[language=XML,
                  caption={Beispiele für \protect\xmlelem{Reference}},
                  label={lst:xml-dsig-signedinfo-reference},
-                 emph={Reference}]{source/xml-dsig-signedinfo-reference.xml}
+                 emph={Reference,Object}]{source/xml-dsig-signedinfo-reference.xml}
 
 Es können jedoch auch Informationen referenziert werden, die sich im selben \gls{xml}-Dokument wie die Signatur befinden. Dafür können im Attribut
 \xmlattr{Reference}{URI} auch \gls{xpointer} benutzt werden. Dabei muss sichergestellt werden, dass der Verweis gültige \gls{xml}-Elemente findet.
 \fref{lst:xml-dsig-signedinfo-reference} zeigt auf Zeile \ref{lin:xml-dsig-signedinfo-reference-xpointer} wie ein solcher Verweis innerhalb des \gls{xml}-Dokuments,
-das die Signatur enthält, möglich ist.\todo
+das die Signatur enthält, möglich ist.
+
+Unterhalb von \xmlelem{Reference} sind je eine Instanz der Elemente \xmlelem{DigestMethod} und \xmlelem{DigestValue} vorgeschrieben. \xmlelem{DigestMethod} legt
+über das Attribut \xmlattr{DigestMethod}{Algorithm} den Algorithmus zur Berechnung der Hash-Prüfsumme der, im übergeordenten Element \xmlelem{Reference} verwiesenen,
+Informationen fest. Die Identifikation des Algorithmus erfolgt über einen \gls{uri}, wobei \gls{xml-dsig} hierfür nur \gls{sha1}, mit dem \gls{uri}
+\url{http://www.w3.org/2000/09/xmldsig#sha1}, festlegt. Der Inhalt von \xmlelem{DigestValue} ist die, mit \gls{base64} kodierte, Hash-Prüfsumme des
+Algorithmus. Diese muss nicht zwingend über die Gesamtheit der referenzierten Informationen gebildet werden. Bevor der Algorithmus angewendet wird, können zuvor
+noch sogenannte Transformationen auf sie angewendet werden, die die Daten umwandeln und filtern.
 
 \section{Transformationen}
 \label{sec:XML-DSig:Transformationen}
@@ -172,7 +179,7 @@ Die Referenzierung auf Informationen alleine ist oft nicht genug, um aussagekrä
 Dokuments umfassen. Mit dem Element \xmlelem{Transformation}, welches optional innerhalb von \xmlelem{Reference} verwendet werden kann, ist es möglich,
 Transformationen zu definieren, die in der Reihenfolge ihrer Definition angewandt werden. Die erste Transformation erhält dabei ihre Eingabedaten aus der
 Dereferenzierung des \gls{uri} des übergeordneten \xmlelem{Reference}-Elements. Danach werden die transformierten Daten an die nächste Transformation in der
-Reihe übergeben. Die Ausgabe der letzten Transformation wird dann zur Berechnung einer Hash-Prüfsumme benutzt.
+Reihe übergeben. Die Ausgabe der letzten Transformation wird dann zur Berechnung der Hash-Prüfsumme, welche in \xmlelem{DigestValue} gespeichert wird, benutzt.
 
 Als Transformationen stehen \gls{c14n}, \gls{base64}, \gls{xpath} und \gls{xslt} zur Verfügung. \gls{xpath} und \gls{xslt} sind geeignet, bestimmte Bereiche aus
 einem \gls{xml}-Dokument zu extrahieren und somit den Bereich der Signatur exakt zu begrenzen. \gls{c14n} bietet sich als eine der letzten

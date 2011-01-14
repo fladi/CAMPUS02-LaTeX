@@ -7,10 +7,10 @@
 \node (dummy) {}; 
 \node[document, left=of dummy] (input) {XML-Dokument};  
 \node[document, right=of dummy] (stylesheet) {XSLT-Stylesheet};  
-\node[processor, below=2cm of dummy] (processor) {XSLT-Prozessor};  
-\node[document, below=1cm of processor] (output) {Ausgabe};
-\draw[arrow] (input.south) -- ++(0,-.75) -| ($(processor.north) + (-.5em,0)$); 
-\draw[arrow] (stylesheet.south) -- ++(0,-.75) -| ($(processor.north) + (.5em,0)$);
+\node[processor, below=1.2cm of dummy] (processor) {XSLT-Prozessor};  
+\node[document, below=.5cm of processor] (output) {Ausgabe};
+\draw[arrow] (input.south) -- ++(0,-.2) -| ($(processor.north) + (-.5em,0)$); 
+\draw[arrow] (stylesheet.south) -- ++(0,-.2) -| ($(processor.north) + (.5em,0)$);
 \draw[arrow] (processor.south) -- (output.north);
 \end{tikzpicture} 
 
