@@ -153,13 +153,8 @@ Element \xmlelem{Reference} zur Verfügung gestellt, welches mehrfach in \xmlele
 Verweis auf eine signierte Information dar. Der Verweis ist in Form eines \gls{uri} im optionalen Attribut \xmlattr{Reference}{URI} hinterlegt. Wenn
 \xmlattr{Reference}{URI} nicht definiert ist, wird davon ausgegangen, dass die Applikation den Verweis aus dem Kontext der Signatur beziehen kann. Die
 Autoren von \gls{xml-dsig} empfehlen, dass zumindest \glspl{uri} aus dem \gls{http}-Schema aufgelöst werden können \cite{xml-dsig:w3c}. Ein entsprechendes
-Beispiel für Informationen die über \gls{http} referenziert werden, ist in \fref{lst:xml-dsig-signedinfo-reference} in der
-\fref{lin:xml-dsig-signedinfo-reference-http} zu sehen.
-
-\lstinputlisting[language=XML,
-                 caption={Beispiele für \protect\xmlelem{Reference}},
-                 label={lst:xml-dsig-signedinfo-reference},
-                 emph={Reference,Object}]{source/xml-dsig-signedinfo-reference.xml}
+Beispiel für Informationen die über \gls{http} referenziert werden, ist in \fref{lst:xml-dsig-signedinfo-reference} in der Zeile
+\ref{lin:xml-dsig-signedinfo-reference-http} zu sehen.
 
 Es können jedoch auch Informationen referenziert werden, die sich im selben \gls{xml}-Dokument wie die Signatur befinden. Dafür können im Attribut
 \xmlattr{Reference}{URI} auch \gls{xpointer} benutzt werden. Dabei muss sichergestellt werden, dass der Verweis gültige \gls{xml}-Elemente findet.
@@ -172,6 +167,11 @@ Informationen fest. Die Identifikation des Algorithmus erfolgt über einen \gls{
 \url{http://www.w3.org/2000/09/xmldsig#sha1}, festlegt. Der Inhalt von \xmlelem{DigestValue} ist die, mit \gls{base64} kodierte, Hash-Prüfsumme des
 Algorithmus. Diese muss nicht zwingend über die Gesamtheit der referenzierten Informationen gebildet werden. Bevor der Algorithmus angewendet wird, können zuvor
 noch sogenannte Transformationen auf sie angewendet werden, die die Daten umwandeln und filtern.
+
+\lstinputlisting[language=XML,
+                 caption={Beispiele für \protect\xmlelem{Reference}},
+                 label={lst:xml-dsig-signedinfo-reference},
+                 emph={Reference,Object}]{source/xml-dsig-signedinfo-reference.xml}
 
 \section{Transformationen}
 \label{sec:XML-DSig:Transformationen}
@@ -199,11 +199,6 @@ Bei einer Transformation mit \gls{xpath} muss die Eingabe aus gültigen \gls{xml
 wird auf jeden Knoten in den Eingabedaten angewendet und das Ergebnis überprüft. Trifft der Ausdruck auf den Knoten zu, wird der Knoten in die Ausgabe der
 Transformation übernommen, anderenfalls wird er nicht weitergegeben.
 
-\lstinputlisting[language=XML,
-                 caption={Filtern der eigenen Signatur aus einem Dokument},
-                 label={lst:xml-dsig-transformation-xpath},
-                 emph={XPath}]{source/xml-dsig-transformation-xpath.xml}
-
 In \fref{lst:xml-dsig-transformation-xpath} wird gezeigt, wie \gls{xpath} dazu benutzt werden kann, die Elemente der eigenen \gls{xml-dsig}-Signatur aus den zu
 signierenden Informationen zu filtern. Dies kann notwendig sein, wenn ein \xmlelem{Reference}-Element der Signatur auf das Dokument verweist, in dem die
 Signatur selbst hinterlegt ist und somit Bestandteil der signierten Informationen wäre. Dies würde dazu führen, dass die Hash-Prüfsummen nicht korrekt wären, da
@@ -213,7 +208,13 @@ von \gls{xml-dsig}-Transformationen gültig \cite{xml-dsig:w3c}.
 
 Neben der allgemeinen Spezifikation 1.0 von \gls{xpath} \cite{xpath:w3c} wird auch eine eigene Abwandlung mit dem Namen "`XML-Signature XPath Filter 2.0"'
 \cite{xml-dsig-filter:w3c} unterstützt, welche mehrere Filter in einer Transformation, sowie Schnittmengenbildung, Subtraktion und Vereinigung zwischen
-Knoten-Mengen erlaubt.
+Knoten-Mengen erlaubt. Sie ist speziell auf die Bedürfnisse von \gls{xml-dsig} angepasst und soll nach dem Wunsch ihrer Entwickler auch eine schnellere
+Verarbeitung der Transformationen gewährleisten.
+
+\lstinputlisting[language=XML,
+                 caption={Filtern der eigenen Signatur aus einem Dokument},
+                 label={lst:xml-dsig-transformation-xpath},
+                 emph={XPath}]{source/xml-dsig-transformation-xpath.xml}
 
 \subsection{XSLT}
 \index{XSLT}
@@ -247,13 +248,13 @@ Die Transformation setzt für die Eingangsdaten, im Gegensatz zu \gls{xpath}, ei
 Das \fref{lst:xml-dsig-transformation-xslt} zeigt wie ein Stylesheet direkt in die Transformation einer Signatur eingebaut wird. Dabei wird das 
 \xmlelem{ElementToTransform}, welches sich als Element außerhalb der Signatur befindet, auf \xmlelem{TransformedElement} umgewandelt und erst danach signiert.
 
-\lstinputlisting[float=p,
-                 language=XML,
-                 caption={\texorpdfstring{\protect\Glsentryname{xslt}}{XSLT}-Transformation in einer Signatur},
-                 label={lst:xml-dsig-transformation-xslt},
-                 emph={ElementToTransform,TransformedElement}]{source/xml-dsig-transformation-xslt.xml}
-
 \section{Signaturwert}
 Im Element \xmlelem{SignatureValue} wird der Wert der eigentlichen Signatur gespeichert. Er wird dazu mit \gls{base64} umgewandelt und als alleiniger Wert dem
 Element zugewiesen. Der Wert ist die Ausgabe der Anwendung des, in \xmlelem{SignatureMethod} definiterten, Signaturverfahren auf die, über \xmlelem{Reference} und
 \xmlelem{Transform} erhaltenen, Informationen.
+
+\lstinputlisting[language=XML,
+                 caption={\texorpdfstring{\protect\Glsentryname{xslt}}{XSLT}-Transformation in einer Signatur},
+                 label={lst:xml-dsig-transformation-xslt},
+                 emph={ElementToTransform,TransformedElement}]{source/xml-dsig-transformation-xslt.xml}
+

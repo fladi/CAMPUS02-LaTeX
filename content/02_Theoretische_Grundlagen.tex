@@ -82,14 +82,37 @@ den Signatur-Betrieb eingegangen.
 schützen. Eine der Motivationen während der Entwicklung waren die wiederholten Abhöraktionen der Bürgerrechtsbewegungen in den Vereinigten Staaten von Amerika
 durch die dortigen Geheimdienste \cite{singh:messages}.
 
-Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und seine Eigenschaften sind im RFC4880 festgelegt \cite{openpgp:ietf}.
+Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und seine Eigenschaften sind im RFC4880 festgelegt \cite{openpgp:ietf}. 
+Jedes \gls{openpgp}-Zertifikat beinhaltet Informationen über:
+\begin{itemize*}
+    \item den öffentlichen Schlüssel,
+    \item die Version des Datenformats,
+    \item die Erstellungszeit,
+    \item eine oder mehrere IDs des Inhabers des Zertifikats, meist E-Mail-Adressen,
+    \item optionale Signaturen von anderen Benutzer, die das Zertifikat signiert haben,
+    \item optionale Sub-Schlüssel, die ebenfalls zum Inhaber des Zertifikats gehören.
+\end{itemize*}
 
 \subsection{\protect\glstext*{x509}}
 \index{\gls{x509}}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:x509}
-Der \gls{itu} Standard \gls{x509} wurde 1988 veröffentlicht und beschreibt die Grundlage für Zertifikate und Widerrufslisten in der Syntax von \gls{asn1}.
-Jedes \gls{x509}-Zertifikat beinhaltet Informationen über den Inhaber, dessen Rechte, den öffentlichen Schlüssel und eine Gültigkeitsdauer. Diese Informationen
-sind von dem übergeordneten Zertifikat, auch \gls{ca} genannt, digital signiert \cite{x509:ietf}.
+Der \gls{itu} Standard \gls{x509} wurde 1996 veröffentlicht und beschreibt die Grundlage für Zertifikate und Widerrufslisten in der Syntax von \gls{asn1}. Die
+Versionen 1 und 2 enthielten verschiedene Mängel, die einen Einsatz in produktiven Umgebungen erschwerten, so fehlten zum Beispiel Felder für wichtige
+Informationen die erst mit Version 3 verfügbar gemacht wurden \cite{krypto-pki-internet}.
+
+Jedes \gls{x509}-Zertifikat beinhaltet Informationen über:
+\begin{itemize*}
+    \item die Versionsnummer des Zertifikats,
+    \item die Seriennummer,
+    \item die \gls{oid} des Signaturverfahrens mit dem das Zertifikat signiert wurde,
+    \item den Namen der \gls{ca} die das Zertifikat signiert hat,
+    \item den Namen des Inhabers des Zertifikats,
+    \item den öffentlichen Schlüssel,
+    \item einen Gültigkeitszeitraum und
+    \item den Verwendungszweck.
+\end{itemize*}
+
+Diese Informationen sind von dem übergeordneten Zertifikat, auch \gls{ca} genannt, digital signiert \cite{x509:ietf}.
 
 \gls{x509} kommt zum Beispiel in Protokollen wie \gls{ssl}/\gls{tls}, \gls{ipsec} oder \gls{eap} zum Einsatz, da bei diesen eine streng hierarchische Struktur
 der Vertrauensbeziehungen von Vorteil ist \cite{kits,tls:ietf}.
