@@ -38,6 +38,9 @@ automatisch vom Monkeysphere-AddOn gefunden werden, wenn keine gültige \gls{cot
 \gls{openpgp}-Zertifikat können die Benutzer dann dem \gls{wot} entsprechend ihr Vertrauen festlegen, welches dann von Monkeysphere auch innerhalb von
 \gls{firefox} angezeigt wird.
 
+Zur Verteilung der Schlüssel steht eine Infrastruktur aus öffentlichen Schlüsselservern zu Verfügung, über die das Auffinden von
+\gls{openpgp}-Zertifikaten ermöglicht wird \cite{pgp}.
+
 \subsection{Anwendung}
 FireGPG und Monkeysphere benutzen beide eine, am System des Benutzers installierte, Instanz von \gls{gpg} und rufen das darin enthaltene, ausführbare Programm
 \texttt{gpg} mit Parametern auf. Es wird keine Programm-Bibliothek zur Verarbeitung von \gls{openpgp}-Funktionen direkt in \gls{firefox} geladen. Dies ist dadurch
@@ -46,21 +49,21 @@ gegen externe Zugriffe schützt \cite{pgp}. Alle Informationen, die der Browser 
 \texttt{gpg}.
 
 Für ein eigenes \gls{firefox-addon} für \gls{xml-dsig} wäre somit eine Anlehnung an diese Anbindung von \gls{gpg} von Vorteil da sie bereits in zwei Projekten
-erprobt wurde und es auch den Intentionen der \gls{gpg}-Entwicklern entspricht.
-\todo
+erprobt wurde und es auch den Intentionen der \gls{gpg}-Entwicklern entspricht \cite{pgp}.
 
-\section{X.509}
-\index{X.509}
+\section{\protect\glstext*{x509}}
+%\index{\protect\glstext*{x509}}
 \label{sec:Signaturverfahren:x509}
-\todo
+Die Unterstützung für die kryptografisch abgesicherte Netzwerkverbindungen mittels \gls{https} ist in jedem \gls{webbrowser} integriert. Dazu gehört auch die
+Unterstützung für das Verarbeiten von \gls{x509}-Zertifikaten. Abhängig vom \gls{webbrowser} werden die Zertifikate der Root-\glspl{ca} intern oder vom
+Betriebssystem verwaltet.
 
 \subsection{Verbreitung}
-Die Unterstützung für die kryptografisch abgesicherte Netzwerkverbindungen mittels \gls{https} ist in jedem \gls{webbrowser} integriert. Dazu gehört auch die
-Unterstützung für das Verarbeiten von \gls{x509}-Zertifikaten. Für \gls{firefox} existiert das AddOn Key Manager Tool das \gls{x509}-Informationen außerhalb des Kontexts
-von \gls{https} verwendet.
+Für \gls{firefox} existiert das AddOn Key Manager Tool das \gls{x509}-Informationen außerhalb des Kontexts von \gls{https} verwendet. 
 
 \subsection{Anwendung}
-Das \gls{firefox-addon} Key  Manager Tool verwendet die in \gls{firefox} integrierten Programmierschnittstellen für \gls{x509} \cite{key-manager-tool}.
+Das \gls{firefox-addon} Key  Manager Tool verwendet die in \gls{firefox} integrierten Programmierschnittstellen für \gls{x509} die unter dem Namen \gls{psm}
+und \gls{nss} verfügbar sind \cite{key-manager-tool}.
 
 \section{Evaluierung}
 Die Verwendung eines \gls{wot} zur Verteilung der Schlüssel-Informationen und der Vertrauensbeziehungen zwischen ihnen hätte gegenüber einer \gls{pki} mit
@@ -74,7 +77,9 @@ eingehoben werden und auch individuelle Vertrauensstellungen nicht möglich sind
         Anforderung  & \gls{openpgp} & \gls{x509} \\
         \hline
         \hline
-        Bla & \CheckedBox & \Square \\
+        Programmierschnittstelle in \gls{firefox} & \Square & \CheckedBox \\
+        \hline
+        Dezentrale Verwaltung der Schlüssel& \CheckedBox & \Square \\
         \hline
     \end{tabularx}
     \caption{Gegenüberstellung der Signaturverfahren}

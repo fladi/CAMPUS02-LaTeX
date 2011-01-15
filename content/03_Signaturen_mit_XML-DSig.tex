@@ -37,8 +37,8 @@ Lage ist, die nötigen Schlüsselinformationen zu beziehen.
 benötigten Schlüsselinformationen direkt in der Signatur einzubetten \cite{xml-dsig:w3c}.  
 
 Alternativ können mit dem Element \xmlelem{RetrievalMethod} die Schlüsselinformationen über \glspl{uri} referenziert werden. Dies können zum Beispiel
-\gls{x509}-Zertifikate sein, die bereits in dem zu signierenden \gls{xml}-Dokument enthalten sind. \xmlelem{RetrievalMethod} entspricht bis auf
-das Fehlen der Elemente \xmlelem{DigestMethod} und \xmlelem{DigestValue} in seinem Verhalten dem Element \xmlelem{Reference}, welches in 
+\gls{x509}-Zertifikate sein, die bereits in dem zu signierenden \gls{xml}-Dokument enthalten sind. Dadurch entspricht \xmlelem{RetrievalMethod} bis auf
+das Fehlen der Elemente \xmlelem{DigestMethod} und \xmlelem{DigestValue} in seinem Verhalten dem Element \xmlelem{Reference}, das in
 \fref{sec:XML-DSig:Referenzen} näher beschrieben wird.
 
 \subsection{OpenPGP}
@@ -59,7 +59,7 @@ vollständige Kopie in der Signatur eingebettet.
                  label=lst:xml-dsig-keyinfo-openpgp,
                  emph={PGPData,PGPKeyID,PGPKeyPacket}]{source/xml-dsig-keyinfo-openpgp.xml}
 
-\subsection{X.509}
+\subsection{\protect\glstext*{x509}}
 Informationen über ein für die Signatur verwendetes \gls{x509}-Zertifikat können unterhalb des Elements \xmlelem{X509Data} im dafür vorgesehenen \gls{xml-ns}
 \url{http://www.w3.org/2000/09/xmldsig#X509Data} abgelegt werden. 
 Ähnlich wie \xmlelem{PGPData} enthält es Schlüsselinformationen die zur Validierung der Signatur benötigt werden.  Dafür muss mindestens eines der Elemente aus
