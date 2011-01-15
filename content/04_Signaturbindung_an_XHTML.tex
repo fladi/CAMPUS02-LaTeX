@@ -46,7 +46,7 @@ einzelnen Namespaces werden \glspl{uri} wie in \fref{tab:xml-namespaces} benutzt
 
 \fref{lst:xmlns} zeigt die Kombination der Namespaces von \gls{xhtml} und \gls{xml-dsig}. Dabei wird für das Wurzel-Element des Dokuments, \xmlelem{html} auf
 \fref{lin:xmlns-html}, der Namespace auf den von \gls{xhtml} gesetzt und somit auf alle darunter gelegenen Elemente vererbt. Erst beim Signatur-Element,
-\xmlelem{Signature} auf \fref{lin:xmlns-signature}, wird der Namespace auf den von \gls{xml-dsig} geändert, wobei nun wiederrum dieser Namespace auf die unter
+\xmlelem{Signature} auf \fref{lin:xmlns-signature}, wird der Namespace auf den von \gls{xml-dsig} geändert, wobei nun wiederum dieser Namespace auf die unter
 der Deklaration gelegenen Elemente vererbt wird \cite{xml:oreilly}. Es ist auch möglich, einen Namespace auf ein Element explizit ohne Vererbung zuzuweisen, da
 aber der Aufbau einer \gls{xml-dsig}-Signatur immer aus mehreren Elementen aus dem selben Namespace besteht, ist dies hier nicht praktikabel und soll nicht
 näher erläutert werden.
@@ -98,7 +98,7 @@ Jede der zuvor vorgestellten Methoden macht es erforderlich zuerst das gesamte D
 \xmlelem{Reference}-Elementen auflösbar sind. Mit einem Mikroformat, das mit einer fest vorgegebenen \gls{xml-dsig}-Struktur arbeitet, könnten die verbleibenden
 variablen Informationen aus der Struktur in eigene \gls{html}-Attribute eingebettet werden. Diese beiden Informationen, die nicht vorgegeben werden können sind
 \xmlelem{KeyInfo} sowie \xmlelem{SignatureValue}. Um diese Attribute von \gls{xhtml} zu trennen müsste ein eigener \gls{xml-ns} geschaffen werden. Da ein
-solches Mikroformat erst geschaffenwerden müsste, kann hier eine beliebige, global eindeutige \gls{uri} als Namespace benutzt werden.
+solches Mikroformat erst geschaffen werden müsste, kann hier eine beliebige, global eindeutige \gls{uri} als Namespace benutzt werden.
 
 Für den Rest der Informationen aus \gls{xml-dsig} wie \xmlelem{Reference} kann angenommen werden, dass es auf die Informationen innerhalb des
 \gls{xhtml}-Elements verweist, in dem die Attribute des Mikroformats angehängt sind. Eine \xmlelem{Transformation} für \gls{c14n} und \gls{sha1} als

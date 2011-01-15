@@ -29,9 +29,9 @@ FireGPG bietet eine einfache Erkennung und Prüfung von \gls{openpgp}-Signaturen
 \glspl{webseite} eingebettet sind. Diese Textstellen werden dann in der Darstellung im Browser farblich hervorgehoben und Informationen zur Gültigkeit der
 Signatur werden, beim Überfahren des Textes mit der Maus, angezeigt.
 
-Monkeysphere dehnt, als \gls{firefox-addon}, das in \fref{sec:GrundlagenDefinitionen:Vertrauen:WOT} beschreibene \gls{wot} auf die \gls{pki}-Infrastruktur von
-\gls{https} aus. Dabei bietet es sich als Option zur Validierung der gültigkeit von Schlüsseln an, wenn keine \gls{cot} bis zu einem in \gls{firefox}
-hinterlegten Root-CA-Zertifikat für eine \gls{https}-Verbindung gefunden werden kann. Der Betreiber einer, über \gls{https} erreichbaren \gls{website}, kann
+Monkeysphere dehnt, als \gls{firefox-addon}, das in \fref{sec:GrundlagenDefinitionen:Vertrauen:WOT} beschriebene \gls{wot} auf die \gls{pki}-Infrastruktur von
+\gls{https} aus. Dabei bietet es sich als Option zur Validierung der Gültigkeit von Schlüsseln an, wenn keine \gls{cot} bis zu einem in \gls{firefox}
+hinterlegten Root-\gls{ca}-Zertifikat für eine \gls{https}-Verbindung gefunden werden kann. Der Betreiber einer, über \gls{https} erreichbaren \gls{website}, kann
 dafür den \gls{rsa}-Schlüssel seines \gls{x509}-Zertifikats in ein \gls{openpgp}-Zertifikat importieren. Für die ID dieses \gls{openpgp}-Zertifikats wird der
 \gls{uri} des \gls{https}-Webservers verwendet. Das Zertifikat wird wird dann auf einen öffentlichen \gls{openpgp}-Schlüssel-Server geladen und kann dann später
 automatisch vom Monkeysphere-AddOn gefunden werden, wenn keine gültige \gls{cot} von \gls{firefox} gefunden wird. Für das veröffentlichte
@@ -60,26 +60,24 @@ Betriebssystem verwaltet.
 
 
 \subsection{Verbreitung}
-Für \gls{firefox} existiert das AddOn Key Manager Tool das \gls{x509}-Informationen außerhalb des Kontexts von \gls{https} verwendet. Es bietet Funktionen zur
+Für \gls{firefox} existiert das AddOn Key Manager Tool das \gls{x509}-Informationen außerhalb des Kontextes von \gls{https} verwendet. Es bietet Funktionen zur
 Erstellung, Signierung und Verwaltung von \gls{x509}-Zertifikaten, ähnlich der Arbeitsweise einer \gls{ca}. 
 
 \subsection{Anwendung}
 Das \gls{firefox-addon} Key  Manager Tool verwendet die in \gls{firefox} integrierten Programmierschnittstellen für \gls{x509} die unter dem Namen \gls{psm}
 und \gls{nss} verfügbar sind \cite{key-manager-tool}. 
 
-\section{Evaluierung}
+\section{Evaluierung und Auswahl eines Verfahrens}
 Die Verwendung eines \gls{wot} zur Verteilung der Schlüssel-Informationen und der Vertrauensbeziehungen zwischen ihnen hätte gegenüber einer \gls{pki} mit
 \gls{x509} den Vorteil, dass die Erstellung und Veröffentlichung eines \gls{openpgp}-Zertifikats einfach und ohne die Inanspruchnahme einer \gls{ca}
 durchgeführt werden kann. Dies könnte die Akzeptanz in einer heterogenen Benutzergruppe steigern, da bei \gls{x509} in der Regel Gebühren von den \glspl{ca}
 eingehoben werden und auch individuelle Vertrauensstellungen nicht möglich sind. Gegen den Einsatz eines \gls{wot} spricht die geringe Akzeptanz eines solchen
-Ansatzes im betrieblichen Umfeld, was auf das Fehlen einer zentralen Authorrität zurückzuführen ist \cite{krypto-pki-internet}.
+Ansatzes im betrieblichen Umfeld, was auf das Fehlen einer zentralen Autorität zurückzuführen ist \cite{krypto-pki-internet}.
 
-Beobachtungen der im Internet eingesetzten \gls{x509}-Zertifikate für \gls{https} haben gezeigt, dass auch Ansatz der zentralen Authoritäten wie \glspl{ca}
-nicht vor Fehlern und unsachgemäßen Daten in den Zertifikaten schützt. Von 33916 Zertifikaten, die nach den strikt formulierten \gls{x509-ev} Richtlinen
+Beobachtungen der im Internet eingesetzten \gls{x509}-Zertifikate für \gls{https} haben gezeigt, dass auch der Ansatz der zentralen Autoritäten wie \glspl{ca}
+nicht vor Fehlern und unsachgemäßen Daten in den Zertifikaten schützt. Von 33916 Zertifikaten, die nach den strikt formulierten \gls{x509-ev} Richtlinien
 \cite{ev-ssl} signiert wurden, wiesen 38 Mängel auf, wie zum Beispiel schwache Schlüssel, \gls{ip}-Adressen aus dem Bereich von RFC-1918 oder "`localhost"' als
 Wert für den \gls{dns}-Hostnamen des \gls{https}-Webservers \cite{ssliverse:27c3}.
-
-Ein Vergleich der beiden Verfahren hinsichtlich der ERfüllung von Anforderungen an eine PKI für 
 
 \begin{table}
     \centering
@@ -87,7 +85,7 @@ Ein Vergleich der beiden Verfahren hinsichtlich der ERfüllung von Anforderungen
         Anforderung  & \gls{openpgp} & \gls{x509} \\
         \hline
         \hline
-        Verfügbarkeit auf mehr als einer Platform & \CheckedBox & \CheckedBox \\
+        Verfügbarkeit auf mehr als einer Plattform & \CheckedBox & \CheckedBox \\
         \hline
         Programmierschnittstelle in \gls{firefox} & \Square & \CheckedBox \\
         \hline
@@ -108,20 +106,19 @@ Ein Vergleich der beiden Verfahren hinsichtlich der ERfüllung von Anforderungen
     \label{tab:gegenüberstellung}
 \end{table}
 
-\section{Auswahl eines Verfahrens}
 Um eine möglichst großflächige Verbreitung eines potentiellen \glspl{firefox-addon} bei Internet-Nutzer zu erreichen, sollten vorrangig Merkmale bei der Auswahl
-eines Verfahrens zur  Zertifikatsverteilungs und Signaturerstellung gewählt werden, die die sozialen Strukturen und Beziehungen dieses Personenkreises wiederspiegelt. Das
-sogenannte Web 2.0 basiert hauptsächlich auf der sozialen Verknüpfung von Personen mit Inhalten, dem Finden von Pfaden zu Personen über bereits vorhandene
-Kontakte und dem \ldots\todo.
+eines Verfahrens zur Zertifikatsverteilungs und Signaturerstellung gewählt werden, die die sozialen Strukturen und Beziehungen dieses Personenkreises
+widerspiegelt. Das sogenannte Web 2.0 basiert hauptsächlich auf der sozialen Verknüpfung von Personen mit Inhalten, dem Finden von Pfaden zu Personen über
+bereits vorhandene Kontakte und dem \ldots\todo.
 
 Neben drei technischen Anforderungen werden deshalb mehrheitlich soziale Aspekte in der Gegenüberstellung der beiden Verfahren \gls{openpgp} und \gls{x509} in
 \fref{tab:gegenüberstellung} bewertet. \gls{x509} bietet in einem \gls{webbrowser} den großen Vorteil, dass die nötigen kryptografischen Methoden bereits
-integriert sind und über Programmierschnitstellen benutzt werden können. Die institutionalisierte Prüfung der Zertifikatsdaten wäre ein Vorteil von \gls{x509},
+integriert sind und über Programmierschnittstellen benutzt werden können. Die institutionalisierte Prüfung der Zertifikatsdaten wäre ein Vorteil von \gls{x509},
 der jedoch zu einem zentralen Schwachpunkt werden kann, wenn die Richtlinien der Prüfung von einzelnen \glspl{ca} nicht eingehalten werden. Es kann den
-Benutzern auch nicht zugemutet werden, wegen mangelndem technischem Verständnis und auch dem zeitlichen aufwand, jede \gls{ca} zu überprüfen, denen ihr
+Benutzern auch nicht zugemutet werden, wegen mangelndem technischem Verständnis und auch dem zeitlichen Aufwand, jede \gls{ca} zu überprüfen, denen ihr
 \gls{webbrowser} vertraut. Auch entsteht bei \gls{x509} ein Problem, wenn unterschiedliche \gls{webbrowser} nicht der selben Menge von \glspl{ca} vertrauen.
 
-Bezüglich der sozialen Anforderungen ist \gls{openpgp} jedoch der bessere Kandidat, da es die Einstiegshürden für Benutzer niedriger als bei \gls{x509} hält.
-Auch die Abbildung der sozialen Strukturen in einem von privaten Anwendern dominiserten Internet ist mit \gls{openpgp} besser möglich, da das \gls{wot} in
-seiner Struktur identisch ist. Ähnlich wie im Web 2.0 beginnt jeder Benutzer im \gls{wot} ohne vorgegebene Vertrauensbeziehungen. Deise werden erst im Lauf der
-Zeit, vom Benutzer aktiv angesammelt. Dies würde die Probleme die \gls{x509} durch inkorrekt arbeitende, vorinstallierte \glspl{ca} hat, ausschliessen.
+Bezüglich der sozialen Anforderungen ist \gls{openpgp} der bessere Kandidat, da es die Einstiegshürden für Benutzer niedriger als bei \gls{x509} hält.
+Auch die Abbildung der sozialen Strukturen in einem von privaten Anwendern dominierten Internet ist mit \gls{openpgp} besser möglich, da das \gls{wot} in
+seiner Struktur identisch ist. Ähnlich wie im Web 2.0 beginnt jeder Benutzer im \gls{wot} ohne vorgegebene Vertrauensbeziehungen. Diese werden erst im Lauf der
+Zeit, vom Benutzer aktiv angesammelt. Dies würde die Probleme, die \gls{x509} durch inkorrekt arbeitende, vorinstallierte \glspl{ca} hat, ausschließen.
