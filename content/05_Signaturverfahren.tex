@@ -58,6 +58,7 @@ Die Unterstützung für die kryptografisch abgesicherte Netzwerkverbindungen mit
 Unterstützung für das Verarbeiten von \gls{x509}-Zertifikaten. Abhängig vom \gls{webbrowser} werden die Zertifikate der Root-\glspl{ca} intern oder vom
 Betriebssystem verwaltet.
 
+
 \subsection{Verbreitung}
 Für \gls{firefox} existiert das AddOn Key Manager Tool das \gls{x509}-Informationen außerhalb des Kontexts von \gls{https} verwendet. Es bietet Funktionen zur
 Erstellung, Signierung und Verwaltung von \gls{x509}-Zertifikaten, ähnlich der Arbeitsweise einer \gls{ca}. 
@@ -72,6 +73,11 @@ Die Verwendung eines \gls{wot} zur Verteilung der Schlüssel-Informationen und d
 durchgeführt werden kann. Dies könnte die Akzeptanz in einer heterogenen Benutzergruppe steigern, da bei \gls{x509} in der Regel Gebühren von den \glspl{ca}
 eingehoben werden und auch individuelle Vertrauensstellungen nicht möglich sind. Gegen den Einsatz eines \gls{wot} spricht die geringe Akzeptanz eines solchen
 Ansatzes im betrieblichen Umfeld, was auf das Fehlen einer zentralen Authorrität zurückzuführen ist \cite{krypto-pki-internet}.
+
+Beobachtungen der im Internet eingesetzten \gls{x509}-Zertifikate für \gls{https} haben gezeigt, dass auch Ansatz der zentralen Authoritäten wie \glspl{ca}
+nicht vor Fehlern und unsachgemäßen Daten in den Zertifikaten schützt. Von 33916 Zertifikaten, die nach den strikt formulierten \gls{x509-ev}-Richtlinen
+\cite{ev-ssl} signiert wurden, wiesen 38 Mängel auf, wie zum Beispiel schwache Schlüssel, \gls{ip}-Adressen aus dem Bereich von RFC-1918 oder "`localhost"' als
+Wert für den \gls{dns}-Hostnamen des \gls{https}-Webservers \cite{ssliverse:27c3}.
 
 \begin{table}
     \centering
