@@ -1,22 +1,36 @@
 % vim: set tw=160:
 
-\chapter{Anforderungskatalog für ein Browser-Plugin}
+\chapter{Anforderungskatalog für ein \protect\glstext*{firefox-addon}}
 \index{Anforderungskatalog}
 \label{chap:Anforderungskatalog}
 
 \section{Signaturerkennung}
 \index{Signaturerkennung}
 \label{sec:Anforderungskatalog:Signaturerkennung}
-
+Das AddOn muss beim Laden einer \gls{webseite} ein \gls{xhtml}-Dokument erkennen und es auf darin enthaltene Signaturen nach \gls{xml-dsig}
+durchsuchen. Dazu prüft es das Dokument zuerst auf das Vorhandensein eines \gls{xml}-Headers und wertet dann die \xmlelem{link}-Elemente mit dem Wert
+\texttt{xml-dsig} im Attribut \xmlattr{link}{rel} aus.
 
 \section{Signaturauswertung}
 \index{Signaturauswertung}
 \label{sec:Anforderungskatalog:Signaturauswertung}
+In \gls{xhtml}-Dokumenten gefundene \gls{xml-dsig}-Signaturen müssen ausgewertet werden, dafür müssen zwei Abläufe, "`Reference Validation"' und "`Signature
+Validation"' eingehalten werden.
 
-\section{Zertifikats-Download}
-\index{Zertifikats-Download}
-\label{sec:Anforderungskatalog:Zertifikats-Download}
+\subsection{Reference Validation}
+Der Inhalt von \xmlelem{SignedInfo} aus der Signatur wird mittels \gls{c14n} in eine kanonische Form gebracht. Danach wird jede \xmlelem{Reference} aufgelöst
+und die referenzierten Daten geladen. Diese Daten werden in der Reihenfolge ihrer Definition durch die Transformationen aus \xmlelem{Transform} geleitet und
+umgewandelt. Die Daten aus der letzten Transformation werden in den Algorithmus, der in \xmlelem{DigestMethod} angegeben ist, geleitet, wodurch eine
+Hash-Prüfsumme erzeugt wird. Diese wird mit dem Wert aus \xmlelem{DigestValue} verglichen. sind die beiden Werte nicht identisch, schlägt die Validierung der
+Signatur fehl. Nachdem dieser Vorgang für jede \xmlelem{Reference} durchgeführt wurde, beginnt die "`Signature Validation"'.
+
+\subsection{Signature Validation}
+Das in \xmlelem{KeyInfo} spezifizierte \gls{openpgp}-Zertifikat wird aus dem lokalen Speicher, oder, falls dort nicht vorhanden, von einem Schlüsselserver
+geladen. Die Signaturmethode muss über die kanonische Form von \xmlelem{SignatureMethod} ermittelt werden und wird dann zusammen mit dem Zertifikat und der
+kanonischen Form von \xmlelem{SignedInfo} zur Verifizierung der Gültigkeit der Signatur in \xmlelem{SignatureValue} benutzt. Ist die Verifizierung erfolgreich,
+wird die Signatur vom \gls{firefox-addon} als gültig anerkannt.
 
 \section{\protect\glstext*{gpg}-Anbindung}
 \index{\protect\glstext*{gpg}-Anbindung}
 \label{sec:Anforderungskatalog:GnuPG-Anbindung}
+
