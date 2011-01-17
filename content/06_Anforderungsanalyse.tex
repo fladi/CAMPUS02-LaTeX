@@ -1,21 +1,25 @@
 % vim: set tw=160:
 
-\chapter{Anforderungskatalog für ein \protect\glstext*{firefox-addon}}
-\index{Anforderungskatalog}
-\label{chap:Anforderungskatalog}
+\chapter{Anforderungen an ein \protect\glstext*{firefox-addon}}
+\index{Anforderungen}
+\label{chap:Anforderungen}
+Um die im Rahmen dieser Arbeit gewonnen Erkenntnisse zum Einsatz von \gls{xml-dsig} in \gls{xhtml} nutzbar zu machen, wäre es erforderlich einen Prototypen
+eines Programms zu entwickeln, der eine einfache Umsetzung der hier vorgestellten Verfahren und Mechanismen demonstriert. Da \gls{xml-dsig} für ein sehr weit
+gefasstes Einsatzfeld entwickelt wurde, sollen hier nun einige grundlegende Anforderungen an eine solche Software formuliert werden. Um die Formulierungen zu
+vereinfachen wird davon ausgegangen, dass diese Software als \gls{firefox-addon} entwickelt wird.
 
 \section{Signaturerkennung}
 \index{Signaturerkennung}
-\label{sec:Anforderungskatalog:Signaturerkennung}
-Das AddOn muss beim Laden einer \gls{webseite} ein \gls{xhtml}-Dokument erkennen und es auf darin enthaltene Signaturen nach \gls{xml-dsig}
+\label{sec:Anforderungen:Signaturerkennung}
+Das AddOn muss beim Laden einer \gls{webseite} in \gls{firefox} ein \gls{xhtml}-Dokument erkennen und es auf darin enthaltene Signaturen nach \gls{xml-dsig}
 durchsuchen. Dazu prüft es das Dokument zuerst auf das Vorhandensein eines \gls{xml}-Headers und wertet dann eine oder mehrere der in
 \fref{chap:Signaturbindung} beschriebenen Varianten zur Signaturbindung aus.
 
 \section{Signaturauswertung}
 \index{Signaturauswertung}
-\label{sec:Anforderungskatalog:Signaturauswertung}
-In \gls{xhtml}-Dokumenten gefundene \gls{xml-dsig}-Signaturen müssen ausgewertet werden, dafür müssen zwei Abläufe, "`Reference Validation"' und "`Signature
-Validation"' eingehalten werden.
+\label{sec:Anforderungen:Signaturauswertung}
+In \gls{xhtml}-Dokumenten gefundene \gls{xml-dsig}-Signaturen müssen ausgewertet werden, wofür zwei Abläufe, "`Reference Validation"' und "`Signature
+Validation"' einizuhalten sind.
 
 \subsection{Reference Validation}
 Der Inhalt von \xmlelem{SignedInfo} aus der Signatur wird mittels \gls{c14n} in eine kanonische Form gebracht. Danach wird jede \xmlelem{Reference} aufgelöst
@@ -28,9 +32,15 @@ Signatur fehl. Nachdem dieser Vorgang für jede \xmlelem{Reference} durchgeführ
 Das in \xmlelem{KeyInfo} spezifizierte \gls{openpgp}-Zertifikat wird aus dem lokalen Speicher, oder, falls dort nicht vorhanden, von einem Schlüsselserver
 geladen. Die Signaturmethode muss über die kanonische Form von \xmlelem{SignatureMethod} ermittelt werden und wird dann zusammen mit dem Zertifikat und der
 kanonischen Form von \xmlelem{SignedInfo} zur Verifizierung der Gültigkeit der Signatur in \xmlelem{SignatureValue} benutzt. Ist die Verifizierung erfolgreich,
-wird die Signatur vom \gls{firefox-addon} als gültig anerkannt.
+wird die Signatur vom \gls{firefox-addon} als gültig anerkannt und das Ergebnis sollte grafisch innerhalb des Darstellungsbereichs von \gls{firefox} angezeigt
+werden.
 
 \section{\protect\glstext*{gpg}-Anbindung}
 \index{\protect\glstext*{gpg}-Anbindung}
-\label{sec:Anforderungskatalog:GnuPG-Anbindung}
+\label{sec:Anforderungen:GnuPG-Anbindung}
+Um die Verwendung zusammen mit anderen \glspl{firefox-addon} wie FireGPG oder Monkeysphere zu vereinfachen sollte das AddOn ebenfalls auf eine, am System
+installierte Instanz von \gls{gpg} zugreifen. Damit sollte einer unnötigen Fragmentierung der Zertifikats-Speicher vermieden werden, da so nur der zentrale
+Speicher des Benutzers am System benutzt wird. Für die konkrete Implementierung dieser Schnittstelle könnte der Programmcode der bestehenden AddOns herangezogen
+werden.
+
 
