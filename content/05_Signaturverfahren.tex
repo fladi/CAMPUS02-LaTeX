@@ -23,7 +23,8 @@ Schnittstelle zu einer \gls{openpgp}-Implementierung.
 \gls{firefox} bietet in seinem Auslieferungszustand keine Unterstützung für \gls{openpgp}. Mit Stand Januar 2011 existieren jedoch zwei \glspl{firefox-addon},
 \index{Firefox!FireGPG}FireGPG\footnote{\url{http://getfiregpg.org/s/home}} und
 \index{Firefox!Monkeysphere}Monkeysphere\footnote{\url{http://web.monkeysphere.info/}}, welche \gls{gpg}, eine \gls{foss}-Implementierung von \gls{openpgp},
-nutzen, um digitale Signaturen in \gls{firefox} zu verwenden.
+nutzen, um digitale Signaturen in \gls{firefox} zu verwenden. Im weiteren Sinne ist auch die Erweiterung Enigmail ein \gls{firefox-addon}, da es die selbe
+Erweiterungsschnittstelle nutzt, es jedoch eine \gls{openpgp}-Erweiterung für das E-Mail-Programm \gls{thunderbird} ist.
 
 FireGPG bietet eine einfache Erkennung und Prüfung von \gls{openpgp}-Signaturen die als normaler Text im \gls{ascii} Armor Format \cite{openpgp:ietf} in
 \glspl{webseite} eingebettet sind. Diese Textstellen werden dann in der Darstellung im Browser farblich hervorgehoben und Informationen zur Gültigkeit der
@@ -38,8 +39,12 @@ automatisch vom Monkeysphere-AddOn gefunden werden, wenn keine gültige \gls{cot
 \gls{openpgp}-Zertifikat können die Benutzer dann dem \gls{wot} entsprechend ihr Vertrauen festlegen, welches dann von Monkeysphere auch innerhalb von
 \gls{firefox} angezeigt wird.
 
-Zur Verteilung der Schlüssel steht eine Infrastruktur aus öffentlichen Schlüsselservern zu Verfügung, über die das Auffinden von
-\gls{openpgp}-Zertifikaten ermöglicht wird \cite{pgp}.
+Enigmail deckt den wichtigsten Verbreitungsraum fpr \gls{openpgp}, die Kommunikation über E-Mail, ab, indem es gleich wie die beiden zuvor genannten
+Erweiterungen eine Schnittstelle zu \gls{gpg} anbietet, jedoch nicht für \gls{firefox} sondern nur für \gls{thunderbird}. Es eigent sich zum Signieren,
+Verifizieren, Ver- und Entschlüsseln von E-Mails, sowie der Verwaltung der benutzten \gls{openpgp}-Zertifikate über eine grafische Oberfläche.
+
+Für alle drei Erweiterungen gilt, dass sie eine Infrastruktur aus öffentlichen Schlüsselservern nutzen, um die Verteilung und das Auffinden von
+\gls{openpgp}-Zertifikaten zu ermöglichen.
 
 \subsection{Anwendung}
 FireGPG und Monkeysphere benutzen beide eine, am System des Benutzers installierte, Instanz von \gls{gpg} und rufen das darin enthaltene, ausführbare Programm
@@ -108,15 +113,16 @@ Wert für den \gls{dns}-Hostnamen des \gls{https}-Webservers \cite{ssliverse:27c
 
 Um eine möglichst großflächige Verbreitung eines potentiellen \glspl{firefox-addon} bei Internet-Nutzer zu erreichen, sollten vorrangig Merkmale bei der Auswahl
 eines Verfahrens zur Zertifikatsverteilungs und Signaturerstellung gewählt werden, die die sozialen Strukturen und Beziehungen dieses Personenkreises
-widerspiegelt. Das sogenannte Web 2.0 basiert hauptsächlich auf der sozialen Verknüpfung von Personen mit Inhalten, dem Finden von Pfaden zu Personen über
-bereits vorhandene Kontakte und dem \ldots\todo.
+widerspiegelt. Das sogenannte soziale Web 2.0 basiert hauptsächlich auf der Verknüpfung von Personen mit Inhalten, dem Finden von Pfaden zu Personen über
+bereits vorhandene Kontakte und der Interaktion mit Inhalten, die von anderen Benutzern einer \gls{website} generiert wurden.
 
 Neben drei technischen Anforderungen werden deshalb mehrheitlich soziale Aspekte in der Gegenüberstellung der beiden Verfahren \gls{openpgp} und \gls{x509} in
 \fref{tab:gegenüberstellung} bewertet. \gls{x509} bietet in einem \gls{webbrowser} den großen Vorteil, dass die nötigen kryptografischen Methoden bereits
 integriert sind und über Programmierschnittstellen benutzt werden können. Die institutionalisierte Prüfung der Zertifikatsdaten wäre ein Vorteil von \gls{x509},
 der jedoch zu einem zentralen Schwachpunkt werden kann, wenn die Richtlinien der Prüfung von einzelnen \glspl{ca} nicht eingehalten werden. Es kann den
-Benutzern auch nicht zugemutet werden, wegen mangelndem technischem Verständnis und auch dem zeitlichen Aufwand, jede \gls{ca} zu überprüfen, denen ihr
-\gls{webbrowser} vertraut. Auch entsteht bei \gls{x509} ein Problem, wenn unterschiedliche \gls{webbrowser} nicht der selben Menge von \glspl{ca} vertrauen.
+Benutzern auch nicht zugemutet werden, zum Einen wegen fehlendem technischem Verständnis und zum Anderen durch  den damit verbundenen zeitlichen Aufwand, jede
+\gls{ca} zu überprüfen, denen ihr \gls{webbrowser} vertraut. Auch entsteht bei \gls{x509} ein Problem, wenn unterschiedliche \gls{webbrowser} nicht der selben
+Menge von \glspl{ca} vertrauen.
 
 Bezüglich der sozialen Anforderungen ist \gls{openpgp} der bessere Kandidat, da es die Einstiegshürden für Benutzer niedriger als bei \gls{x509} hält.
 Auch die Abbildung der sozialen Strukturen in einem von privaten Anwendern dominierten Internet ist mit \gls{openpgp} besser möglich, da das \gls{wot} in
