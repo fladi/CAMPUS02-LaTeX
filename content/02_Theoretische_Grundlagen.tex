@@ -125,7 +125,7 @@ ein Schlüssel einer bestimmten Entität zugeordnet werden kann. Ist diese Siche
 getätigt werden. Es müssen also Methoden existieren, um das eigene Vertrauen in einen Schlüssel auszudrücken und auch die Authentizität von Schlüsseln
 zu überprüfen \cite{krypto-pki-internet}.
 
-\gls{openpgp} und \gls{x509} verfolgen hierbei jeweils unterschiedliche Ansätze, um Vertrauensbeziehungen zwischen Schlüsseln zu regeln
+\gls{openpgp} und \gls{x509} verfolgen hierbei jeweils unterschiedliche Ansätze, um Vertrauensbeziehungen zwischen Schlüsseln zu definieren
 \cite{krypto-pki-internet}.
 
 \subsection{Web Of Trust}
@@ -152,24 +152,24 @@ nicht sicher"' bis zu "`Ich vertraue absolut"' \cite{pgp}.
 \label{fig:wot}
 \end{figure}
 
-\subsection{Public Key Infrastruktur}
-\index{Public Key Infrastruktur}
-\label{sec:GrundlagenDefinitionen:Vertrauen:PKI}
-\gls{x509} bildet die Grundlage für ein hierarchisches System aus Zertifikaten, auch \gls{pki} genannt. Im Gegensatz zum \gls{wot}, welches einen Graphen der
-beteiligten Schlüssel bildet, bestehen bei einer \gls{pki} eine oder mehrere baumartige Vertrauensstrukturen.
+\subsection{\protect\glsdesc*{ht}}
+\index{Hierachical Trust}
+\label{sec:GrundlagenDefinitionen:Vertrauen:HT}
+\gls{x509} bildet die Grundlage für ein hierarchisches System aus Zertifikaten, auch \gls{ht} genannt. Im Gegensatz zum \gls{wot}, welches einen Graphen der
+beteiligten Schlüssel bildet, bestehen bei einem \gls{ht} eine oder mehrere baumartige Vertrauensstrukturen.
 An der Spitze eines solchen Baumes steht eine Root-\gls{ca}, welche die Zertifikate der nächsten, im Baum tiefer gelegen Ebene signiert. Jeder Pfad, der von der
 Wurzel, der Root-\gls{ca} des Baumes, zu einem der Zertifikate an einem Ast führt wird als \gls{cot} bezeichnet. \fref{fig:cot} stellt einen solchen Baum mit
 mehreren \glspl{cot} dar.
 
-Die Anzahl der Ebenen in einem \gls{pki}-Baum unterliegt keiner Beschränkung, jedoch muss einem Zertifikat explizit das Recht eingeräumt werden, andere
+Die Anzahl der Ebenen in einem \gls{ht}-Baum unterliegt keiner Beschränkung, jedoch muss einem Zertifikat explizit das Recht eingeräumt werden, andere
 Zertifikate unter ihr zu signieren \cite{kits}. Im Internet existiert heute eine große Anzahl von \glspl{ca}, welche von Staaten, Unternehmen oder auch
 Non-Profit-Organisationen betrieben werden. Zwischen diesen einzelnen Bäumen besteht keine Verbindung und auch keine Vertrauensbeziehung. Deshalb vertraut bei
-einer \gls{pki} jeder Teilnehmer einer von ihm (oder seinem Softwaredistributor) ausgewählten Menge an \glspl{ca} \cite{ssliverse:eff}.
+einem \gls{ht} jeder Teilnehmer einer von ihm (oder seinem Softwaredistributor) ausgewählten Menge an \glspl{ca} \cite{ssliverse:eff,krypto-pki-internet}.
 
 \begin{figure}
 \centering
 \input{./figures/chain-of-trust}
-\caption{Schematische Darstellung einer \texorpdfstring{\protect\Glsentryname{pki}}{PKI}}
+\caption{Schematische Darstellung eines \texorpdfstring{\protect\Glsentryname{ht}}{HT}}
 \label{fig:cot}
 \end{figure}
 
