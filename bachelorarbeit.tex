@@ -1,11 +1,23 @@
-%%%------------------------------------
-%%%     DIPLOMARBEIT: Hauptdatei
-%%%     
-%%%     Stefan Grünwald (2000 - 2007)
-%%%     Michael Fladischer (2010)
-%%%
-%%%     Das Dokument lässt sich am besten mit "latexmk" bauen.
-%%%------------------------------------
+%------------------------------------
+% DIPLOMARBEIT: Hauptdatei
+%     
+% Stefan Grünwald (2000 - 2007)
+% Michael Fladischer (2010)
+%
+% Das Dokument lässt sich am besten mit "latexmk" bauen:
+% http://www.phys.psu.edu/~collins/software/latexmk-jcc/
+%
+% Die genutzten LaTeX-Packages sind alle Bestandteil der TeXlive Distribution die mit Debian (Squeeze) ausgeliefert werden.
+% Für eine bequeme Installation unter Debian genügt es, folgende Zeile als "root" auszuführen:
+%
+% aptitude install -R latexmk texlive-base texlive-bibtex-extra texlive-binaries texlive-common texlive-fonts-extra texlive-fonts-recommended \
+%  texlive-formats-extra texlive-generic-extra texlive-generic-recommended texlive-humanities texlive-lang-german texlive-latex-base texlive-latex-extra \
+%  texlive-latex-recommended texlive-latex3 texlive-math-extra texlive-pictures texlive-plain-extra texlive-pstricks texlive-publishers texlive-science
+%
+% Alle .tex Dateien sind für den vim Editor ausgelegt und enthalten Modeline-Anweisungen zur besseren Darstellung.
+% 
+% Patches zur Verbesserung von Fehlern, zur Optimierung oder für neue Features können gerne an <michael@fladi.at> geschickt werden.
+%------------------------------------
 
 % Dokumentenklasse%{{{
 \documentclass[
@@ -40,11 +52,19 @@
 \usepackage{longtable}                      % Mehrseitige Tabellen
 \usepackage{ltxtable}                       % 'longtable' und 'tabularx'
 \usepackage{array}                          % Zeilenumbruch in 'p'-Spalten
-\usepackage{booktabs}                       % \toprule, \midrule und \bottomrule
-\usepackage{dcolumn}                        %
-\usepackage{blindtext}                      % Erzeugt Blindtext welcher beim Prüfen des Layouts behilflich sein kann
+% http://www.ctan.org/tex-archive/macros/latex/contrib/booktabs/
+% \toprule, \midrule und \bottomrule
+\usepackage{booktabs}
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+\usepackage{dcolumn}
+% http://www.ctan.org/tex-archive/macros/latex/contrib/blindtext/
+% Erzeugt Blindtext welcher beim Prüfen des Layouts behilflich sein kann
+\usepackage{blindtext}
+% http://ctan.org/tex-archive/macros/latex/contrib/siunitx/
 \usepackage{siunitx}
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
 \usepackage{color}
+% http://www.ctan.org/tex-archive/macros/latex/contrib/xcolor/
 \usepackage{xcolor}
 % http://www.ctan.org/tex-archive/macros/latex/contrib/wasysym/
 \usepackage{wasysym}
@@ -55,6 +75,7 @@
 %}}}
 
 % Formatierung für Listings%{{{
+% http://www.ctan.org/tex-archive/macros/latex/contrib/listings/
 \usepackage{listings}
 \lstloadlanguages{HTML,XML}
 \lstset{float,
@@ -72,13 +93,16 @@
         numbersep=5pt,
         xleftmargin=12pt,
         escapeinside={@}{@},
-        basicstyle=\ttfamily}%}}}
+        basicstyle=\ttfamily}
+%}}}
 
 % Lokale Einstellungen%{{{
 \input{misc/settings}
 %}}}
 
 % Weiche für PDF/DVI%{{{
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Bitmaps stinken ja in der Druckstufe sowieso, besser TIKZ benutzen :-)
 \usepackage{ifpdf}
 % für Encapsulated-Postscript und PDFTeX Grafiken
 \ifpdf
@@ -88,16 +112,20 @@
 \else
     \usepackage[dvips]{graphicx}
     \graphicspath{{images/dvi/}}
-\fi%}}}
+\fi
+%}}}
 
 % TIKZ - Coole Grafiken direkt in TeX zeichnen :-)%{{{
+% http://www.ctan.org/tex-archive/help/Catalogue/entries/pgf.html
 \usepackage{tikz}
 \usetikzlibrary{mindmap,trees,arrows,shapes,positioning,shadows,calc}
 %}}}
 
 % Überschriften und Zeilenabstand%{{{
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
 \usepackage{layout}
 
+% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
 % Überschriften formatieren
 \usepackage[font=small,format=hang]{caption}
 
@@ -130,6 +158,7 @@
 %}}}
 
 % Smarte Referenzen%{{{
+% http://www.ctan.org/tex-archive/macros/latex/contrib/fancyref/
 \usepackage[german]{fancyref}
 % Listings (lst:my-unigue-label)
 \newcommand*{\fancyreflstlabelprefix}{lst}
@@ -167,12 +196,13 @@
             breaklinks
 ]{hyperref}
 
-% Allow links to have line-breaks even when processed by dvips/ps2pdf.
 % http://www.ctan.org/tex-archive/macros/latex/contrib/breakurl/
+% Allow links to have line-breaks even when processed by dvips/ps2pdf.
 \usepackage[hyphenbreaks]{breakurl}
 %}}}
 
 % Glossaries%{{{
+% http://www.ctan.org/tex-archive/macros/latex/contrib/glossaries/
 \usepackage[toc,acronym,style=long]{glossaries} 
 \loadglsentries{misc/glossary}
 \makeglossaries
@@ -386,7 +416,7 @@ Pers. Kennz. \campusPersKnz
 %%%------------------------------------
 \end{document}%}}}
 
-% vim:filetype=tex foldmethod=marker autoindent expandtab shiftwidth=4
+% vim:filetype=tex foldmethod=marker autoindent expandtab shiftwidth=4 tw=160:
 % Local variables:
 % mode: latex
 % End:              
