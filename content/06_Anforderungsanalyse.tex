@@ -8,8 +8,8 @@
 \index{Signaturerkennung}
 \label{sec:Anforderungskatalog:Signaturerkennung}
 Das AddOn muss beim Laden einer \gls{webseite} ein \gls{xhtml}-Dokument erkennen und es auf darin enthaltene Signaturen nach \gls{xml-dsig}
-durchsuchen. Dazu prüft es das Dokument zuerst auf das Vorhandensein eines \gls{xml}-Headers und wertet dann die \xmlelem{link}-Elemente mit dem Wert
-\texttt{xml-dsig} im Attribut \xmlattr{link}{rel} aus.
+durchsuchen. Dazu prüft es das Dokument zuerst auf das Vorhandensein eines \gls{xml}-Headers und wertet dann eine oder mehrere der in
+\fref{chap:Signaturbindung} beschriebenen Varianten zur Signaturbindung aus.
 
 \section{Signaturauswertung}
 \index{Signaturauswertung}
