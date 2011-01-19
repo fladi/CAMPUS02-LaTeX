@@ -3,11 +3,9 @@
 \chapter{Anwendbare Signaturverfahren}
 \index{Signaturverfahren}
 \label{chap:Signaturverfahren}
-
-\section{Überblick}
 Wie in \fref{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren} bereits vorgestellt, bieten sich \gls{openpgp} und \gls{x509} für den Einsatz in
-\gls{xml-dsig} an. Um solche Signaturen in \gls{xhtml} für den Besucher einer \gls{website} nutzbar zu machen müssen die dafür nötigen Komponenten in einem
-\gls{webbrowser} vorhanden sein, oder über eine Erweiterung nachrüstbar sein. Dazu wird der \gls{webbrowser}
+\gls{xml-dsig} an. Um solche Signaturen in \gls{xhtml} für den Besucher einer \gls{website} nutzbar zu machen, müssen die dafür nötigen Komponenten in einem
+\gls{webbrowser} vorhanden sein oder über eine Erweiterung nachrüstbar sein. Dazu wird der \gls{webbrowser}
 \index{Firefox}Firefox\footnote{\url{http://www.mozilla.com/firefox/}} wegen seiner umfangreichen Möglichkeiten zur Erweiterung mittels sogenannter
 \glspl{firefox-addon} auf die Integration von \gls{openpgp} und \gls{x509} untersucht. Auch die zunehmende Verbreitung von \gls{firefox} im europäischen Raum
 von über $50\%$ \cite{firefox-verbreitung} positioniert diesen \gls{webbrowser} als bevorzugtes Ziel für eine solche Erweiterung.
@@ -26,21 +24,21 @@ Schnittstelle zu einer \gls{openpgp}-Implementierung.
 nutzen, um digitale Signaturen in \gls{firefox} zu verwenden. Im weiteren Sinne ist auch die Erweiterung Enigmail ein \gls{firefox-addon}, da es die selbe
 Erweiterungsschnittstelle nutzt, es jedoch eine \gls{openpgp}-Erweiterung für das E-Mail-Programm \gls{thunderbird} ist.
 
-FireGPG bietet eine einfache Erkennung und Prüfung von \gls{openpgp}-Signaturen die als normaler Text im \gls{ascii} Armor Format \cite{openpgp:ietf} in
+FireGPG bietet eine einfache Erkennung und Prüfung von \gls{openpgp}-Signaturen, die als normaler Text im \gls{ascii} Armor Format \cite{openpgp:ietf} in
 \glspl{webseite} eingebettet sind. Diese Textstellen werden dann in der Darstellung im Browser farblich hervorgehoben und Informationen zur Gültigkeit der
 Signatur werden, beim Überfahren des Textes mit der Maus, angezeigt.
 
 Monkeysphere dehnt, als \gls{firefox-addon}, das in \fref{sec:GrundlagenDefinitionen:Vertrauen:WOT} beschriebene \gls{wot} auf die \gls{pki}-Infrastruktur von
 \gls{https} aus. Dabei bietet es sich als Option zur Validierung der Gültigkeit von Schlüsseln an, wenn keine \gls{cot} bis zu einem in \gls{firefox}
-hinterlegten Root-\gls{ca}-Zertifikat für eine \gls{https}-Verbindung gefunden werden kann. Der Betreiber einer, über \gls{https} erreichbaren \gls{website}, kann
+hinterlegten Root-\gls{ca}-Zertifikat für eine \gls{https}-Verbindung gefunden werden kann. Der Betreiber einer, über \gls{https} erreichbaren, \gls{website} kann
 dafür den \gls{rsa}-Schlüssel seines \gls{x509}-Zertifikats in ein \gls{openpgp}-Zertifikat importieren. Für die ID dieses \gls{openpgp}-Zertifikats wird der
-\gls{uri} des \gls{https}-Webservers verwendet. Das Zertifikat wird wird dann auf einen öffentlichen \gls{openpgp}-Schlüssel-Server geladen und kann dann später
+\gls{uri} des \gls{https}-Webservers verwendet. Das Zertifikat wird dann auf einen öffentlichen \gls{openpgp}-Schlüssel-Server geladen und kann dann später
 automatisch vom Monkeysphere-AddOn gefunden werden, wenn keine gültige \gls{cot} von \gls{firefox} gefunden wird. Für das veröffentlichte
 \gls{openpgp}-Zertifikat können die Benutzer dann dem \gls{wot} entsprechend ihr Vertrauen festlegen, welches dann von Monkeysphere auch innerhalb von
 \gls{firefox} angezeigt wird.
 
-Enigmail deckt den wichtigsten Verbreitungsraum fpr \gls{openpgp}, die Kommunikation über E-Mail, ab, indem es gleich wie die beiden zuvor genannten
-Erweiterungen eine Schnittstelle zu \gls{gpg} anbietet, jedoch nicht für \gls{firefox} sondern nur für \gls{thunderbird}. Es eigent sich zum Signieren,
+Enigmail deckt den wichtigsten Verbreitungsraum für \gls{openpgp}, die Kommunikation über E-Mail, ab, indem es gleich wie die beiden zuvor genannten
+Erweiterungen eine Schnittstelle zu \gls{gpg} anbietet, jedoch nicht für \gls{firefox} sondern nur für \gls{thunderbird}. Es eignet sich zum Signieren,
 Verifizieren, Ver- und Entschlüsseln von E-Mails, sowie der Verwaltung der benutzten \gls{openpgp}-Zertifikate über eine grafische Oberfläche.
 
 Für alle drei Erweiterungen gilt, dass sie eine Infrastruktur aus öffentlichen Schlüsselservern nutzen, um die Verteilung und das Auffinden von
@@ -63,12 +61,9 @@ Die Unterstützung für die kryptografisch abgesicherte Netzwerkverbindungen mit
 Unterstützung für das Verarbeiten von \gls{x509}-Zertifikaten. Abhängig vom \gls{webbrowser} werden die Zertifikate der Root-\glspl{ca} intern oder vom
 Betriebssystem verwaltet.
 
-
-\subsection{Verbreitung}
-Für \gls{firefox} existiert das AddOn Key Manager Tool das \gls{x509}-Informationen außerhalb des Kontextes von \gls{https} verwendet. Es bietet Funktionen zur
+Für \gls{firefox} existiert das AddOn Key Manager Tool, das \gls{x509}-Informationen außerhalb des Kontextes von \gls{https} verwendet. Es bietet Funktionen zur
 Erstellung, Signierung und Verwaltung von \gls{x509}-Zertifikaten, ähnlich der Arbeitsweise einer \gls{ca}. 
 
-\subsection{Anwendung}
 Das \gls{firefox-addon} Key  Manager Tool verwendet die in \gls{firefox} integrierten Programmierschnittstellen für \gls{x509} die unter dem Namen \gls{psm}
 und \gls{nss} verfügbar sind \cite{key-manager-tool}. 
 
