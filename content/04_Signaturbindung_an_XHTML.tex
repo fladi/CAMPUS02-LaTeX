@@ -47,9 +47,7 @@ einzelnen Namespaces werden \glspl{uri} wie in \fref{tab:xml-namespaces} benutzt
 \fref{lst:xmlns} zeigt die Kombination der Namespaces von \gls{xhtml} und \gls{xml-dsig}. Dabei wird für das Wurzel-Element des Dokuments, \xmlelem{html} auf
 \fref{lin:xmlns-html}, der Namespace auf den von \gls{xhtml} gesetzt und somit auf alle darunter gelegenen Elemente vererbt. Erst beim Signatur-Element,
 \xmlelem{Signature} auf \fref{lin:xmlns-signature}, wird der Namespace auf den von \gls{xml-dsig} geändert, wobei nun wiederum dieser Namespace auf die unter
-der Deklaration gelegenen Elemente vererbt wird \cite{xml:oreilly}. Es ist auch möglich, einen Namespace auf ein Element explizit ohne Vererbung zuzuweisen, da
-aber der Aufbau einer \gls{xml-dsig}-Signatur immer aus mehreren Elementen aus dem selben Namespace besteht, ist dies hier nicht praktikabel und soll nicht
-näher erläutert werden.
+der Deklaration gelegenen Elemente vererbt wird \cite{xml:oreilly}.
 
 \begin{table}
     \centering

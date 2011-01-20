@@ -1,5 +1,9 @@
 % vim: set tw=160:
 
+\glsreset{wot}
+\glsreset{cot}
+\glsreset{ht}
+
 \chapter{Anwendbare Signaturverfahren}
 \index{Signaturverfahren}
 \label{chap:Signaturverfahren}
@@ -14,8 +18,7 @@ von über $50\%$ \cite{firefox-verbreitung} positioniert diesen \gls{webbrowser}
 \index{OpenPGP}
 \label{sec:Signaturverfahren:OpenPGP}
 Da \gls{openpgp} seine Verbreitung hauptsächlich im E-Mail-Verkehr und zur kryptografischen Absicherung von Code und Programmen erfährt, existiert in
-\gls{firefox} so wie auch den, mit Stand Januar 2011, gängigen \gls{webbrowser}\footnote{\url{http://www.w3schools.com/browsers/browsers_stats.asp}} keine direkte
-Schnittstelle zu einer \gls{openpgp}-Implementierung.
+\gls{firefox} so wie auch in anderen, mit Stand Januar 2011, gängigen \gls{webbrowser}n keine direkte Schnittstelle zu einer \gls{openpgp}-Implementierung.
 
 \subsection{Verbreitung}
 \gls{firefox} bietet in seinem Auslieferungszustand keine Unterstützung für \gls{openpgp}. Mit Stand Januar 2011 existieren jedoch zwei \glspl{firefox-addon},
@@ -31,7 +34,7 @@ Signatur werden, beim Überfahren des Textes mit der Maus, angezeigt.
 Monkeysphere dehnt, als \gls{firefox-addon}, das in \fref{sec:GrundlagenDefinitionen:Vertrauen:WOT} beschriebene \gls{wot} auf die \gls{pki}-Infrastruktur von
 \gls{https} aus. Dabei bietet es sich als Option zur Validierung der Gültigkeit von Schlüsseln an, wenn keine \gls{cot} bis zu einem in \gls{firefox}
 hinterlegten Root-\gls{ca}-Zertifikat für eine \gls{https}-Verbindung gefunden werden kann. Der Betreiber einer, über \gls{https} erreichbaren, \gls{website} kann
-dafür den \gls{rsa}-Schlüssel seines \gls{x509}-Zertifikats in ein \gls{openpgp}-Zertifikat importieren. Für die ID dieses \gls{openpgp}-Zertifikats wird der
+dafür den \gls{rsa}-Schlüssel seines \gls{x509}-Zertifikats in ein \gls{openpgp}-Zertifikat importieren. Für die ID dieses Zertifikats wird der
 \gls{uri} des \gls{https}-Webservers verwendet. Das Zertifikat wird dann auf einen öffentlichen \gls{openpgp}-Schlüssel-Server geladen und kann dann später
 automatisch vom Monkeysphere-AddOn gefunden werden, wenn keine gültige \gls{cot} von \gls{firefox} gefunden wird. Für das veröffentlichte
 \gls{openpgp}-Zertifikat können die Benutzer dann dem \gls{wot} entsprechend ihr Vertrauen festlegen, welches dann von Monkeysphere auch innerhalb von
@@ -91,7 +94,7 @@ Wert für den \gls{dns}-Hostnamen des \gls{https}-Webservers \cite{ssliverse:27c
         \hline
         Dezentrale Verwaltung der Zertifikate& \CheckedBox & \Square \\
         \hline
-        Mehrere Benutzer-IDs je Zertifikat& \CheckedBox & \Square \\
+        Mehrere Benutzer-IDs je Zertifikat& \CheckedBox & \CheckedBox \\
         \hline
         Mehrere Schlüssel je Zertifikat& \CheckedBox & \Square \\
         \hline
@@ -114,12 +117,25 @@ bereits vorhandene Kontakte und der Interaktion mit Inhalten, die von anderen Be
 Neben drei technischen Anforderungen werden deshalb mehrheitlich soziale Aspekte in der Gegenüberstellung der beiden Verfahren \gls{openpgp} und \gls{x509} in
 \fref{tab:gegenüberstellung} bewertet. \gls{x509} bietet in einem \gls{webbrowser} den großen Vorteil, dass die nötigen kryptografischen Methoden bereits
 integriert sind und über Programmierschnittstellen benutzt werden können. Die institutionalisierte Prüfung der Zertifikatsdaten wäre ein Vorteil von \gls{x509},
-der jedoch zu einem zentralen Schwachpunkt werden kann, wenn die Richtlinien der Prüfung von einzelnen \glspl{ca} nicht eingehalten werden. Es kann den
-Benutzern auch nicht zugemutet werden, zum Einen wegen fehlendem technischem Verständnis und zum Anderen durch  den damit verbundenen zeitlichen Aufwand, jede
-\gls{ca} zu überprüfen, denen ihr \gls{webbrowser} vertraut. Auch entsteht bei \gls{x509} ein Problem, wenn unterschiedliche \gls{webbrowser} nicht der selben
-Menge von \glspl{ca} vertrauen.
+der jedoch zu einem zentralen Schwachpunkt werden kann, wenn die Richtlinien der Prüfung von einzelnen \glspl{ca} nicht eingehalten werden. 
+Weiters muss im Fall eines \glspl{webbrowser} dem Hersteller vertraut werden, dass dieser einen dokumentierten Prozess zur Auswahl der inkludierten
+\gls{x509}-Zertifikate eingesetzt hat, da eine nachträgliche Prüfung durch den Benutzer nicht vorgeschrieben werden kann.
+Daraus lässt sich auch das Problem ableiten, dass unterschiedliche \gls{webbrowser} nicht der selben Menge von \glspl{ca} vertrauen.
 
-Bezüglich der sozialen Anforderungen ist \gls{openpgp} der bessere Kandidat, da es die Einstiegshürden für Benutzer niedriger als bei \gls{x509} hält.
-Auch die Abbildung der sozialen Strukturen in einem von privaten Anwendern dominierten Internet ist mit \gls{openpgp} besser möglich, da das \gls{wot} in
-seiner Struktur identisch ist. Ähnlich wie im Web 2.0 beginnt jeder Benutzer im \gls{wot} ohne vorgegebene Vertrauensbeziehungen. Diese werden erst im Lauf der
-Zeit, vom Benutzer aktiv angesammelt. Dies würde die Probleme, die \gls{x509} durch inkorrekt arbeitende, vorinstallierte \glspl{ca} hat, ausschließen.
+Die Abbildung der sozialen Strukturen in einem, von privaten Anwendern dominierten, Internet ist mit \gls{openpgp} besser möglich, da das \gls{wot} in
+seiner Struktur mit der der sozialen Netzwerke identisch ist. Ähnlich wie in einem sozialen Netzwerk des Web 2.0 beginnt jeder Benutzer im \gls{wot} ohne
+vorgegebene Vertrauensbeziehungen. Diese werden erst im Lauf der Zeit vom Benutzer aktiv gesammelt. Dies würde die Probleme, die \gls{x509} durch inkorrekt
+arbeitende, vorinstallierte \glspl{ca} hat, an die Benutzer verlagern, die, für das von ihnen vergebene, Vertrauen selbst verantwortlich sind. Damit steigen für
+die Benutzer jedoch auch die Anforderungen dahingehend, dass ein grundlegendes Verständnis für die Arbeitsweise eines \gls{wot} nötig wird.
+
+Ein Unterschied zwischen \gls{openpgp} und \gls{x509} besteht auch in den Auswirkungen eines kompromitierten Zertifikats. Wird bei \gls{x509} eine \gls{ca} aus
+dem \gls{cot} kompromitiert, wirkt sich das auf alle Zertifikate, die sich unterhalb dieser \gls{ca} befinden, aus. Dies kann dazu führen, dass ein gesamter Ast
+eines solchen \gls{ht}-Baumes neu signiert werden muss. Bei \gls{openpgp} kann bei Bekanntwerden der Kompromitierung eines Zertifikats das Vertrauen nachträglich
+herabgestuft werden\cite{pgp}. Dadurch wäre \gls{openpgp} toleranter gegen eine Kompromitierung einzelner Zertifikate und den damit verbundenen
+Vertrauensbeziehungen. Das Problem bei \gls{openpgp} liegt hier viel mehr in der Benachrichtung über die Kompromitierung an jene Benutzer, die dem Zertifikat
+vertrauen.
+Ähnlich verhält sich das auch für das Zurückziehen eines Zertifikats. Bei \gls{x509} kann das Zertifikat nur über einen, von der \gls{ca} vorgegebenen, Prozess
+bei der \gls{ca} selbst zurückgezogen, und somit ungültig, gemacht werden. Im Gegensatz dazu ist bei \gls{openpgp} nur der Inhaber des Zertifikats nötig um es
+zurückzuziehen. Da es bei \gls{openpgp} für diese Tätigkeit genau einen Prozess gibt, könnte dieser, zur Erleichterung der Bedienung, auch innerhalb des
+\glspl{firefox-addon} automatisiert werden. Für \gls{x509} existieren zwar auch Automatismen für das Zurückziehen von Zertifikaten, diese variieren jedoch
+zwischen den \glspl{ca}.
