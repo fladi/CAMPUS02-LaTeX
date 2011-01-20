@@ -111,10 +111,10 @@ Wert für den \gls{dns}-Hostnamen des \gls{https}-Webservers \cite{ssliverse:27c
 
 Um eine möglichst großflächige Verbreitung eines potentiellen \glspl{firefox-addon} bei Internet-Nutzer zu erreichen, sollten vorrangig Merkmale bei der Auswahl
 eines Verfahrens zur Zertifikatsverteilungs und Signaturerstellung gewählt werden, die die sozialen Strukturen und Beziehungen dieses Personenkreises
-widerspiegelt. Das sogenannte soziale Web 2.0 basiert hauptsächlich auf der Verknüpfung von Personen mit Inhalten, dem Finden von Pfaden zu Personen über
+widerspiegelt. Die sogenannten sozialen Netzwerke des Web 2.0 basieren hauptsächlich auf der Verknüpfung von Personen mit Inhalten, dem Finden von Pfaden zu Personen über
 bereits vorhandene Kontakte und der Interaktion mit Inhalten, die von anderen Benutzern einer \gls{website} generiert wurden.
 
-Neben drei technischen Anforderungen werden deshalb mehrheitlich soziale Aspekte in der Gegenüberstellung der beiden Verfahren \gls{openpgp} und \gls{x509} in
+Neben technischen Anforderungen werden deshalb mehrheitlich soziale Aspekte in der Gegenüberstellung der beiden Verfahren \gls{openpgp} und \gls{x509} in
 \fref{tab:gegenüberstellung} bewertet. \gls{x509} bietet in einem \gls{webbrowser} den großen Vorteil, dass die nötigen kryptografischen Methoden bereits
 integriert sind und über Programmierschnittstellen benutzt werden können. Die institutionalisierte Prüfung der Zertifikatsdaten wäre ein Vorteil von \gls{x509},
 der jedoch zu einem zentralen Schwachpunkt werden kann, wenn die Richtlinien der Prüfung von einzelnen \glspl{ca} nicht eingehalten werden. 
@@ -134,8 +134,14 @@ eines solchen \gls{ht}-Baumes neu signiert werden muss. Bei \gls{openpgp} kann b
 herabgestuft werden\cite{pgp}. Dadurch wäre \gls{openpgp} toleranter gegen eine Kompromitierung einzelner Zertifikate und den damit verbundenen
 Vertrauensbeziehungen. Das Problem bei \gls{openpgp} liegt hier viel mehr in der Benachrichtung über die Kompromitierung an jene Benutzer, die dem Zertifikat
 vertrauen.
+
 Ähnlich verhält sich das auch für das Zurückziehen eines Zertifikats. Bei \gls{x509} kann das Zertifikat nur über einen, von der \gls{ca} vorgegebenen, Prozess
-bei der \gls{ca} selbst zurückgezogen, und somit ungültig, gemacht werden. Im Gegensatz dazu ist bei \gls{openpgp} nur der Inhaber des Zertifikats nötig um es
+bei der \gls{ca} selbst zurückgezogen, und somit ungültig, gemacht werden. Wird ein Zertifikat von der \gls{ca} zurückgezogen, so setzt sie es auf eine
+\gls{crl}. Mit dieser können nun Benutzer prüfen, ob ein Zertifikat gültig ist, indem sie die \gls{crl} von der \gls{ca} abrufen und überprüfen, ob das
+Zertifikat darin aufgelistet wird. Die Verwendung von \glspl{crl} bringt jedoch weitere Probleme mit sich wie zum Beispiel hohe Netzwerk-Last auf den Servern
+der \glspl{ca} sowie die Verzögerung durch die auf Intervallen basierende Aktualisierung der \gls{crl} durch die \gls{ca}\cite{10.1109/MC.2002.1023787}. 
+
+Im Gegensatz dazu ist bei \gls{openpgp} nur der Inhaber des Zertifikats nötig um es
 zurückzuziehen. Da es bei \gls{openpgp} für diese Tätigkeit genau einen Prozess gibt, könnte dieser, zur Erleichterung der Bedienung, auch innerhalb des
 \glspl{firefox-addon} automatisiert werden. Für \gls{x509} existieren zwar auch Automatismen für das Zurückziehen von Zertifikaten, diese variieren jedoch
 zwischen den \glspl{ca}.
