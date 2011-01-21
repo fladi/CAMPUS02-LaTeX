@@ -17,8 +17,9 @@ von über $50\%$ \cite{firefox-verbreitung} positioniert diesen \gls{webbrowser}
 \section{OpenPGP}
 \index{OpenPGP}
 \label{sec:Signaturverfahren:OpenPGP}
-Da \gls{openpgp} seine Verbreitung hauptsächlich im E-Mail-Verkehr und zur kryptografischen Absicherung von Code und Programmen erfährt, existiert in
-\gls{firefox} so wie auch in anderen, mit Stand Januar 2011, gängigen \gls{webbrowser}n keine direkte Schnittstelle zu einer \gls{openpgp}-Implementierung.
+Da \gls{openpgp} seine Verbreitung hauptsächlich im E-Mail-Verkehr \cite{2719799020071101} und zur kryptografischen Absicherung von Code und Programmen erfährt,
+existiert in \gls{firefox} so wie auch in anderen, mit Stand Januar 2011, gängigen \gls{webbrowser}n keine direkte Schnittstelle zu einer
+\gls{openpgp}-Implementierung.
 
 \subsection{Verbreitung}
 \gls{firefox} bietet in seinem Auslieferungszustand keine Unterstützung für \gls{openpgp}. Mit Stand Januar 2011 existieren jedoch zwei \glspl{firefox-addon},
@@ -124,16 +125,17 @@ Daraus lässt sich auch das Problem ableiten, dass unterschiedliche \gls{webbrow
 
 Die Abbildung der sozialen Strukturen in einem, von privaten Anwendern dominierten, Internet ist mit \gls{openpgp} besser möglich, da das \gls{wot} in
 seiner Struktur mit der der sozialen Netzwerke identisch ist. Ähnlich wie in einem sozialen Netzwerk des Web 2.0 beginnt jeder Benutzer im \gls{wot} ohne
-vorgegebene Vertrauensbeziehungen. Diese werden erst im Lauf der Zeit vom Benutzer aktiv gesammelt. Dies würde die Probleme, die \gls{x509} durch inkorrekt
-arbeitende, vorinstallierte \glspl{ca} hat, an die Benutzer verlagern, die, für das von ihnen vergebene, Vertrauen selbst verantwortlich sind. Damit steigen für
-die Benutzer jedoch auch die Anforderungen dahingehend, dass ein grundlegendes Verständnis für die Arbeitsweise eines \gls{wot} nötig wird.
+vorgegebene Vertrauensbeziehungen. Diese werden erst im Lauf der Zeit vom Benutzer aktiv gesammelt \cite{pki:perlman}. Dies würde die Probleme, die \gls{x509}
+durch inkorrekt arbeitende, vorinstallierte \glspl{ca} hat, an die Benutzer verlagern, die, für das von ihnen vergebene, Vertrauen selbst verantwortlich sind.
+Damit steigen für die Benutzer jedoch auch die Anforderungen dahingehend, dass ein grundlegendes Verständnis für die Arbeitsweise eines \gls{wot} nötig wird.
 
 Ein Unterschied zwischen \gls{openpgp} und \gls{x509} besteht auch in den Auswirkungen eines kompromitierten Zertifikats. Wird bei \gls{x509} eine \gls{ca} aus
 dem \gls{cot} kompromitiert, wirkt sich das auf alle Zertifikate, die sich unterhalb dieser \gls{ca} befinden, aus. Dies kann dazu führen, dass ein gesamter Ast
 eines solchen \gls{ht}-Baumes neu signiert werden muss. Bei \gls{openpgp} kann bei Bekanntwerden der Kompromitierung eines Zertifikats das Vertrauen nachträglich
 herabgestuft werden\cite{pgp}. Dadurch wäre \gls{openpgp} toleranter gegen eine Kompromitierung einzelner Zertifikate und den damit verbundenen
 Vertrauensbeziehungen. Das Problem bei \gls{openpgp} liegt hier viel mehr in der Benachrichtung über die Kompromitierung an jene Benutzer, die dem Zertifikat
-vertrauen.
+vertrauen sowie der Fähigkeit der Inhaber von Zertifikaten, ihr Vertrauen  in die von ihnen signierten Zertifikate einzuschätzen. Mit \gls{openpgp} besteht die
+Gefahr, dass ein einzelner, fahrlässiger Inhaber eines Zertifikats in der \gls{cot} diese schwächt \cite{pki:perlman}.
 
 Ähnlich verhält sich das auch für das Zurückziehen eines Zertifikats. Bei \gls{x509} kann das Zertifikat nur über einen, von der \gls{ca} vorgegebenen, Prozess
 bei der \gls{ca} selbst zurückgezogen, und somit ungültig, gemacht werden. Wird ein Zertifikat von der \gls{ca} zurückgezogen, so setzt sie es auf eine
