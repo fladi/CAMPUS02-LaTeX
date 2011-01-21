@@ -35,12 +35,8 @@ kanonischen Form von \xmlelem{SignedInfo} zur Verifizierung der Gültigkeit der 
 wird die Signatur vom \gls{firefox-addon} als gültig anerkannt und das Ergebnis sollte grafisch innerhalb des Darstellungsbereichs von \gls{firefox} angezeigt
 werden.
 
-\section{\protect\glstext*{gpg}-Anbindung}
-\index{\protect\glstext*{gpg}-Anbindung}
-\label{sec:Anforderungen:GnuPG-Anbindung}
-Um die Verwendung zusammen mit anderen \glspl{firefox-addon} wie FireGPG oder Monkeysphere zu vereinfachen sollte das AddOn ebenfalls auf eine, am System
-installierte Instanz von \gls{gpg} zugreifen. Damit sollte einer unnötigen Fragmentierung der Zertifikats-Speicher vermieden werden, da so nur der zentrale
-Speicher des Benutzers am System benutzt wird. Für die konkrete Implementierung dieser Schnittstelle könnte der Programmcode der bestehenden AddOns herangezogen
-werden.
-
-
+\section{Abstrakte Schnittstelle für Signaturprüfung}
+\label{sec:Anforderungen:Schnittstelle}
+Um \gls{openpgp} und \gls{x509} gleichzeitig unterstützen zu können, sollten Abläufe, die von der Art der Signatur abhängig sind, durch eine
+Programmierschnittstelle abstrahiert werden. Das AddOn sollte damit in der Lage sein für beide Verfahren die selbe äußere Darstellung und das selbe Verhalten
+während der Prüfung von Signaturen anbieten zu können

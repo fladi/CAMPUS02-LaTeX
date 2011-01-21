@@ -71,7 +71,7 @@ Erstellung, Signierung und Verwaltung von \gls{x509}-Zertifikaten, ähnlich der 
 Das \gls{firefox-addon} Key  Manager Tool verwendet die in \gls{firefox} integrierten Programmierschnittstellen für \gls{x509} die unter dem Namen \gls{psm}
 und \gls{nss} verfügbar sind \cite{key-manager-tool}. 
 
-\section{Evaluierung und Auswahl eines Verfahrens}
+\section{Evaluierung der Verfahren}
 Die Verwendung eines \gls{wot} zur Verteilung der Schlüssel-Informationen und der Vertrauensbeziehungen zwischen ihnen hätte gegenüber einem \gls{ht} mit
 \gls{x509} den Vorteil, dass die Erstellung und Veröffentlichung eines \gls{openpgp}-Zertifikats einfach und ohne die Inanspruchnahme einer \gls{ca}
 durchgeführt werden kann. Dies könnte die Akzeptanz in einer heterogenen Benutzergruppe steigern, da bei \gls{x509} in der Regel Gebühren von den \glspl{ca}
@@ -94,8 +94,6 @@ Wert für den \gls{dns}-Hostnamen des \gls{https}-Webservers \cite{ssliverse:27c
         Programmierschnittstelle in \gls{firefox} & \Square & \CheckedBox \\
         \hline
         Dezentrale Verwaltung der Zertifikate& \CheckedBox & \Square \\
-        \hline
-        Mehrere Benutzer-IDs je Zertifikat& \CheckedBox & \CheckedBox \\
         \hline
         Mehrere Schlüssel je Zertifikat& \CheckedBox & \Square \\
         \hline
@@ -129,7 +127,11 @@ vorgegebene Vertrauensbeziehungen. Diese werden erst im Lauf der Zeit vom Benutz
 durch inkorrekt arbeitende, vorinstallierte \glspl{ca} hat, an die Benutzer verlagern, die, für das von ihnen vergebene, Vertrauen selbst verantwortlich sind.
 Damit steigen für die Benutzer jedoch auch die Anforderungen dahingehend, dass ein grundlegendes Verständnis für die Arbeitsweise eines \gls{wot} nötig wird.
 
-Ein Unterschied zwischen \gls{openpgp} und \gls{x509} besteht auch in den Auswirkungen eines kompromitierten Zertifikats. Wird bei \gls{x509} eine \gls{ca} aus
+Für den Einsatz in einem unternehmerischen Umfeld, in welchem hauptsächlich hierarchische Strukturen vorzufinden sind, wäre \gls{x509} besser geeignet,
+diese Strukturen auch in einem \gls{ht} abzubilden. Auch kann in einem solchen Umfeld die Erzeugung und Verteilung von Zertifikaten durch Prozesse geregelt und,
+von geschultem Personal durchgeführt, werden. Somit wären auch für \gls{x509} die Anforderungen beim Einstieg für die Benutzer deutlich niedriger.
+
+Ein Unterschied zwischen \gls{openpgp} und \gls{x509} besteht in den Auswirkungen eines kompromitierten Zertifikats. Wird bei \gls{x509} eine \gls{ca} aus
 dem \gls{cot} kompromitiert, wirkt sich das auf alle Zertifikate, die sich unterhalb dieser \gls{ca} befinden, aus. Dies kann dazu führen, dass ein gesamter Ast
 eines solchen \gls{ht}-Baumes neu signiert werden muss. Bei \gls{openpgp} kann bei Bekanntwerden der Kompromitierung eines Zertifikats das Vertrauen nachträglich
 herabgestuft werden\cite{pgp}. Dadurch wäre \gls{openpgp} toleranter gegen eine Kompromitierung einzelner Zertifikate und den damit verbundenen
@@ -141,9 +143,14 @@ Gefahr, dass ein einzelner, fahrlässiger Inhaber eines Zertifikats in der \gls{
 bei der \gls{ca} selbst zurückgezogen, und somit ungültig, gemacht werden. Wird ein Zertifikat von der \gls{ca} zurückgezogen, so setzt sie es auf eine
 \gls{crl}. Mit dieser können nun Benutzer prüfen, ob ein Zertifikat gültig ist, indem sie die \gls{crl} von der \gls{ca} abrufen und überprüfen, ob das
 Zertifikat darin aufgelistet wird. Die Verwendung von \glspl{crl} bringt jedoch weitere Probleme mit sich wie zum Beispiel hohe Netzwerk-Last auf den Servern
-der \glspl{ca} sowie die Verzögerung durch die auf Intervallen basierende Aktualisierung der \gls{crl} durch die \gls{ca}\cite{10.1109/MC.2002.1023787}. 
+der \glspl{ca} sowie die Verzögerung durch die auf Intervallen basierende Aktualisierung der \gls{crl} durch die \gls{ca} \cite{10.1109/MC.2002.1023787}. 
 
-Im Gegensatz dazu ist bei \gls{openpgp} nur der Inhaber des Zertifikats nötig um es
-zurückzuziehen. Da es bei \gls{openpgp} für diese Tätigkeit genau einen Prozess gibt, könnte dieser, zur Erleichterung der Bedienung, auch innerhalb des
-\glspl{firefox-addon} automatisiert werden. Für \gls{x509} existieren zwar auch Automatismen für das Zurückziehen von Zertifikaten, diese variieren jedoch
-zwischen den \glspl{ca}.
+Im Gegensatz dazu ist bei \gls{openpgp} nur der Inhaber des Zertifikats nötig um es zurückzuziehen. Da es bei \gls{openpgp} für diese Tätigkeit genau einen
+Prozess gibt, könnte dieser, zur Erleichterung der Bedienung, auch innerhalb des \glspl{firefox-addon} automatisiert werden. Für \gls{x509} existieren zwar auch
+Automatismen für das Zurückziehen von Zertifikaten, diese variieren jedoch zwischen den einzelnen \glspl{ca}.
+
+\section{Fazit}
+Da weder \gls{openpgp} noch \gls{x509} in beiden Anwendungsbereichen, privat wie unternehmerisch, einen deutlichen Vorteil gegenüber dem jeweils anderen
+Verfahren vorweisen können, wäre es wünschenswert, in einem \gls{firefox-addon} beide Verfahren zu unterstützen. Dies könnte zum Beispiel über eine abstrakte
+Programmierschnittstelle im AddOn erreicht werden, über die je nach Signatur entweder \gls{openpgp} oder \gls{x509} zur Prüfung eingesetzt werden können.
+
