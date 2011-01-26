@@ -1,6 +1,6 @@
 % vim: set tw=160:
 
-\chapter{Bindung an ein XHTML-Dokument}
+\chapter{Bindung an ein \glsentrytext{xhtml}-Dokument}
 \label{chap:Signaturbindung}
 Eine Signatur mit \gls{xml-dsig} hält ihre Verweise zu den signierten Inhalten über die \xmlelem{Reference}-Elemente aus \fref{sec:XML-DSig:Referenzen}.
 Im Fall der Verwendung innerhalb eines \gls{webbrowser} muss das aufgerufene \gls{xhtml}-Dokument einen Verweis auf die Signatur beinhalten. Dies ist notwendig,
@@ -10,7 +10,7 @@ der \gls{webbrowser} daraus die signierten Bereiche ermitteln.
 
 Um solche Verweise auf Signaturen an ein \gls{xhtml}-Dokument binden zu können, bieten sich mehrere Verfahren an.
 
-\section{HTTP-Header}
+\section{\glsentrytext{http}-Header}
 \index{HTTP-Header}
 Als Antwort auf die Anfrage eines \gls{webbrowser} wird vom Webserver ein eigener \gls{http}-Header ausgeliefert, welcher eine Liste von \glspl{url} enthält, die auf
 Signatur-Dateien verweisen. Dadurch wäre eine klare Trennung der Signaturen vom \gls{xhtml}-Inhalt gewährleistet.
@@ -18,7 +18,7 @@ Ein \gls{http}-Header kann auch mehrfach in der Antwort eines Webservers an eine
 die Header-Informationen vor \cite{http:ietf}, jedoch sind Beschränkungen in \gls{http}-verarbeitenden Programmen möglich.
 
 \lstinputlisting[language=,
-                 caption={Verwendung von \protect\glstext*{http}-Header},
+                 caption={Verwendung von \glsentrytext{http}-Header},
                  label=lst:http-header,
                  emph={X-Signature}]{source/http-header}
 
@@ -37,7 +37,7 @@ Element auch mehrfach in einem \gls{xhtml}-Dokument verwendet werden kann, lasse
                  label=lst:link,
                  emph={link,href}]{source/link.html}
 
-\section{XML-Namespaces}
+\section{\glsentrydescplural{xml-ns}}
 \label{sec:Signaturbindung:XML-NS}
 Um mehrere verschiedene \gls{xml}-Dialekte in einem gemeinsamen Dokument zu trennen werden \gls{xml-ns} benutzt \cite{xml-ns:w3c}. Auch das Auffinden von
 Elementen in einem Dokument, die zum selben \gls{xml}-Dialekt gehören, wird mittels \gls{xml-ns} bewerkstelligt \cite{xml:oreilly}. Diese Eigenschaften lässt
@@ -70,14 +70,14 @@ der Deklaration gelegenen Elemente vererbt wird \cite{xml:oreilly}.
 \end{table}
 
 \lstinputlisting[language=HTML,
-                 caption={Verwendung von XML-Namespaces},
+                 caption={Verwendung von \glsentrydescplural{xml-ns}},
                  label=lst:xmlns,
                  emph={Signature}]{source/xmlns.html}
 
 Ein Nachteil der \gls{xml-ns} ergibt sich aus der selben Situation die auch schon in \fref{sec:XML-DSig:Transformationen:XSLT} geschildert wurde. Die
 Transformationen der Signatur müssen sicherstellen, dass die Elemente der Signatur selbst nicht zu den signierten Informationen gehört.
 
-\section{XInclude}
+\section{\glsentrytext{xinclude}}
 \label{sec:Signaturbindung:XInclude}
 \gls{xinclude} ist eine neue Technologie, die vom W3C entwickelt wurde, um mehrere \gls{xml}-Dokumente in ein gemeinsames Dokument zusammenzuführen
 \cite{xinclude:w3c}. Dabei wird das \xmlelem{include}-Element aus dem reservieren \gls{xml-ns} für \gls{xinclude} benutzt um über das
@@ -86,11 +86,10 @@ das Dokument nach dem Verarbeiten der \gls{xinclude}-Anweisungen wieder einen ei
 \fref{sec:Signaturbindung:XML-NS} die Signatur mit ihrem eigenen \gls{xml-ns} von den \gls{xhtml}-Elementen abzugrenzen. Die Nachteile sind somit auch die
 selben wie bei der direkten Einbindung der Signatur mittels \gls{xml-ns}.
 
-\lstinputlisting[language=HTML,caption={Verwendung von XInclude},label=lst:xinclude,emph={include,xi}]{source/xinclude.html}
-
+\lstinputlisting[language=HTML,caption={Verwendung von \glsentrytext{xinclude}},label=lst:xinclude,emph={include,xi}]{source/xinclude.html}
 
 \section{Mikroformate}
-Mikroformate sind auf Konvention beruhende, HTML-basierte Beschreibungen bestimmter Daten, zum Beispiel von Kontaktdaten. Mikroformate sind vor allem für
+Mikroformate sind auf Konvention beruhende, \gls{html}-basierte Beschreibungen bestimmter Daten, zum Beispiel von Kontaktdaten. Mikroformate sind vor allem für
 Webanwendungen wie etwa Suchmaschinen interessant, die aus den Mikroformaten datenfeldorientierte Informationen ziehen können \cite{mikroformate}.
 
 Jede der zuvor vorgestellten Methoden macht es erforderlich zuerst das gesamte Dokument zu laden, um zu garantieren, dass alle Verweise aus den

@@ -7,14 +7,14 @@ Zum Verständnis der folgenden Kapitel wird ein grundlegendes Verständnis von \
 Themenbereiche wie digitale Signaturen und für diese Arbeit relevanten Techniken, die vor allem in Verbindung mit \glspl{website} vorkommen, werden hier kurz
 dargestellt. Dazu gehören vor allem \gls{openpgp}, \gls{x509} und \gls{xml-dsig}.
 
-\section{Website}
+\section{\glsentrytext{website}}
 \index{Website}
 \label{sec:GrundlagenDefinitionen:Website}
-Eine \gls{website} repräsentiert eine Menge von Dateien, die unter dem gemeinsamen Namensraum einer, oder auch mehrerer Domains mit dem selben Bezug, abrufbar sind.
-Zu diesen Dateien gehören vorrangig \gls{html}- und \gls{xhtml}-Dokumente, \gls{css} und \gls{javascript}, sowie auch komplementäre Bild-, Ton- und
+Eine \gls{website} repräsentiert eine Menge von Dateien, die unter dem gemeinsamen Namensraum einer, oder auch mehrerer Domains mit dem selben Bezug, abrufbar
+sind. Zu diesen Dateien gehören vorrangig \gls{html}- und \gls{xhtml}-Dokumente, \gls{css} und \gls{javascript}, sowie auch komplementäre Bild-, Ton- und
 Videodateien.
 
-\section{Webseite}
+\section{\glsentrytext{webseite}}
 \index{Webseite}
 \label{sec:GrundlagenDefinitionen:Webseiten}
 Der Begriff einer \gls{webseite} bezeichnet ein einzelnes \gls{html}- oder \gls{xhtml}-Dokument inklusive aller von ihm zur Darstellung referenzierten
@@ -22,7 +22,7 @@ Inhalte wie \gls{css}-Dateien und \gls{javascript}, sowie auch komplementäre Bi
 von \xmlelem{a}-Elementen erzeugt werden, verwiesen wird, gehören nicht zum Umfang einer Webseite, da sie nicht direkt in die Darstellung in einem
 \gls{webbrowser} einfließen.
 
-\section{Bereiche in XHTML-Dokumenten}
+\section{Bereiche in \glsentrytext{xhtml}-Dokumenten}
 \label{sec:GrundlagenDefinitionen:BereicheXHTML}
 Der Dokumententyp \gls{xhtml} ist eine Anwendungsform von \gls{xml} auf das \gls{sgml}-Format \gls{html}\cite{xhtml:w3c} und kann dadurch in seiner Form als
 \gls{dom}-Baum betrachtet werden \cite{xhtml:oreilly}. Da moderne \Gls{webbrowser} unterschiedliche Technologien wie \gls{css} und \gls{javascript} zur
@@ -74,12 +74,12 @@ Hash-Wert aus der Signatur. Sind beide miteinander identisch, ist die Signatur g
 Asymmetrische kryptographische Verfahren lassen sich zum Verschlüsseln wie auch zum Signieren von Informationen verwenden. Im Rahmen dieser Arbeit wird nur auf
 den Signatur-Betrieb eingegangen.
 
-\subsection{OpenPGP}
+\subsection{\glsentrytext{openpgp}}
 \index{OpenPGP}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:openpgp}
-\gls{openpgp} wurde im Jahr 1991 von Philip Zimmermann \cite{zimmermann:pgp,pgp,intro-crypto} entwickelt, mit dem Ziel die digitale Kommunikation vor dem Zugriff durch Dritte zu
-schützen. Eine der Motivationen während der Entwicklung waren die wiederholten Abhöraktionen der Bürgerrechtsbewegungen in den Vereinigten Staaten von Amerika
-durch die dortigen Geheimdienste \cite{singh:messages}.
+\gls{openpgp} wurde im Jahr 1991 von Philip Zimmermann \cite{zimmermann:pgp,pgp,intro-crypto} entwickelt, mit dem Ziel die digitale Kommunikation vor dem
+Zugriff durch Dritte zu schützen. Eine der Motivationen während der Entwicklung waren die wiederholten Abhöraktionen der Bürgerrechtsbewegungen in den
+Vereinigten Staaten von Amerika durch die dortigen Geheimdienste \cite{singh:messages}.
 
 Der Name der aktuelle Spezifikation für das Datenformat ist \gls{openpgp} und seine Eigenschaften sind im RFC4880 festgelegt \cite{openpgp:ietf}. 
 Jedes \gls{openpgp}-Zertifikat beinhaltet Informationen über:
@@ -92,7 +92,7 @@ Jedes \gls{openpgp}-Zertifikat beinhaltet Informationen über:
     \item optionale Sub-Schlüssel, die ebenfalls dem Inhaber des Zertifikats gehören.
 \end{itemize*}
 
-\subsection{X.509v3}
+\subsection{\glsentrytext{x509}}
 \index{X.509v3}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:x509}
 Der \gls{itu} Standard \gls{x509} wurde 1996 veröffentlicht und beschreibt die Grundlage für Zertifikate und Widerrufslisten in der Syntax von \gls{asn1}. Die
@@ -127,14 +127,14 @@ zu überprüfen \cite{krypto-pki-internet}.
 \gls{openpgp} und \gls{x509} verfolgen hierbei jeweils unterschiedliche Ansätze, um Vertrauensbeziehungen zwischen Schlüsseln zu definieren
 \cite{krypto-pki-internet}.
 
-\subsection{Web Of Trust}
+\subsection{\glsentrydesc{wot}}
 \index{Web Of Trust}
 \label{sec:GrundlagenDefinitionen:Vertrauen:WOT}
 Um die Ermittlung der Authentizität einer Signatur zu erleichtern, stellt \gls{openpgp} eine Funktionalität zur Beglaubigung von Schlüsseln zur Verfügung. Dabei
 werden die Schlüssel von anderen \gls{openpgp}-Benutzern mit ihrer digitalen Signatur versehen. Das ermöglicht es, Rückschlüsse auf die Vertrauenswürdigkeit
 von Schlüsseln zu ziehen, ohne von einer zentralen hierarchischen Struktur abhängig zu sein. Die Signatur auf einen Schlüssel wird üblicherweise nur nach der
 Überprüfung der Identität des Schlüsselinhabers gewährt. Dies kann zum Beispiel durch ein Telefonat oder ein persönliches Treffen erfolgen, bei dem die
-Prüfsumme des Schlüssels verglichen wird.  
+Prüfsumme des Schlüssels verglichen wird.
 
 Wenn Alice den Schlüssel von Bob signiert, dann ermöglicht dies einer Person, die bereits dem Schlüssel von Alice vertraut, auch dem Schlüssel von Bob zu
 vertrauen. Durch diese Delegation von Vertrauen bildet sich eine flache, vernetzte Struktur wie in \fref{fig:wot} dargestellt, die unter dem Namen \gls{wot}
@@ -151,7 +151,7 @@ nicht sicher"' bis zu "`Ich vertraue absolut"' \cite{pgp}.
 \label{fig:wot}
 \end{figure}
 
-\subsection{Hierachical Trust}
+\subsection{\glsentrydesc{ht}}
 \index{Hierachical Trust}
 \label{sec:GrundlagenDefinitionen:Vertrauen:HT}
 \gls{x509} bildet die Grundlage für ein hierarchisches System aus Zertifikaten, auch \gls{ht} genannt. Im Gegensatz zum \gls{wot}, welches einen Graphen der
@@ -172,7 +172,7 @@ einem \gls{ht} jeder Teilnehmer einer von ihm (oder seinem Softwaredistributor) 
 \label{fig:ht}
 \end{figure}
 
-\section{XML-DSig}
+\section{\glsentrytext{xml-dsig}}
 \index{XML-DSig}
 \label{sec:GrundlagenDefinitionen:xml-dsig}
 Von der \gls{ietf} und dem \gls{w3c} entwickelt, hat die \gls{xml-dsig} Spezifikation zum Ziel, die kryptografischen Sicherheitsfunktionen Integrität,
