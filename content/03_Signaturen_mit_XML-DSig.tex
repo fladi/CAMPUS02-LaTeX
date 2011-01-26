@@ -42,6 +42,7 @@ das Fehlen der Elemente \xmlelem{DigestMethod} und \xmlelem{DigestValue} in sein
 \fref{sec:XML-DSig:Referenzen} näher beschrieben wird.
 
 \subsection{OpenPGP}
+\index{OpenPGP}
 Für Schlüssel nach \gls{openpgp} wird das Element \xmlelem{PGPData} im \gls{xml-ns} \url{http://www.w3.org/2000/09/xmldsig#PGPData}
 definiert \cite{xml-sec-uri:ietf}. Es kann zwei weitere Elemente aufzunehmen: \xmlelem{PGPKeyID} nimmt die ID eines \gls{openpgp}-Schlüsselpaares
 auf, welche aus 8 \glspl{oktett} besteht und die niedrigsten 64 Bit aus der \gls{sha1} Prüfsumme des Schlüssels darstellen \cite{openpgp:ietf}. Über 
@@ -59,7 +60,8 @@ vollständige Kopie in der Signatur eingebettet.
                  label=lst:xml-dsig-keyinfo-openpgp,
                  emph={PGPData,PGPKeyID,PGPKeyPacket}]{source/xml-dsig-keyinfo-openpgp.xml}
 
-\subsection{\protect\glstext*{x509}}
+\subsection{X.509v3}
+\index{X.509v3}
 Informationen über ein für die Signatur verwendetes \gls{x509}-Zertifikat können unterhalb des Elements \xmlelem{X509Data} im dafür vorgesehenen \gls{xml-ns}
 \url{http://www.w3.org/2000/09/xmldsig#X509Data} abgelegt werden. 
 Ähnlich wie \xmlelem{PGPData} enthält es Schlüsselinformationen die zur Validierung der Signatur benötigt werden.  Dafür muss mindestens eines der Elemente aus

@@ -23,7 +23,6 @@ von \xmlelem{a}-Elementen erzeugt werden, verwiesen wird, gehören nicht zum Umf
 \gls{webbrowser} einfließen.
 
 \section{Bereiche in XHTML-Dokumenten}
-\index{Bereiche in XHTML-Dokumenten}
 \label{sec:GrundlagenDefinitionen:BereicheXHTML}
 Der Dokumententyp \gls{xhtml} ist eine Anwendungsform von \gls{xml} auf das \gls{sgml}-Format \gls{html}\cite{xhtml:w3c} und kann dadurch in seiner Form als
 \gls{dom}-Baum betrachtet werden \cite{xhtml:oreilly}. Da moderne \Gls{webbrowser} unterschiedliche Technologien wie \gls{css} und \gls{javascript} zur
@@ -93,8 +92,8 @@ Jedes \gls{openpgp}-Zertifikat beinhaltet Informationen über:
     \item optionale Sub-Schlüssel, die ebenfalls dem Inhaber des Zertifikats gehören.
 \end{itemize*}
 
-\subsection{\protect\glstext*{x509}}
-\index{\gls{x509}}
+\subsection{X.509v3}
+\index{X.509v3}
 \label{sec:GrundlagenDefinitionen:DigitaleSignaturen:Verfahren:x509}
 Der \gls{itu} Standard \gls{x509} wurde 1996 veröffentlicht und beschreibt die Grundlage für Zertifikate und Widerrufslisten in der Syntax von \gls{asn1}. Die
 Versionen 1 und 2 enthielten verschiedene Mängel, die einen Einsatz in produktiven Umgebungen erschwerten, so fehlten zum Beispiel Felder für wichtige
@@ -152,13 +151,13 @@ nicht sicher"' bis zu "`Ich vertraue absolut"' \cite{pgp}.
 \label{fig:wot}
 \end{figure}
 
-\subsection{\protect\glsdesc*{ht}}
+\subsection{Hierachical Trust}
 \index{Hierachical Trust}
 \label{sec:GrundlagenDefinitionen:Vertrauen:HT}
 \gls{x509} bildet die Grundlage für ein hierarchisches System aus Zertifikaten, auch \gls{ht} genannt. Im Gegensatz zum \gls{wot}, welches einen Graphen der
 beteiligten Schlüssel bildet, bestehen bei einem \gls{ht} eine oder mehrere baumartige Vertrauensstrukturen.
 An der Spitze eines solchen Baumes steht eine Root-\gls{ca}, welche die Zertifikate der nächsten, im Baum tiefer gelegen Ebene signiert. Jeder Pfad, der von der
-Wurzel, der Root-\gls{ca} des Baumes, zu einem der Zertifikate an einem Ast führt wird als \gls{cot} bezeichnet. \fref{fig:cot} stellt einen solchen Baum mit
+Wurzel, der Root-\gls{ca} des Baumes, zu einem der Zertifikate an einem Ast führt wird als \gls{cot} bezeichnet. \fref{fig:ht} stellt einen solchen Baum mit
 mehreren \glspl{cot} dar.
 
 Die Anzahl der Ebenen in einem \gls{ht}-Baum unterliegt keiner Beschränkung, jedoch muss einem Zertifikat explizit das Recht eingeräumt werden, andere
@@ -168,13 +167,13 @@ einem \gls{ht} jeder Teilnehmer einer von ihm (oder seinem Softwaredistributor) 
 
 \begin{figure}
 \centering
-\input{./figures/chain-of-trust}
+\input{./figures/hierachical-trust}
 \caption{Schematische Darstellung eines \texorpdfstring{\protect\Glsentryname{ht}}{HT}}
-\label{fig:cot}
+\label{fig:ht}
 \end{figure}
 
 \section{XML-DSig}
-\index{\gls{xml-dsig}}
+\index{XML-DSig}
 \label{sec:GrundlagenDefinitionen:xml-dsig}
 Von der \gls{ietf} und dem \gls{w3c} entwickelt, hat die \gls{xml-dsig} Spezifikation zum Ziel, die kryptografischen Sicherheitsfunktionen Integrität,
 Authentizität und Verbindlichkeit für beliebige Daten, die entweder direkt im \gls{xml}-Format vorliegen oder über \glspl{uri} ansprechbar sind, anwendbar zu
