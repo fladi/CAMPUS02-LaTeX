@@ -3,7 +3,11 @@
 \chapter{Signaturen mit \glsentrytext{xml-dsig}}
 \index{XML-DSig}
 \label{chap:XML-DSig}
-\gls{xml-dsig} definiert einen \gls{xml}-Dialekt dder Informationen über die zu signierenden Inhalte, die Signaturen selbst und die zur Prüfung der Signaturen
+Von der \gls{ietf} und dem \gls{w3c} entwickelt, hat die \gls{xml-dsig} Spezifikation zum Ziel, die kryptografischen Sicherheitsfunktionen Integrität,
+Authentizität und Verbindlichkeit für beliebige Daten, die entweder direkt im \gls{xml}-Format vorliegen oder über \glspl{uri} ansprechbar sind, anwendbar zu
+machen \cite{krypto-pki-internet}.
+
+\gls{xml-dsig} definiert einen \gls{xml}-Dialekt der Informationen über die zu signierenden Inhalte, die Signaturen selbst und die zur Prüfung der Signaturen
 notwendigen Schlüsselinformationen aufnimmt. Um \gls{xml-dsig} von anderen \gls{xml}-Dialekten abzugrenzen wurde ihm der \gls{xml-ns}
 \url{http://www.w3.org/2000/09/xmldsig#} zugewiesen \cite{xml-dsig:w3c}.
 
@@ -12,6 +16,7 @@ Eine Signatur mit \gls{xml-dsig} besteht aus mehreren Elementen die sich alle in
 die grundlegende Struktur einer Signatur mit \gls{xml-dsig}.
 
 \lstinputlisting[language=XML,
+                 float=t,
                  caption={Struktur von \texorpdfstring{\protect\Glsentryname{xml-dsig}}{XML-DSig}},
                  label=lst:xml-dsig-structure,
                  emph={Signature}]{source/xml-dsig-structure.xml}
@@ -57,6 +62,7 @@ referenzieren. In \fref{lin:xml-dsig-keyinfo-openpgp-keyid} wird der Schlüssel 
 vollständige Kopie in der Signatur eingebettet.
 
 \lstinputlisting[language=XML,
+                 float=t,
                  caption={Beispiel einer Struktur für \protect\xmlelem{PGPData}},
                  label=lst:xml-dsig-keyinfo-openpgp,
                  emph={PGPData,PGPKeyID,PGPKeyPacket}]{source/xml-dsig-keyinfo-openpgp.xml}
@@ -118,6 +124,7 @@ Alle in \gls{xml-dsig} anwendbaren Algorithmen werden über eigene \glspl{uri} r
 \end{table}
 
 \lstinputlisting[language=HTML,
+                 float=t,
                  caption={Beispiel 1 für eine Formatierung in \glsentrytext{xml}},
                  label={lst:xml-format-example-1},
                  showspaces=true,
@@ -125,6 +132,7 @@ Alle in \gls{xml-dsig} anwendbaren Algorithmen werden über eigene \glspl{uri} r
                  tab=\rightarrowfill]{source/xml-format-example-1.xml}
 
 \lstinputlisting[language=HTML,
+                 float=t,
                  caption={Beispiel 2 für eine Formatierung in \glsentrytext{xml}},
                  label={lst:xml-format-example-2},
                  showspaces=true,
@@ -257,6 +265,7 @@ Element zugewiesen. Der Wert ist die Ausgabe der Anwendung des, in \xmlelem{Sign
 \xmlelem{Transform} erhaltenen, Informationen.
 
 \lstinputlisting[language=XML,
+                 float=p,
                  caption={\glsentrytext{xslt}-Transformation in einer Signatur},
                  label={lst:xml-dsig-transformation-xslt},
                  emph={ElementToTransform,TransformedElement}]{source/xml-dsig-transformation-xslt.xml}
