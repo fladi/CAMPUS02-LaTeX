@@ -2,3 +2,15 @@
 
 \chapter{Zusammenfassung}
 \label{chap:Zusammenfassung}
+\gls{xml-dsig} kann aufgrund seinen flexiblen Art, Informationen zu signieren, als adequate Lösung für das Problem der Einbettung von Signaturen in \gls{xhtml}
+betrachtet werden. Mit der Kombination aus Transformationen und Kanonisierung der \gls{xml}-Strukturen können Informationen effizent zusammengeführt werden um
+sie zu signieren.
+
+Um die Präsenz einer Signatur in einem \gls{xhtml}-Dokument anzuzeigen eigenen sich Mikroformate und das \xmlelem{link}-Element besonders, da sie die geringsten 
+Anforderungen an die verwendete \gls{xml}-Schnittstelle stellen. Besonders Mikroformate können durch die Vorgabe von Transformationen und auch Referenzen mit 
+nur geringen Auswirkungen in Bezug auf die Größe in ein \gls{xhtml}-Dokument eingebettet werden.
+
+Da weder \gls{openpgp} noch \gls{x509} in beiden Anwendungsbereichen, privat wie unternehmerisch, einen deutlichen Vorteil gegenüber dem jeweils anderen
+Verfahren vorweisen können, wäre es wünschenswert, in einem \gls{firefox-addon} beide Verfahren zu unterstützen. Dies kann durch die abstrakte
+Programmierschnittstelle im AddOn erreicht werden, über die je nach Signatur entweder \gls{openpgp} oder \gls{x509} zur Prüfung eingesetzt werden können.
+
