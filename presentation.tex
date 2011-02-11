@@ -1,4 +1,30 @@
+%------------------------------------
+% DIPLOMARBEIT: Hauptdatei Präsentation
+%     
+% Stefan Grünwald (2000 - 2007)
+% Michael Fladischer (2011)
+%
+% Das Dokument lässt sich am besten mit "latexmk" bauen:
+% http://www.phys.psu.edu/~collins/software/latexmk-jcc/
+%
+% Die genutzten LaTeX-Packages sind alle Bestandteil der TeXlive Distribution die mit Debian (Squeeze) ausgeliefert werden.
+% Für eine bequeme Installation unter Debian genügt es, folgende Zeile als "root" auszuführen:
+%
+% aptitude install -R latexmk texlive-base texlive-bibtex-extra texlive-binaries texlive-common texlive-fonts-extra texlive-fonts-recommended \
+%  texlive-formats-extra texlive-generic-extra texlive-generic-recommended texlive-humanities texlive-lang-german texlive-latex-base texlive-latex-extra \
+%  texlive-latex-recommended texlive-latex3 texlive-math-extra texlive-pictures texlive-plain-extra texlive-pstricks texlive-publishers texlive-science \
+%  latex-beamer
+%
+% Alle .tex Dateien sind für den vim Editor ausgelegt und enthalten Modeline-Anweisungen zur besseren Darstellung.
+% 
+% Patches zur Verbesserung von Fehlern, zur Optimierung oder für neue Features können gerne an <michael@fladi.at> geschickt werden.
+%------------------------------------
+
+% Generische Packages%{{{
 \documentclass{beamer}
+%}}}
+
+% Generische Packages%{{{
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}                 % Laden der UTF8-Eingabekodierung
                                             % ACHTUNG: Dateien müssen UTF8 codiert sein!
@@ -29,8 +55,11 @@
 % http://www.ctan.org/tex-archive/macros/latex/contrib/wasysym/
 \usepackage{wasysym}
 \usepackage{beamerthemesplit}
+%}}}
 
+% Lokale Einstellungen%{{{
 \input{misc/settings}
+%}}}
 
 % Weiche für PDF/DVI%{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
@@ -98,12 +127,15 @@
 \logo{\includegraphics[width=0.2\textwidth]{campus02}}
 %}}}
 
+% Präsentations-Header%{{{
 \title{Präsentation \campusType}
 \subtitle{\campusTitle}
 \author{\campusAuthor}
 \institute{Campus02}
 \date{\campusDate}
+%}}}
 
+% Folien%{{{
 \begin{document}
 
 \frame{
@@ -185,6 +217,7 @@
     \end{itemize}
 }
 \end{document}
+%}}}
 
 % vim:filetype=tex foldmethod=marker autoindent expandtab shiftwidth=4 tw=160:
 % Local variables:
