@@ -29,3 +29,5 @@
 *.dvi
 *.ps
 *.bak
+*.nav
+*.snm
