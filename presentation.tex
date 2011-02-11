@@ -1,0 +1,192 @@
+\documentclass{beamer}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}                 % Laden der UTF8-Eingabekodierung
+                                            % ACHTUNG: Dateien müssen UTF8 codiert sein!
+\usepackage[T1]{fontenc}                    % EC codierte Fonts
+\usepackage{ae}                             % PDF encoding Info
+\usepackage{palatino}                       % Brotschrift: Palationo
+\usepackage{helvet}                         % Serifenlose Schrift: Helvetica
+\usepackage[left]{eurosym}                  % EURO links
+\usepackage{paralist}                       % Beeinflussung von Listen
+\usepackage{tabularx}                       % Austreiben auf eine bestimmte Breite
+\usepackage{longtable}                      % Mehrseitige Tabellen
+\usepackage{ltxtable}                       % 'longtable' und 'tabularx'
+\usepackage{array}                          % Zeilenumbruch in 'p'-Spalten
+% http://www.ctan.org/tex-archive/macros/latex/contrib/booktabs/
+% \toprule, \midrule und \bottomrule
+\usepackage{booktabs}
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+\usepackage{dcolumn}
+% http://www.ctan.org/tex-archive/macros/latex/contrib/blindtext/
+% Erzeugt Blindtext welcher beim Prüfen des Layouts behilflich sein kann
+\usepackage{blindtext}
+% http://ctan.org/tex-archive/macros/latex/contrib/siunitx/
+\usepackage{siunitx}
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+\usepackage{color}
+% http://www.ctan.org/tex-archive/macros/latex/contrib/xcolor/
+\usepackage{xcolor}
+% http://www.ctan.org/tex-archive/macros/latex/contrib/wasysym/
+\usepackage{wasysym}
+\usepackage{beamerthemesplit}
+
+\input{misc/settings}
+
+% Weiche für PDF/DVI%{{{
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Bitmaps stinken ja in der Druckstufe sowieso, besser TIKZ benutzen :-)
+\usepackage{ifpdf}
+% für Encapsulated-Postscript und PDFTeX Grafiken
+\ifpdf
+    \graphicspath{{images/pdf/}}
+    \pdfcompresslevel=9
+\else
+    \graphicspath{{images/dvi/}}
+\fi
+%}}}
+
+% Glossaries%{{{
+% http://www.ctan.org/tex-archive/macros/latex/contrib/glossaries/
+\usepackage[acronym,style=long,nonumberlist]{glossaries} 
+\loadglsentries{misc/glossary}
+\makeglossaries
+%}}}
+
+% Benutzerdefinierte Befehle%{{{
+\input{misc/commands}
+%}}}
+
+% Campus02 CI%{{{
+\setbeamercovered{transparent}
+\mode<presentation>
+{  
+    \usetheme{Ilmenau}
+    \useinnertheme{circles}
+    \usefonttheme[onlymath]{serif}
+    \setbeamercovered{transparent}
+    \setbeamertemplate{blocks}[rounded][shadow=true]
+    \definecolor{campus02orange}{RGB}{255,251,173}
+    \definecolor{campus02grey}{RGB}{80,80,80}
+
+    \setbeamercolor{structure}{fg=campus02grey}
+
+    \setbeamercolor{palette primary}{fg=campus02grey,bg=campus02orange!70}
+    \setbeamercolor{palette secondary}{fg=campus02grey,bg=campus02orange!80}
+    \setbeamercolor{palette tertiary}{fg=campus02grey,bg=campus02orange!90}
+    \setbeamercolor{palette quaternary}{fg=campus02grey,bg=campus02orange}
+
+    \setbeamercolor{titlelike}{parent=palette quaternary}
+
+    \setbeamercolor{block title}{fg=campus02grey,bg=campus02orange}
+    \setbeamercolor{block title alerted}{use=alerted text,fg=campus02grey,bg=alerted text.fg!75!bg}
+    \setbeamercolor{block title example}{use=example text,fg=campus02grey,bg=example text.fg!75!bg}
+
+    \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!25!bg}
+    \setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!25!bg}
+    \setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!25!bg}
+
+    \setbeamercolor{sidebar}{bg=campus02orange!70}
+
+    \setbeamercolor{palette sidebar primary}{fg=campus02grey}
+    \setbeamercolor{palette sidebar secondary}{fg=campus02grey!75}
+    \setbeamercolor{palette sidebar tertiary}{fg=campus02grey!75}
+    \setbeamercolor{palette sidebar quaternary}{fg=campus02grey}
+
+    \setbeamercolor*{separation line}{}
+    \setbeamercolor*{fine separation line}{}
+}
+\logo{\includegraphics[width=0.2\textwidth]{campus02}}
+%}}}
+
+\title{Präsentation \campusType}
+\subtitle{\campusTitle}
+\author{\campusAuthor}
+\institute{Campus02}
+\date{\campusDate}
+
+\begin{document}
+
+\frame{
+    \titlepage
+}
+
+\frame {
+    \frametitle{Inhalt}
+    \tableofcontents
+}
+
+\section{Ausgangssituation}
+\frame {
+    \frametitle{Ausgangssituation}
+    \begin{itemize}
+        \item Kryptographische Sicherheit auf Transportebene $\Rightarrow$ \gls*{https}
+        \item Verschiedene Autoren verfassen Inhalte auf einer Website
+        \item Autoren verfassen Inhalte auf verschiedenen Websites
+        \item Inhalte sind nicht mit kryptografischen Merkmalen versehen
+    \end{itemize}
+}
+
+\section{Forschungsfragen}
+\frame {
+    \frametitle{Forschungsfragen}
+    \begin{itemize}
+        \item Wie können digitale Signaturen in \gls*{xhtml} integriert werden, ohne dass dieser W3C-Standard dabei verletzt wird?
+        \item Welche Möglichkeiten bietet \gls*{xml-dsig} zur wahlfreien Selektion von Bereichen innerhalb eines XHTML-Dokuments?
+        \item Wie können die öffentlichen Schlüssel zu den Signaturen verteilt werden? Welche der bestehenden Technologien eignen sich dafür am besten?
+    \end{itemize}
+}
+
+\section{Aufbau}
+\frame {
+    \frametitle{Aufbau}
+    \begin{itemize}
+        \item Einführung in \gls*{xml-dsig}
+        \item Verbindungen zwischen \gls*{xml-dsig} und \gls*{xhtml}
+        \item Signaturverfahren für \gls*{xml-dsig}
+        \item Anforderungen an ein Browser-AddOn (\gls*{firefox})
+    \end{itemize}
+}
+
+\section{Erkenntnisse}
+\frame {
+    \frametitle{Erkenntnisse}
+    \begin{itemize}
+        \item \gls*{xml-dsig} bietet große Flexibilität beim Signieren von \gls*{xml}-Dokumenten mit \gls*{x509} oder \gls*{openpgp}
+        \item Mehrere Ansätze für Signatur-Bindung\\
+            Hervorzuheben sind:
+            \begin{itemize}
+                \item Mikro-Formate mit fixen Signaturvorgaben
+                \item \xmlelem{link}-Tag für vollständige Ausnutzung von \gls*{xml-dsig}
+            \end{itemize}
+        \item Signaturverfahren:
+            \begin{itemize}
+                \item \gls*{x509}: für Unternehmerischen oder staatlichen Einsatz geeignet
+                \item \gls*{openpgp}: für schnelle Adaption durch Privatbenutzer geeignet, höherer Grad an Automation möglich
+            \end{itemize}
+    \end{itemize}
+}
+
+\section{Conclusio}
+\frame {
+    \frametitle{Conclusio}
+    \begin{itemize}
+        \item Weder \gls*{openpgp} noch \gls*{x509} decken alle Erfordernisse vollständig ab
+        \item Einsatz einer Abstraktionsschicht um beide Verfahren zu ermöglichen
+        \item Definition des Verfahrens in der Signatur selbst
+    \end{itemize}
+}
+
+\section{Ausblick}
+\frame {
+    \frametitle{Ausblick}
+    \begin{itemize}
+        \item Entwicklung eines Prototypen für ein Browser-AddOn in \gls*{firefox}
+        \item Zumindest Unterstützung für \gls*{openpgp} oder \gls*{x509}
+    \end{itemize}
+}
+\end{document}
+
+% vim:filetype=tex foldmethod=marker autoindent expandtab shiftwidth=4 tw=160:
+% Local variables:
+% mode: latex
+% End:              
