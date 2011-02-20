@@ -1,9 +1,0 @@
-HTTP/1.1 200 OK
-Date: Sun, 12 Dec 2010 12:40:51 GMT
-Server: Apache/2.2.16 (Debian)
-Content-Encoding: gzip
-Content-Length: 13345
-Content-Type: text/html; charset=UTF-8
-X-Signature: http://example.org/sig1.xml
-X-Signature: http://example.org/sig2.xml
-
