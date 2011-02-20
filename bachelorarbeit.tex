@@ -2,7 +2,7 @@
 % DIPLOMARBEIT: Hauptdatei
 %     
 % Stefan Grünwald (2000 - 2007)
-% Michael Fladischer (2010)
+% Michael Fladischer (2011)
 %
 % Das Dokument lässt sich am besten mit "latexmk" bauen:
 % http://www.phys.psu.edu/~collins/software/latexmk-jcc/
@@ -19,7 +19,7 @@
 % Patches zur Verbesserung von Fehlern, zur Optimierung oder für neue Features können gerne an <michael@fladi.at> geschickt werden.
 %------------------------------------
 
-% Dokumentenklasse%{{{
+% Dokumentenklasse %{{{
 \documentclass[
     %DIV12,                                 % Satzspiegelparameter 12
     %BCOR8mm,                               % Bindekorrektur 8mm
@@ -27,17 +27,16 @@
                                             % bei der Ermittlung des Satzspiegels
     12pt,                                   % Schriftgrösse 12pt
     a4paper,                                % DIN A4
-    oneside,                                % einseitig
     captions=oneline,                       % 
     ngerman,
     draft=true,                             % Muss entfernt werden, bevor Arbeit abgegeben wird!
     bibliography=totoc,                     % Literaturverzeichniss automatisch im TOC einbinden
     listof=totoc,                           % Listen automatisch in TOC einbinden
     index=totoc]                            % Index automatisch in TOC einbinden
-    {scrbook}                               % KOMA-Script Klasse 'scrbook' statt 'book'
-%}}}
+    {scrreprt}                              % KOMA-Script für Reports
+%}}
 
-% Generische Packages%{{{
+% Generische Packages %{{{
 \usepackage[ngerman]{babel}
 \usepackage[ngerman]{translator}
 \usepackage[utf8]{inputenc}                 % Laden der UTF8-Eingabekodierung
@@ -76,10 +75,25 @@
 \usepackage{csquotes}
 %}}}
 
-% Formatierung für Listings%{{{
+% Formatierung für Listings %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/listings/
 \usepackage{listings}
+% Definition für JavaScript
+\lstdefinelanguage{JavaScript}{
+    keywords={attributes, class, classend, do, empty, endif, endwhile, fail, function, functionend, if, implements, in, inherit, inout, not, of, operations,
+    out, return, set, then, types, while, use},
+    keywordstyle=\color{blue}\bfseries,
+    ndkeywords={}
+    ndkeywordstyle=\color{yellow}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{//},
+    commentstyle=\color{green}\ttfamily,
+    stringstyle=\color{red}\ttfamily
+}
+% Sprachen laden
 \lstloadlanguages{HTML,XML}
+% Format für Listings
 \lstset{float,
         numbers=none, 
         keywordstyle=, 
@@ -98,11 +112,11 @@
         basicstyle=\ttfamily}
 %}}}
 
-% Lokale Einstellungen%{{{
+% Lokale Einstellungen %{{{
 \input{misc/settings}
 %}}}
 
-% Weiche für PDF/DVI%{{{
+% Weiche für PDF/DVI %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
 % Bitmaps stinken ja in der Druckstufe sowieso, besser TIKZ benutzen :-)
 \usepackage{ifpdf}
@@ -117,13 +131,13 @@
 \fi
 %}}}
 
-% TIKZ - Coole Grafiken direkt in TeX zeichnen :-)%{{{
+% TIKZ - Coole Grafiken direkt in TeX zeichnen :-) %{{{
 % http://www.ctan.org/tex-archive/help/Catalogue/entries/pgf.html
 \usepackage{tikz}
 \usetikzlibrary{mindmap,trees,arrows,shapes,positioning,shadows,calc}
 %}}}
 
-% Überschriften und Zeilenabstand%{{{
+% Überschriften und Zeilenabstand %{{{
 % http://www.ctan.org/tex-archive/macros/latex/required/tools/
 \usepackage{layout}
 
@@ -150,33 +164,35 @@
                                             % default: .3
 %}}}
 
-% Silbentrennung%{{{
+% Silbentrennung %{{{
 \input{misc/hyphenation}
 %}}}
 
-% Index-Erstellung%{{{
+% Index-Erstellung %{{{
 \usepackage{makeidx}
 \makeindex
 %}}}
 
-% Smarte Referenzen%{{{
+% Smarte Referenzen %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/fancyref/
 \usepackage[german]{fancyref}
-% Listings (lst:my-unigue-label)
+% Listings (lst:my-unique-label)
 \newcommand*{\fancyreflstlabelprefix}{lst}
-% Zeilen in Listings (lin:my-unique-label)
-\newcommand*{\fancyreflinlabelprefix}{lin}
 \fancyrefaddcaptions{german}{
     \newcommand*{\Freflstname}{\lstlistingname}
     \newcommand*{\freflstname}{\lstlistingname}
+}
+\frefformat{vario}{\fancyreflstlabelprefix}{\Freflstname\fancyrefdefaultspacing#1#3}
+% Zeilen in Listings (lin:my-unique-label)
+\newcommand*{\fancyreflinlabelprefix}{lin}
+\fancyrefaddcaptions{german}{
     \newcommand*{\Freflinname}{Zeile}
     \newcommand*{\freflinname}{Zeile}
 }
-\frefformat{vario}{\fancyreflstlabelprefix}{\Freflstname\fancyrefdefaultspacing#1#3}
 \frefformat{vario}{\fancyreflinlabelprefix}{\Freflinname\fancyrefdefaultspacing#1#3}
 %}}}
 
-% PDF-Einstellungen%{{{
+% PDF- und Hyperlink-Einstellungen %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/hyperref/
 \usepackage[a4paper,                        % DIN A4
             plainpages=false,
@@ -203,18 +219,18 @@
 \usepackage[hyphenbreaks]{breakurl}
 %}}}
 
-% Glossaries%{{{
+% Glossaries %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/glossaries/
 \usepackage[toc,acronym,style=long,nonumberlist]{glossaries} 
 \loadglsentries{misc/glossary}
 \makeglossaries
 %}}}
 
-% Benutzerdefinierte Befehle%{{{
+% Benutzerdefinierte Befehle %{{{
 \input{misc/commands}
 %}}}
 
-% Layout-Einstellungen%{{{
+% Layout-Einstellungen %{{{
 
 % Numerierungstiefe der Kapitel
 \setcounter{secnumdepth}{3}%
@@ -228,7 +244,6 @@
 % Abstand zwischen Gleitobjekten oben oder unten und Text [tb]
 \setlength{\textfloatsep}{28pt plus 2pt minus 4pt}  % default: {20pt plus 2pt minus 4pt}
 
-%\setlength{\abovecaptionskip}{0pt}
 
 %%%---- PARAGRAPH ---------------------
 \makeatletter
@@ -248,14 +263,6 @@
 
 \clubpenalty = 10000
 \widowpenalty = 10000
-% \displaywidowpenalty = 10000
-
-%\hyphenpenalty=9999                     % verhindert häufige Silbentrennung
-%\lefthyphenmin=3                        % bei Silbentrennung bleiben min. 3 Zeichen
-                                         % in der oberen Zeile stehen
-%\finalhyphendemerits=5000%
-%\doublehyphendemerits=10000%
-%\sloppy                                 % sollte unbedingt vermieden werden ;-)
 
 %%%------------------------------------
 %%%---- SEITENDEKLARATION -------------
@@ -264,23 +271,22 @@
 \setlength{\voffset}{40pt}%
 \setlength{\hoffset}{20pt}%
 %\setlength{\footskip}{20pt}%
+%}}}
 
-%%%------------------------------------
-%%%---- KOPF-, FUSSZEILE --------------
-%%%------------------------------------
-\usepackage{fancyhdr}                   % Laden des Pakets zum Layout
-%\pagestyle{fancy}                       % der Kopf- und Fusszeilen
+% Kopf- und Fußzeilen %{{{
+% http://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+% Redefine fetching of chapter name
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
-%\renewcommand{\sectionmark}[1]{\markright{#1}{}}
-%\renewcommand{\headrulewidth}{0.4pt}    % Linie Kopfzeile
-%\renewcommand{\footrulewidth}{0.4pt}   % Linie Fusszeile
-%\lhead{\sffamily\small\leftmark}        % LeftHeader --> Kapitelname
-%\chead{}                                % CenteredHeader
-%\rhead{\sffamily\small\thepage}         % RightHeader --> Seitennummer
-%\lfoot{\sffamily\small}                 % LeftFooter --> Name
-%\cfoot{}                                % CenteredFooter
-%\rfoot{\sffamily\small}                 % RightFooter --> Titel
-%%%------------------------------------
+% Page header
+\lhead{}
+\chead{}
+\rhead{\sffamily\small\leftmark}
+% Page footer
+\lfoot{}
+\cfoot{\sffamily\small\thepage}
+\rfoot{}
 %}}}
 
 % Haupt-Dokument%{{{
@@ -290,9 +296,8 @@
 %%%------------------------------------
 %%%---- VORSPANN ----------------------
 %%%------------------------------------
-\frontmatter                                % Titel, Vorwort, Inhaltsverzeichnis
 
-%%%---- TITELSEITE --------------------
+% Titelseite
 \begin{titlepage}
 \begin{sf}
 \begin{center}
@@ -345,19 +350,19 @@ Pers. Kennz. \campusPersKnz
 
 \setlength{\parindent}{0em}
 
-%%%---- EHRENWORT ---------------------
+% Ehrenwort
 \include{misc/Ehrenwort}
 
-%%%---- DANK --------------------------
+% Danksagung
 \include{misc/Dank}
 
-%%%---- KURZFASSUNG -------------------
+% Kurzfassung / Abstract
 \include{misc/Kurzfassung}
 
 % Gleichheitsgrundsatz
 \include{misc/Gleichheitsgrundsatz}
 
-%%%---- INHALTSVERZEICHNIS ------------
+% Inhaltsverzeichnis
 \tableofcontents
 
 %%%------------------------------------
@@ -365,10 +370,6 @@ Pers. Kennz. \campusPersKnz
 %%%------------------------------------
 \setlength{\parskip}{3ex plus0.5ex minus0.5ex}
 
-%%%---- SEITENLAYOUT ------------------
-%\newpage \layout
-
-\mainmatter
 % Seitennummerierung auf Arabisch setzen und bei Seite 1 beginnen
 \pagenumbering{arabic}
 \setcounter{page}{1}
@@ -376,41 +377,37 @@ Pers. Kennz. \campusPersKnz
 % Laden des eigentlichen Inhalts
 \input{misc/toc}
 
-%%%------------------------------------
-%%%---- ANHANG ------------------------
-%%%------------------------------------
-\appendix
+% Anhang
+
+% Abkürzungen
+\clearpage%
+\printglossaries
+
+% Abbildungen
+\clearpage%
+\listoffigures%
+
+% Tabellen
+\clearpage%
+\listoftables%
+
+% Listings
+\clearpage%
+\lstlistoflistings%
+
+% Literaturverzeichnis
+\clearpage%
+\bibliographystyle{alphadin}%
+\bibliography{misc/literatur}%
+
+% Index
+\clearpage%
+\printindex
 
 %%%------------------------------------
 %%%---- NACHSPANN ---------------------
 %%%------------------------------------
-\backmatter %%% Bibliographie, Index
 
-%%%------------------------------------
-%%%     ABKUERZUNGSVERZEICHNIS
-\clearpage%
-\printglossaries
-%%%------------------------------------
-%%%     ABBILDUNGSVERZEICHNIS
-\clearpage%
-\listoffigures%
-%%%------------------------------------
-%%%     TABELLENVERZEICHNIS
-\clearpage%
-\listoftables%
-%%%------------------------------------
-%%%     LISTINGSVERZEICHNIS
-\clearpage%
-\lstlistoflistings%
-%%%------------------------------------
-%%%     LITERATURVERZEICHNIS
-\clearpage%
-\bibliographystyle{alphadin}%
-\bibliography{misc/literatur}%
-%%%------------------------------------
-%%%     INDEX
-\clearpage%
-\printindex
 \include{misc/Zitat}%
 
 %%%------------------------------------
