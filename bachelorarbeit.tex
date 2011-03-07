@@ -226,6 +226,11 @@
 \makeglossaries
 %}}}
 
+% TODO-Notes %{{{
+% http://www.ctan.org/tex-archive/macros/latex/contrib/todonotes/
+\usepackage[disable]{todonotes} 
+%}}}
+
 % Benutzerdefinierte Befehle %{{{
 \input{misc/commands}
 %}}}
@@ -289,13 +294,9 @@
 \rfoot{}
 %}}}
 
-% Haupt-Dokument%{{{
+% Haupt-Dokument %{{{
 
 \begin{document}
-
-%%%------------------------------------
-%%%---- VORSPANN ----------------------
-%%%------------------------------------
 
 % Titelseite
 \begin{titlepage}
@@ -313,7 +314,7 @@
 ausgeführt am
 
 \begin{figure} [h!]
-        \centerline{\includegraphics[width=0.3\textwidth]{campus02}}
+    \centerline{\includegraphics[width=0.3\textwidth]{campus02}}
 \end{figure}
 
 %\vspace{4.5cm}%
@@ -340,13 +341,15 @@ Pers. Kennz. \campusPersKnz
 \end{sf}
 \end{titlepage}
 
+% Ende der Titelseite
 \newpage
+
+% Liste der TODOS (nur sichtbar wenn die TODOs auch aktiviert sind, siehe Package todonotes)
+\listoftodos
 
 % Seitennummerierung auf Römisch setzen und bei Seite 1 beginnen
 \pagenumbering{roman}
 \setcounter{page}{1}
-
-%%%---- EO TITELSEITE -----------------
 
 \setlength{\parindent}{0em}
 
@@ -365,9 +368,7 @@ Pers. Kennz. \campusPersKnz
 % Inhaltsverzeichnis
 \tableofcontents
 
-%%%------------------------------------
-%%%---- HAUPTTEIL ---------------------
-%%%------------------------------------
+% Hauptteil
 \setlength{\parskip}{3ex plus0.5ex minus0.5ex}
 
 % Seitennummerierung auf Arabisch setzen und bei Seite 1 beginnen
@@ -380,39 +381,33 @@ Pers. Kennz. \campusPersKnz
 % Anhang
 
 % Abkürzungen
-\clearpage%
+\clearpage
 \printglossaries
 
 % Abbildungen
-\clearpage%
-\listoffigures%
+\clearpage
+\listoffigures
 
 % Tabellen
-\clearpage%
-\listoftables%
+\clearpage
+\listoftables
 
 % Listings
-\clearpage%
-\lstlistoflistings%
+\clearpage
+\lstlistoflistings
 
 % Literaturverzeichnis
-\clearpage%
-\bibliographystyle{alphadin}%
-\bibliography{misc/literatur}%
+\clearpage
+\bibliographystyle{alphadin}
+\bibliography{misc/literatur}
 
 % Index
-\clearpage%
+\clearpage
 \printindex
 
-%%%------------------------------------
-%%%---- NACHSPANN ---------------------
-%%%------------------------------------
-
+% Das tiefgründige Zitat, optional :-)
 \include{misc/Zitat}%
 
-%%%------------------------------------
-%%%     EO DOCUMENT
-%%%------------------------------------
 \end{document}
 %}}}
 
