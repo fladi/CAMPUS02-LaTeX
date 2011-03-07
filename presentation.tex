@@ -20,11 +20,11 @@
 % Patches zur Verbesserung von Fehlern, zur Optimierung oder für neue Features können gerne an <michael@fladi.at> geschickt werden.
 %------------------------------------
 
-% Dokumentenklasse%{{{
+% Dokumentenklasse %{{{
 \documentclass{beamer}
 %}}}
 
-% Generische Packages%{{{
+% Generische Packages %{{{
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}                 % Laden der UTF8-Eingabekodierung
                                             % ACHTUNG: Dateien müssen UTF8 codiert sein!
@@ -57,11 +57,11 @@
 \usepackage{beamerthemesplit}
 %}}}
 
-% Lokale Einstellungen%{{{
+% Lokale Einstellungen %{{{
 \input{misc/settings}
 %}}}
 
-% Weiche für PDF/DVI%{{{
+% Weiche für PDF/DVI %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
 % Bitmaps stinken ja in der Druckstufe sowieso, besser TIKZ benutzen :-)
 \usepackage{ifpdf}
@@ -74,7 +74,7 @@
 \fi
 %}}}
 
-% Glossaries%{{{
+% Glossaries %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/glossaries/
 \usepackage[acronym,style=long,nonumberlist]{glossaries} 
 \loadglsentries{misc/glossary}
@@ -87,11 +87,11 @@
 \presetkeys{todonotes}{inline}{}
 %}}}
 
-% Benutzerdefinierte Befehle%{{{
+% Benutzerdefinierte Befehle %{{{
 \input{misc/commands}
 %}}}
 
-% Campus02 CI%{{{
+% Campus02 CI %{{{
 \setbeamercovered{transparent}
 \mode<presentation>
 {  
@@ -133,7 +133,7 @@
 \logo{\includegraphics[width=0.2\textwidth]{campus02}}
 %}}}
 
-% Präsentations-Header%{{{
+% Präsentations-Header %{{{
 \title{Präsentation \campusType}
 \subtitle{\campusTitle}
 \author{\campusAuthor}
@@ -141,7 +141,7 @@
 \date{\campusDate}
 %}}}
 
-% Folien%{{{
+% Folien %{{{
 \begin{document}
 
 \frame{
@@ -156,70 +156,54 @@
 \section{Ausgangssituation}
 \frame {
     \frametitle{Ausgangssituation}
+    \todo{Was ist der Aufhänger für das Forschungsthema?}
     \begin{itemize}
-        \item Kryptographische Sicherheit auf Transportebene $\Rightarrow$ \gls*{https}
-        \item Verschiedene Autoren verfassen Inhalte auf einer Website
-        \item Autoren verfassen Inhalte auf verschiedenen Websites
-        \item Inhalte können nicht mit kryptographischen Merkmalen versehen werden
+        \item Der Großteil der Arbeiten wird noch immer mit WYSIWYG-Editoren verfasst.
     \end{itemize}
 }
 
 \section{Forschungsfragen}
 \frame {
     \frametitle{Forschungsfragen}
+    \todo{Hier sollten die grundlegenden Fragen gestellt werden, die in der Arbeit beantwortet werden!}
     \begin{itemize}
-        \item Wie können digitale Signaturen in \gls*{xhtml} integriert werden, ohne dass dieser W3C-Standard dabei verletzt wird?
-        \item Welche Möglichkeiten bietet \gls*{xml-dsig} zur wahlfreien Selektion von Bereichen innerhalb eines XHTML-Dokuments?
-        \item Wie können die öffentlichen Schlüssel zu den Signaturen verteilt werden? Welche der bestehenden Technologien eignen sich dafür am besten?
+        \item Warum schreckt \LaTeX\ so viele Erstbenutzer ab?
     \end{itemize}
 }
 
 \section{Aufbau}
 \frame {
     \frametitle{Aufbau}
-    \begin{itemize}
-        \item Einführung in \gls*{xml-dsig}
-        \item Verbindungen zwischen \gls*{xml-dsig} und \gls*{xhtml}
-        \item Signaturverfahren für \gls*{xml-dsig}
-        \item Anforderungen an ein Browser-AddOn (\gls*{firefox})
-    \end{itemize}
+    \missingfigure{Hier vielleicht ein schönes Diagramm \ldots oder auch nicht?}
 }
 
 \section{Erkenntnisse}
 \frame {
     \frametitle{Erkenntnisse}
+    \todo{Was wurde erarbeitet?}
     \begin{itemize}
-        \item \gls*{xml-dsig} bietet große Flexibilität beim Signieren von \gls*{xml}-Dokumenten mit \gls*{x509} oder \gls*{openpgp}
-        \item Mehrere Ansätze für Signatur-Bindung\\
-            Hervorzuheben sind:
-            \begin{itemize}
-                \item Mikro-Formate mit fixen Signaturvorgaben
-                \item \xmlelem{link}-Tag für vollständige Ausnutzung von \gls*{xml-dsig}
-            \end{itemize}
-        \item Signaturverfahren:
-            \begin{itemize}
-                \item \gls*{x509}: für Unternehmerischen oder staatlichen Einsatz geeignet
-                \item \gls*{openpgp}: für schnelle Adaption durch Privatbenutzer geeignet, höherer Grad an Automation möglich
-            \end{itemize}
+        \item \LaTeX\ ist anders.
+        \item WYSIWYG lenkt nur von der Arbeit am Inhalt ab.
     \end{itemize}
 }
 
 \section{Conclusio}
 \frame {
     \frametitle{Conclusio}
+    \todo{Konnten die Forschungsfragen beantwortet werden?}
     \begin{itemize}
-        \item Weder \gls*{openpgp} noch \gls*{x509} decken alle Erfordernisse vollständig ab
-        \item Einsatz einer Abstraktionsschicht um beide Verfahren zu ermöglichen
-        \item Definition des Verfahrens in der Signatur selbst
+        \item \LaTeX\ ist gar nicht so schwer.
     \end{itemize}
 }
 
 \section{Ausblick}
 \frame {
     \frametitle{Ausblick}
+    \todo{Wo besteht noch Handlungs-/Forschungsbedarf?}
+    \todo{Wir sollten aber auch die ganzen TODOs im Dokument deaktivieren, bevor wir zur Tat schreiten.}
     \begin{itemize}
-        \item Entwicklung eines Prototypen für ein Browser-AddOn in \gls*{firefox}
-        \item Zumindest Unterstützung für \gls*{openpgp} oder \gls*{x509}
+        \item Keine Beamer-Präsentationen mit aktivieren TODOs abgeben. Immer die Option \texttt{disable} für das Package \texttt{todonotes} vor der Abgabe
+            setzen!
     \end{itemize}
 }
 \end{document}
