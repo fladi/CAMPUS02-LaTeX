@@ -92,8 +92,16 @@
     identifierstyle=\color{black},
     sensitive=false,
     comment=[l]{//},
+    morecomment=[s]{/*}{*/},
     commentstyle=\color{green}\ttfamily,
-    stringstyle=\color{red}\ttfamily
+    stringstyle=\color{red}\ttfamily,
+    morestring=[b]',
+    morestring=[b]"
+}
+\lstdefinelanguage{WKT}{
+    morekeywords={POINT, LINESTRING, POLYGON, MULTIPOINT, MULTILINESTRING, MULTIPOLYGON},
+    sensitive=true,
+    morestring=[b]()
 }
 % Sprachen laden
 \lstloadlanguages{HTML,XML}
