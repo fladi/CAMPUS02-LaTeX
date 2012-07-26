@@ -53,6 +53,7 @@
 \usepackage{longtable}                      % Mehrseitige Tabellen
 \usepackage{ltxtable}                       % 'longtable' und 'tabularx'
 \usepackage{array}                          % Zeilenumbruch in 'p'-Spalten
+\usepackage{multirow}                       % Multiple Zeilen/Spalten in Tabellen
 % http://www.ctan.org/tex-archive/macros/latex/contrib/booktabs/
 % \toprule, \midrule und \bottomrule
 \usepackage{booktabs}
@@ -146,7 +147,7 @@
 % TIKZ - Coole Grafiken direkt in TeX zeichnen :-) %{{{
 % http://www.ctan.org/tex-archive/help/Catalogue/entries/pgf.html
 \usepackage{tikz}
-\usetikzlibrary{mindmap,trees,arrows,shapes,positioning,shadows,calc,snakes}
+\usetikzlibrary{mindmap,trees,arrows,shapes,positioning,shadows,calc,decorations,fadings,decorations.pathreplacing}
 %}}}
 
 % Überschriften und Zeilenabstand %{{{
@@ -185,29 +186,9 @@
 \makeindex
 %}}}
 
-% Smarte Referenzen %{{{
-% http://www.ctan.org/tex-archive/macros/latex/contrib/fancyref/
-\usepackage[german]{fancyref}
-% Listings (lst:my-unique-label)
-\newcommand*{\fancyreflstlabelprefix}{lst}
-\fancyrefaddcaptions{german}{
-    \newcommand*{\Freflstname}{\lstlistingname}
-    \newcommand*{\freflstname}{\lstlistingname}
-}
-\frefformat{vario}{\fancyreflstlabelprefix}{\Freflstname\fancyrefdefaultspacing#1#3}
-% Zeilen in Listings (lin:my-unique-label)
-\newcommand*{\fancyreflinlabelprefix}{lin}
-\fancyrefaddcaptions{german}{
-    \newcommand*{\Freflinname}{Zeile}
-    \newcommand*{\freflinname}{Zeile}
-}
-\frefformat{vario}{\fancyreflinlabelprefix}{\Freflinname\fancyrefdefaultspacing#1#3}
-%}}}
-
 % PDF- und Hyperlink-Einstellungen %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/hyperref/
-\usepackage[a4paper,                        % DIN A4
-            plainpages=false,
+\usepackage[plainpages=false,
             pdfpagelabels,
             pdftitle={\campusTitle},
             pdfauthor={\campusAuthor},
@@ -217,18 +198,23 @@
             bookmarksopen=true,             % Bookmarks anzeigen...
             bookmarksnumbered=true,         % ...und nummerieren
             hyperindex=true,                % Indexeinträge als Hyperlinks
-            colorlinks,                     % Farbige Links
+            colorlinks=false,               % Farbige Links
             linkcolor=black,
             urlcolor=black,
             citecolor=black,
-            pdfborder=0,
             unicode=true,
-            breaklinks
+            breaklinks,
+            verbose
 ]{hyperref}
-
 % http://www.ctan.org/tex-archive/macros/latex/contrib/breakurl/
 % Allow links to have line-breaks even when processed by dvips/ps2pdf.
-\usepackage[hyphenbreaks]{breakurl}
+%\usepackage[hyphenbreaks]{breakurl}
+%}}}
+
+% Smarte Referenzen %{{{
+% http://www.ctan.org/tex-archive/macros/latex/contrib/fancyref/
+\usepackage[german]{cleveref}
+\usepackage{nameref}
 %}}}
 
 % APA style citations %{{{
