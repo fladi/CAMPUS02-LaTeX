@@ -24,7 +24,7 @@
 *.lol
 *.lot
 *.out
-*.pdf
+/*.pdf
 *.toc
 *.dvi
 *.ps
