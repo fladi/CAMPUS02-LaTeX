@@ -78,6 +78,7 @@
 \usepackage{csquotes}
 \usepackage{footmisc}
 \usepackage{gensymb}
+\usepackage{subfigure}
 %}}}
 
 % Formatierung für Listings %{{{
@@ -147,7 +148,9 @@
 % TIKZ - Coole Grafiken direkt in TeX zeichnen :-) %{{{
 % http://www.ctan.org/tex-archive/help/Catalogue/entries/pgf.html
 \usepackage{tikz}
-\usetikzlibrary{mindmap,trees,arrows,shapes,positioning,shadows,calc,decorations,fadings,decorations.pathreplacing}
+\usetikzlibrary{mindmap,trees,arrows,shapes,positioning,shadows,calc,decorations,fadings,decorations.pathreplacing,patterns}
+% Globale Definitionen für TIKZ/PGF.
+\input{misc/tikz}
 %}}}
 
 % Überschriften und Zeilenabstand %{{{
