@@ -79,9 +79,10 @@
 \usepackage{footmisc}
 \usepackage{gensymb}
 \usepackage{subfigure}
-\usepackage[geometry]{ifsym}
 \usepackage{wrapfig}
 \usepackage{amsmath,amsthm,amssymb}
+%\usepackage[geometry]{ifsym}
+\usepackage{scrhack}
 %}}}
 
 % Formatierung für Listings %{{{
@@ -104,12 +105,25 @@
     morestring=[b]"
 }
 \lstdefinelanguage{WKT}{
+    keywordstyle=\color{blue}\bfseries,
     morekeywords={POINT, LINESTRING, POLYGON, MULTIPOINT, MULTILINESTRING, MULTIPOLYGON},
     sensitive=true,
     morestring=[b]()
 }
+\lstdefinelanguage{XML}
+{
+    morestring=[b]",
+    morestring=[s]{>}{<},
+    morecomment=[s]{<?}{?>},
+    stringstyle=\color{black},
+    showstringspaces=false,
+    identifierstyle=\color{blue},
+    keywordstyle=\color{cyan},
+    morekeywords={xmlns,version,type}
+}
+
 % Sprachen laden
-\lstloadlanguages{HTML,XML}
+\lstloadlanguages{HTML}
 % Format für Listings
 \lstset{float,
         numbers=none, 
