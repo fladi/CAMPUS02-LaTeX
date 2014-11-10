@@ -4,7 +4,7 @@
 \label{chap:GrundlagenDefinitionen}
 \blindtext
 
-Eine Referenz auf die \fref{fig:wot} oder auf die \fref{fig:ht} ist nicht schwer und nimmt, falls nötig, sogar die Seitenzahl mit ein den Text auf. Wer Mut und
+Eine Referenz auf die \cref{fig:wot} oder auf die \cref{fig:ht} ist nicht schwer und nimmt, falls nötig, sogar die Seitenzahl mit ein den Text auf. Wer Mut und
 Laune hat, kann sich auch mit TIKZ\footnote{\url{http://www.texample.net/tikz/}} beschäftigen um schönere Grafiken als mit Bitmaps zu erhalten.
 
 \begin{figure}
@@ -21,15 +21,15 @@ Laune hat, kann sich auch mit TIKZ\footnote{\url{http://www.texample.net/tikz/}}
 \label{fig:ht}
 \end{figure}
 
-Es kann auch aus dem \fref{lst:link} auf die Zeile \ref{lin:link-href} verwiesen werden, ohne dies fix im Text zu inkludieren. Alles wird automatisch über die
+Es kann auch aus dem \cref{listing:link-element} auf die Zeile \ref{line:link-href} verwiesen werden, ohne dies fix im Text zu inkludieren. Alles wird automatisch über die
 Position der Labels berechnet.
 
 \lstinputlisting[language=HTML,
-                 caption={Verwendung von \xmlelem{link}},
-                 label=lst:link,
+                 caption={Erklärender Text},
+                 label=listing:link-element,
                  emph={link,href}]{source/link.html}
 
-Auch Tabellen wie die \fref{tab:xml-namespaces} sind schnell erstellt und sehr gut lesbar. Vor allem sollte auf vertikale Trennlinien verzichtet werden, um die
+Auch Tabellen wie die \cref{tab:xml-namespaces} sind schnell erstellt und sehr gut lesbar. Vor allem sollte auf vertikale Trennlinien verzichtet werden, um die
 Lesbarkeit zu erhöhen \cite{latex}.
 
 \begin{table}
@@ -52,7 +52,7 @@ Lesbarkeit zu erhöhen \cite{latex}.
 \end{table}
 
 Platzhalter für Abbildungen sind auch leicht möglich und integrieren sich gut mit der TODO-Liste am Anfang des Dokuments. Als Beispiel siehe
-\fref{fig:missing}.
+\cref{fig:missing}.
 
 \begin{figure}
     \centering
