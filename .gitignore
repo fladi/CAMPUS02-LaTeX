@@ -4,14 +4,16 @@
 # exclude patterns (uncomment them if you want to use them):
 # *.[oa]
 *~
-*.swp
 *.acn
 *.acr
 *.alg
 *.aux
+*.bak
 *.bbl
 *.blg
+*.dvi
 *.fdb_latexmk
+*.fls
 *.glg
 *.glo
 *.gls
@@ -23,12 +25,11 @@
 *.log
 *.lol
 *.lot
-*.out
-/*.pdf
-*.toc
-*.dvi
-*.ps
-*.bak
 *.nav
+*.out
+*.ps
 *.snm
+*.swp
 *.tdo
+*.toc
+/*.pdf
