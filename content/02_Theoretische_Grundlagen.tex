@@ -39,21 +39,20 @@ Position der Labels berechnet.
 Auch Tabellen wie die \cref{tab:xml-namespaces} sind schnell erstellt und sehr gut lesbar. Vor allem sollte auf vertikale Trennlinien verzichtet werden, um die
 Lesbarkeit zu erhöhen \cite{latex}. Jetzt kommt \gls{xml}. Wie \citeA{niag} gezeigt hat \ldots
 
+% Tabelle mit tabularx-Umgebung für definierte Breite, siehe:
+% https://en.wikibooks.org/wiki/LaTeX/Tables
 \begin{table}
-    \centering
-    \begin{tabularx}{\textwidth}{ l X }
-        \gls{xml}-Dialekt  & \gls{xml-ns} \\
-        \hline
-        \hline
-        \gls{xhtml} & \url{http://www.w3.org/1999/xhtml} \\
-        \hline
-        \gls{xml-dsig} & \url{http://www.w3.org/2000/09/xmldsig\#} \\
-        \hline
-        \gls{xinclude} & \url{http://www.w3.org/2001/XInclude} \\
-        \hline
-        \gls{xslt} & \url{http://www.w3.org/1999/XSL/Transform} \\
-        \hline
-    \end{tabularx}
+    \begin{center}
+        \begin{tabularx}{.8\textwidth}{ l X }
+            \gls{xml}-Dialekt  & \gls{xml-ns} \\
+            \hline
+            \glstext{xhtml} & \url{http://www.w3.org/1999/xhtml} \\
+            \glstext{xml-dsig} & \url{http://www.w3.org/2000/09/xmldsig\#} \\
+            \glstext{xinclude} & \url{http://www.w3.org/2001/XInclude} \\
+            \glstext{xslt} & \url{http://www.w3.org/1999/XSL/Transform} \\
+            \hline
+        \end{tabularx}
+    \end{center}
     \caption{Namespaces für unterschiedliche \protect\gls{xml}-Dialekte}
     \label{tab:xml-namespaces}
 \end{table}
