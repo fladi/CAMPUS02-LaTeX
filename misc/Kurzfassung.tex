@@ -1,15 +1,11 @@
 % vim: set tw=160:
 
-% 2010 Peter A. Menzel
-
-\noindent
-\begin{minipage}{\textwidth}
-%%% minipage um Kapitel Kurzfassung UND Kapitel Abstract
-%%% auf eine Seite zu binden
 \chapter*{Kurzfassung}
 \blindtext
 
+% Hack damit zwei Chapter auf eine Seite passen
+\begingroup
+\let\clearpage\relax
 \chapter*{Abstract}
+\endgroup
 \blindtext
-
-\end{minipage}
