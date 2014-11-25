@@ -151,16 +151,12 @@
 % Weiche für PDF/DVI %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
 % Bitmaps stinken ja in der Druckstufe sowieso, besser TIKZ benutzen :-)
-\usepackage{ifpdf}
 % für Encapsulated-Postscript und PDFTeX Grafiken
-\ifpdf
-    \usepackage[pdftex]{graphicx}
-    \graphicspath{{images/pdf/}}
-    \pdfcompresslevel=9
-\else
-    \usepackage[dvips]{graphicx}
-    \graphicspath{{images/dvi/}}
-\fi
+
+\usepackage[pdftex]{graphicx}
+\graphicspath{{images/pdf/}}
+\pdfcompresslevel=9
+\usepackage{rotating}
 %}}}
 
 % TIKZ - Coole Grafiken direkt in TeX zeichnen :-) %{{{
