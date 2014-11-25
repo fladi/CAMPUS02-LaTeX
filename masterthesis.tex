@@ -91,57 +91,88 @@
 \usepackage{listings}
 % Definition für JavaScript
 \lstdefinelanguage{JavaScript}{
-    keywords={attributes, class, classend, do, empty, endif, endwhile, fail, function, functionend, if, implements, in, inherit, inout, not, of, operations,
-    out, return, set, then, types, while, use},
+    comment=[l]{//},
+    commentstyle=\color{green}\ttfamily,
+    identifierstyle=\color{black},
+    keywords={
+        attributes,
+        class,
+        classend,
+        do,
+        empty,
+        endif,
+        endwhile,
+        fail,
+        function,
+        functionend,
+        if,
+        implements,
+        in,
+        inherit,
+        inout,
+        not,
+        of,
+        operations,
+        out,
+        return,
+        set,
+        then,
+        types,
+        while,
+        use,
+    },
     keywordstyle=\color{blue}\bfseries,
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+    morestring=[b]',
     ndkeywords={}
     ndkeywordstyle=\color{yellow}\bfseries,
-    identifierstyle=\color{black},
     sensitive=false,
-    comment=[l]{//},
-    morecomment=[s]{/*}{*/},
-    commentstyle=\color{green}\ttfamily,
     stringstyle=\color{red}\ttfamily,
-    morestring=[b]',
-    morestring=[b]"
 }
 \lstdefinelanguage{WKT}{
     keywordstyle=\color{blue}\bfseries,
     morekeywords={POINT, LINESTRING, POLYGON, MULTIPOINT, MULTILINESTRING, MULTIPOLYGON},
+    morestring=[b](),
     sensitive=true,
-    morestring=[b]()
 }
 \lstdefinelanguage{XML}
 {
-    morestring=[b]",
-    morestring=[s]{>}{<},
-    morecomment=[s]{<?}{?>},
-    stringstyle=\color{black},
-    showstringspaces=false,
     identifierstyle=\color{blue},
     keywordstyle=\color{cyan},
-    morekeywords={xmlns,version,type}
+    morecomment=[s]{<?}{?>},
+    morekeywords={xmlns,version,type},
+    morestring=[b]",
+    morestring=[s]{>}{<},
+    showstringspaces=false,
+    stringstyle=\color{black},
 }
 
 % Sprachen laden
 \lstloadlanguages{HTML}
 % Format für Listings
-\lstset{float,
-        numbers=none, 
-        keywordstyle=, 
-        identifierstyle=\ttfamily, 
-        emphstyle=\bfseries\emph,
-        columns=fixed,
-        prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
-        breaklines=true,
-        firstnumber=auto,
-        numbers=left, 
-        numberstyle=\tiny, 
-        stepnumber=2, 
-        numbersep=5pt,
-        xleftmargin=12pt,
-        escapeinside={@}{@},
-        basicstyle=\ttfamily}
+\lstset{
+    basicstyle=\ttfamily,
+    breaklines=true,
+    captionpos=b, % Beschriftungsposition am Ende des Listings
+    columns=fixed,
+    emphstyle=\bfseries\emph,
+    escapeinside={@}{@},
+    firstnumber=auto,
+    float,
+    frame=single, % einfacher Rahmen
+    identifierstyle=\ttfamily,
+    keywordstyle=,
+    numbers=left,
+    numbersep=5pt,
+    numberstyle=\tiny,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    showspaces=false,
+    showstringspaces=true,
+    showtabs=false,
+    stepnumber=2,
+    xleftmargin=8pt,
+}
 %}}}
 
 % Lokale Einstellungen %{{{
@@ -175,11 +206,6 @@
 % http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
 % Überschriften formatieren
 \usepackage[font=small,format=hang,labelfont=bf]{caption}
-
-% Überschriftenformat für Listings
-\DeclareCaptionFont{white}{\color{white}}
-\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}} }
-\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
 
 \renewcommand{\floatpagefraction}{.8}       % ,float page`, wenn diese mindestens
                                             % 80% der Seite einnehmen
