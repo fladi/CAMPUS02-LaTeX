@@ -1,7 +1,8 @@
 install:
   - sudo apt-get update
   - sudo apt-get install texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science texlive-bibtex-extra
-  - sudo apt-get install chktex latexmk
+  - sudo apt-get install latexmk
+  #- sudo apt-get install chktex
 
 script:
   - latexmk masterthesis
