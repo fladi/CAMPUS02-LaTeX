@@ -2,8 +2,6 @@ sudo: false
 
 addons:
   apt:
-    sources:
-      - debian-sid
     packages:
       - texlive-latex-recommended
       - texlive-latex-extra
