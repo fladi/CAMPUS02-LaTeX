@@ -9,5 +9,6 @@ sub makeacn2acr {
 $cleanup_includes_generated = 1;
 $clean_ext = "acn acr alg bbl glg glo gls ist nav snm tdo fls";
 $pdf_mode = 1;
+$pdflatex = 'pdflatex -interaction=nonstopmode';
 @default_files = ("masterthesis", "presentation");
 
