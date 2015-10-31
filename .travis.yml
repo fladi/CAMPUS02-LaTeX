@@ -3,7 +3,7 @@ install:
   - sudo apt-get install chktex latexmk
 
 script:
-  - latexmk -pdf masterthesis.tex
-  - latexmk -pdf presentation.tex
+  - latexmk -silent -pdf masterthesis.tex
+  - latexmk -silent -pdf presentation.tex
   #- chktex -q -n 6 *.tex **/*.tex 2>/dev/null | tee lint.out
   #- test ! -s lint.out
