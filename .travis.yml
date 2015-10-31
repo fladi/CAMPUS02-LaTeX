@@ -3,12 +3,7 @@ sudo: false
 addons:
   apt:
     packages:
-      - texlive-latex-recommended
-      - texlive-latex-extra
-      - texlive-fonts-recommended
-      - texlive-science
-      - texlive-bibtex-extra
-      - texlive-latex-recommended
+      - texlive-full
       - latexmk
 
 script:
