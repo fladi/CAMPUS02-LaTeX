@@ -1,0 +1,9 @@
+install:
+  - sudo apt-get install texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+  - sudo apt-get install chktex latexmk
+
+script:
+  - latexmk -pdf masterthesis.tex
+  - latexmk -pdf presentation.tex
+  #- chktex -q -n 6 *.tex **/*.tex 2>/dev/null | tee lint.out
+  #- test ! -s lint.out
