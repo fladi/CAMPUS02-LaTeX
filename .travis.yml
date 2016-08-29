@@ -7,10 +7,7 @@ script:
 addons:
   apt:
     packages:
-      - texlive-latex-recommended
-      - texlive-latex-extra
-      - texlive-fonts-recommended
-      - texlive-science
+      - texlive-full
       - chktex
       - latexmk
 
