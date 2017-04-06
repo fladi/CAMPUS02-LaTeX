@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/fladi/CAMPUS02-LaTeX/master.svg?style=flat-square)](https://travis-ci.org/fladi/CAMPUS02-LaTeX)
 [![Downloads](https://img.shields.io/github/downloads/fladi/CAMPUS02-LaTeX/total.svg?style=flat-square)](https://github.com/fladi/CAMPUS02-LaTeX/releases)
-[![Latest Tag](https://img.shields.io/github/tag/fladi/CAMPUS02-LaTeX.svg?style=flat-square)](https://github.com/fladi/CAMPUS02-LaTeX/releases/tag/1.2)
+[![Latest Tag](https://img.shields.io/github/tag/fladi/CAMPUS02-LaTeX.svg?style=flat-square)](https://github.com/fladi/CAMPUS02-LaTeX/releases/tag/1.2.0)
 [![MIT License](https://img.shields.io/github/license/fladi/CAMPUS02-LaTeX.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 ## Masterthesis Usage
