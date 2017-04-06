@@ -1,61 +1,61 @@
 % vim: set tw=160:
 
-\chapter{Grundlagen und Definitionen}
-\label{chap:GrundlagenDefinitionen}
-\blindtext
+\chapter{Grundlagen und Definitionen}%
+\label{chap:GrundlagenDefinitionen}%
+\blindtext%
 
 Eine Referenz auf die \cref{fig:wot} oder auf die \cref{fig:ht} ist nicht schwer und nimmt, falls nötig, sogar die Seitenzahl mit ein den Text auf. Wer Mut und
 Laune hat, kann sich auch mit TIKZ\footnote{\url{http://www.texample.net/tikz/}} beschäftigen um schönere Grafiken als mit Bitmaps zu erhalten.
 
-\begin{figure}
-\centering
-\input{./figures/web-of-trust}
-\caption{Schematische Darstellung des \glsentrydesc{wot}}
-\label{fig:wot}
-\end{figure}
+\begin{figure}%
+\centering%
+\input{./figures/web-of-trust}%
+\caption{Schematische Darstellung des \glsentrydesc{wot}}%
+\label{fig:wot}%
+\end{figure}%
 
 
 % Beispiel für Rotation einer Abbildung, für weitere Optionen siehe:
 % https://en.wikibooks.org/wiki/LaTeX/Rotations
-\begin{figure}
-\centering
-\begin{sideways}
-\input{./figures/hierachical-trust}
-\end{sideways}
-\caption{Schematische Darstellung eines \glsentrydesc{ht}}
-\label{fig:ht}
-\end{figure}
+\begin{figure}%
+\centering%
+\begin{sideways}%
+\input{./figures/hierachical-trust}%
+\end{sideways}%
+\caption{Schematische Darstellung eines \glsentrydesc{ht}}%
+\label{fig:ht}%
+\end{figure}%
 
-Es kann auch aus dem \cref{listing:link-element} auf die Zeile \ref{line:link-href} verwiesen werden, ohne dies fix im Text zu inkludieren. Alles wird automatisch über die
+Es kann auch aus dem~\cref{listing:link-element} auf die Zeile~\ref{line:link-href} verwiesen werden, ohne dies fix im Text zu inkludieren. Alles wird automatisch über die
 Position der Labels berechnet.
 
 % Source-Code Listings aus externer Datei, siehe auch:
 % https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
-\lstinputlisting[language=HTML,
-                 caption={Erklärender Text},
-                 label=listing:link-element,
-                 emph={link,href}]{source/link.html}
+\lstinputlisting[language=HTML,%
+                 caption={Erklärender Text},%
+                 label=listing:link-element,%
+                 emph={link,href}]{source/link.html}%
 
-Auch Tabellen wie die \cref{tab:xml-namespaces} sind schnell erstellt und sehr gut lesbar. Vor allem sollte auf vertikale Trennlinien verzichtet werden, um die
-Lesbarkeit zu erhöhen \cite{latex}. Jetzt kommt \gls{xml}. Wie \citeA{niag} gezeigt hat \ldots
+Auch Tabellen wie die \cref{tab:xml-namespaces} sind schnell erstellt und sehr gut lesbar. Vor allem sollte auf vertikale Trennlinien verzichtet werden, um die%
+Lesbarkeit zu erhöhen~\cite{latex}. Jetzt kommt \gls{xml}. Wie~\citeA{niag} gezeigt hat \ldots%
 
 % Tabelle mit tabularx-Umgebung für definierte Breite, siehe:
 % https://en.wikibooks.org/wiki/LaTeX/Tables
-\begin{table}
-    \begin{center}
-        \begin{tabularx}{.8\textwidth}{ l X }
-            \gls{xml}-Dialekt  & \gls{xml-ns} \\
-            \hline
-            \glstext{xhtml} & \url{http://www.w3.org/1999/xhtml} \\
-            \glstext{xml-dsig} & \url{http://www.w3.org/2000/09/xmldsig\#} \\
-            \glstext{xinclude} & \url{http://www.w3.org/2001/XInclude} \\
-            \glstext{xslt} & \url{http://www.w3.org/1999/XSL/Transform} \\
-            \hline
-        \end{tabularx}
-    \end{center}
-    \caption{Namespaces für unterschiedliche \protect\gls{xml}-Dialekte}
-    \label{tab:xml-namespaces}
-\end{table}
+\begin{table}%
+    \begin{center}%
+        \begin{tabularx}{.8\textwidth}{ l X }%
+            \gls{xml}-Dialekt  & \gls{xml-ns} \\%
+            \toprule%
+            \glstext{xhtml} & \url{http://www.w3.org/1999/xhtml} \\%
+            \glstext{xml-dsig} & \url{http://www.w3.org/2000/09/xmldsig\#} \\%
+            \glstext{xinclude} & \url{http://www.w3.org/2001/XInclude} \\%
+            \glstext{xslt} & \url{http://www.w3.org/1999/XSL/Transform} \\%
+            \bottomrule%
+        \end{tabularx}%
+    \end{center}%
+    \caption{Namespaces für unterschiedliche \protect\gls{xml}-Dialekte}%
+    \label{tab:xml-namespaces}%
+\end{table}%
 
 Platzhalter für Abbildungen sind auch leicht möglich und integrieren sich gut mit der TODO-Liste am Anfang des Dokuments. Als Beispiel siehe
 \cref{fig:missing}.
@@ -64,7 +64,7 @@ Platzhalter für Abbildungen sind auch leicht möglich und integrieren sich gut 
     \begin{center}
         \missingfigure[figwidth=.7\textwidth]{Schöne Abbildung mit TIKZ zeichnen.}
     \end{center}
-    \caption{Ein Platzhalter für eine Abbildung}
-    \label{fig:missing}
+    \caption{Ein Platzhalter für eine Abbildung}%
+    \label{fig:missing}%
 \end{figure}
 

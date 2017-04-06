@@ -1,7 +1,7 @@
 %------------------------------------
 % DIPLOMARBEIT: Hauptdatei Präsentation
 % Verson 1.2
-%     
+%
 % Stefan Grünwald (2000 - 2007)
 % Michael Fladischer (2012-2014)
 %
@@ -17,7 +17,7 @@
 %  latex-beamer
 %
 % Alle .tex Dateien sind für den vim Editor ausgelegt und enthalten Modeline-Anweisungen zur besseren Darstellung.
-% 
+%
 % Patches zur Verbesserung von Fehlern, zur Optimierung oder für neue Features können gerne an <michael@fladi.at> geschickt werden.
 %------------------------------------
 
@@ -67,24 +67,24 @@
 % Bitmaps stinken ja in der Druckstufe sowieso, besser TIKZ benutzen :-)
 \usepackage{ifpdf}
 % für Encapsulated-Postscript und PDFTeX Grafiken
-\ifpdf
+\ifpdf%
     \graphicspath{{images/pdf/}}
     \pdfcompresslevel=9
-\else
+\else%
     \graphicspath{{images/dvi/}}
-\fi
+\fi%
 %}}}
 
 % Glossaries %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/glossaries/
-\usepackage[acronym,style=long,nonumberlist]{glossaries} 
-\makeglossaries
+\usepackage[acronym,style=long,nonumberlist]{glossaries}
+\makeglossaries%
 \loadglsentries{misc/glossary}
 %}}}
 
 % TODO-Notes %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/todonotes/
-\usepackage{todonotes} 
+\usepackage{todonotes}
 \presetkeys{todonotes}{inline}{}
 %}}}
 
@@ -95,7 +95,7 @@
 % Campus02 CI %{{{
 \setbeamercovered{transparent}
 \mode<presentation>
-{  
+{
     \usetheme{Ilmenau}
     \useinnertheme{circles}
     \usefonttheme[onlymath]{serif}
@@ -146,16 +146,16 @@
 \begin{document}
 
 \frame{
-    \titlepage
+    \titlepage%
 }
 
-\frame {
+\frame{
     \frametitle{Inhalt}
     \tableofcontents
 }
 
 \section{Ausgangssituation}
-\frame {
+\frame{
     \frametitle{Ausgangssituation}
     \todo{Was ist der Aufhänger für das Forschungsthema?}
     \begin{itemize}
@@ -164,7 +164,7 @@
 }
 
 \section{Forschungsfragen}
-\frame {
+\frame{
     \frametitle{Forschungsfragen}
     \todo{Hier sollten die grundlegenden Fragen gestellt werden, die in der Arbeit beantwortet werden!}
     \begin{itemize}
@@ -173,13 +173,13 @@
 }
 
 \section{Aufbau}
-\frame {
+\frame{
     \frametitle{Aufbau}
     \missingfigure{Hier vielleicht ein schönes Diagramm \ldots oder auch nicht?}
 }
 
 \section{Erkenntnisse}
-\frame {
+\frame{
     \frametitle{Erkenntnisse}
     \todo{Was wurde erarbeitet?}
     \begin{itemize}
@@ -189,7 +189,7 @@
 }
 
 \section{Conclusio}
-\frame {
+\frame{
     \frametitle{Conclusio}
     \todo{Konnten die Forschungsfragen beantwortet werden?}
     \begin{itemize}
@@ -198,7 +198,7 @@
 }
 
 \section{Ausblick}
-\frame {
+\frame{
     \frametitle{Ausblick}
     \todo{Wo besteht noch Handlungs-/Forschungsbedarf?}
     \todo{Wir sollten aber auch die ganzen TODOs im Dokument deaktivieren, bevor wir zur Tat schreiten.}
@@ -213,4 +213,4 @@
 % vim:filetype=tex foldmethod=marker autoindent expandtab shiftwidth=4 tw=160:
 % Local variables:
 % mode: latex
-% End:              
+% End:

@@ -129,13 +129,13 @@
     ndkeywordstyle=\color{yellow}\bfseries,
     sensitive=false,
     stringstyle=\color{red}\ttfamily,
-}
+}%
 \lstdefinelanguage{WKT}{
     keywordstyle=\color{blue}\bfseries,
     morekeywords={POINT, LINESTRING, POLYGON, MULTIPOINT, MULTILINESTRING, MULTIPOLYGON},
     morestring=[b](),
     sensitive=true,
-}
+}%
 \lstdefinelanguage{XML}
 {
     identifierstyle=\color{blue},
@@ -146,10 +146,10 @@
     morestring=[s]{>}{<},
     showstringspaces=false,
     stringstyle=\color{black},
-}
+}%
 
 % Sprachen laden
-\lstloadlanguages{HTML}
+\lstloadlanguages{HTML}%
 % Format für Listings
 \lstset{
     basicstyle=\ttfamily,
@@ -172,11 +172,11 @@
     showtabs=false,
     stepnumber=2,
     xleftmargin=8pt,
-}
+}%
 %}}}
 
 % Lokale Einstellungen %{{{
-\input{misc/settings}
+\input{misc/settings}%
 %}}}
 
 % Weiche für PDF/DVI %{{{
@@ -185,8 +185,8 @@
 % für Encapsulated-Postscript und PDFTeX Grafiken
 
 \usepackage[pdftex]{graphicx}
-\graphicspath{{images/pdf/}}
-\pdfcompresslevel=9
+\graphicspath{{images/pdf/}}%
+\pdfcompresslevel=9%
 \usepackage{rotating}
 %}}}
 
@@ -206,9 +206,9 @@
     shadows,
     shapes,
     trees,
-}
+}%
 % Globale Definitionen für TIKZ/PGF.
-\input{misc/tikz}
+\input{misc/tikz}%
 %}}}
 
 % Überschriften und Zeilenabstand %{{{
@@ -235,12 +235,12 @@
 %}}}
 
 % Silbentrennung %{{{
-\input{misc/hyphenation}
+\input{misc/hyphenation}%
 %}}}
 
 % Index-Erstellung %{{{
 \usepackage{makeidx}
-\makeindex
+\makeindex%
 %}}}
 
 % PDF- und Hyperlink-Einstellungen %{{{
@@ -276,18 +276,18 @@
 % Glossaries %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/glossaries/
 \usepackage[toc,acronym,style=long,nonumberlist]{glossaries} 
-\makeglossaries
-\loadglsentries{misc/glossary}
+\makeglossaries%
+\loadglsentries{misc/glossary}%
 %}}}
 
 % TODO-Notes %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/todonotes/
 \usepackage[colorinlistoftodos,obeyDraft]{todonotes} 
-\reversemarginpar
+\reversemarginpar%
 %}}}
 
 % Benutzerdefinierte Befehle %{{{
-\input{misc/commands}
+\input{misc/commands}%
 %}}}
 
 % Layout-Einstellungen %{{{
@@ -306,23 +306,47 @@
 
 
 %%%---- PARAGRAPH ---------------------
-\makeatletter
+\makeatletter%
 \renewcommand{\paragraph}{%
-  \@startsection {paragraph}{4}{\z@}%
-  {-3.25ex plus-1ex minus-.2ex}{1sp}%
-  {\raggedsection \normalfont \sectfont \nobreak \size@paragraph \nobreak } % was: \reset@font \normalsize\bf
-} \makeatother
+  \@startsection{paragraph}{4}{\z@}%
+  {
+    -3.25ex%
+    plus-1ex%
+    minus-.2ex%
+  }{1sp}%
+  {
+    \raggedsection%
+    \normalfont%
+    \sectfont%
+    \nobreak%
+    \size@paragraph%
+    \nobreak%
+  } % was: \reset@font \normalsize\bf
+} \makeatother%
 
 %%%---- SUBPARAGRAPH ------------------
-\makeatletter
+\makeatletter%
 \renewcommand{\subparagraph}{%
-  \@startsection {subparagraph}{5}{\parindent}%
-  {3.25ex \@plus 1ex \@minus .2ex}{-1em}%
-  {\raggedsection \normalfont \sectfont \nobreak \normalsize\bf \nobreak } % was: \size@subparagraph
-} \makeatother
+  \@startsection{subparagraph}{5}{\parindent}%
+  {
+    3.25ex%
+    \@plus%
+    1ex%
+    \@minus%
+    .2ex%
+  }{-1em}%
+  {
+    \raggedsection%
+    \normalfont%
+    \sectfont%
+    \nobreak%
+    \normalsize\bf%
+    \nobreak%
+  }% was: \size@subparagraph
+} \makeatother%
 
-\clubpenalty = 10000
-\widowpenalty = 10000
+\clubpenalty=10000%
+\widowpenalty=10000%
 
 %%%------------------------------------
 %%%---- SEITENDEKLARATION -------------
@@ -336,17 +360,17 @@
 % Kopf- und Fußzeilen %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/
 \usepackage{fancyhdr}
-\pagestyle{fancy}
+\pagestyle{fancy}%
 % Redefine fetching of chapter name
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}%
 % Page header
-\lhead{}
-\chead{}
-\rhead{\small\leftmark}
+\lhead{}%
+\chead{}%
+\rhead{\small\leftmark}%
 % Page footer
-\lfoot{}
-\cfoot{\small\thepage}
-\rfoot{}
+\lfoot{}%
+\cfoot{\small\thepage}%
+\rfoot{}%
 %}}}
 
 % Smarte Referenzen %{{{
@@ -357,26 +381,26 @@
 
 % Haupt-Dokument %{{{
 
-\begin{document}
+\begin{document}%
 
 % Titelseite
-\begin{titlepage}
-\begin{sffamily}
-\begin{center}
-\huge \campusType \\
+\begin{titlepage}%
+\begin{sffamily}%
+\begin{center}%
+\huge \campusType\\
 
 \vspace{2cm}%
 
-\campusTitle \\
+\campusTitle\\
 \vspace{3cm}%
 
-\begin{normalsize}
+\begin{normalsize}%
 
 ausgeführt am
 
-\begin{figure} [h!]
-    \centerline{\includegraphics[width=0.5\textwidth]{Campus02_Logo}}
-\end{figure}
+\begin{figure} [h!]%
+    \centerline{\includegraphics[width=0.5\textwidth]{Campus02_Logo}}%
+\end{figure}%
 
 %\vspace{4.5cm}%
 
@@ -386,91 +410,91 @@ Informationstechnologien und IT-Marketing\\
 \vspace{3.5cm}%
 
 %\begin{tabularx}{\linewidth}{ll}
-Von: \campusAuthor \\
-Pers. Kennz. \campusPersKnz
+Von: \campusAuthor\\
+Pers. Kennz. \campusPersKnz%
 %\end{tabularx}
 
 \vspace{3.5cm}%
-\end{normalsize}
-\end{center}
+\end{normalsize}%
+\end{center}%
 
-\begin{tabularx}{0.9\linewidth}{Xc}
-\campusCity, am \campusDate & ............................. \\
+\begin{tabularx}{0.9\linewidth}{Xc}%
+\campusCity,~am~\campusDate~&~.............................\\
          & \campusAuthor\\
-\end{tabularx}
+\end{tabularx}%
 
-\end{sffamily}
-\end{titlepage}
+\end{sffamily}%
+\end{titlepage}%
 
 % Ende der Titelseite
-\newpage
+\newpage%
 
 % Liste der TODOS (nur sichtbar wenn die TODOs auch aktiviert sind, siehe Package todonotes)
-\listoftodos
+\listoftodos%
 
 % Seitennummerierung auf Römisch setzen und bei Seite 1 beginnen
-\pagenumbering{roman}
-\setcounter{page}{1}
+\pagenumbering{roman}%
+\setcounter{page}{1}%
 
-\setlength{\parindent}{0em}
+\setlength{\parindent}{0em}%
 
 % Ehrenwort
-\input{misc/Ehrenwort}
+\input{misc/Ehrenwort}%
 
 % Danksagung
-\input{misc/Dank}
+\input{misc/Dank}%
 
 % Kurzfassung / Abstract
-\input{misc/Kurzfassung}
+\input{misc/Kurzfassung}%
 
 % Inhaltsverzeichnis
-\tableofcontents
+\tableofcontents%
 
 % Hauptteil
-\setlength{\parskip}{3ex plus0.5ex minus0.5ex}
+\setlength{\parskip}{3ex plus0.5ex minus0.5ex}%
 
 % Seitennummerierung auf Arabisch setzen und bei Seite 1 beginnen
-\clearpage
-\pagenumbering{arabic}
-\setcounter{page}{1}
+\clearpage%
+\pagenumbering{arabic}%
+\setcounter{page}{1}%
 
 % Laden des eigentlichen Inhalts
-\input{misc/toc}
+\input{misc/toc}%
 
 % Anhang
 
 % Abkürzungen
-\clearpage
-\printglossaries
+\clearpage%
+\printglossaries%
 
 % Abbildungen
-\clearpage
-\listoffigures
+\clearpage%
+\listoffigures%
 
 % Tabellen
-\clearpage
-\listoftables
+\clearpage%
+\listoftables%
 
 % Listings
-\clearpage
-\lstlistoflistings
+\clearpage%
+\lstlistoflistings%
 
 % Literaturverzeichnis
-\clearpage
-\bibliographystyle{apacite}
-\bibliography{misc/literatur}
+\clearpage%
+\bibliographystyle{apacite}%
+\bibliography{misc/literatur}%
 
 % Index
-\clearpage
-\printindex
+\clearpage%
+\printindex%
 
 % Das tiefgründige Zitat, optional :-)
 \input{misc/Zitat}%
 
-\end{document}
+\end{document}%
 %}}}
 
 % vim:filetype=tex foldmethod=marker autoindent expandtab shiftwidth=4 tw=160:
 % Local variables:
 % mode: latex
-% End:              
+% End:
