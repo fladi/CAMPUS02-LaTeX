@@ -6,6 +6,8 @@ script:
   #- test ! -s lint.out
 addons:
   apt:
+    sources:
+      - debian-sid
     packages:
       - texlive-full
       - chktex
