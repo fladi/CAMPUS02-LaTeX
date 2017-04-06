@@ -18,7 +18,7 @@ Those will be the files where you are expected to put your own content.
 To compile the document it is recommended to use
 [latexmk](http://users.phys.psu.edu/~collins/software/latexmk-jcc/):
 
-    latexmk masterhesis
+    latexmk masterthesis
 
 This will create the document in `masterthesis.pdf`.
 
