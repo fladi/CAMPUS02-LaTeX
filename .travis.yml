@@ -2,7 +2,7 @@ sudo: false
 script:
   - latexmk -pdf masterthesis.tex
   - latexmk -pdf presentation.tex
-  - chktex -q -n 6 -n 11 -n 18 -n 36 *.tex **/*.tex 2> /dev/null |tee lint.out
+  - chktex -q -n 6 -n 8 -n 11 -n 18 -n 24 -n 36 *.tex **/*.tex 2> /dev/null |tee lint.out
   - test ! -s lint.out
 addons:
   apt:

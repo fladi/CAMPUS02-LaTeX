@@ -22,15 +22,15 @@
     \node[Key](A){Alice};
     \node[Key,right=of A](B){Bob};
     \node[Key,right=of B](C){Carmen};
-    \node[Key,above=of B](D){Dorian};     
-    \draw[DirectTrust](B) to node[Label]{vertraut} (D) ;
+    \node[Key,above=of B](D){Dorian};
+    \draw[DirectTrust](B) to node[Label]{vertraut} (D);
     \tikzset{DirectTrust/.append style = {bend left}}
     \draw[DirectTrust](A) to node[Label]{vertraut} (B);
     \draw[DirectTrust](B) to node[Label]{vertraut} (C);
     \draw[DirectTrust](D) to node[Label]{vertraut} (C);
     \tikzset{IndirectTrust/.append style = {bend left}}
-    \draw[IndirectTrust](A) to node[Label]{vertraut indirekt} (D) ;
+    \draw[IndirectTrust](A) to node[Label]{vertraut indirekt} (D);
     \tikzset{IndirectTrust/.append style = {bend right}}
-    \draw[IndirectTrust](A) to node[Label]{vertraut indirekt} (C) ;
+    \draw[IndirectTrust](A) to node[Label]{vertraut indirekt} (C);
 
 \end{tikzpicture}
