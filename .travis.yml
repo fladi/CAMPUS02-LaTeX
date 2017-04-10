@@ -1,3 +1,4 @@
+dist: trusty
 sudo: false
 script:
   - latexmk -pdf masterthesis.tex
@@ -7,7 +8,7 @@ script:
 addons:
   apt:
     sources:
-      - sourceline: 'ppa:texlive-backports/ppa'
+      - sourceline: 'ppa:jonathonf/texlive-2016'
     packages:
       - texlive-full
       - chktex
