@@ -33,3 +33,7 @@
 *.tdo
 *.toc
 /*.pdf
+.idea
+*.synctex.gz
+
+*.iml
