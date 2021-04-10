@@ -31,7 +31,7 @@
     a4paper,                                % DIN A4
     captions=oneline,                       % 
     ngerman,
-    draft=true,                             % Muss entfernt werden, bevor Arbeit abgegeben wird!
+    draft=false,                             % Muss entfernt werden, bevor Arbeit abgegeben wird!
     bibliography=totoc,                     % Literaturverzeichniss automatisch im TOC einbinden
     listof=totoc,                           % Listen automatisch in TOC einbinden
     index=totoc]                            % Index automatisch in TOC einbinden
@@ -39,7 +39,8 @@
 %}}}
 
 % Generische Packages %{{{
-\usepackage[ngerman]{babel}
+\usepackage[ngerman, naustrian]{babel}
+%\usepackage[ngerman]{babel}
 \usepackage[ngerman]{translator}
 \usepackage[utf8]{inputenc}                 % Laden der UTF8-Eingabekodierung
                                             % ACHTUNG: Dateien müssen UTF8 codiert sein!
@@ -261,7 +262,8 @@
             citecolor=black,
             unicode=true,
             breaklinks,
-            verbose
+            verbose,
+            hidelinks=true
 ]{hyperref}
 % http://www.ctan.org/tex-archive/macros/latex/contrib/breakurl/
 % Allow links to have line-breaks even when processed by dvips/ps2pdf.
@@ -362,22 +364,46 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}%
 % Redefine fetching of chapter name
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}%
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}%
 % Page header
-\lhead{}%
+\lhead{\small\leftmark}%
 \chead{}%
-\rhead{\small\leftmark}%
+\rhead{}%
 % Page footer
 \lfoot{}%
-\cfoot{\small\thepage}%
-\rfoot{}%
+\cfoot{}%
+\rfoot{\small\thepage}%
+
+%First chapter page
+\fancypagestyle{plain}{ %
+  %Page footer
+  \renewcommand{\headrulewidth}{0pt} 
+  \fancyhead[LE, RO]{} 
+  \fancyhead[LO, RE]{} 
+  %Page footer
+  \fancyfoot[LE, RO]{\small\thepage}
+  \fancyfoot[LO, RE]{}
+}
 %}}}
+
 
 % Smarte Referenzen %{{{
 % http://www.ctan.org/tex-archive/macros/latex/contrib/fancyref/
 \usepackage[german]{cleveref}
 \usepackage{nameref}
 %}}}
+
+
+%%%--------------------------------------------------------------
+%%%Weitere Packete
+%%%--------------------------------------------------------------
+
+% Für richtige Anfürungszeichen  https://tex.stackexchange.com/questions/150945/automatic-german-quotation-marks
+\MakeOuterQuote{"}
+
+
+\usepackage{sty/pgf-pie}
+%http://latex-cookbook.net/articles/pie-chart/
 
 % Haupt-Dokument %{{{
 
@@ -387,40 +413,50 @@
 \begin{titlepage}%
 \begin{sffamily}%
 \begin{center}%
-\huge \campusType\\
 
-\vspace{2cm}%
+\vspace*{0.65cm}
 
-\campusTitle\\
-\vspace{3cm}%
+\fontsize{18}{18} \selectfont \textbf{\campusType}\\
+
+\vspace{1.8cm}%
 
 \begin{normalsize}%
 
-ausgeführt am
+\textbf{\campusTitle}\\
+\vspace{0.5cm}%
+\campusSubtitle\\
+\vspace{1.5cm}%
+
+
+ausgeführt an der
+
+\vspace{0.5cm}%
 
 \begin{figure} [h!]%
-    \centerline{\includegraphics[width=0.5\textwidth]{Campus02_Logo}}%
+    \centerline{\includegraphics[width=0.415\textwidth]{Campus02_Logo.png}}%
 \end{figure}%
 
-%\vspace{4.5cm}%
+\vspace{0.4cm}%
 
-Studiengang\\ 
-Informationstechnologien und IT-Marketing\\
+am Studiengang\\ 
+\vspace{0.2cm}
+\campusStudiengang\\
 
-\vspace{3.5cm}%
+\vspace{3.2cm}%
 
 %\begin{tabularx}{\linewidth}{ll}
 Von: \campusAuthor\\
-Pers. Kennz. \campusPersKnz%
+\vspace{0.25cm}%
+Personenkennzeichen: \campusPersKnz%
 %\end{tabularx}
 
-\vspace{3.5cm}%
+\vspace{2.8cm}%
 \end{normalsize}%
 \end{center}%
 
 \begin{tabularx}{0.9\linewidth}{Xc}%
-\campusCity,~am~\campusDate~&~.............................\\
-         & \campusAuthor\\
+\fontsize{10}{10} \selectfont \campusCity,~am~\campusDate~&~.............................................\\
+         &\fontsize{10}{10} \selectfont Unterschrift\\
 \end{tabularx}%
 
 \end{sffamily}%
@@ -430,10 +466,10 @@ Pers. Kennz. \campusPersKnz%
 \newpage%
 
 % Liste der TODOS (nur sichtbar wenn die TODOs auch aktiviert sind, siehe Package todonotes)
-\listoftodos%
+%\listoftodos%
 
 % Seitennummerierung auf Römisch setzen und bei Seite 1 beginnen
-\pagenumbering{roman}%
+\pagenumbering{Roman}%
 \setcounter{page}{1}%
 
 \setlength{\parindent}{0em}%
@@ -458,6 +494,18 @@ Pers. Kennz. \campusPersKnz%
 \pagenumbering{arabic}%
 \setcounter{page}{1}%
 
+%Enable header for first chapter page
+%\fancypagestyle{plain}{ %
+%  %Page footer
+%  \renewcommand{\headrulewidth}{0.5pt} 
+%  \fancyhead[LO, RE]{\small\leftmark} 
+%  \fancyhead[LE, RO]{} 
+%  %Page footer
+%  \fancyfoot[LO, RE]{}
+%  \fancyfoot[LE, RO]{\small\thepage}
+%}
+
+
 % Laden des eigentlichen Inhalts
 \input{misc/toc}%
 
@@ -465,7 +513,8 @@ Pers. Kennz. \campusPersKnz%
 
 % Abkürzungen
 \clearpage%
-\printglossaries%
+\printglossary[type=\acronymtype,title={Abkürzungsverzeichnis}]
+%\printglossaries%
 
 % Abbildungen
 \clearpage%
@@ -476,8 +525,8 @@ Pers. Kennz. \campusPersKnz%
 \listoftables%
 
 % Listings
-\clearpage%
-\lstlistoflistings%
+%\clearpage%
+%\lstlistoflistings%
 
 % Literaturverzeichnis
 \clearpage%
@@ -489,7 +538,7 @@ Pers. Kennz. \campusPersKnz%
 \printindex%
 
 % Das tiefgründige Zitat, optional :-)
-\input{misc/Zitat}%
+%\input{misc/Zitat}%
 
 \end{document}%
 %}}}
