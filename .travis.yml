@@ -1,4 +1,4 @@
-dist: trusty
+dist: focal
 sudo: false
 script:
   - latexmk -pdf masterthesis.tex
@@ -7,8 +7,6 @@ script:
   - test ! -s lint.out
 addons:
   apt:
-    sources:
-      - sourceline: 'ppa:jonathonf/texlive-2016'
     packages:
       - texlive-full
       - chktex
